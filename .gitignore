@@ -45,3 +45,11 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+/S360/bin/Debug
+/S360/obj/Debug
+/S360BusinessLogic/bin/Debug
+/S360BusinessLogic/obj/Debug
+/S360Controlls/bin/Debug
+/S360Controlls/obj/Debug
+/S360Entity/obj/Debug
+/S360Logging/bin/Debug
