@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="S360Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AssignedPermissions">
+          <Key>
+            <PropertyRef Name="Permission_ID" />
+          </Key>
+          <Property Name="Permission_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Page_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="SystemRole_ID" Type="smallint" Nullable="false" />
+          <Property Name="EnteredOn" Type="datetimeoffset" Precision="0" Nullable="false" />
+          <Property Name="GrantWrite" Type="bit" Nullable="false" />
+          <Property Name="GrantDelete" Type="bit" Nullable="false" />
+          <Property Name="EnteredBy_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="datetimeoffset" Precision="0" />
+        </EntityType>
+        <EntityType Name="PageEnumerator">
+          <Key>
+            <PropertyRef Name="Page_ID" />
+          </Key>
+          <Property Name="Page_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="300" />
+          <Property Name="EnteredOn" Type="datetimeoffset" Precision="0" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="datetimeoffset" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="Student_ID" />
+          </Key>
+          <Property Name="Student_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RegNo" Type="varchar" MaxLength="100" />
+          <Property Name="Gender" Type="char" MaxLength="1" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="100" />
+          <Property Name="FatherName" Type="nvarchar" MaxLength="100" />
+          <Property Name="MotherName" Type="nvarchar" MaxLength="100" />
+          <Property Name="MotherTongue" Type="nvarchar" MaxLength="100" />
+          <Property Name="Religion" Type="nvarchar" MaxLength="100" />
+          <Property Name="Caste" Type="nvarchar" MaxLength="100" />
+          <Property Name="Religion_ID" Type="tinyint" />
+          <Property Name="Language_ID" Type="int" />
+          <Property Name="Category_ID" Type="int" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="CurrentStd_ID" Type="tinyint" />
+          <Property Name="CurrentDiv" Type="varchar" MaxLength="5" />
+          <Property Name="Address" Type="varchar" MaxLength="500" />
+          <Property Name="Mobile1" Type="varchar" MaxLength="15" />
+          <Property Name="Mobile2" Type="varchar" MaxLength="15" />
+          <Property Name="Mobile3" Type="varchar" MaxLength="15" />
+          <Property Name="HomePh" Type="varchar" MaxLength="15" />
+          <Property Name="WorkPh" Type="varchar" MaxLength="15" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="RFIDTag" Type="varchar(max)" />
+          <Property Name="AadharNo" Type="varchar" MaxLength="100" />
+          <Property Name="PrimaryContact" Type="varchar" MaxLength="100" />
+          <Property Name="StudPhoto" Type="varbinary(max)" />
+          <Property Name="Remarks" Type="varchar(max)" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="EnteredBy_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="EnteredOn" Type="datetimeoffset" Precision="0" />
+          <Property Name="LastModifiedBy_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="datetimeoffset" Precision="0" />
+        </EntityType>
+        <EntityType Name="UserCredentials">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="User_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SystemRole_ID" Type="smallint" Nullable="false" />
+          <Property Name="EnteredOn" Type="datetimeoffset" Precision="0" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="datetimeoffset" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="S360ModelStoreContainer">
+          <EntitySet Name="AssignedPermissions" EntityType="Self.AssignedPermissions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PageEnumerator" EntityType="Self.PageEnumerator" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserCredentials" EntityType="Self.UserCredentials" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="S360Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AssignedPermission">
+          <Key>
+            <PropertyRef Name="Permission_ID" />
+          </Key>
+          <Property Name="Permission_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Page_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="SystemRole_ID" Type="Int16" Nullable="false" />
+          <Property Name="EnteredOn" Type="DateTimeOffset" Nullable="false" Precision="0" />
+          <Property Name="GrantWrite" Type="Boolean" Nullable="false" />
+          <Property Name="GrantDelete" Type="Boolean" Nullable="false" />
+          <Property Name="EnteredBy_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="DateTimeOffset" Precision="0" />
+        </EntityType>
+        <EntityType Name="PageEnumerator">
+          <Key>
+            <PropertyRef Name="Page_ID" />
+          </Key>
+          <Property Name="Page_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="EnteredOn" Type="DateTimeOffset" Nullable="false" Precision="0" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="DateTimeOffset" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="Student_ID" />
+          </Key>
+          <Property Name="Student_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FatherName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MotherName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MotherTongue" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Religion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Caste" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Religion_ID" Type="Byte" />
+          <Property Name="Language_ID" Type="Int32" />
+          <Property Name="Category_ID" Type="Int32" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="CurrentStd_ID" Type="Byte" />
+          <Property Name="CurrentDiv" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile3" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="HomePh" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="WorkPh" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RFIDTag" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AadharNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PrimaryContact" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="StudPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="EnteredBy_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="EnteredOn" Type="DateTimeOffset" Precision="0" />
+          <Property Name="LastModifiedBy_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="DateTimeOffset" Precision="0" />
+        </EntityType>
+        <EntityType Name="UserCredential">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="User_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SystemRole_ID" Type="Int16" Nullable="false" />
+          <Property Name="EnteredOn" Type="DateTimeOffset" Nullable="false" Precision="0" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="DateTimeOffset" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityContainer Name="S360Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AssignedPermissions" EntityType="Self.AssignedPermission" />
+          <EntitySet Name="PageEnumerators" EntityType="Self.PageEnumerator" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="UserCredentials" EntityType="Self.UserCredential" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="S360ModelStoreContainer" CdmEntityContainer="S360Entities">
+          <EntitySetMapping Name="AssignedPermissions">
+            <EntityTypeMapping TypeName="S360Model.AssignedPermission">
+              <MappingFragment StoreEntitySet="AssignedPermissions">
+                <ScalarProperty Name="Permission_ID" ColumnName="Permission_ID" />
+                <ScalarProperty Name="Page_ID" ColumnName="Page_ID" />
+                <ScalarProperty Name="SystemRole_ID" ColumnName="SystemRole_ID" />
+                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
+                <ScalarProperty Name="GrantWrite" ColumnName="GrantWrite" />
+                <ScalarProperty Name="GrantDelete" ColumnName="GrantDelete" />
+                <ScalarProperty Name="EnteredBy_ID" ColumnName="EnteredBy_ID" />
+                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PageEnumerators">
+            <EntityTypeMapping TypeName="S360Model.PageEnumerator">
+              <MappingFragment StoreEntitySet="PageEnumerator">
+                <ScalarProperty Name="Page_ID" ColumnName="Page_ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="S360Model.Student">
+              <MappingFragment StoreEntitySet="Students">
+                <ScalarProperty Name="Student_ID" ColumnName="Student_ID" />
+                <ScalarProperty Name="RegNo" ColumnName="RegNo" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="MotherName" ColumnName="MotherName" />
+                <ScalarProperty Name="MotherTongue" ColumnName="MotherTongue" />
+                <ScalarProperty Name="Religion" ColumnName="Religion" />
+                <ScalarProperty Name="Caste" ColumnName="Caste" />
+                <ScalarProperty Name="Religion_ID" ColumnName="Religion_ID" />
+                <ScalarProperty Name="Language_ID" ColumnName="Language_ID" />
+                <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="CurrentStd_ID" ColumnName="CurrentStd_ID" />
+                <ScalarProperty Name="CurrentDiv" ColumnName="CurrentDiv" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Mobile1" ColumnName="Mobile1" />
+                <ScalarProperty Name="Mobile2" ColumnName="Mobile2" />
+                <ScalarProperty Name="Mobile3" ColumnName="Mobile3" />
+                <ScalarProperty Name="HomePh" ColumnName="HomePh" />
+                <ScalarProperty Name="WorkPh" ColumnName="WorkPh" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="RFIDTag" ColumnName="RFIDTag" />
+                <ScalarProperty Name="AadharNo" ColumnName="AadharNo" />
+                <ScalarProperty Name="PrimaryContact" ColumnName="PrimaryContact" />
+                <ScalarProperty Name="StudPhoto" ColumnName="StudPhoto" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="EnteredBy_ID" ColumnName="EnteredBy_ID" />
+                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
+                <ScalarProperty Name="LastModifiedBy_ID" ColumnName="LastModifiedBy_ID" />
+                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserCredentials">
+            <EntityTypeMapping TypeName="S360Model.UserCredential">
+              <MappingFragment StoreEntitySet="UserCredentials">
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="SystemRole_ID" ColumnName="SystemRole_ID" />
+                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

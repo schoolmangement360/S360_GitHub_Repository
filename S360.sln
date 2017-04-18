@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S360", "S360\S360.csproj", "{6ABB809C-0CAC-462E-862C-99C2C2A0FABA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BC610707-0B51-48FD-9D64-7710BAF58AAB} = {BC610707-0B51-48FD-9D64-7710BAF58AAB}
+		{2CEFCC65-B41F-4F91-AEA4-EBBF7860ABDB} = {2CEFCC65-B41F-4F91-AEA4-EBBF7860ABDB}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S360Entity", "S360Entity\S360Entity.csproj", "{2CEFCC65-B41F-4F91-AEA4-EBBF7860ABDB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S360BusinessLogic", "S360BusinessLogic\S360BusinessLogic.csproj", "{BC610707-0B51-48FD-9D64-7710BAF58AAB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S360Logging", "S360Logging\S360Logging.csproj", "{EA621AFE-DF5E-4E4D-881E-FF1197299EDD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S360Controlls", "S360Controlls\S360Controlls.csproj", "{B77CB99F-4EBD-4332-8A35-C3B83ABFFFEB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6ABB809C-0CAC-462E-862C-99C2C2A0FABA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6ABB809C-0CAC-462E-862C-99C2C2A0FABA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6ABB809C-0CAC-462E-862C-99C2C2A0FABA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6ABB809C-0CAC-462E-862C-99C2C2A0FABA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CEFCC65-B41F-4F91-AEA4-EBBF7860ABDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CEFCC65-B41F-4F91-AEA4-EBBF7860ABDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CEFCC65-B41F-4F91-AEA4-EBBF7860ABDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CEFCC65-B41F-4F91-AEA4-EBBF7860ABDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC610707-0B51-48FD-9D64-7710BAF58AAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC610707-0B51-48FD-9D64-7710BAF58AAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC610707-0B51-48FD-9D64-7710BAF58AAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC610707-0B51-48FD-9D64-7710BAF58AAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA621AFE-DF5E-4E4D-881E-FF1197299EDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA621AFE-DF5E-4E4D-881E-FF1197299EDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA621AFE-DF5E-4E4D-881E-FF1197299EDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA621AFE-DF5E-4E4D-881E-FF1197299EDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B77CB99F-4EBD-4332-8A35-C3B83ABFFFEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B77CB99F-4EBD-4332-8A35-C3B83ABFFFEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B77CB99F-4EBD-4332-8A35-C3B83ABFFFEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B77CB99F-4EBD-4332-8A35-C3B83ABFFFEB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
