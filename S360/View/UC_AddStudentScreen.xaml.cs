@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace S360.Students
+namespace S360
 {
     /// <summary>
-    /// Interaction logic for StudentAdd.xaml
+    /// Interaction logic for UC_AddStudentScreen.xaml
     /// </summary>
-    public partial class StudentAdd : Window
+    public partial class UC_AddStudentScreen : UserControl
     {
-        public StudentAdd()
+        public UC_AddStudentScreen()
         {
             InitializeComponent();
         }
