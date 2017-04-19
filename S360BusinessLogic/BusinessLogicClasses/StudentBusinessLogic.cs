@@ -17,8 +17,9 @@ namespace S360BusinessLogic
             _StudentRepository = S360RepositoryFactory.GetRepository("STUDENT") as StudentRepository;
         }
 
-        public Student FirstStudent()
+        public STUD_Students_Master FirstStudent()
         {
+            var test = _StudentRepository.Single(7);
             return _StudentRepository.Single(7); 
         }
     }

@@ -4,8 +4,168 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="S360Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="AssignedPermissions">
+    <Schema Namespace="S360Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'S360_DB.dbo.CHQ_ChequeCancellations_Details' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CHQ_ChequeCancellations_Details">
+          <Key>
+            <PropertyRef Name="ChqCancel_ID" />
+          </Key>
+          <Property Name="ChqCancel_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cheque_ID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="EnteredOn" Type="datetimeoffset" Precision="0" />
+          <Property Name="EnteredBy_ID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Login_ID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="CancelledDate" Type="date" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="CHQ_ChequeClearances_Details">
+          <Key>
+            <PropertyRef Name="ChqClearance_ID" />
+          </Key>
+          <Property Name="ChqClearance_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cheque_ID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="EnteredOn" Type="datetimeoffset" Precision="0" />
+          <Property Name="EnteredBy" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Login_ID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ClearedDate" Type="date" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="CHQ_ChequeDeposits_Details">
+          <Key>
+            <PropertyRef Name="Deposit_ID" />
+          </Key>
+          <Property Name="Deposit_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cheque_ID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="EnteredOn" Type="datetimeoffset" Precision="0" />
+          <Property Name="EnteredBy" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Login_ID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="DepositDate" Type="date" />
+          <Property Name="AccountNo" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CancelledBy_ID" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="CHQ_ChequeReturns_Details">
+          <Key>
+            <PropertyRef Name="ChqReturn_ID" />
+          </Key>
+          <Property Name="ChqReturn_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cheque_ID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="EnteredOn" Type="datetimeoffset" Precision="0" />
+          <Property Name="EnteredBy" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Login_ID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ReturnedDate" Type="date" />
+        </EntityType>
+        <EntityType Name="CHQ_Cheques_Master">
+          <Key>
+            <PropertyRef Name="Cheque_ID" />
+          </Key>
+          <Property Name="Cheque_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Student_ID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Section_ID" Type="smallint" />
+          <Property Name="EnteredOn" Type="datetimeoffset" Precision="0" />
+          <Property Name="EnteredBy" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Login_ID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="InwardDate" Type="date" />
+          <Property Name="ChequeNo" Type="varchar" MaxLength="100" />
+          <Property Name="Bank" Type="varchar" MaxLength="100" />
+          <Property Name="ChqAmount" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Remarks" Type="varchar" MaxLength="500" />
+          <Property Name="ChqStatus_ID" Type="tinyint" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="CHQ_ChequeStatus_Lookup">
+          <Key>
+            <PropertyRef Name="ChqStatus_ID" />
+          </Key>
+          <Property Name="ChqStatus_ID" Type="tinyint" Nullable="false" />
+          <Property Name="StatusName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CHQ_DeletedCheque_Details">
+          <Key>
+            <PropertyRef Name="Cheque_ID" />
+          </Key>
+          <Property Name="Cheque_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Student_ID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Section_ID" Type="smallint" />
+          <Property Name="EnteredOn" Type="datetimeoffset" Precision="0" />
+          <Property Name="EnteredBy" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Login_ID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="InwardDate" Type="date" />
+          <Property Name="ChequeNo" Type="varchar" MaxLength="100" />
+          <Property Name="Bank" Type="varchar" MaxLength="100" />
+          <Property Name="ChqAmount" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Remarks" Type="varchar" MaxLength="500" />
+          <Property Name="ChqStatus_ID" Type="tinyint" />
+          <Property Name="DeletedBy_ID" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'S360_DB.dbo.GEN_Languages_Lookup' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="GEN_Languages_Lookup">
+          <Key>
+            <PropertyRef Name="Language_Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="IsActive" />
+          </Key>
+          <Property Name="Language_Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GEN_Religions_Lookup">
+          <Key>
+            <PropertyRef Name="Religion_Id" />
+          </Key>
+          <Property Name="Religion_Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GEN_Sections_Lookup">
+          <Key>
+            <PropertyRef Name="Section_Id" />
+          </Key>
+          <Property Name="Section_Id" Type="tinyint" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GEN_Standards_Lookup">
+          <Key>
+            <PropertyRef Name="Standard_Id" />
+          </Key>
+          <Property Name="Standard_Id" Type="tinyint" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GEN_StudentCategory_Lookup">
+          <Key>
+            <PropertyRef Name="Category_Id" />
+          </Key>
+          <Property Name="Category_Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GEN_UserCredentials_Master">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="User_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SystemRole_ID" Type="smallint" Nullable="false" />
+          <Property Name="EnteredOn" Type="datetimeoffset" Precision="0" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="datetimeoffset" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GEN_UserLogin_Details">
+          <Key>
+            <PropertyRef Name="Login_ID" />
+          </Key>
+          <Property Name="Login_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="User_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="LoginTime" Type="datetimeoffset" Precision="0" Nullable="false" />
+          <Property Name="LogoutTime" Type="datetimeoffset" Precision="0" />
+          <Property Name="HostName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PEM_AssignedPermissions_Details">
           <Key>
             <PropertyRef Name="Permission_ID" />
           </Key>
@@ -18,7 +178,7 @@
           <Property Name="EnteredBy_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="LastModifiedOn" Type="datetimeoffset" Precision="0" />
         </EntityType>
-        <EntityType Name="PageEnumerator">
+        <EntityType Name="PEM_PageEnumerator_Master">
           <Key>
             <PropertyRef Name="Page_ID" />
           </Key>
@@ -29,11 +189,45 @@
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="LastModifiedOn" Type="datetimeoffset" Precision="0" Nullable="false" />
         </EntityType>
-        <EntityType Name="Students">
+        <EntityType Name="STUD_AcademicStatus_Lookup">
+          <Key>
+            <PropertyRef Name="AcaStatus_ID" />
+          </Key>
+          <Property Name="AcaStatus_ID" Type="tinyint" Nullable="false" />
+          <Property Name="StatusName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="STUD_DetainingOrPromotions_Details">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Student_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="LastAcadDetail_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CurrentAcadDetail_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Status_ID" Type="tinyint" Nullable="false" />
+          <Property Name="EnteredBy" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Login_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="STUD_StudentAcademic_Details">
+          <Key>
+            <PropertyRef Name="AcademicDet_ID" />
+          </Key>
+          <Property Name="AcademicDet_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RegNo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Student_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Section_ID" Type="tinyint" Nullable="false" />
+          <Property Name="Standard_ID" Type="smallint" />
+          <Property Name="Division" Type="smallint" />
+          <Property Name="AcademicYearStart" Type="int" />
+          <Property Name="AcademicYearEnd" Type="int" />
+          <Property Name="Remarks" Type="varchar(max)" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="STUD_Students_Master">
           <Key>
             <PropertyRef Name="Student_ID" />
           </Key>
-          <Property Name="Student_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Student_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="RegNo" Type="varchar" MaxLength="100" />
           <Property Name="Gender" Type="char" MaxLength="1" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
@@ -45,8 +239,9 @@
           <Property Name="Caste" Type="nvarchar" MaxLength="100" />
           <Property Name="Religion_ID" Type="tinyint" />
           <Property Name="Language_ID" Type="int" />
-          <Property Name="Category_ID" Type="int" />
+          <Property Name="Category_ID" Type="tinyint" />
           <Property Name="DOB" Type="date" />
+          <Property Name="CurrentAcaDetail_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="CurrentStd_ID" Type="tinyint" />
           <Property Name="CurrentDiv" Type="varchar" MaxLength="5" />
           <Property Name="Address" Type="varchar" MaxLength="500" />
@@ -67,58 +262,635 @@
           <Property Name="LastModifiedBy_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="LastModifiedOn" Type="datetimeoffset" Precision="0" />
         </EntityType>
-        <EntityType Name="UserCredentials">
-          <Key>
-            <PropertyRef Name="User_ID" />
-          </Key>
-          <Property Name="User_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="SystemRole_ID" Type="smallint" Nullable="false" />
-          <Property Name="EnteredOn" Type="datetimeoffset" Precision="0" Nullable="false" />
-          <Property Name="IsActive" Type="bit" Nullable="false" />
-          <Property Name="LastModifiedOn" Type="datetimeoffset" Precision="0" Nullable="false" />
-        </EntityType>
+        <Association Name="FK_CHQ_ChequeCancellations_Details_CHQ_Cheques_Master">
+          <End Role="CHQ_Cheques_Master" Type="Self.CHQ_Cheques_Master" Multiplicity="0..1" />
+          <End Role="CHQ_ChequeCancellations_Details" Type="Self.CHQ_ChequeCancellations_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHQ_Cheques_Master">
+              <PropertyRef Name="Cheque_ID" />
+            </Principal>
+            <Dependent Role="CHQ_ChequeCancellations_Details">
+              <PropertyRef Name="Cheque_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CHQ_ChequeClearances_Details_CHQ_Cheques_Master">
+          <End Role="CHQ_Cheques_Master" Type="Self.CHQ_Cheques_Master" Multiplicity="0..1" />
+          <End Role="CHQ_ChequeClearances_Details" Type="Self.CHQ_ChequeClearances_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHQ_Cheques_Master">
+              <PropertyRef Name="Cheque_ID" />
+            </Principal>
+            <Dependent Role="CHQ_ChequeClearances_Details">
+              <PropertyRef Name="Cheque_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CHQ_ChequeDeposits_Details_CHQ_Cheques_Master">
+          <End Role="CHQ_Cheques_Master" Type="Self.CHQ_Cheques_Master" Multiplicity="0..1" />
+          <End Role="CHQ_ChequeDeposits_Details" Type="Self.CHQ_ChequeDeposits_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHQ_Cheques_Master">
+              <PropertyRef Name="Cheque_ID" />
+            </Principal>
+            <Dependent Role="CHQ_ChequeDeposits_Details">
+              <PropertyRef Name="Cheque_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CHQ_ChequeReturns_Details_CHQ_Cheques_Master">
+          <End Role="CHQ_Cheques_Master" Type="Self.CHQ_Cheques_Master" Multiplicity="0..1" />
+          <End Role="CHQ_ChequeReturns_Details" Type="Self.CHQ_ChequeReturns_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHQ_Cheques_Master">
+              <PropertyRef Name="Cheque_ID" />
+            </Principal>
+            <Dependent Role="CHQ_ChequeReturns_Details">
+              <PropertyRef Name="Cheque_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CHQ_Cheques_Master_CHQ_ChequeStatus_Lookup">
+          <End Role="CHQ_ChequeStatus_Lookup" Type="Self.CHQ_ChequeStatus_Lookup" Multiplicity="0..1" />
+          <End Role="CHQ_Cheques_Master" Type="Self.CHQ_Cheques_Master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHQ_ChequeStatus_Lookup">
+              <PropertyRef Name="ChqStatus_ID" />
+            </Principal>
+            <Dependent Role="CHQ_Cheques_Master">
+              <PropertyRef Name="ChqStatus_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CHQ_DeletedCheque_Details_CHQ_ChequeStatus_Lookup">
+          <End Role="CHQ_ChequeStatus_Lookup" Type="Self.CHQ_ChequeStatus_Lookup" Multiplicity="0..1" />
+          <End Role="CHQ_DeletedCheque_Details" Type="Self.CHQ_DeletedCheque_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHQ_ChequeStatus_Lookup">
+              <PropertyRef Name="ChqStatus_ID" />
+            </Principal>
+            <Dependent Role="CHQ_DeletedCheque_Details">
+              <PropertyRef Name="ChqStatus_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GEN_UserLogin_Details_GEN_UserCredentials_Master">
+          <End Role="GEN_UserCredentials_Master" Type="Self.GEN_UserCredentials_Master" Multiplicity="1" />
+          <End Role="GEN_UserLogin_Details" Type="Self.GEN_UserLogin_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GEN_UserCredentials_Master">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="GEN_UserLogin_Details">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PEM_AssignedPermissions_Details_PEM_PageEnumerator_Master">
+          <End Role="PEM_PageEnumerator_Master" Type="Self.PEM_PageEnumerator_Master" Multiplicity="1" />
+          <End Role="PEM_AssignedPermissions_Details" Type="Self.PEM_AssignedPermissions_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PEM_PageEnumerator_Master">
+              <PropertyRef Name="Page_ID" />
+            </Principal>
+            <Dependent Role="PEM_AssignedPermissions_Details">
+              <PropertyRef Name="Page_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STUD_DetainingOrPromotions_Details_STUD_AcademicStatus_Lookup">
+          <End Role="STUD_AcademicStatus_Lookup" Type="Self.STUD_AcademicStatus_Lookup" Multiplicity="1" />
+          <End Role="STUD_DetainingOrPromotions_Details" Type="Self.STUD_DetainingOrPromotions_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STUD_AcademicStatus_Lookup">
+              <PropertyRef Name="AcaStatus_ID" />
+            </Principal>
+            <Dependent Role="STUD_DetainingOrPromotions_Details">
+              <PropertyRef Name="Status_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STUD_DetainingOrPromotions_Details_STUD_StudentAcademic_Details">
+          <End Role="STUD_StudentAcademic_Details" Type="Self.STUD_StudentAcademic_Details" Multiplicity="1" />
+          <End Role="STUD_DetainingOrPromotions_Details" Type="Self.STUD_DetainingOrPromotions_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STUD_StudentAcademic_Details">
+              <PropertyRef Name="AcademicDet_ID" />
+            </Principal>
+            <Dependent Role="STUD_DetainingOrPromotions_Details">
+              <PropertyRef Name="CurrentAcadDetail_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STUD_DetainingOrPromotions_Details_STUD_StudentAcademic_Details2">
+          <End Role="STUD_StudentAcademic_Details" Type="Self.STUD_StudentAcademic_Details" Multiplicity="1" />
+          <End Role="STUD_DetainingOrPromotions_Details" Type="Self.STUD_DetainingOrPromotions_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STUD_StudentAcademic_Details">
+              <PropertyRef Name="AcademicDet_ID" />
+            </Principal>
+            <Dependent Role="STUD_DetainingOrPromotions_Details">
+              <PropertyRef Name="CurrentAcadDetail_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STUD_StudentAcademic_Details_GEN_Sections_Lookup">
+          <End Role="GEN_Sections_Lookup" Type="Self.GEN_Sections_Lookup" Multiplicity="1" />
+          <End Role="STUD_StudentAcademic_Details" Type="Self.STUD_StudentAcademic_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GEN_Sections_Lookup">
+              <PropertyRef Name="Section_Id" />
+            </Principal>
+            <Dependent Role="STUD_StudentAcademic_Details">
+              <PropertyRef Name="Section_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STUD_StudentAcademic_Details_STUD_Students_Master">
+          <End Role="STUD_Students_Master" Type="Self.STUD_Students_Master" Multiplicity="1" />
+          <End Role="STUD_StudentAcademic_Details" Type="Self.STUD_StudentAcademic_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STUD_Students_Master">
+              <PropertyRef Name="Student_ID" />
+            </Principal>
+            <Dependent Role="STUD_StudentAcademic_Details">
+              <PropertyRef Name="Student_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STUD_Students_Master_GEN_Religions_Lookup">
+          <End Role="GEN_Religions_Lookup" Type="Self.GEN_Religions_Lookup" Multiplicity="0..1" />
+          <End Role="STUD_Students_Master" Type="Self.STUD_Students_Master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GEN_Religions_Lookup">
+              <PropertyRef Name="Religion_Id" />
+            </Principal>
+            <Dependent Role="STUD_Students_Master">
+              <PropertyRef Name="Religion_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STUD_Students_Master_GEN_Standards_Lookup">
+          <End Role="GEN_Standards_Lookup" Type="Self.GEN_Standards_Lookup" Multiplicity="0..1" />
+          <End Role="STUD_Students_Master" Type="Self.STUD_Students_Master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GEN_Standards_Lookup">
+              <PropertyRef Name="Standard_Id" />
+            </Principal>
+            <Dependent Role="STUD_Students_Master">
+              <PropertyRef Name="CurrentStd_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STUD_Students_Master_GEN_StudentCategory_Lookup">
+          <End Role="GEN_StudentCategory_Lookup" Type="Self.GEN_StudentCategory_Lookup" Multiplicity="0..1" />
+          <End Role="STUD_Students_Master" Type="Self.STUD_Students_Master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GEN_StudentCategory_Lookup">
+              <PropertyRef Name="Category_Id" />
+            </Principal>
+            <Dependent Role="STUD_Students_Master">
+              <PropertyRef Name="Category_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STUD_Students_Master_STUD_StudentAcademic_Details">
+          <End Role="STUD_StudentAcademic_Details" Type="Self.STUD_StudentAcademic_Details" Multiplicity="1" />
+          <End Role="STUD_Students_Master" Type="Self.STUD_Students_Master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STUD_StudentAcademic_Details">
+              <PropertyRef Name="AcademicDet_ID" />
+            </Principal>
+            <Dependent Role="STUD_Students_Master">
+              <PropertyRef Name="CurrentAcaDetail_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="S360ModelStoreContainer">
-          <EntitySet Name="AssignedPermissions" EntityType="Self.AssignedPermissions" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PageEnumerator" EntityType="Self.PageEnumerator" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="UserCredentials" EntityType="Self.UserCredentials" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CHQ_ChequeClearances_Details" EntityType="Self.CHQ_ChequeClearances_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CHQ_ChequeDeposits_Details" EntityType="Self.CHQ_ChequeDeposits_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CHQ_ChequeReturns_Details" EntityType="Self.CHQ_ChequeReturns_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CHQ_Cheques_Master" EntityType="Self.CHQ_Cheques_Master" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CHQ_ChequeStatus_Lookup" EntityType="Self.CHQ_ChequeStatus_Lookup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CHQ_DeletedCheque_Details" EntityType="Self.CHQ_DeletedCheque_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GEN_Religions_Lookup" EntityType="Self.GEN_Religions_Lookup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GEN_Sections_Lookup" EntityType="Self.GEN_Sections_Lookup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GEN_Standards_Lookup" EntityType="Self.GEN_Standards_Lookup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GEN_StudentCategory_Lookup" EntityType="Self.GEN_StudentCategory_Lookup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GEN_UserCredentials_Master" EntityType="Self.GEN_UserCredentials_Master" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GEN_UserLogin_Details" EntityType="Self.GEN_UserLogin_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PEM_AssignedPermissions_Details" EntityType="Self.PEM_AssignedPermissions_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PEM_PageEnumerator_Master" EntityType="Self.PEM_PageEnumerator_Master" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STUD_AcademicStatus_Lookup" EntityType="Self.STUD_AcademicStatus_Lookup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STUD_DetainingOrPromotions_Details" EntityType="Self.STUD_DetainingOrPromotions_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STUD_StudentAcademic_Details" EntityType="Self.STUD_StudentAcademic_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STUD_Students_Master" EntityType="Self.STUD_Students_Master" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CHQ_ChequeCancellations_Details" EntityType="Self.CHQ_ChequeCancellations_Details" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CHQ_ChequeCancellations_Details].[ChqCancel_ID] AS [ChqCancel_ID], 
+    [CHQ_ChequeCancellations_Details].[Cheque_ID] AS [Cheque_ID], 
+    [CHQ_ChequeCancellations_Details].[EnteredOn] AS [EnteredOn], 
+    [CHQ_ChequeCancellations_Details].[EnteredBy_ID] AS [EnteredBy_ID], 
+    [CHQ_ChequeCancellations_Details].[Login_ID] AS [Login_ID], 
+    [CHQ_ChequeCancellations_Details].[CancelledDate] AS [CancelledDate], 
+    [CHQ_ChequeCancellations_Details].[IsActive] AS [IsActive]
+    FROM [dbo].[CHQ_ChequeCancellations_Details] AS [CHQ_ChequeCancellations_Details]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="GEN_Languages_Lookup" EntityType="Self.GEN_Languages_Lookup" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [GEN_Languages_Lookup].[Language_Id] AS [Language_Id], 
+    [GEN_Languages_Lookup].[Name] AS [Name], 
+    [GEN_Languages_Lookup].[IsActive] AS [IsActive]
+    FROM [dbo].[GEN_Languages_Lookup] AS [GEN_Languages_Lookup]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_CHQ_ChequeCancellations_Details_CHQ_Cheques_Master" Association="Self.FK_CHQ_ChequeCancellations_Details_CHQ_Cheques_Master">
+            <End Role="CHQ_Cheques_Master" EntitySet="CHQ_Cheques_Master" />
+            <End Role="CHQ_ChequeCancellations_Details" EntitySet="CHQ_ChequeCancellations_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CHQ_ChequeClearances_Details_CHQ_Cheques_Master" Association="Self.FK_CHQ_ChequeClearances_Details_CHQ_Cheques_Master">
+            <End Role="CHQ_Cheques_Master" EntitySet="CHQ_Cheques_Master" />
+            <End Role="CHQ_ChequeClearances_Details" EntitySet="CHQ_ChequeClearances_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CHQ_ChequeDeposits_Details_CHQ_Cheques_Master" Association="Self.FK_CHQ_ChequeDeposits_Details_CHQ_Cheques_Master">
+            <End Role="CHQ_Cheques_Master" EntitySet="CHQ_Cheques_Master" />
+            <End Role="CHQ_ChequeDeposits_Details" EntitySet="CHQ_ChequeDeposits_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CHQ_ChequeReturns_Details_CHQ_Cheques_Master" Association="Self.FK_CHQ_ChequeReturns_Details_CHQ_Cheques_Master">
+            <End Role="CHQ_Cheques_Master" EntitySet="CHQ_Cheques_Master" />
+            <End Role="CHQ_ChequeReturns_Details" EntitySet="CHQ_ChequeReturns_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CHQ_Cheques_Master_CHQ_ChequeStatus_Lookup" Association="Self.FK_CHQ_Cheques_Master_CHQ_ChequeStatus_Lookup">
+            <End Role="CHQ_ChequeStatus_Lookup" EntitySet="CHQ_ChequeStatus_Lookup" />
+            <End Role="CHQ_Cheques_Master" EntitySet="CHQ_Cheques_Master" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CHQ_DeletedCheque_Details_CHQ_ChequeStatus_Lookup" Association="Self.FK_CHQ_DeletedCheque_Details_CHQ_ChequeStatus_Lookup">
+            <End Role="CHQ_ChequeStatus_Lookup" EntitySet="CHQ_ChequeStatus_Lookup" />
+            <End Role="CHQ_DeletedCheque_Details" EntitySet="CHQ_DeletedCheque_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GEN_UserLogin_Details_GEN_UserCredentials_Master" Association="Self.FK_GEN_UserLogin_Details_GEN_UserCredentials_Master">
+            <End Role="GEN_UserCredentials_Master" EntitySet="GEN_UserCredentials_Master" />
+            <End Role="GEN_UserLogin_Details" EntitySet="GEN_UserLogin_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PEM_AssignedPermissions_Details_PEM_PageEnumerator_Master" Association="Self.FK_PEM_AssignedPermissions_Details_PEM_PageEnumerator_Master">
+            <End Role="PEM_PageEnumerator_Master" EntitySet="PEM_PageEnumerator_Master" />
+            <End Role="PEM_AssignedPermissions_Details" EntitySet="PEM_AssignedPermissions_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STUD_DetainingOrPromotions_Details_STUD_AcademicStatus_Lookup" Association="Self.FK_STUD_DetainingOrPromotions_Details_STUD_AcademicStatus_Lookup">
+            <End Role="STUD_AcademicStatus_Lookup" EntitySet="STUD_AcademicStatus_Lookup" />
+            <End Role="STUD_DetainingOrPromotions_Details" EntitySet="STUD_DetainingOrPromotions_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STUD_DetainingOrPromotions_Details_STUD_StudentAcademic_Details" Association="Self.FK_STUD_DetainingOrPromotions_Details_STUD_StudentAcademic_Details">
+            <End Role="STUD_StudentAcademic_Details" EntitySet="STUD_StudentAcademic_Details" />
+            <End Role="STUD_DetainingOrPromotions_Details" EntitySet="STUD_DetainingOrPromotions_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STUD_DetainingOrPromotions_Details_STUD_StudentAcademic_Details2" Association="Self.FK_STUD_DetainingOrPromotions_Details_STUD_StudentAcademic_Details2">
+            <End Role="STUD_StudentAcademic_Details" EntitySet="STUD_StudentAcademic_Details" />
+            <End Role="STUD_DetainingOrPromotions_Details" EntitySet="STUD_DetainingOrPromotions_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STUD_StudentAcademic_Details_GEN_Sections_Lookup" Association="Self.FK_STUD_StudentAcademic_Details_GEN_Sections_Lookup">
+            <End Role="GEN_Sections_Lookup" EntitySet="GEN_Sections_Lookup" />
+            <End Role="STUD_StudentAcademic_Details" EntitySet="STUD_StudentAcademic_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STUD_StudentAcademic_Details_STUD_Students_Master" Association="Self.FK_STUD_StudentAcademic_Details_STUD_Students_Master">
+            <End Role="STUD_Students_Master" EntitySet="STUD_Students_Master" />
+            <End Role="STUD_StudentAcademic_Details" EntitySet="STUD_StudentAcademic_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STUD_Students_Master_GEN_Religions_Lookup" Association="Self.FK_STUD_Students_Master_GEN_Religions_Lookup">
+            <End Role="GEN_Religions_Lookup" EntitySet="GEN_Religions_Lookup" />
+            <End Role="STUD_Students_Master" EntitySet="STUD_Students_Master" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STUD_Students_Master_GEN_Standards_Lookup" Association="Self.FK_STUD_Students_Master_GEN_Standards_Lookup">
+            <End Role="GEN_Standards_Lookup" EntitySet="GEN_Standards_Lookup" />
+            <End Role="STUD_Students_Master" EntitySet="STUD_Students_Master" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STUD_Students_Master_GEN_StudentCategory_Lookup" Association="Self.FK_STUD_Students_Master_GEN_StudentCategory_Lookup">
+            <End Role="GEN_StudentCategory_Lookup" EntitySet="GEN_StudentCategory_Lookup" />
+            <End Role="STUD_Students_Master" EntitySet="STUD_Students_Master" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STUD_Students_Master_STUD_StudentAcademic_Details" Association="Self.FK_STUD_Students_Master_STUD_StudentAcademic_Details">
+            <End Role="STUD_StudentAcademic_Details" EntitySet="STUD_StudentAcademic_Details" />
+            <End Role="STUD_Students_Master" EntitySet="STUD_Students_Master" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="S360Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="AssignedPermission">
+        <EntityContainer Name="S360Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CHQ_ChequeClearances_Details" EntityType="S360Model.CHQ_ChequeClearances_Details" />
+          <EntitySet Name="CHQ_ChequeDeposits_Details" EntityType="S360Model.CHQ_ChequeDeposits_Details" />
+          <EntitySet Name="CHQ_ChequeReturns_Details" EntityType="S360Model.CHQ_ChequeReturns_Details" />
+          <EntitySet Name="CHQ_Cheques_Master" EntityType="S360Model.CHQ_Cheques_Master" />
+          <EntitySet Name="CHQ_ChequeStatus_Lookup" EntityType="S360Model.CHQ_ChequeStatus_Lookup" />
+          <EntitySet Name="CHQ_DeletedCheque_Details" EntityType="S360Model.CHQ_DeletedCheque_Details" />
+          <EntitySet Name="GEN_Religions_Lookup" EntityType="S360Model.GEN_Religions_Lookup" />
+          <EntitySet Name="GEN_Sections_Lookup" EntityType="S360Model.GEN_Sections_Lookup" />
+          <EntitySet Name="GEN_Standards_Lookup" EntityType="S360Model.GEN_Standards_Lookup" />
+          <EntitySet Name="GEN_StudentCategory_Lookup" EntityType="S360Model.GEN_StudentCategory_Lookup" />
+          <EntitySet Name="GEN_UserCredentials_Master" EntityType="S360Model.GEN_UserCredentials_Master" />
+          <EntitySet Name="GEN_UserLogin_Details" EntityType="S360Model.GEN_UserLogin_Details" />
+          <EntitySet Name="PEM_AssignedPermissions_Details" EntityType="S360Model.PEM_AssignedPermissions_Details" />
+          <EntitySet Name="PEM_PageEnumerator_Master" EntityType="S360Model.PEM_PageEnumerator_Master" />
+          <EntitySet Name="STUD_AcademicStatus_Lookup" EntityType="S360Model.STUD_AcademicStatus_Lookup" />
+          <EntitySet Name="STUD_DetainingOrPromotions_Details" EntityType="S360Model.STUD_DetainingOrPromotions_Details" />
+          <EntitySet Name="STUD_StudentAcademic_Details" EntityType="S360Model.STUD_StudentAcademic_Details" />
+          <EntitySet Name="STUD_Students_Master" EntityType="S360Model.STUD_Students_Master" />
+          <EntitySet Name="CHQ_ChequeCancellations_Details" EntityType="S360Model.CHQ_ChequeCancellations_Details" />
+          <EntitySet Name="GEN_Languages_Lookup" EntityType="S360Model.GEN_Languages_Lookup" />
+          <AssociationSet Name="FK_CHQ_ChequeClearances_Details_CHQ_Cheques_Master" Association="S360Model.FK_CHQ_ChequeClearances_Details_CHQ_Cheques_Master">
+            <End Role="CHQ_Cheques_Master" EntitySet="CHQ_Cheques_Master" />
+            <End Role="CHQ_ChequeClearances_Details" EntitySet="CHQ_ChequeClearances_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CHQ_ChequeDeposits_Details_CHQ_Cheques_Master" Association="S360Model.FK_CHQ_ChequeDeposits_Details_CHQ_Cheques_Master">
+            <End Role="CHQ_Cheques_Master" EntitySet="CHQ_Cheques_Master" />
+            <End Role="CHQ_ChequeDeposits_Details" EntitySet="CHQ_ChequeDeposits_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CHQ_ChequeReturns_Details_CHQ_Cheques_Master" Association="S360Model.FK_CHQ_ChequeReturns_Details_CHQ_Cheques_Master">
+            <End Role="CHQ_Cheques_Master" EntitySet="CHQ_Cheques_Master" />
+            <End Role="CHQ_ChequeReturns_Details" EntitySet="CHQ_ChequeReturns_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CHQ_ChequeCancellations_Details_CHQ_Cheques_Master" Association="S360Model.FK_CHQ_ChequeCancellations_Details_CHQ_Cheques_Master">
+            <End Role="CHQ_Cheques_Master" EntitySet="CHQ_Cheques_Master" />
+            <End Role="CHQ_ChequeCancellations_Details" EntitySet="CHQ_ChequeCancellations_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CHQ_Cheques_Master_CHQ_ChequeStatus_Lookup" Association="S360Model.FK_CHQ_Cheques_Master_CHQ_ChequeStatus_Lookup">
+            <End Role="CHQ_ChequeStatus_Lookup" EntitySet="CHQ_ChequeStatus_Lookup" />
+            <End Role="CHQ_Cheques_Master" EntitySet="CHQ_Cheques_Master" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CHQ_DeletedCheque_Details_CHQ_ChequeStatus_Lookup" Association="S360Model.FK_CHQ_DeletedCheque_Details_CHQ_ChequeStatus_Lookup">
+            <End Role="CHQ_ChequeStatus_Lookup" EntitySet="CHQ_ChequeStatus_Lookup" />
+            <End Role="CHQ_DeletedCheque_Details" EntitySet="CHQ_DeletedCheque_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STUD_Students_Master_GEN_Religions_Lookup" Association="S360Model.FK_STUD_Students_Master_GEN_Religions_Lookup">
+            <End Role="GEN_Religions_Lookup" EntitySet="GEN_Religions_Lookup" />
+            <End Role="STUD_Students_Master" EntitySet="STUD_Students_Master" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STUD_StudentAcademic_Details_GEN_Sections_Lookup" Association="S360Model.FK_STUD_StudentAcademic_Details_GEN_Sections_Lookup">
+            <End Role="GEN_Sections_Lookup" EntitySet="GEN_Sections_Lookup" />
+            <End Role="STUD_StudentAcademic_Details" EntitySet="STUD_StudentAcademic_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STUD_Students_Master_GEN_Standards_Lookup" Association="S360Model.FK_STUD_Students_Master_GEN_Standards_Lookup">
+            <End Role="GEN_Standards_Lookup" EntitySet="GEN_Standards_Lookup" />
+            <End Role="STUD_Students_Master" EntitySet="STUD_Students_Master" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STUD_Students_Master_GEN_StudentCategory_Lookup" Association="S360Model.FK_STUD_Students_Master_GEN_StudentCategory_Lookup">
+            <End Role="GEN_StudentCategory_Lookup" EntitySet="GEN_StudentCategory_Lookup" />
+            <End Role="STUD_Students_Master" EntitySet="STUD_Students_Master" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GEN_UserLogin_Details_GEN_UserCredentials_Master" Association="S360Model.FK_GEN_UserLogin_Details_GEN_UserCredentials_Master">
+            <End Role="GEN_UserCredentials_Master" EntitySet="GEN_UserCredentials_Master" />
+            <End Role="GEN_UserLogin_Details" EntitySet="GEN_UserLogin_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PEM_AssignedPermissions_Details_PEM_PageEnumerator_Master" Association="S360Model.FK_PEM_AssignedPermissions_Details_PEM_PageEnumerator_Master">
+            <End Role="PEM_PageEnumerator_Master" EntitySet="PEM_PageEnumerator_Master" />
+            <End Role="PEM_AssignedPermissions_Details" EntitySet="PEM_AssignedPermissions_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STUD_DetainingOrPromotions_Details_STUD_AcademicStatus_Lookup" Association="S360Model.FK_STUD_DetainingOrPromotions_Details_STUD_AcademicStatus_Lookup">
+            <End Role="STUD_AcademicStatus_Lookup" EntitySet="STUD_AcademicStatus_Lookup" />
+            <End Role="STUD_DetainingOrPromotions_Details" EntitySet="STUD_DetainingOrPromotions_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STUD_DetainingOrPromotions_Details_STUD_StudentAcademic_Details" Association="S360Model.FK_STUD_DetainingOrPromotions_Details_STUD_StudentAcademic_Details">
+            <End Role="STUD_StudentAcademic_Details" EntitySet="STUD_StudentAcademic_Details" />
+            <End Role="STUD_DetainingOrPromotions_Details" EntitySet="STUD_DetainingOrPromotions_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STUD_DetainingOrPromotions_Details_STUD_StudentAcademic_Details2" Association="S360Model.FK_STUD_DetainingOrPromotions_Details_STUD_StudentAcademic_Details2">
+            <End Role="STUD_StudentAcademic_Details" EntitySet="STUD_StudentAcademic_Details" />
+            <End Role="STUD_DetainingOrPromotions_Details" EntitySet="STUD_DetainingOrPromotions_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STUD_StudentAcademic_Details_STUD_Students_Master" Association="S360Model.FK_STUD_StudentAcademic_Details_STUD_Students_Master">
+            <End Role="STUD_Students_Master" EntitySet="STUD_Students_Master" />
+            <End Role="STUD_StudentAcademic_Details" EntitySet="STUD_StudentAcademic_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STUD_Students_Master_STUD_StudentAcademic_Details" Association="S360Model.FK_STUD_Students_Master_STUD_StudentAcademic_Details">
+            <End Role="STUD_StudentAcademic_Details" EntitySet="STUD_StudentAcademic_Details" />
+            <End Role="STUD_Students_Master" EntitySet="STUD_Students_Master" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="CHQ_ChequeClearances_Details">
+          <Key>
+            <PropertyRef Name="ChqClearance_ID" />
+          </Key>
+          <Property Name="ChqClearance_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cheque_ID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="EnteredOn" Type="DateTimeOffset" Precision="0" />
+          <Property Name="EnteredBy" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Login_ID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ClearedDate" Type="DateTime" Precision="0" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="CHQ_Cheques_Master" Relationship="S360Model.FK_CHQ_ChequeClearances_Details_CHQ_Cheques_Master" FromRole="CHQ_ChequeClearances_Details" ToRole="CHQ_Cheques_Master" />
+        </EntityType>
+        <EntityType Name="CHQ_ChequeDeposits_Details">
+          <Key>
+            <PropertyRef Name="Deposit_ID" />
+          </Key>
+          <Property Name="Deposit_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cheque_ID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="EnteredOn" Type="DateTimeOffset" Precision="0" />
+          <Property Name="EnteredBy" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Login_ID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="DepositDate" Type="DateTime" Precision="0" />
+          <Property Name="AccountNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CancelledBy_ID" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="CHQ_Cheques_Master" Relationship="S360Model.FK_CHQ_ChequeDeposits_Details_CHQ_Cheques_Master" FromRole="CHQ_ChequeDeposits_Details" ToRole="CHQ_Cheques_Master" />
+        </EntityType>
+        <EntityType Name="CHQ_ChequeReturns_Details">
+          <Key>
+            <PropertyRef Name="ChqReturn_ID" />
+          </Key>
+          <Property Name="ChqReturn_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cheque_ID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="EnteredOn" Type="DateTimeOffset" Precision="0" />
+          <Property Name="EnteredBy" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Login_ID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ReturnedDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="CHQ_Cheques_Master" Relationship="S360Model.FK_CHQ_ChequeReturns_Details_CHQ_Cheques_Master" FromRole="CHQ_ChequeReturns_Details" ToRole="CHQ_Cheques_Master" />
+        </EntityType>
+        <EntityType Name="CHQ_Cheques_Master">
+          <Key>
+            <PropertyRef Name="Cheque_ID" />
+          </Key>
+          <Property Name="Cheque_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Student_ID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Section_ID" Type="Int16" />
+          <Property Name="EnteredOn" Type="DateTimeOffset" Precision="0" />
+          <Property Name="EnteredBy" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Login_ID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="InwardDate" Type="DateTime" Precision="0" />
+          <Property Name="ChequeNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Bank" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ChqAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ChqStatus_ID" Type="Byte" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="CHQ_ChequeClearances_Details" Relationship="S360Model.FK_CHQ_ChequeClearances_Details_CHQ_Cheques_Master" FromRole="CHQ_Cheques_Master" ToRole="CHQ_ChequeClearances_Details" />
+          <NavigationProperty Name="CHQ_ChequeDeposits_Details" Relationship="S360Model.FK_CHQ_ChequeDeposits_Details_CHQ_Cheques_Master" FromRole="CHQ_Cheques_Master" ToRole="CHQ_ChequeDeposits_Details" />
+          <NavigationProperty Name="CHQ_ChequeReturns_Details" Relationship="S360Model.FK_CHQ_ChequeReturns_Details_CHQ_Cheques_Master" FromRole="CHQ_Cheques_Master" ToRole="CHQ_ChequeReturns_Details" />
+          <NavigationProperty Name="CHQ_ChequeCancellations_Details" Relationship="S360Model.FK_CHQ_ChequeCancellations_Details_CHQ_Cheques_Master" FromRole="CHQ_Cheques_Master" ToRole="CHQ_ChequeCancellations_Details" />
+          <NavigationProperty Name="CHQ_ChequeStatus_Lookup" Relationship="S360Model.FK_CHQ_Cheques_Master_CHQ_ChequeStatus_Lookup" FromRole="CHQ_Cheques_Master" ToRole="CHQ_ChequeStatus_Lookup" />
+        </EntityType>
+        <EntityType Name="CHQ_ChequeStatus_Lookup">
+          <Key>
+            <PropertyRef Name="ChqStatus_ID" />
+          </Key>
+          <Property Name="ChqStatus_ID" Type="Byte" Nullable="false" />
+          <Property Name="StatusName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CHQ_Cheques_Master" Relationship="S360Model.FK_CHQ_Cheques_Master_CHQ_ChequeStatus_Lookup" FromRole="CHQ_ChequeStatus_Lookup" ToRole="CHQ_Cheques_Master" />
+          <NavigationProperty Name="CHQ_DeletedCheque_Details" Relationship="S360Model.FK_CHQ_DeletedCheque_Details_CHQ_ChequeStatus_Lookup" FromRole="CHQ_ChequeStatus_Lookup" ToRole="CHQ_DeletedCheque_Details" />
+        </EntityType>
+        <EntityType Name="CHQ_DeletedCheque_Details">
+          <Key>
+            <PropertyRef Name="Cheque_ID" />
+          </Key>
+          <Property Name="Cheque_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Student_ID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Section_ID" Type="Int16" />
+          <Property Name="EnteredOn" Type="DateTimeOffset" Precision="0" />
+          <Property Name="EnteredBy" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Login_ID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="InwardDate" Type="DateTime" Precision="0" />
+          <Property Name="ChequeNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Bank" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ChqAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ChqStatus_ID" Type="Byte" />
+          <Property Name="DeletedBy_ID" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="CHQ_ChequeStatus_Lookup" Relationship="S360Model.FK_CHQ_DeletedCheque_Details_CHQ_ChequeStatus_Lookup" FromRole="CHQ_DeletedCheque_Details" ToRole="CHQ_ChequeStatus_Lookup" />
+        </EntityType>
+        <EntityType Name="GEN_Religions_Lookup">
+          <Key>
+            <PropertyRef Name="Religion_Id" />
+          </Key>
+          <Property Name="Religion_Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="STUD_Students_Master" Relationship="S360Model.FK_STUD_Students_Master_GEN_Religions_Lookup" FromRole="GEN_Religions_Lookup" ToRole="STUD_Students_Master" />
+        </EntityType>
+        <EntityType Name="GEN_Sections_Lookup">
+          <Key>
+            <PropertyRef Name="Section_Id" />
+          </Key>
+          <Property Name="Section_Id" Type="Byte" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="STUD_StudentAcademic_Details" Relationship="S360Model.FK_STUD_StudentAcademic_Details_GEN_Sections_Lookup" FromRole="GEN_Sections_Lookup" ToRole="STUD_StudentAcademic_Details" />
+        </EntityType>
+        <EntityType Name="GEN_Standards_Lookup">
+          <Key>
+            <PropertyRef Name="Standard_Id" />
+          </Key>
+          <Property Name="Standard_Id" Type="Byte" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="STUD_Students_Master" Relationship="S360Model.FK_STUD_Students_Master_GEN_Standards_Lookup" FromRole="GEN_Standards_Lookup" ToRole="STUD_Students_Master" />
+        </EntityType>
+        <EntityType Name="GEN_StudentCategory_Lookup">
+          <Key>
+            <PropertyRef Name="Category_Id" />
+          </Key>
+          <Property Name="Category_Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="STUD_Students_Master" Relationship="S360Model.FK_STUD_Students_Master_GEN_StudentCategory_Lookup" FromRole="GEN_StudentCategory_Lookup" ToRole="STUD_Students_Master" />
+        </EntityType>
+        <EntityType Name="GEN_UserCredentials_Master">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="User_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SystemRole_ID" Type="Int16" Nullable="false" />
+          <Property Name="EnteredOn" Type="DateTimeOffset" Nullable="false" Precision="0" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="DateTimeOffset" Nullable="false" Precision="0" />
+          <NavigationProperty Name="GEN_UserLogin_Details" Relationship="S360Model.FK_GEN_UserLogin_Details_GEN_UserCredentials_Master" FromRole="GEN_UserCredentials_Master" ToRole="GEN_UserLogin_Details" />
+        </EntityType>
+        <EntityType Name="GEN_UserLogin_Details">
+          <Key>
+            <PropertyRef Name="Login_ID" />
+          </Key>
+          <Property Name="Login_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="User_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="LoginTime" Type="DateTimeOffset" Nullable="false" Precision="0" />
+          <Property Name="LogoutTime" Type="DateTimeOffset" Precision="0" />
+          <Property Name="HostName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GEN_UserCredentials_Master" Relationship="S360Model.FK_GEN_UserLogin_Details_GEN_UserCredentials_Master" FromRole="GEN_UserLogin_Details" ToRole="GEN_UserCredentials_Master" />
+        </EntityType>
+        <EntityType Name="PEM_AssignedPermissions_Details">
           <Key>
             <PropertyRef Name="Permission_ID" />
           </Key>
-          <Property Name="Permission_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Page_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Permission_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Page_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="SystemRole_ID" Type="Int16" Nullable="false" />
           <Property Name="EnteredOn" Type="DateTimeOffset" Nullable="false" Precision="0" />
           <Property Name="GrantWrite" Type="Boolean" Nullable="false" />
           <Property Name="GrantDelete" Type="Boolean" Nullable="false" />
-          <Property Name="EnteredBy_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="EnteredBy_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="LastModifiedOn" Type="DateTimeOffset" Precision="0" />
+          <NavigationProperty Name="PEM_PageEnumerator_Master" Relationship="S360Model.FK_PEM_AssignedPermissions_Details_PEM_PageEnumerator_Master" FromRole="PEM_AssignedPermissions_Details" ToRole="PEM_PageEnumerator_Master" />
         </EntityType>
-        <EntityType Name="PageEnumerator">
+        <EntityType Name="PEM_PageEnumerator_Master">
           <Key>
             <PropertyRef Name="Page_ID" />
           </Key>
-          <Property Name="Page_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Page_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="EnteredOn" Type="DateTimeOffset" Nullable="false" Precision="0" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="LastModifiedOn" Type="DateTimeOffset" Nullable="false" Precision="0" />
+          <NavigationProperty Name="PEM_AssignedPermissions_Details" Relationship="S360Model.FK_PEM_AssignedPermissions_Details_PEM_PageEnumerator_Master" FromRole="PEM_PageEnumerator_Master" ToRole="PEM_AssignedPermissions_Details" />
         </EntityType>
-        <EntityType Name="Student">
+        <EntityType Name="STUD_AcademicStatus_Lookup">
+          <Key>
+            <PropertyRef Name="AcaStatus_ID" />
+          </Key>
+          <Property Name="AcaStatus_ID" Type="Byte" Nullable="false" />
+          <Property Name="StatusName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="STUD_DetainingOrPromotions_Details" Relationship="S360Model.FK_STUD_DetainingOrPromotions_Details_STUD_AcademicStatus_Lookup" FromRole="STUD_AcademicStatus_Lookup" ToRole="STUD_DetainingOrPromotions_Details" />
+        </EntityType>
+        <EntityType Name="STUD_DetainingOrPromotions_Details">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Student_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="LastAcadDetail_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="CurrentAcadDetail_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Status_ID" Type="Byte" Nullable="false" />
+          <Property Name="EnteredBy" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Login_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <NavigationProperty Name="STUD_AcademicStatus_Lookup" Relationship="S360Model.FK_STUD_DetainingOrPromotions_Details_STUD_AcademicStatus_Lookup" FromRole="STUD_DetainingOrPromotions_Details" ToRole="STUD_AcademicStatus_Lookup" />
+          <NavigationProperty Name="STUD_StudentAcademic_Details" Relationship="S360Model.FK_STUD_DetainingOrPromotions_Details_STUD_StudentAcademic_Details" FromRole="STUD_DetainingOrPromotions_Details" ToRole="STUD_StudentAcademic_Details" />
+          <NavigationProperty Name="STUD_StudentAcademic_Details1" Relationship="S360Model.FK_STUD_DetainingOrPromotions_Details_STUD_StudentAcademic_Details2" FromRole="STUD_DetainingOrPromotions_Details" ToRole="STUD_StudentAcademic_Details" />
+        </EntityType>
+        <EntityType Name="STUD_StudentAcademic_Details">
+          <Key>
+            <PropertyRef Name="AcademicDet_ID" />
+          </Key>
+          <Property Name="AcademicDet_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegNo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Student_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Section_ID" Type="Byte" Nullable="false" />
+          <Property Name="Standard_ID" Type="Int16" />
+          <Property Name="Division" Type="Int16" />
+          <Property Name="AcademicYearStart" Type="Int32" />
+          <Property Name="AcademicYearEnd" Type="Int32" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="GEN_Sections_Lookup" Relationship="S360Model.FK_STUD_StudentAcademic_Details_GEN_Sections_Lookup" FromRole="STUD_StudentAcademic_Details" ToRole="GEN_Sections_Lookup" />
+          <NavigationProperty Name="STUD_DetainingOrPromotions_Details" Relationship="S360Model.FK_STUD_DetainingOrPromotions_Details_STUD_StudentAcademic_Details" FromRole="STUD_StudentAcademic_Details" ToRole="STUD_DetainingOrPromotions_Details" />
+          <NavigationProperty Name="STUD_DetainingOrPromotions_Details1" Relationship="S360Model.FK_STUD_DetainingOrPromotions_Details_STUD_StudentAcademic_Details2" FromRole="STUD_StudentAcademic_Details" ToRole="STUD_DetainingOrPromotions_Details" />
+          <NavigationProperty Name="STUD_Students_Master" Relationship="S360Model.FK_STUD_StudentAcademic_Details_STUD_Students_Master" FromRole="STUD_StudentAcademic_Details" ToRole="STUD_Students_Master" />
+          <NavigationProperty Name="STUD_Students_Master1" Relationship="S360Model.FK_STUD_Students_Master_STUD_StudentAcademic_Details" FromRole="STUD_StudentAcademic_Details" ToRole="STUD_Students_Master" />
+        </EntityType>
+        <EntityType Name="STUD_Students_Master">
           <Key>
             <PropertyRef Name="Student_ID" />
           </Key>
-          <Property Name="Student_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Student_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="RegNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -130,8 +902,9 @@
           <Property Name="Caste" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Religion_ID" Type="Byte" />
           <Property Name="Language_ID" Type="Int32" />
-          <Property Name="Category_ID" Type="Int32" />
+          <Property Name="Category_ID" Type="Byte" />
           <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="CurrentAcaDetail_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="CurrentStd_ID" Type="Byte" />
           <Property Name="CurrentDiv" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
@@ -147,110 +920,517 @@
           <Property Name="StudPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="EnteredBy_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="EnteredBy_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="EnteredOn" Type="DateTimeOffset" Precision="0" />
-          <Property Name="LastModifiedBy_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="LastModifiedBy_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="LastModifiedOn" Type="DateTimeOffset" Precision="0" />
+          <NavigationProperty Name="GEN_Religions_Lookup" Relationship="S360Model.FK_STUD_Students_Master_GEN_Religions_Lookup" FromRole="STUD_Students_Master" ToRole="GEN_Religions_Lookup" />
+          <NavigationProperty Name="GEN_Standards_Lookup" Relationship="S360Model.FK_STUD_Students_Master_GEN_Standards_Lookup" FromRole="STUD_Students_Master" ToRole="GEN_Standards_Lookup" />
+          <NavigationProperty Name="GEN_StudentCategory_Lookup" Relationship="S360Model.FK_STUD_Students_Master_GEN_StudentCategory_Lookup" FromRole="STUD_Students_Master" ToRole="GEN_StudentCategory_Lookup" />
+          <NavigationProperty Name="STUD_StudentAcademic_Details" Relationship="S360Model.FK_STUD_StudentAcademic_Details_STUD_Students_Master" FromRole="STUD_Students_Master" ToRole="STUD_StudentAcademic_Details" />
+          <NavigationProperty Name="STUD_StudentAcademic_Details1" Relationship="S360Model.FK_STUD_Students_Master_STUD_StudentAcademic_Details" FromRole="STUD_Students_Master" ToRole="STUD_StudentAcademic_Details" />
         </EntityType>
-        <EntityType Name="UserCredential">
+        <EntityType Name="CHQ_ChequeCancellations_Details">
           <Key>
-            <PropertyRef Name="User_ID" />
+            <PropertyRef Name="ChqCancel_ID" />
           </Key>
-          <Property Name="User_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="SystemRole_ID" Type="Int16" Nullable="false" />
-          <Property Name="EnteredOn" Type="DateTimeOffset" Nullable="false" Precision="0" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="LastModifiedOn" Type="DateTimeOffset" Nullable="false" Precision="0" />
+          <Property Name="ChqCancel_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cheque_ID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="EnteredOn" Type="DateTimeOffset" Precision="0" />
+          <Property Name="EnteredBy_ID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Login_ID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="CancelledDate" Type="DateTime" Precision="0" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="CHQ_Cheques_Master" Relationship="S360Model.FK_CHQ_ChequeCancellations_Details_CHQ_Cheques_Master" FromRole="CHQ_ChequeCancellations_Details" ToRole="CHQ_Cheques_Master" />
         </EntityType>
-        <EntityContainer Name="S360Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="AssignedPermissions" EntityType="Self.AssignedPermission" />
-          <EntitySet Name="PageEnumerators" EntityType="Self.PageEnumerator" />
-          <EntitySet Name="Students" EntityType="Self.Student" />
-          <EntitySet Name="UserCredentials" EntityType="Self.UserCredential" />
-        </EntityContainer>
+        <EntityType Name="GEN_Languages_Lookup">
+          <Key>
+            <PropertyRef Name="Language_Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="IsActive" />
+          </Key>
+          <Property Name="Language_Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CHQ_ChequeClearances_Details_CHQ_Cheques_Master">
+          <End Type="S360Model.CHQ_Cheques_Master" Role="CHQ_Cheques_Master" Multiplicity="0..1" />
+          <End Type="S360Model.CHQ_ChequeClearances_Details" Role="CHQ_ChequeClearances_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHQ_Cheques_Master">
+              <PropertyRef Name="Cheque_ID" />
+            </Principal>
+            <Dependent Role="CHQ_ChequeClearances_Details">
+              <PropertyRef Name="Cheque_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CHQ_ChequeDeposits_Details_CHQ_Cheques_Master">
+          <End Type="S360Model.CHQ_Cheques_Master" Role="CHQ_Cheques_Master" Multiplicity="0..1" />
+          <End Type="S360Model.CHQ_ChequeDeposits_Details" Role="CHQ_ChequeDeposits_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHQ_Cheques_Master">
+              <PropertyRef Name="Cheque_ID" />
+            </Principal>
+            <Dependent Role="CHQ_ChequeDeposits_Details">
+              <PropertyRef Name="Cheque_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CHQ_ChequeReturns_Details_CHQ_Cheques_Master">
+          <End Type="S360Model.CHQ_Cheques_Master" Role="CHQ_Cheques_Master" Multiplicity="0..1" />
+          <End Type="S360Model.CHQ_ChequeReturns_Details" Role="CHQ_ChequeReturns_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHQ_Cheques_Master">
+              <PropertyRef Name="Cheque_ID" />
+            </Principal>
+            <Dependent Role="CHQ_ChequeReturns_Details">
+              <PropertyRef Name="Cheque_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CHQ_ChequeCancellations_Details_CHQ_Cheques_Master">
+          <End Type="S360Model.CHQ_Cheques_Master" Role="CHQ_Cheques_Master" Multiplicity="0..1" />
+          <End Type="S360Model.CHQ_ChequeCancellations_Details" Role="CHQ_ChequeCancellations_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHQ_Cheques_Master">
+              <PropertyRef Name="Cheque_ID" />
+            </Principal>
+            <Dependent Role="CHQ_ChequeCancellations_Details">
+              <PropertyRef Name="Cheque_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CHQ_Cheques_Master_CHQ_ChequeStatus_Lookup">
+          <End Type="S360Model.CHQ_ChequeStatus_Lookup" Role="CHQ_ChequeStatus_Lookup" Multiplicity="0..1" />
+          <End Type="S360Model.CHQ_Cheques_Master" Role="CHQ_Cheques_Master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHQ_ChequeStatus_Lookup">
+              <PropertyRef Name="ChqStatus_ID" />
+            </Principal>
+            <Dependent Role="CHQ_Cheques_Master">
+              <PropertyRef Name="ChqStatus_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CHQ_DeletedCheque_Details_CHQ_ChequeStatus_Lookup">
+          <End Type="S360Model.CHQ_ChequeStatus_Lookup" Role="CHQ_ChequeStatus_Lookup" Multiplicity="0..1" />
+          <End Type="S360Model.CHQ_DeletedCheque_Details" Role="CHQ_DeletedCheque_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHQ_ChequeStatus_Lookup">
+              <PropertyRef Name="ChqStatus_ID" />
+            </Principal>
+            <Dependent Role="CHQ_DeletedCheque_Details">
+              <PropertyRef Name="ChqStatus_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STUD_Students_Master_GEN_Religions_Lookup">
+          <End Type="S360Model.GEN_Religions_Lookup" Role="GEN_Religions_Lookup" Multiplicity="0..1" />
+          <End Type="S360Model.STUD_Students_Master" Role="STUD_Students_Master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GEN_Religions_Lookup">
+              <PropertyRef Name="Religion_Id" />
+            </Principal>
+            <Dependent Role="STUD_Students_Master">
+              <PropertyRef Name="Religion_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STUD_StudentAcademic_Details_GEN_Sections_Lookup">
+          <End Type="S360Model.GEN_Sections_Lookup" Role="GEN_Sections_Lookup" Multiplicity="1" />
+          <End Type="S360Model.STUD_StudentAcademic_Details" Role="STUD_StudentAcademic_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GEN_Sections_Lookup">
+              <PropertyRef Name="Section_Id" />
+            </Principal>
+            <Dependent Role="STUD_StudentAcademic_Details">
+              <PropertyRef Name="Section_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STUD_Students_Master_GEN_Standards_Lookup">
+          <End Type="S360Model.GEN_Standards_Lookup" Role="GEN_Standards_Lookup" Multiplicity="0..1" />
+          <End Type="S360Model.STUD_Students_Master" Role="STUD_Students_Master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GEN_Standards_Lookup">
+              <PropertyRef Name="Standard_Id" />
+            </Principal>
+            <Dependent Role="STUD_Students_Master">
+              <PropertyRef Name="CurrentStd_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STUD_Students_Master_GEN_StudentCategory_Lookup">
+          <End Type="S360Model.GEN_StudentCategory_Lookup" Role="GEN_StudentCategory_Lookup" Multiplicity="0..1" />
+          <End Type="S360Model.STUD_Students_Master" Role="STUD_Students_Master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GEN_StudentCategory_Lookup">
+              <PropertyRef Name="Category_Id" />
+            </Principal>
+            <Dependent Role="STUD_Students_Master">
+              <PropertyRef Name="Category_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GEN_UserLogin_Details_GEN_UserCredentials_Master">
+          <End Type="S360Model.GEN_UserCredentials_Master" Role="GEN_UserCredentials_Master" Multiplicity="1" />
+          <End Type="S360Model.GEN_UserLogin_Details" Role="GEN_UserLogin_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GEN_UserCredentials_Master">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="GEN_UserLogin_Details">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PEM_AssignedPermissions_Details_PEM_PageEnumerator_Master">
+          <End Type="S360Model.PEM_PageEnumerator_Master" Role="PEM_PageEnumerator_Master" Multiplicity="1" />
+          <End Type="S360Model.PEM_AssignedPermissions_Details" Role="PEM_AssignedPermissions_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PEM_PageEnumerator_Master">
+              <PropertyRef Name="Page_ID" />
+            </Principal>
+            <Dependent Role="PEM_AssignedPermissions_Details">
+              <PropertyRef Name="Page_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STUD_DetainingOrPromotions_Details_STUD_AcademicStatus_Lookup">
+          <End Type="S360Model.STUD_AcademicStatus_Lookup" Role="STUD_AcademicStatus_Lookup" Multiplicity="1" />
+          <End Type="S360Model.STUD_DetainingOrPromotions_Details" Role="STUD_DetainingOrPromotions_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STUD_AcademicStatus_Lookup">
+              <PropertyRef Name="AcaStatus_ID" />
+            </Principal>
+            <Dependent Role="STUD_DetainingOrPromotions_Details">
+              <PropertyRef Name="Status_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STUD_DetainingOrPromotions_Details_STUD_StudentAcademic_Details">
+          <End Type="S360Model.STUD_StudentAcademic_Details" Role="STUD_StudentAcademic_Details" Multiplicity="1" />
+          <End Type="S360Model.STUD_DetainingOrPromotions_Details" Role="STUD_DetainingOrPromotions_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STUD_StudentAcademic_Details">
+              <PropertyRef Name="AcademicDet_ID" />
+            </Principal>
+            <Dependent Role="STUD_DetainingOrPromotions_Details">
+              <PropertyRef Name="CurrentAcadDetail_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STUD_DetainingOrPromotions_Details_STUD_StudentAcademic_Details2">
+          <End Type="S360Model.STUD_StudentAcademic_Details" Role="STUD_StudentAcademic_Details" Multiplicity="1" />
+          <End Type="S360Model.STUD_DetainingOrPromotions_Details" Role="STUD_DetainingOrPromotions_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STUD_StudentAcademic_Details">
+              <PropertyRef Name="AcademicDet_ID" />
+            </Principal>
+            <Dependent Role="STUD_DetainingOrPromotions_Details">
+              <PropertyRef Name="CurrentAcadDetail_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STUD_StudentAcademic_Details_STUD_Students_Master">
+          <End Type="S360Model.STUD_Students_Master" Role="STUD_Students_Master" Multiplicity="1" />
+          <End Type="S360Model.STUD_StudentAcademic_Details" Role="STUD_StudentAcademic_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STUD_Students_Master">
+              <PropertyRef Name="Student_ID" />
+            </Principal>
+            <Dependent Role="STUD_StudentAcademic_Details">
+              <PropertyRef Name="Student_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STUD_Students_Master_STUD_StudentAcademic_Details">
+          <End Type="S360Model.STUD_StudentAcademic_Details" Role="STUD_StudentAcademic_Details" Multiplicity="1" />
+          <End Type="S360Model.STUD_Students_Master" Role="STUD_Students_Master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STUD_StudentAcademic_Details">
+              <PropertyRef Name="AcademicDet_ID" />
+            </Principal>
+            <Dependent Role="STUD_Students_Master">
+              <PropertyRef Name="CurrentAcaDetail_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="S360ModelStoreContainer" CdmEntityContainer="S360Entities">
-          <EntitySetMapping Name="AssignedPermissions">
-            <EntityTypeMapping TypeName="S360Model.AssignedPermission">
-              <MappingFragment StoreEntitySet="AssignedPermissions">
-                <ScalarProperty Name="Permission_ID" ColumnName="Permission_ID" />
-                <ScalarProperty Name="Page_ID" ColumnName="Page_ID" />
-                <ScalarProperty Name="SystemRole_ID" ColumnName="SystemRole_ID" />
-                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
-                <ScalarProperty Name="GrantWrite" ColumnName="GrantWrite" />
-                <ScalarProperty Name="GrantDelete" ColumnName="GrantDelete" />
-                <ScalarProperty Name="EnteredBy_ID" ColumnName="EnteredBy_ID" />
-                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PageEnumerators">
-            <EntityTypeMapping TypeName="S360Model.PageEnumerator">
-              <MappingFragment StoreEntitySet="PageEnumerator">
-                <ScalarProperty Name="Page_ID" ColumnName="Page_ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
+          <EntitySetMapping Name="CHQ_ChequeClearances_Details">
+            <EntityTypeMapping TypeName="S360Model.CHQ_ChequeClearances_Details">
+              <MappingFragment StoreEntitySet="CHQ_ChequeClearances_Details">
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+                <ScalarProperty Name="ClearedDate" ColumnName="ClearedDate" />
+                <ScalarProperty Name="Login_ID" ColumnName="Login_ID" />
+                <ScalarProperty Name="EnteredBy" ColumnName="EnteredBy" />
+                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
+                <ScalarProperty Name="Cheque_ID" ColumnName="Cheque_ID" />
+                <ScalarProperty Name="ChqClearance_ID" ColumnName="ChqClearance_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Students">
-            <EntityTypeMapping TypeName="S360Model.Student">
-              <MappingFragment StoreEntitySet="Students">
+          <EntitySetMapping Name="CHQ_ChequeDeposits_Details">
+            <EntityTypeMapping TypeName="S360Model.CHQ_ChequeDeposits_Details">
+              <MappingFragment StoreEntitySet="CHQ_ChequeDeposits_Details">
+                <ScalarProperty Name="CancelledBy_ID" ColumnName="CancelledBy_ID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
+                <ScalarProperty Name="DepositDate" ColumnName="DepositDate" />
+                <ScalarProperty Name="Login_ID" ColumnName="Login_ID" />
+                <ScalarProperty Name="EnteredBy" ColumnName="EnteredBy" />
+                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
+                <ScalarProperty Name="Cheque_ID" ColumnName="Cheque_ID" />
+                <ScalarProperty Name="Deposit_ID" ColumnName="Deposit_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CHQ_ChequeReturns_Details">
+            <EntityTypeMapping TypeName="S360Model.CHQ_ChequeReturns_Details">
+              <MappingFragment StoreEntitySet="CHQ_ChequeReturns_Details">
+                <ScalarProperty Name="ReturnedDate" ColumnName="ReturnedDate" />
+                <ScalarProperty Name="Login_ID" ColumnName="Login_ID" />
+                <ScalarProperty Name="EnteredBy" ColumnName="EnteredBy" />
+                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
+                <ScalarProperty Name="Cheque_ID" ColumnName="Cheque_ID" />
+                <ScalarProperty Name="ChqReturn_ID" ColumnName="ChqReturn_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CHQ_Cheques_Master">
+            <EntityTypeMapping TypeName="S360Model.CHQ_Cheques_Master">
+              <MappingFragment StoreEntitySet="CHQ_Cheques_Master">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ChqStatus_ID" ColumnName="ChqStatus_ID" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="ChqAmount" ColumnName="ChqAmount" />
+                <ScalarProperty Name="Bank" ColumnName="Bank" />
+                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
+                <ScalarProperty Name="InwardDate" ColumnName="InwardDate" />
+                <ScalarProperty Name="Login_ID" ColumnName="Login_ID" />
+                <ScalarProperty Name="EnteredBy" ColumnName="EnteredBy" />
+                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
+                <ScalarProperty Name="Section_ID" ColumnName="Section_ID" />
+                <ScalarProperty Name="Student_ID" ColumnName="Student_ID" />
+                <ScalarProperty Name="Cheque_ID" ColumnName="Cheque_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CHQ_ChequeStatus_Lookup">
+            <EntityTypeMapping TypeName="S360Model.CHQ_ChequeStatus_Lookup">
+              <MappingFragment StoreEntitySet="CHQ_ChequeStatus_Lookup">
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+                <ScalarProperty Name="ChqStatus_ID" ColumnName="ChqStatus_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CHQ_DeletedCheque_Details">
+            <EntityTypeMapping TypeName="S360Model.CHQ_DeletedCheque_Details">
+              <MappingFragment StoreEntitySet="CHQ_DeletedCheque_Details">
+                <ScalarProperty Name="DeletedBy_ID" ColumnName="DeletedBy_ID" />
+                <ScalarProperty Name="ChqStatus_ID" ColumnName="ChqStatus_ID" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="ChqAmount" ColumnName="ChqAmount" />
+                <ScalarProperty Name="Bank" ColumnName="Bank" />
+                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
+                <ScalarProperty Name="InwardDate" ColumnName="InwardDate" />
+                <ScalarProperty Name="Login_ID" ColumnName="Login_ID" />
+                <ScalarProperty Name="EnteredBy" ColumnName="EnteredBy" />
+                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
+                <ScalarProperty Name="Section_ID" ColumnName="Section_ID" />
+                <ScalarProperty Name="Student_ID" ColumnName="Student_ID" />
+                <ScalarProperty Name="Cheque_ID" ColumnName="Cheque_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GEN_Religions_Lookup">
+            <EntityTypeMapping TypeName="S360Model.GEN_Religions_Lookup">
+              <MappingFragment StoreEntitySet="GEN_Religions_Lookup">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Religion_Id" ColumnName="Religion_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GEN_Sections_Lookup">
+            <EntityTypeMapping TypeName="S360Model.GEN_Sections_Lookup">
+              <MappingFragment StoreEntitySet="GEN_Sections_Lookup">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Section_Id" ColumnName="Section_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GEN_Standards_Lookup">
+            <EntityTypeMapping TypeName="S360Model.GEN_Standards_Lookup">
+              <MappingFragment StoreEntitySet="GEN_Standards_Lookup">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Standard_Id" ColumnName="Standard_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GEN_StudentCategory_Lookup">
+            <EntityTypeMapping TypeName="S360Model.GEN_StudentCategory_Lookup">
+              <MappingFragment StoreEntitySet="GEN_StudentCategory_Lookup">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Category_Id" ColumnName="Category_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GEN_UserCredentials_Master">
+            <EntityTypeMapping TypeName="S360Model.GEN_UserCredentials_Master">
+              <MappingFragment StoreEntitySet="GEN_UserCredentials_Master">
+                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
+                <ScalarProperty Name="SystemRole_ID" ColumnName="SystemRole_ID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GEN_UserLogin_Details">
+            <EntityTypeMapping TypeName="S360Model.GEN_UserLogin_Details">
+              <MappingFragment StoreEntitySet="GEN_UserLogin_Details">
+                <ScalarProperty Name="HostName" ColumnName="HostName" />
+                <ScalarProperty Name="LogoutTime" ColumnName="LogoutTime" />
+                <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Login_ID" ColumnName="Login_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PEM_AssignedPermissions_Details">
+            <EntityTypeMapping TypeName="S360Model.PEM_AssignedPermissions_Details">
+              <MappingFragment StoreEntitySet="PEM_AssignedPermissions_Details">
+                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+                <ScalarProperty Name="EnteredBy_ID" ColumnName="EnteredBy_ID" />
+                <ScalarProperty Name="GrantDelete" ColumnName="GrantDelete" />
+                <ScalarProperty Name="GrantWrite" ColumnName="GrantWrite" />
+                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
+                <ScalarProperty Name="SystemRole_ID" ColumnName="SystemRole_ID" />
+                <ScalarProperty Name="Page_ID" ColumnName="Page_ID" />
+                <ScalarProperty Name="Permission_ID" ColumnName="Permission_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PEM_PageEnumerator_Master">
+            <EntityTypeMapping TypeName="S360Model.PEM_PageEnumerator_Master">
+              <MappingFragment StoreEntitySet="PEM_PageEnumerator_Master">
+                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Page_ID" ColumnName="Page_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STUD_AcademicStatus_Lookup">
+            <EntityTypeMapping TypeName="S360Model.STUD_AcademicStatus_Lookup">
+              <MappingFragment StoreEntitySet="STUD_AcademicStatus_Lookup">
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+                <ScalarProperty Name="AcaStatus_ID" ColumnName="AcaStatus_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STUD_DetainingOrPromotions_Details">
+            <EntityTypeMapping TypeName="S360Model.STUD_DetainingOrPromotions_Details">
+              <MappingFragment StoreEntitySet="STUD_DetainingOrPromotions_Details">
+                <ScalarProperty Name="Login_ID" ColumnName="Login_ID" />
+                <ScalarProperty Name="EnteredBy" ColumnName="EnteredBy" />
+                <ScalarProperty Name="Status_ID" ColumnName="Status_ID" />
+                <ScalarProperty Name="CurrentAcadDetail_ID" ColumnName="CurrentAcadDetail_ID" />
+                <ScalarProperty Name="LastAcadDetail_ID" ColumnName="LastAcadDetail_ID" />
+                <ScalarProperty Name="Student_ID" ColumnName="Student_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STUD_StudentAcademic_Details">
+            <EntityTypeMapping TypeName="S360Model.STUD_StudentAcademic_Details">
+              <MappingFragment StoreEntitySet="STUD_StudentAcademic_Details">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="AcademicYearEnd" ColumnName="AcademicYearEnd" />
+                <ScalarProperty Name="AcademicYearStart" ColumnName="AcademicYearStart" />
+                <ScalarProperty Name="Division" ColumnName="Division" />
+                <ScalarProperty Name="Standard_ID" ColumnName="Standard_ID" />
+                <ScalarProperty Name="Section_ID" ColumnName="Section_ID" />
                 <ScalarProperty Name="Student_ID" ColumnName="Student_ID" />
                 <ScalarProperty Name="RegNo" ColumnName="RegNo" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Surname" ColumnName="Surname" />
-                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
-                <ScalarProperty Name="MotherName" ColumnName="MotherName" />
-                <ScalarProperty Name="MotherTongue" ColumnName="MotherTongue" />
-                <ScalarProperty Name="Religion" ColumnName="Religion" />
-                <ScalarProperty Name="Caste" ColumnName="Caste" />
-                <ScalarProperty Name="Religion_ID" ColumnName="Religion_ID" />
-                <ScalarProperty Name="Language_ID" ColumnName="Language_ID" />
-                <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
-                <ScalarProperty Name="DOB" ColumnName="DOB" />
-                <ScalarProperty Name="CurrentStd_ID" ColumnName="CurrentStd_ID" />
-                <ScalarProperty Name="CurrentDiv" ColumnName="CurrentDiv" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Mobile1" ColumnName="Mobile1" />
-                <ScalarProperty Name="Mobile2" ColumnName="Mobile2" />
-                <ScalarProperty Name="Mobile3" ColumnName="Mobile3" />
-                <ScalarProperty Name="HomePh" ColumnName="HomePh" />
-                <ScalarProperty Name="WorkPh" ColumnName="WorkPh" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="RFIDTag" ColumnName="RFIDTag" />
-                <ScalarProperty Name="AadharNo" ColumnName="AadharNo" />
-                <ScalarProperty Name="PrimaryContact" ColumnName="PrimaryContact" />
-                <ScalarProperty Name="StudPhoto" ColumnName="StudPhoto" />
-                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="EnteredBy_ID" ColumnName="EnteredBy_ID" />
-                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
-                <ScalarProperty Name="LastModifiedBy_ID" ColumnName="LastModifiedBy_ID" />
-                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+                <ScalarProperty Name="AcademicDet_ID" ColumnName="AcademicDet_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="UserCredentials">
-            <EntityTypeMapping TypeName="S360Model.UserCredential">
-              <MappingFragment StoreEntitySet="UserCredentials">
-                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="SystemRole_ID" ColumnName="SystemRole_ID" />
-                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <EntitySetMapping Name="STUD_Students_Master">
+            <EntityTypeMapping TypeName="S360Model.STUD_Students_Master">
+              <MappingFragment StoreEntitySet="STUD_Students_Master">
                 <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+                <ScalarProperty Name="LastModifiedBy_ID" ColumnName="LastModifiedBy_ID" />
+                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
+                <ScalarProperty Name="EnteredBy_ID" ColumnName="EnteredBy_ID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="StudPhoto" ColumnName="StudPhoto" />
+                <ScalarProperty Name="PrimaryContact" ColumnName="PrimaryContact" />
+                <ScalarProperty Name="AadharNo" ColumnName="AadharNo" />
+                <ScalarProperty Name="RFIDTag" ColumnName="RFIDTag" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="WorkPh" ColumnName="WorkPh" />
+                <ScalarProperty Name="HomePh" ColumnName="HomePh" />
+                <ScalarProperty Name="Mobile3" ColumnName="Mobile3" />
+                <ScalarProperty Name="Mobile2" ColumnName="Mobile2" />
+                <ScalarProperty Name="Mobile1" ColumnName="Mobile1" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CurrentDiv" ColumnName="CurrentDiv" />
+                <ScalarProperty Name="CurrentStd_ID" ColumnName="CurrentStd_ID" />
+                <ScalarProperty Name="CurrentAcaDetail_ID" ColumnName="CurrentAcaDetail_ID" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
+                <ScalarProperty Name="Language_ID" ColumnName="Language_ID" />
+                <ScalarProperty Name="Religion_ID" ColumnName="Religion_ID" />
+                <ScalarProperty Name="Caste" ColumnName="Caste" />
+                <ScalarProperty Name="Religion" ColumnName="Religion" />
+                <ScalarProperty Name="MotherTongue" ColumnName="MotherTongue" />
+                <ScalarProperty Name="MotherName" ColumnName="MotherName" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="RegNo" ColumnName="RegNo" />
+                <ScalarProperty Name="Student_ID" ColumnName="Student_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CHQ_ChequeCancellations_Details">
+            <EntityTypeMapping TypeName="S360Model.CHQ_ChequeCancellations_Details">
+              <MappingFragment StoreEntitySet="CHQ_ChequeCancellations_Details">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CancelledDate" ColumnName="CancelledDate" />
+                <ScalarProperty Name="Login_ID" ColumnName="Login_ID" />
+                <ScalarProperty Name="EnteredBy_ID" ColumnName="EnteredBy_ID" />
+                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
+                <ScalarProperty Name="Cheque_ID" ColumnName="Cheque_ID" />
+                <ScalarProperty Name="ChqCancel_ID" ColumnName="ChqCancel_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GEN_Languages_Lookup">
+            <EntityTypeMapping TypeName="S360Model.GEN_Languages_Lookup">
+              <MappingFragment StoreEntitySet="GEN_Languages_Lookup">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Language_Id" ColumnName="Language_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

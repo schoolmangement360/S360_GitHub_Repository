@@ -53,3 +53,5 @@ Temporary Items
 /S360Controlls/obj/Debug
 /S360Entity/obj/Debug
 /S360Logging/bin/Debug
+/S360Entity/bin/Debug
+/S360Entity/bin/Debug/EntityFramework.SqlServer.dll

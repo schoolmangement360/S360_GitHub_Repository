@@ -69,7 +69,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AssignedPermission.cs">
+    <Compile Include="CHQ_ChequeCancellations_Details.cs">
+      <DependentUpon>S360EntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHQ_ChequeClearances_Details.cs">
+      <DependentUpon>S360EntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHQ_ChequeDeposits_Details.cs">
+      <DependentUpon>S360EntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHQ_ChequeReturns_Details.cs">
+      <DependentUpon>S360EntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHQ_ChequeStatus_Lookup.cs">
+      <DependentUpon>S360EntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHQ_Cheques_Master.cs">
+      <DependentUpon>S360EntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHQ_DeletedCheque_Details.cs">
       <DependentUpon>S360EntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Contract Implementations\BaseRepository.cs" />
@@ -77,10 +95,37 @@
     <Compile Include="Contract Interfaces\IBaseRepository.cs" />
     <Compile Include="Contract Interfaces\IDbRepository.cs" />
     <Compile Include="Contract Interfaces\IUnitOfWork.cs" />
-    <Compile Include="PageEnumerator.cs">
+    <Compile Include="GEN_Languages_Lookup.cs">
+      <DependentUpon>S360EntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GEN_Religions_Lookup.cs">
+      <DependentUpon>S360EntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GEN_Sections_Lookup.cs">
+      <DependentUpon>S360EntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GEN_Standards_Lookup.cs">
+      <DependentUpon>S360EntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GEN_StudentCategory_Lookup.cs">
+      <DependentUpon>S360EntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GEN_UserCredentials_Master.cs">
+      <DependentUpon>S360EntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GEN_UserLogin_Details.cs">
+      <DependentUpon>S360EntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PEM_AssignedPermissions_Details.cs">
+      <DependentUpon>S360EntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PEM_PageEnumerator_Master.cs">
       <DependentUpon>S360EntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\ChequeCancellationRepository.cs" />
+    <Compile Include="Repository\ChequeClearanceRepository.cs" />
+    <Compile Include="Repository\ChequeDepositRepository.cs" />
     <Compile Include="Repository\StudentRepository.cs" />
     <Compile Include="Repository\UserCredentialRepository.cs" />
     <Compile Include="S360EntityModel.Context.cs">
@@ -98,10 +143,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>S360EntityModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Student.cs">
+    <Compile Include="STUD_AcademicStatus_Lookup.cs">
       <DependentUpon>S360EntityModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="UserCredential.cs">
+    <Compile Include="STUD_DetainingOrPromotions_Details.cs">
+      <DependentUpon>S360EntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STUD_StudentAcademic_Details.cs">
+      <DependentUpon>S360EntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STUD_Students_Master.cs">
       <DependentUpon>S360EntityModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
