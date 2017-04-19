@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S360", "S360\S360.csproj", "{6ABB809C-0CAC-462E-862C-99C2C2A0FABA}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -16,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S360Logging", "S360Logging\S360Logging.csproj", "{EA621AFE-DF5E-4E4D-881E-FF1197299EDD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S360Controlls", "S360Controlls\S360Controlls.csproj", "{B77CB99F-4EBD-4332-8A35-C3B83ABFFFEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S360Exceptions", "S360Exceptions\S360Exceptions.csproj", "{82CA2861-B4CE-4835-97A6-25C621C6A0FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{B77CB99F-4EBD-4332-8A35-C3B83ABFFFEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B77CB99F-4EBD-4332-8A35-C3B83ABFFFEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B77CB99F-4EBD-4332-8A35-C3B83ABFFFEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82CA2861-B4CE-4835-97A6-25C621C6A0FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82CA2861-B4CE-4835-97A6-25C621C6A0FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82CA2861-B4CE-4835-97A6-25C621C6A0FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82CA2861-B4CE-4835-97A6-25C621C6A0FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

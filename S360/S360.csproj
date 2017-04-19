@@ -125,6 +125,10 @@
       <Project>{2cefcc65-b41f-4f91-aea4-ebbf7860abdb}</Project>
       <Name>S360Entity</Name>
     </ProjectReference>
+    <ProjectReference Include="..\S360Exceptions\S360Exceptions.csproj">
+      <Project>{82ca2861-b4ce-4835-97a6-25c621c6a0fe}</Project>
+      <Name>S360Exceptions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\S360Logging\S360Logging.csproj">
       <Project>{ea621afe-df5e-4e4d-881e-ff1197299edd}</Project>
       <Name>S360Logging</Name>

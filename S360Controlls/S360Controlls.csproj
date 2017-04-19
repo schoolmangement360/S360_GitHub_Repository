@@ -50,6 +50,12 @@
     <Compile Include="BasicControls\S360TextBox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\S360Exceptions\S360Exceptions.csproj">
+      <Project>{82ca2861-b4ce-4835-97a6-25c621c6a0fe}</Project>
+      <Name>S360Exceptions</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
