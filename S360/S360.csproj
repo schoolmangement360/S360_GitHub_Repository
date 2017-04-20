@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>S360</RootNamespace>
     <AssemblyName>S360</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -127,6 +127,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="ViewModel\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\ProfilePic.png" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\S360BusinessLogic\S360BusinessLogic.csproj">
       <Project>{bc610707-0b51-48fd-9d64-7710baf58aab}</Project>
       <Name>S360BusinessLogic</Name>
@@ -149,10 +155,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ViewModel\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\ProfilePic.png" />
+    <Resource Include="Images\RibbonTitle.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

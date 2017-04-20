@@ -4,7 +4,108 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:BasicControls="clr-namespace:S360Controlls.BasicControls;assembly=S360Controlls" x:Class="S360.UC_AddStudentScreen"
-             Background="White" MinHeight="600" MinWidth="800" Height="601.493" Width="1017.91" >
+             Background="White" >
+    <UserControl.Resources>
+        <Style
+        x:Key="ButtonFocusVisual">
+            <Setter
+            Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="MetroButton" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
+            <Setter Property="Background" Value="#2b5797"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="10 6"/>
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontFamily" Value="Segoe UI" />
+            <Setter Property="Margin" Value="0,0,10,5" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Border
+                                x:Name="Border"
+                                CornerRadius="2"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="#2b5797"
+                                BorderThickness="{TemplateBinding BorderThickness}" />
+
+                            <ContentPresenter
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                Margin="{TemplateBinding Padding}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                RecognizesAccessKey="True" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="OpacityMask" Value="#AA888888"/>
+                                <Setter Property="Margin" Value="2 1" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderThickness" Value="1"/>
+                                <Setter Property="Background" Value="White"/>
+                                <Setter Property="Foreground" Value="#2b5797"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="#ADADAD"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="TabItem" BasedOn="{StaticResource {x:Type TabItem}}">
+            <Setter Property="Foreground" Value="{DynamicResource VsBrush.WindowText}"/>
+            <Setter Property="Background" Value="{DynamicResource VsBrush.Window}"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <Grid SnapsToDevicePixels="true">
+                            <Border x:Name="HeaderBorder" Padding="8,3,8,3" BorderThickness="1,1,1,0"
+                                                        Background="White" 
+                                                        BorderBrush="White">
+                                <ContentPresenter x:Name="Content" ContentSource="Header"
+                                                                      HorizontalAlignment="{Binding Path=HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                                                      VerticalAlignment="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                                                      />
+                            </Border>
+                            <Border x:Name="TopLineCover" BorderThickness="1,2,1,0" Margin="0,-1,0,0" Height="3" Panel.ZIndex="100"
+                                                        Background="{DynamicResource VsBrush.Window}" BorderBrush="#2b5797"
+                                                        VerticalAlignment="Top" HorizontalAlignment="Stretch" Visibility="Collapsed"/>
+                            <Border x:Name="BottomLineCover" BorderThickness="0,0,0,3" Margin="1,0,1,-2" Panel.ZIndex="100" BorderBrush="{DynamicResource VsBrush.Window}"
+                                                        VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Visibility="Collapsed"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsMouseOver" Value="True"/>
+                                    <Condition Property="IsSelected" Value="False"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background" TargetName="HeaderBorder" Value="{DynamicResource VsBrush.Window}"/>
+                            </MultiTrigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" TargetName="HeaderBorder" Value="{DynamicResource VsBrush.Window}"/>
+                                <Setter Property="Visibility" TargetName="TopLineCover" Value="Visible"/>
+                                <Setter Property="Visibility" TargetName="BottomLineCover" Value="Visible"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
 
     <Viewbox Stretch="Fill" StretchDirection="Both" 
 		SnapsToDevicePixels="True" 
@@ -64,20 +165,30 @@
 
             <!-- Place The Controls -->
 
-            <TextBlock Text="NEW ENTRY" FontSize="30" FontWeight="ExtraBold" Grid.Row="0" Grid.Column="16" Grid.ColumnSpan="4" />
+            <StackPanel Margin="-35,0,0,0"
+                Grid.Row="0" Grid.RowSpan="2" 
+                Grid.Column="0" Grid.ColumnSpan="6"
+                SnapsToDevicePixels="True"
+			    RenderOptions.BitmapScalingMode="NearestNeighbor" 
+			    RenderOptions.EdgeMode="Aliased">
+                <StackPanel.Background>
+                    <ImageBrush ImageSource="C:\WorkSpace\S360_GitHub_Repository\S360\Images\RibbonTitle.png" Stretch="Fill" />
+                </StackPanel.Background>
+                <TextBlock Text="Student New Entry" FontSize="18" Foreground="White" Grid.Row="0" Grid.Column="8" Grid.ColumnSpan="4" Margin="45,5,0,0" />
+            </StackPanel>
 
-            <BasicControls:S360TextBlock Text="Section:" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" />
-            <BasicControls:S360ComboBox Name="cmbSection" IsEditable="True" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="6">
+            <BasicControls:S360TextBlock Text="Section:" Grid.Row="1" Grid.Column="12" Grid.ColumnSpan="2" />
+            <BasicControls:S360ComboBox Name="cmbSection" IsEditable="True" Grid.Row="1" Grid.Column="14" Grid.ColumnSpan="5">
                 <ComboBoxItem Name="KG">KG</ComboBoxItem>
                 <ComboBoxItem Name="Primary">Primary</ComboBoxItem>
                 <ComboBoxItem Name="Secondary">Secondary</ComboBoxItem>
                 <ComboBoxItem Name="Others">Others</ComboBoxItem>
             </BasicControls:S360ComboBox>
 
-            <BasicControls:S360TextBlock Text="G.Reg.No." Grid.Row="1" Grid.Column="10" Grid.ColumnSpan="2" />
-            <BasicControls:S360TextBox Name="txtRegNo" Grid.Row="1" Grid.Column="12" Grid.ColumnSpan="3" />
+            <BasicControls:S360TextBlock Text="G.Reg.No." Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="2" />
+            <BasicControls:S360TextBox Name="txtRegNo" Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="5" />
 
-            <TabControl Name="tbStudentDetails" Grid.Row="3" Grid.Column="1" Grid.RowSpan="12" Grid.ColumnSpan="18">
+            <TabControl Name="tbStudentDetails" Grid.Row="3" Grid.Column="0" Grid.RowSpan="13" Grid.ColumnSpan="20">
                 <TabItem Header="Basic Information" Name="tbiBasic">
                     <Grid Name="GrBasic"
                           SnapsToDevicePixels="True"
@@ -291,13 +402,13 @@
                 </TabItem>
             </TabControl>
 
-            <BasicControls:S360TextBlock Text="Remarks" Grid.Row="16" Grid.Column="1" />
-            <BasicControls:S360RichTextBox Name="rtxtRemarks" Grid.Row="15" Grid.RowSpan="3" Grid.Column="3" Grid.ColumnSpan="16" />
+            <BasicControls:S360TextBlock Text="Remarks" Grid.Row="16" Grid.RowSpan="2" Grid.Column="1" VerticalAlignment="Center" />
+            <BasicControls:S360RichTextBox Name="rtxtRemarks" Grid.Row="16" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="17" Margin="0,4,0,0"/>
 
-            <Button Name="btnCancel" Content="Cancel" Grid.Row="18" Grid.Column="1" Grid.ColumnSpan="2" />
-            <Button Name="btnClearAll" Content="Clear All" Grid.Row="18" Grid.Column="4" Grid.ColumnSpan="2" />
-            <Button Name="btnShowFeesPaid" Content="Show Fees Paid" Grid.Row="18" Grid.Column="7" Grid.ColumnSpan="2" />
-            <Button Name="btnSave" Content="Save" Grid.Row="18" Grid.Column="17" Grid.ColumnSpan="2" />
+            <Button Name="btnCancel" Content="Cancel" Grid.Row="20" Grid.Column="12" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" />
+            <Button Name="btnClearAll" Content="Clear All" Grid.Row="20" Grid.Column="14" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" />
+            <Button Name="btnShowFeesPaid" Content="Show Fees Paid" Grid.Row="20" Grid.Column="16" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" />
+            <Button Name="btnSave" Content="Save" Grid.Row="20" Grid.Column="18" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" />
 
             <!--<TextBlock Text="Sample Test 1" Grid.Row="3"  Grid.Column="1" Grid.ColumnSpan="4" FontSize="25" />
             <TextBox  Grid.Row="3"  Grid.Column="5" Grid.ColumnSpan="10" FontSize="20" />

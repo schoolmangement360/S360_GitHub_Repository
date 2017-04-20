@@ -1,0 +1,7 @@
+C:\WorkSpace\S360_GitHub_Repository\S360Logging\bin\Debug\NLog.config
+C:\WorkSpace\S360_GitHub_Repository\S360Logging\bin\Debug\S360Logging.dll
+C:\WorkSpace\S360_GitHub_Repository\S360Logging\bin\Debug\S360Logging.pdb
+C:\WorkSpace\S360_GitHub_Repository\S360Logging\bin\Debug\NLog.dll
+C:\WorkSpace\S360_GitHub_Repository\S360Logging\bin\Debug\NLog.xml
+C:\WorkSpace\S360_GitHub_Repository\S360Logging\obj\Debug\S360Logging.dll
+C:\WorkSpace\S360_GitHub_Repository\S360Logging\obj\Debug\S360Logging.pdb

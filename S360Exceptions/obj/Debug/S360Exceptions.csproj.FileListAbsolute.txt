@@ -1,0 +1,10 @@
+C:\WorkSpace\S360_GitHub_Repository\S360Exceptions\bin\Debug\NLog.config
+C:\WorkSpace\S360_GitHub_Repository\S360Exceptions\bin\Debug\S360Exceptions.dll
+C:\WorkSpace\S360_GitHub_Repository\S360Exceptions\bin\Debug\S360Exceptions.pdb
+C:\WorkSpace\S360_GitHub_Repository\S360Exceptions\bin\Debug\NLog.dll
+C:\WorkSpace\S360_GitHub_Repository\S360Exceptions\bin\Debug\S360Logging.dll
+C:\WorkSpace\S360_GitHub_Repository\S360Exceptions\bin\Debug\S360Logging.pdb
+C:\WorkSpace\S360_GitHub_Repository\S360Exceptions\bin\Debug\NLog.xml
+C:\WorkSpace\S360_GitHub_Repository\S360Exceptions\obj\Debug\S360Exceptions.csprojResolveAssemblyReference.cache
+C:\WorkSpace\S360_GitHub_Repository\S360Exceptions\obj\Debug\S360Exceptions.dll
+C:\WorkSpace\S360_GitHub_Repository\S360Exceptions\obj\Debug\S360Exceptions.pdb
