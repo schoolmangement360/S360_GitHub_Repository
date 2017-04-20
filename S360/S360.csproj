@@ -67,6 +67,9 @@
     <Compile Include="View\Student\UC_AddStudentScreen.xaml.cs">
       <DependentUpon>UC_AddStudentScreen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Student\UC_PromotionScreen.xaml.cs">
+      <DependentUpon>UC_PromotionScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Student\UC_ViewStudentDetailsScreen.xaml.cs">
       <DependentUpon>UC_ViewStudentDetailsScreen.xaml</DependentUpon>
     </Compile>
@@ -83,6 +86,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\Student\UC_AddStudentScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Student\UC_PromotionScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
