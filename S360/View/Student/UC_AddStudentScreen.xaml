@@ -67,15 +67,15 @@
             <TextBlock Text="NEW ENTRY" FontSize="30" FontWeight="ExtraBold" Grid.Row="0" Grid.Column="16" Grid.ColumnSpan="4" />
 
             <BasicControls:S360TextBlock Text="Section:" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" />
-            <BasicControls:S360ComboBox Name="cmbSection" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="6">
+            <BasicControls:S360ComboBox Name="cmbSection" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="6">
                 <ComboBoxItem Name="KG">KG</ComboBoxItem>
                 <ComboBoxItem Name="Primary">Primary</ComboBoxItem>
                 <ComboBoxItem Name="Secondary">Secondary</ComboBoxItem>
                 <ComboBoxItem Name="Others">Others</ComboBoxItem>
             </BasicControls:S360ComboBox>
 
-            <BasicControls:S360TextBlock Text="G.Reg.No." Grid.Row="1" Grid.Column="11" Grid.ColumnSpan="2" />
-            <BasicControls:S360TextBox Name="txtRegNo" Grid.Row="1" Grid.Column="13" Grid.ColumnSpan="3" />
+            <BasicControls:S360TextBlock Text="G.Reg.No." Grid.Row="1" Grid.Column="10" Grid.ColumnSpan="2" />
+            <BasicControls:S360TextBox Name="txtRegNo" Grid.Row="1" Grid.Column="12" Grid.ColumnSpan="3" />
 
             <TabControl Name="tbStudentDetails" Grid.Row="3" Grid.Column="1" Grid.RowSpan="12" Grid.ColumnSpan="18">
                 <TabItem Header="Basic Information" Name="tbiBasic">
@@ -182,10 +182,112 @@
                     </Grid>
                 </TabItem>
                 <TabItem Header="Additional Information" Name="tbiAdditional">
-                    
+                    <Grid Name="grAdditional"
+                          SnapsToDevicePixels="True"
+                          RenderOptions.BitmapScalingMode="NearestNeighbor"
+                          RenderOptions.EdgeMode="Aliased">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20*" MinHeight="20" />
+                            <RowDefinition Height="20*" MinHeight="20" />
+                            <RowDefinition Height="20*" MinHeight="20" />
+                            <RowDefinition Height="20*" MinHeight="20" />
+                            <RowDefinition Height="20*" MinHeight="20" />
+                            <RowDefinition Height="20*" MinHeight="20" />
+                            <RowDefinition Height="20*" MinHeight="20" />
+                            <RowDefinition Height="20*" MinHeight="20" />
+                            <RowDefinition Height="20*" MinHeight="20" />
+                            <RowDefinition Height="20*" MinHeight="20" />
+                            <RowDefinition Height="20*" MinHeight="20" />
+                            <RowDefinition Height="20*" MinHeight="20" />
+                            <RowDefinition Height="20*" MinHeight="20" />
+                            <RowDefinition Height="20*" MinHeight="20" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*" MinWidth="50" />
+                            <ColumnDefinition Width="50*" MinWidth="50" />
+                            <ColumnDefinition Width="50*" MinWidth="50" />
+                            <ColumnDefinition Width="50*" MinWidth="50" />
+                            <ColumnDefinition Width="50*" MinWidth="50" />
+                            <ColumnDefinition Width="50*" MinWidth="50" />
+                            <ColumnDefinition Width="50*" MinWidth="50" />
+                            <ColumnDefinition Width="50*" MinWidth="50" />
+                            <ColumnDefinition Width="50*" MinWidth="50" />
+                            <ColumnDefinition Width="50*" MinWidth="50" />
+                            <ColumnDefinition Width="50*" MinWidth="50" />
+                            <ColumnDefinition Width="50*" MinWidth="50" />
+                            <ColumnDefinition Width="50*" MinWidth="50" />
+                            <ColumnDefinition Width="50*" MinWidth="50" />
+                            <ColumnDefinition Width="50*" MinWidth="50" />
+                            <ColumnDefinition Width="50*" MinWidth="50" />
+                            <ColumnDefinition Width="50*" MinWidth="50" />
+                        </Grid.ColumnDefinitions>
+
+                        <BasicControls:S360TextBlock Text="Home No." Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" />
+                        <BasicControls:S360TextBox Name="txtHomeNo" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="5" />
+                        <BasicControls:S360TextBlock Text="Mobile 3" Grid.Row="1" Grid.Column="9" Grid.ColumnSpan="2" />
+                        <BasicControls:S360TextBox Name="txtMobile3" Grid.Row="1" Grid.Column="11" Grid.ColumnSpan="5" />
+
+                        <BasicControls:S360TextBlock Text="Work No." Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" />
+                        <BasicControls:S360TextBox Name="txtWorkNo" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="5" />
+
+                        <BasicControls:S360TextBlock Text="Email" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" />
+                        <BasicControls:S360TextBox Name="txtEmail" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="13" />
+
+                        <BasicControls:S360TextBlock Text="RFID Card" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" />
+                        <BasicControls:S360TextBox Name="txtRFID" Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="5" />
+
+                        <BasicControls:S360TextBlock Text="Aadhar No." Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" />
+                        <BasicControls:S360TextBox Name="txtAadhar" Grid.Row="8" Grid.Column="3" Grid.ColumnSpan="13" />
+
+                        <BasicControls:S360TextBlock Text="Contact 1" Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2" />
+                        <BasicControls:S360TextBox Name="txtContact1" Grid.Row="10" Grid.Column="3" Grid.ColumnSpan="13" />
+                    </Grid>
                 </TabItem>
                 <TabItem Header="Photo" Name="tbiPhoto">
-
+                    <Grid Name="grPhoto"
+                          SnapsToDevicePixels="True"
+                          RenderOptions.BitmapScalingMode="NearestNeighbor"
+                          RenderOptions.EdgeMode="Aliased">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20*" MinHeight="20" />
+                            <RowDefinition Height="20*" MinHeight="20" />
+                            <RowDefinition Height="20*" MinHeight="20" />
+                            <RowDefinition Height="20*" MinHeight="20" />
+                            <RowDefinition Height="20*" MinHeight="20" />
+                            <RowDefinition Height="20*" MinHeight="20" />
+                            <RowDefinition Height="20*" MinHeight="20" />
+                            <RowDefinition Height="20*" MinHeight="20" />
+                            <RowDefinition Height="20*" MinHeight="20" />
+                            <RowDefinition Height="20*" MinHeight="20" />
+                            <RowDefinition Height="20*" MinHeight="20" />
+                            <RowDefinition Height="20*" MinHeight="20" />
+                            <RowDefinition Height="20*" MinHeight="20" />
+                            <RowDefinition Height="20*" MinHeight="20" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*" MinWidth="50" />
+                            <ColumnDefinition Width="50*" MinWidth="50" />
+                            <ColumnDefinition Width="50*" MinWidth="50" />
+                            <ColumnDefinition Width="50*" MinWidth="50" />
+                            <ColumnDefinition Width="50*" MinWidth="50" />
+                            <ColumnDefinition Width="50*" MinWidth="50" />
+                            <ColumnDefinition Width="50*" MinWidth="50" />
+                            <ColumnDefinition Width="50*" MinWidth="50" />
+                            <ColumnDefinition Width="50*" MinWidth="50" />
+                            <ColumnDefinition Width="50*" MinWidth="50" />
+                            <ColumnDefinition Width="50*" MinWidth="50" />
+                            <ColumnDefinition Width="50*" MinWidth="50" />
+                            <ColumnDefinition Width="50*" MinWidth="50" />
+                            <ColumnDefinition Width="50*" MinWidth="50" />
+                            <ColumnDefinition Width="50*" MinWidth="50" />
+                            <ColumnDefinition Width="50*" MinWidth="50" />
+                            <ColumnDefinition Width="50*" MinWidth="50" />
+                            <ColumnDefinition Width="50*" MinWidth="50" />
+                        </Grid.ColumnDefinitions>
+                        
+                        <Image Name="imgPhoto" Grid.Row="1" Grid.Column="1" Grid.RowSpan="11" Grid.ColumnSpan="7" />
+                        <Button Name="btnRemovePhoto" Content="Remove Photo" Grid.Row="10" Grid.Column="9" Grid.ColumnSpan="2" Grid.RowSpan="2" /> 
+                    </Grid>
                 </TabItem>
             </TabControl>
 
