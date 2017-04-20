@@ -67,7 +67,7 @@
             <TextBlock Text="NEW ENTRY" FontSize="30" FontWeight="ExtraBold" Grid.Row="0" Grid.Column="16" Grid.ColumnSpan="4" />
 
             <BasicControls:S360TextBlock Text="Section:" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" />
-            <BasicControls:S360ComboBox Name="cmbSection" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="6">
+            <BasicControls:S360ComboBox Name="cmbSection" IsEditable="True" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="6">
                 <ComboBoxItem Name="KG">KG</ComboBoxItem>
                 <ComboBoxItem Name="Primary">Primary</ComboBoxItem>
                 <ComboBoxItem Name="Secondary">Secondary</ComboBoxItem>
