@@ -172,7 +172,7 @@
 			    RenderOptions.BitmapScalingMode="NearestNeighbor" 
 			    RenderOptions.EdgeMode="Aliased">
                 <StackPanel.Background>
-                    <ImageBrush ImageSource="C:\WorkSpace\S360_GitHub_Repository\S360\Images\RibbonTitle.png" Stretch="Fill" />
+                    <ImageBrush ImageSource="pack://application:,,,/S360;component/Images/RibbonTitle.png" Stretch="Fill" />
                 </StackPanel.Background>
                 <TextBlock Text="Student New Entry" FontSize="18" Foreground="White" Grid.Row="0" Grid.Column="8" Grid.ColumnSpan="4" Margin="45,5,0,0" />
             </StackPanel>
