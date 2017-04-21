@@ -64,6 +64,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helper\Page.cs" />
+    <Compile Include="Helper\ShowUserControl.cs" />
     <Compile Include="View\Student\UC_AddStudentScreen.xaml.cs">
       <DependentUpon>UC_AddStudentScreen.xaml</DependentUpon>
     </Compile>

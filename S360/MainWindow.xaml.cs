@@ -20,7 +20,7 @@ namespace S360
         {
             InitializeComponent();
             this.CreateMenuDynamicaly();
-            this.ShowTime();
+            this.ShowTime(); 
 
             StudentBusinessLogic test = new StudentBusinessLogic();
             var name = test.FirstStudent();
@@ -71,7 +71,7 @@ namespace S360
                 smiUserSettings.Style = SubMenustyle;
                 smiUserSettings.Header = "User Settings";
                 smiUserSettings.Height = 45;
-                smiUserSettings.Tag = "Page1";
+                smiUserSettings.Tag = Page.AddNewStudent;
                 smiUserSettings.Click += MenuItem_Click;
                 miFiles.Items.Add(smiUserSettings);
 
@@ -79,7 +79,7 @@ namespace S360
                 smiChangePassword.Style = SubMenustyle;
                 smiChangePassword.Header = "Change Password";
                 smiChangePassword.Height = 45;
-                smiChangePassword.Tag = "Page2";
+                smiChangePassword.Tag = Page.AllotDivition;
                 smiChangePassword.Click += MenuItem_Click;
                 miFiles.Items.Add(smiChangePassword);
 
@@ -87,7 +87,7 @@ namespace S360
                 smiUserLog.Style = SubMenustyle;
                 smiUserLog.Header = "User Log";
                 smiUserLog.Height = 45;
-                smiUserLog.Tag = "Page3";
+                smiUserLog.Tag = Page.TCStudent;
                 smiUserLog.Click += MenuItem_Click;
                 miFiles.Items.Add(smiUserLog);
 
@@ -554,11 +554,9 @@ namespace S360
         {
             this.MDIContainer.Children.Clear();
             MenuItem menuItem = sender as MenuItem;
-            string tag = menuItem.Tag.ToString();
-            if (tag == "Page1")
+            if (menuItem != null)
             {
-                UC_AddStudentScreen uc = new UC_AddStudentScreen();
-                this.MDIContainer.Children.Add(uc);
+                this.MDIContainer.Children.Add(ShowUserControl.ShowUserControlAndSetVM((int)menuItem.Tag) as UserControl);
             }
         }
 
