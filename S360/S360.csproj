@@ -67,8 +67,17 @@
     <Compile Include="View\Student\UC_AddStudentScreen.xaml.cs">
       <DependentUpon>UC_AddStudentScreen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Student\UC_AllotDivisionScreen.xaml.cs">
+      <DependentUpon>UC_AllotDivisionScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Student\UC_PromotionScreen.xaml.cs">
       <DependentUpon>UC_PromotionScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Student\UC_StudentReports.xaml.cs">
+      <DependentUpon>UC_StudentReports.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Student\UC_StudentTCScreen.xaml.cs">
+      <DependentUpon>UC_StudentTCScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Student\UC_ViewStudentDetailsScreen.xaml.cs">
       <DependentUpon>UC_ViewStudentDetailsScreen.xaml</DependentUpon>
@@ -89,9 +98,21 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Student\UC_AllotDivisionScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Student\UC_PromotionScreen.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Student\UC_StudentReports.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Student\UC_StudentTCScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Student\UC_ViewStudentDetailsScreen.xaml">
       <SubType>Designer</SubType>
