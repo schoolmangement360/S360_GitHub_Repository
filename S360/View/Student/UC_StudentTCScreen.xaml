@@ -1,0 +1,133 @@
+﻿<UserControl 
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:BasicControls="clr-namespace:S360Controlls.BasicControls;assembly=S360Controlls" x:Class="S360.View.Student.UC_StudentTCScreen"
+             Background="White">
+
+
+    <UserControl.Resources>
+        <Style
+        x:Key="ButtonFocusVisual">
+            <Setter
+            Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="MetroButton" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
+            <Setter Property="Background" Value="#2b5797"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="10 6"/>
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontFamily" Value="Segoe UI" />
+            <Setter Property="Margin" Value="0,0,10,5" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Border
+                                x:Name="Border"
+                                CornerRadius="2"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="#2b5797"
+                                BorderThickness="{TemplateBinding BorderThickness}" />
+
+                            <ContentPresenter
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                Margin="{TemplateBinding Padding}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                RecognizesAccessKey="True" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="OpacityMask" Value="#AA888888"/>
+                                <Setter Property="Margin" Value="2 1" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderThickness" Value="1"/>
+                                <Setter Property="Background" Value="White"/>
+                                <Setter Property="Foreground" Value="#2b5797"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="#ADADAD"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>        
+    </UserControl.Resources>
+
+    <Viewbox SnapsToDevicePixels="True"
+             RenderOptions.BitmapScalingMode="NearestNeighbor"
+             RenderOptions.EdgeMode="Aliased">
+        
+        <Grid Name="MainGrid" SnapsToDevicePixels="True"
+              RenderOptions.BitmapScalingMode="NearestNeighbor"
+              RenderOptions.EdgeMode="Aliased">
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Margin="-35,0,0,0"
+                Grid.Row="0" Grid.RowSpan="2" 
+                Grid.Column="0" Grid.ColumnSpan="4"
+                SnapsToDevicePixels="True"
+			    RenderOptions.BitmapScalingMode="NearestNeighbor" 
+			    RenderOptions.EdgeMode="Aliased">
+                <StackPanel.Background>
+                    <ImageBrush ImageSource="pack://application:,,,/S360;component/Images/RibbonTitle.png" Stretch="Fill" />
+                </StackPanel.Background>
+                <TextBlock Text="Student TC" FontSize="18" Foreground="White" Grid.Row="0" Grid.Column="8" Grid.ColumnSpan="4" Margin="45,5,0,0" />
+            </StackPanel>
+            
+            <BasicControls:S360TextBlock Text="Section" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" />
+            <BasicControls:S360ComboBox Name="cmbSection" IsEditable="True" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="3" />
+            
+            <BasicControls:S360TextBlock Text="G.Reg. No." Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" />
+            <BasicControls:S360TextBox Name="txtGRegNo" Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="3" />
+            <Button Name="btnFindStudent" Content="Find Student" Grid.Row="5" Grid.Column="7" Grid.ColumnSpan="2" />
+            
+            <BasicControls:S360TextBox Name="txtName" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="10" />
+
+            <Button Name="btnCancel" Content="Cancel" Grid.Row="9" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" />
+            <Button Name="btnClear" Content="Clear" Grid.Row="9" Grid.Column="6" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" />
+            <Button Name="btnRemove" Content="Remove Student" Grid.Row="9" Grid.Column="9" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" />
+        </Grid>
+    </Viewbox>
+</UserControl>
