@@ -7,78 +7,16 @@
              x:Class="S360.View.Student.UC_AllotDivisionScreen"
              Background="White" >
 
-    <UserControl.Resources>
-        <Style
-        x:Key="ButtonFocusVisual">
-            <Setter
-            Property="Control.Template">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2" />
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style x:Key="MetroButton" TargetType="{x:Type Button}">
-            <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
-            <Setter Property="Background" Value="#2b5797"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="Padding" Value="10 6"/>
-            <Setter Property="FontSize" Value="14" />
-            <Setter Property="FontFamily" Value="Segoe UI" />
-            <Setter Property="Margin" Value="0,0,10,5" />
-            <Setter Property="BorderThickness" Value="2" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Grid>
-                            <Border
-                                x:Name="Border"
-                                CornerRadius="2"
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="#2b5797"
-                                BorderThickness="{TemplateBinding BorderThickness}" />
-
-                            <ContentPresenter
-                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                Margin="{TemplateBinding Padding}"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                RecognizesAccessKey="True" />
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter Property="OpacityMask" Value="#AA888888"/>
-                                <Setter Property="Margin" Value="2 1" />
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="BorderThickness" Value="1"/>
-                                <Setter Property="Background" Value="White"/>
-                                <Setter Property="Foreground" Value="#2b5797"/>
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="false">
-                                <Setter Property="Foreground" Value="#ADADAD"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-    </UserControl.Resources>
-
-    <Viewbox Stretch="Fill" StretchDirection="Both"
-             SnapsToDevicePixels="True"
+    <Viewbox SnapsToDevicePixels="True"
              RenderOptions.BitmapScalingMode="NearestNeighbor"
              RenderOptions.EdgeMode="Aliased" >
-        
+
         <Grid Name="MainGrid"
               SnapsToDevicePixels="True"
               RenderOptions.BitmapScalingMode="NearestNeighbor"
               RenderOptions.EdgeMode="Aliased">
 
+            <!-- Form Splited Into Rows And Columns (FishNet Design Pattern) -->
             <Grid.RowDefinitions>
                 <RowDefinition Height="20*" MinHeight="20" />
                 <RowDefinition Height="20*" MinHeight="20"/>
@@ -124,9 +62,9 @@
                 <ColumnDefinition Width="50*" MinWidth="50" />
             </Grid.ColumnDefinitions>
 
-            <StackPanel Margin="-35,0,0,0"
+            <StackPanel Margin="-35,0,0,0" Height="50" Width="300"
                 Grid.Row="0" Grid.RowSpan="2" 
-                Grid.Column="0" Grid.ColumnSpan="4"
+                Grid.Column="0" Grid.ColumnSpan="6"
                 SnapsToDevicePixels="True"
 			    RenderOptions.BitmapScalingMode="NearestNeighbor" 
 			    RenderOptions.EdgeMode="Aliased">
@@ -135,25 +73,25 @@
                 </StackPanel.Background>
                 <TextBlock Text="Allot Division" FontSize="18" Foreground="White" Grid.Row="0" Grid.Column="8" Grid.ColumnSpan="4" Margin="45,5,0,0" />
             </StackPanel>
-            
-            <BasicControls:S360TextBlock Text="Old Section" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" />
-            <BasicControls:S360ComboBox Name="cmbOldSection" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="3" IsEditable="True" />
-            
-            <BasicControls:S360TextBlock Text="G.Reg. No." Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" />
-            <BasicControls:S360TextBox Name="txtGregNo" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="3" />
-            <Button Name="btnFindStudent" Content="Find Student" Grid.Row="3" Grid.RowSpan="2" Grid.Column="7" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" />
-            
-            <BasicControls:S360TextBlock Text="Name" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" />
-            <BasicControls:S360TextBox Name="txtName" Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="8" />
-            
-            <BasicControls:S360TextBlock Text="Old Division" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" />
-            <BasicControls:S360TextBox Name="txtOldDiv" Grid.Row="7" Grid.Column="3" Grid.ColumnSpan="2" IsEnabled="False" />
-            <BasicControls:S360TextBlock Text="New Division" Grid.Row="7" Grid.Column="6" Grid.ColumnSpan="2" />
-            <BasicControls:S360TextBox Name="txtNewDiv" Grid.Row="7" Grid.Column="8" Grid.ColumnSpan="2" />
-            <Button Name="btnChange" Content="Change" Grid.Row="7" Grid.Column="11" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" />
-            
-            <Button Name="btnCancel" Content="Cancel" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" />
-            <BasicControls:S360TextBox Name="txtUnknown" Grid.Row="9" Grid.Column="4" Grid.ColumnSpan="9" />
+
+
+            <BasicControls:S360TextBlock Text="Old Section" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" />
+            <BasicControls:S360ComboBox Name="cmbOldSection" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="6" IsEditable="True" Style="{StaticResource S360ComboBoxStyle}"/>
+
+            <BasicControls:S360TextBlock Text="G.Reg. No." Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" />
+            <BasicControls:S360TextBox Name="txtGregNo" Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="6" Style="{StaticResource S360TextBoxStyle}"/>
+            <Button Name="btnFindStudent" Content="Find Student" Grid.Row="4" Grid.RowSpan="3" Grid.Column="10" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" />
+
+            <BasicControls:S360TextBlock Text="Name" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" />
+            <BasicControls:S360TextBox Name="txtName" Grid.Row="8" Grid.Column="3" Grid.ColumnSpan="8" Style="{StaticResource S360TextBoxStyle}"/>
+
+            <BasicControls:S360TextBlock Text="Old Division" Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2" />
+            <BasicControls:S360TextBox Name="txtOldDiv" Grid.Row="10" Grid.Column="3" Grid.ColumnSpan="4" IsEnabled="False" Style="{StaticResource S360TextBoxStyle}" />
+            <BasicControls:S360TextBlock Text="New Division" Grid.Row="10" Grid.Column="8" Grid.ColumnSpan="2" />
+            <BasicControls:S360TextBox Name="txtNewDiv" Grid.Row="10" Grid.Column="10" Grid.ColumnSpan="4" Style="{StaticResource S360TextBoxStyle}" />
+            <Button Name="btnChange" Content="Change" Grid.Row="10" Grid.Column="15" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}"/>
+            <BasicControls:S360TextBox Name="txtUnknown" Grid.Row="9" Grid.Column="4" Grid.ColumnSpan="9" Visibility="Collapsed" Style="{StaticResource S360TextBoxStyle}" />
+            <Button Name="btnCancel" Content="Cancel" Grid.Row="20" Grid.Column="18" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" />
         </Grid>
     </Viewbox>
 

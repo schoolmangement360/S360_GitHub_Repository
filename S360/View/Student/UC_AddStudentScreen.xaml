@@ -6,105 +6,7 @@
              xmlns:BasicControls="clr-namespace:S360Controlls.BasicControls;assembly=S360Controlls" x:Class="S360.UC_AddStudentScreen"
              Background="White" >
     <UserControl.Resources>
-        <Style
-        x:Key="ButtonFocusVisual">
-            <Setter
-            Property="Control.Template">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2" />
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
 
-        <Style x:Key="MetroButton" TargetType="{x:Type Button}">
-            <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
-            <Setter Property="Background" Value="#2b5797"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="Padding" Value="10 6"/>
-            <Setter Property="FontSize" Value="14" />
-            <Setter Property="FontFamily" Value="Segoe UI" />
-            <Setter Property="Margin" Value="0,0,10,5" />
-            <Setter Property="BorderThickness" Value="2" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Grid>
-                            <Border
-                                x:Name="Border"
-                                CornerRadius="2"
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="#2b5797"
-                                BorderThickness="{TemplateBinding BorderThickness}" />
-
-                            <ContentPresenter
-                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                Margin="{TemplateBinding Padding}"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                RecognizesAccessKey="True" />
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter Property="OpacityMask" Value="#AA888888"/>
-                                <Setter Property="Margin" Value="2 1" />
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="BorderThickness" Value="1"/>
-                                <Setter Property="Background" Value="White"/>
-                                <Setter Property="Foreground" Value="#2b5797"/>
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="false">
-                                <Setter Property="Foreground" Value="#ADADAD"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style TargetType="TabItem" BasedOn="{StaticResource {x:Type TabItem}}">
-            <Setter Property="Foreground" Value="{DynamicResource VsBrush.WindowText}"/>
-            <Setter Property="Background" Value="{DynamicResource VsBrush.Window}"/>
-            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-            <Setter Property="VerticalContentAlignment" Value="Stretch"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type TabItem}">
-                        <Grid SnapsToDevicePixels="true">
-                            <Border x:Name="HeaderBorder" Padding="8,3,8,3" BorderThickness="1,1,1,0"
-                                                        Background="White" 
-                                                        BorderBrush="White">
-                                <ContentPresenter x:Name="Content" ContentSource="Header"
-                                                                      HorizontalAlignment="{Binding Path=HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
-                                                                      VerticalAlignment="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
-                                                                      />
-                            </Border>
-                            <Border x:Name="TopLineCover" BorderThickness="1,2,1,0" Margin="0,-1,0,0" Height="3" Panel.ZIndex="100"
-                                                        Background="{DynamicResource VsBrush.Window}" BorderBrush="#2b5797"
-                                                        VerticalAlignment="Top" HorizontalAlignment="Stretch" Visibility="Collapsed"/>
-                            <Border x:Name="BottomLineCover" BorderThickness="0,0,0,3" Margin="1,0,1,-2" Panel.ZIndex="100" BorderBrush="{DynamicResource VsBrush.Window}"
-                                                        VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Visibility="Collapsed"/>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <MultiTrigger>
-                                <MultiTrigger.Conditions>
-                                    <Condition Property="IsMouseOver" Value="True"/>
-                                    <Condition Property="IsSelected" Value="False"/>
-                                </MultiTrigger.Conditions>
-                                <Setter Property="Background" TargetName="HeaderBorder" Value="{DynamicResource VsBrush.Window}"/>
-                            </MultiTrigger>
-                            <Trigger Property="IsSelected" Value="True">
-                                <Setter Property="Background" TargetName="HeaderBorder" Value="{DynamicResource VsBrush.Window}"/>
-                                <Setter Property="Visibility" TargetName="TopLineCover" Value="Visible"/>
-                                <Setter Property="Visibility" TargetName="BottomLineCover" Value="Visible"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
     </UserControl.Resources>
 
     <Viewbox Stretch="Fill" StretchDirection="Both" 
@@ -165,7 +67,7 @@
 
             <!-- Place The Controls -->
 
-            <StackPanel Margin="-35,0,0,0"
+            <StackPanel Margin="-35,0,0,0" Height="50" Width="300"
                 Grid.Row="0" Grid.RowSpan="2" 
                 Grid.Column="0" Grid.ColumnSpan="6"
                 SnapsToDevicePixels="True"
@@ -178,7 +80,7 @@
             </StackPanel>
 
             <BasicControls:S360TextBlock Text="Section:" Grid.Row="1" Grid.Column="12" Grid.ColumnSpan="2" />
-            <BasicControls:S360ComboBox Name="cmbSection" IsEditable="True" Grid.Row="1" Grid.Column="14" Grid.ColumnSpan="5">
+            <BasicControls:S360ComboBox Name="cmbSection" IsEditable="True" Grid.Row="1" Grid.Column="14" Grid.ColumnSpan="5" Style="{StaticResource S360ComboBoxStyle}">
                 <ComboBoxItem Name="KG">KG</ComboBoxItem>
                 <ComboBoxItem Name="Primary">Primary</ComboBoxItem>
                 <ComboBoxItem Name="Secondary">Secondary</ComboBoxItem>
@@ -186,7 +88,7 @@
             </BasicControls:S360ComboBox>
 
             <BasicControls:S360TextBlock Text="G.Reg.No." Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="2" />
-            <BasicControls:S360TextBox Name="txtRegNo" Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="5" />
+            <BasicControls:S360TextBox Name="txtRegNo" Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="5" Style="{StaticResource S360TextBoxStyle}"/>
 
             <TabControl Name="tbStudentDetails" Grid.Row="3" Grid.Column="0" Grid.RowSpan="13" Grid.ColumnSpan="20">
                 <TabItem Header="Basic Information" Name="tbiBasic">
@@ -230,21 +132,21 @@
                         </Grid.ColumnDefinitions>
 
                         <BasicControls:S360TextBlock Text="Name" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" />
-                        <BasicControls:S360TextBox Name="txtName" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="11" />
+                        <BasicControls:S360TextBox Name="txtName" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="11" Style="{StaticResource S360TextBoxStyle}" />
 
                         <BasicControls:S360TextBlock Text="Father's Name" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" />
-                        <BasicControls:S360TextBox Name="txtFather" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="11" />
+                        <BasicControls:S360TextBox Name="txtFather" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="11" Style="{StaticResource S360TextBoxStyle}" />
 
                         <BasicControls:S360TextBlock Text="Surname" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" />
-                        <BasicControls:S360TextBox Name="txtsurname" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="11" />
+                        <BasicControls:S360TextBox Name="txtsurname" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="11" Style="{StaticResource S360TextBoxStyle}" />
 
                         <BasicControls:S360TextBlock Text="Mother's Name" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" />
-                        <BasicControls:S360TextBox Name="txtMother" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="4" />
+                        <BasicControls:S360TextBox Name="txtMother" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="4" Style="{StaticResource S360TextBoxStyle}" />
                         <BasicControls:S360TextBlock Text="Mother Tongue" Grid.Row="4" Grid.Column="8" Grid.ColumnSpan="2" />
-                        <BasicControls:S360TextBox Name="txtMotherTongue" Grid.Row="4" Grid.Column="10" Grid.ColumnSpan="4" />
+                        <BasicControls:S360TextBox Name="txtMotherTongue" Grid.Row="4" Grid.Column="10" Grid.ColumnSpan="4" Style="{StaticResource S360TextBoxStyle}" />
 
                         <BasicControls:S360TextBlock Text="Standard" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" />
-                        <BasicControls:S360ComboBox Name="cmbStandard" IsEditable="True" Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="3">
+                        <BasicControls:S360ComboBox Name="cmbStandard" IsEditable="True" Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="3" Style="{StaticResource S360ComboBoxStyle}">
                             <ComboBoxItem Name="NR">NR</ComboBoxItem>
                             <ComboBoxItem Name="JR">JR</ComboBoxItem>
                             <ComboBoxItem Name="SR">SR</ComboBoxItem>
@@ -261,10 +163,10 @@
                             <ComboBoxItem Name="S10">10</ComboBoxItem>
                         </BasicControls:S360ComboBox>
                         <BasicControls:S360TextBlock Text="Division" Grid.Row="5" Grid.Column="8" Grid.ColumnSpan="2" />
-                        <BasicControls:S360TextBox Name="txtDivision" Grid.Row="5" Grid.Column="12" Grid.ColumnSpan="2" />
+                        <BasicControls:S360TextBox Name="txtDivision" Grid.Row="5" Grid.Column="12" Grid.ColumnSpan="2" Style="{StaticResource S360TextBoxStyle}" />
 
                         <BasicControls:S360TextBlock Text="Gender" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" />
-                        <BasicControls:S360ComboBox Name="cmbGender" IsEditable="True" Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="3">
+                        <BasicControls:S360ComboBox Name="cmbGender" IsEditable="True" Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="3" Style="{StaticResource S360ComboBoxStyle}">
                             <ComboBoxItem Name="Male">Male</ComboBoxItem>
                             <ComboBoxItem Name="Female">Female</ComboBoxItem>
                         </BasicControls:S360ComboBox>
@@ -272,24 +174,24 @@
                         <DatePicker Name="tpDOB" Grid.Row="6" Grid.Column="11" Grid.ColumnSpan="3" />
 
                         <BasicControls:S360TextBlock Text="Religion" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" />
-                        <BasicControls:S360TextBox Name="txtReligion" Grid.Row="7" Grid.Column="3" Grid.ColumnSpan="4" />
+                        <BasicControls:S360TextBox Name="txtReligion" Grid.Row="7" Grid.Column="3" Grid.ColumnSpan="4" Style="{StaticResource S360TextBoxStyle}" />
                         <BasicControls:S360TextBlock Text="Caste" Grid.Row="7" Grid.Column="8" Grid.ColumnSpan="2" />
-                        <BasicControls:S360TextBox Name="txtCaste" Grid.Row="7" Grid.Column="10" Grid.ColumnSpan="4" />
+                        <BasicControls:S360TextBox Name="txtCaste" Grid.Row="7" Grid.Column="10" Grid.ColumnSpan="4" Style="{StaticResource S360TextBoxStyle}" />
 
                         <BasicControls:S360TextBlock Text="Address" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" />
                         <BasicControls:S360RichTextBox Name="rtxtAddress" Grid.Row="8" Grid.RowSpan="3" Grid.Column="3" Grid.ColumnSpan="4" />
                         <BasicControls:S360TextBlock Text="Mobile 1" Grid.Row="8" Grid.Column="8" Grid.ColumnSpan="2" />
-                        <BasicControls:S360TextBox Name="txtMobile1" Grid.Row="8" Grid.Column="10" Grid.ColumnSpan="4" />
+                        <BasicControls:S360TextBox Name="txtMobile1" Grid.Row="8" Grid.Column="10" Grid.ColumnSpan="4" Style="{StaticResource S360TextBoxStyle}" />
                         <BasicControls:S360TextBlock Text="Mobile 2" Grid.Row="10" Grid.Column="8" Grid.ColumnSpan="2" />
-                        <BasicControls:S360TextBox Name="txtMobile2" Grid.Row="10" Grid.Column="10" Grid.ColumnSpan="4" />
+                        <BasicControls:S360TextBox Name="txtMobile2" Grid.Row="10" Grid.Column="10" Grid.ColumnSpan="4" Style="{StaticResource S360TextBoxStyle}" />
 
                         <BasicControls:S360TextBlock Text="Sorting Data" Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="2" />
                         <BasicControls:S360TextBlock Text="Category" Grid.Row="11" Grid.Column="3" Grid.ColumnSpan="3" />
-                        <BasicControls:S360ComboBox Name="cmbCategory" IsEditable="True" Grid.Row="12" Grid.Column="3" Grid.ColumnSpan="3" />
+                        <BasicControls:S360ComboBox Name="cmbCategory" IsEditable="True" Grid.Row="12" Grid.Column="3" Grid.ColumnSpan="3" Style="{StaticResource S360ComboBoxStyle}" />
                         <BasicControls:S360TextBlock Text="Language" Grid.Row="11" Grid.Column="7" Grid.ColumnSpan="3" />
-                        <BasicControls:S360ComboBox Name="cmbLanguage" IsEditable="True" Grid.Row="12" Grid.Column="7" Grid.ColumnSpan="3" />
+                        <BasicControls:S360ComboBox Name="cmbLanguage" IsEditable="True" Grid.Row="12" Grid.Column="7" Grid.ColumnSpan="3" Style="{StaticResource S360ComboBoxStyle}" />
                         <BasicControls:S360TextBlock Text="Religions" Grid.Row="11" Grid.Column="11" Grid.ColumnSpan="3" />
-                        <BasicControls:S360ComboBox Name="cmbReligions" Grid.Row="12" Grid.Column="11" Grid.ColumnSpan="3" IsEditable="True" />
+                        <BasicControls:S360ComboBox Name="cmbReligions" Grid.Row="12" Grid.Column="11" Grid.ColumnSpan="3" IsEditable="True" Style="{StaticResource S360ComboBoxStyle}"/>
                     </Grid>
                 </TabItem>
                 <TabItem Header="Additional Information" Name="tbiAdditional">
@@ -334,24 +236,24 @@
                         </Grid.ColumnDefinitions>
 
                         <BasicControls:S360TextBlock Text="Home No." Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" />
-                        <BasicControls:S360TextBox Name="txtHomeNo" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="5" />
+                        <BasicControls:S360TextBox Name="txtHomeNo" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="5" Style="{StaticResource S360TextBoxStyle}" />
                         <BasicControls:S360TextBlock Text="Mobile 3" Grid.Row="1" Grid.Column="9" Grid.ColumnSpan="2" />
-                        <BasicControls:S360TextBox Name="txtMobile3" Grid.Row="1" Grid.Column="11" Grid.ColumnSpan="5" />
+                        <BasicControls:S360TextBox Name="txtMobile3" Grid.Row="1" Grid.Column="11" Grid.ColumnSpan="5" Style="{StaticResource S360TextBoxStyle}" />
 
                         <BasicControls:S360TextBlock Text="Work No." Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" />
-                        <BasicControls:S360TextBox Name="txtWorkNo" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="5" />
+                        <BasicControls:S360TextBox Name="txtWorkNo" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="5" Style="{StaticResource S360TextBoxStyle}" />
 
                         <BasicControls:S360TextBlock Text="Email" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" />
-                        <BasicControls:S360TextBox Name="txtEmail" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="13" />
+                        <BasicControls:S360TextBox Name="txtEmail" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="13" Style="{StaticResource S360TextBoxStyle}" />
 
                         <BasicControls:S360TextBlock Text="RFID Card" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" />
-                        <BasicControls:S360TextBox Name="txtRFID" Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="5" />
+                        <BasicControls:S360TextBox Name="txtRFID" Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="5" Style="{StaticResource S360TextBoxStyle}" />
 
                         <BasicControls:S360TextBlock Text="Aadhar No." Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" />
-                        <BasicControls:S360TextBox Name="txtAadhar" Grid.Row="8" Grid.Column="3" Grid.ColumnSpan="13" />
+                        <BasicControls:S360TextBox Name="txtAadhar" Grid.Row="8" Grid.Column="3" Grid.ColumnSpan="13" Style="{StaticResource S360TextBoxStyle}" />
 
                         <BasicControls:S360TextBlock Text="Contact 1" Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2" />
-                        <BasicControls:S360TextBox Name="txtContact1" Grid.Row="10" Grid.Column="3" Grid.ColumnSpan="13" />
+                        <BasicControls:S360TextBox Name="txtContact1" Grid.Row="10" Grid.Column="3" Grid.ColumnSpan="13" Style="{StaticResource S360TextBoxStyle}" />
                     </Grid>
                 </TabItem>
                 <TabItem Header="Photo" Name="tbiPhoto">
@@ -395,9 +297,9 @@
                             <ColumnDefinition Width="50*" MinWidth="50" />
                             <ColumnDefinition Width="50*" MinWidth="50" />
                         </Grid.ColumnDefinitions>
-                        
+
                         <Image Name="imgPhoto" Grid.Row="1" Grid.Column="1" Grid.RowSpan="11" Grid.ColumnSpan="7" />
-                        <Button Name="btnRemovePhoto" Content="Remove Photo" Grid.Row="10" Grid.Column="9" Grid.ColumnSpan="2" Grid.RowSpan="2" Style="{StaticResource MetroButton}" /> 
+                        <Button Name="btnRemovePhoto" Content="Remove Photo" Grid.Row="10" Grid.Column="9" Grid.ColumnSpan="2" Grid.RowSpan="2" />
                     </Grid>
                 </TabItem>
             </TabControl>
@@ -409,12 +311,6 @@
             <Button Name="btnClearAll" Content="Clear All" Grid.Row="20" Grid.Column="14" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" />
             <Button Name="btnShowFeesPaid" Content="Show Fees Paid" Grid.Row="20" Grid.Column="16" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" />
             <Button Name="btnSave" Content="Save" Grid.Row="20" Grid.Column="18" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" />
-
-            <!--<TextBlock Text="Sample Test 1" Grid.Row="3"  Grid.Column="1" Grid.ColumnSpan="4" FontSize="25" />
-            <TextBox  Grid.Row="3"  Grid.Column="5" Grid.ColumnSpan="10" FontSize="20" />
-
-            <TextBlock Text="Sample Test 2" Grid.Row="5"  Grid.Column="1" Grid.ColumnSpan="4" FontSize="25" />
-            <ComboBox  Grid.Row="5" Grid.Column="5" Grid.ColumnSpan="10" FontSize="20" />-->
 
         </Grid>
     </Viewbox>
