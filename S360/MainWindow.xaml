@@ -512,6 +512,5 @@
             Grid.RowSpan="25" 
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"/>
-
     </Grid>
 </Window>
