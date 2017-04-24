@@ -21,9 +21,6 @@ namespace S360
             InitializeComponent();
             this.CreateMenuDynamicaly();
             this.ShowTime();
-
-            StudentBusinessLogic test = new StudentBusinessLogic();
-            var name = test.FirstStudent();
         }
 
         private void ShowTime()

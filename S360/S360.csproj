@@ -66,6 +66,7 @@
     </ApplicationDefinition>
     <Compile Include="Helper\Page.cs" />
     <Compile Include="Helper\ShowUserControl.cs" />
+    <Compile Include="ViewModel\Student\StudentViewModel.cs" />
     <Compile Include="View\Student\UC_AddStudentScreen.xaml.cs">
       <DependentUpon>UC_AddStudentScreen.xaml</DependentUpon>
     </Compile>
@@ -149,9 +150,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModel\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resources\Images\ProfilePic.png" />
   </ItemGroup>

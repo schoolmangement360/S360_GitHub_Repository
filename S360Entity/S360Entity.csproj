@@ -126,6 +126,7 @@
     <Compile Include="Repository\ChequeCancellationRepository.cs" />
     <Compile Include="Repository\ChequeClearanceRepository.cs" />
     <Compile Include="Repository\ChequeDepositRepository.cs" />
+    <Compile Include="Repository\SectionRepository.cs" />
     <Compile Include="Repository\StudentRepository.cs" />
     <Compile Include="Repository\UserCredentialRepository.cs" />
     <Compile Include="S360EntityModel.Context.cs">
