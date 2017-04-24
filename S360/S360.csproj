@@ -72,6 +72,12 @@
     <Compile Include="View\Student\UC_AllotDivisionScreen.xaml.cs">
       <DependentUpon>UC_AllotDivisionScreen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Student\UC_FindStudent.xaml.cs">
+      <DependentUpon>UC_FindStudent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Student\UC_IndividualStudentReport.xaml.cs">
+      <DependentUpon>UC_IndividualStudentReport.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Student\UC_PromotionScreen.xaml.cs">
       <DependentUpon>UC_PromotionScreen.xaml</DependentUpon>
     </Compile>
@@ -101,6 +107,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Student\UC_AllotDivisionScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Student\UC_FindStudent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Student\UC_IndividualStudentReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

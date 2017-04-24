@@ -74,24 +74,31 @@
         <Grid Name="MainGrid" SnapsToDevicePixels="True"
               RenderOptions.BitmapScalingMode="NearestNeighbor"
               RenderOptions.EdgeMode="Aliased">
-            
+
             <Grid.RowDefinitions>
-                <RowDefinition Height="20*" MinHeight="20" />
-                <RowDefinition Height="20*" MinHeight="20" />
-                <RowDefinition Height="20*" MinHeight="20" />
-                <RowDefinition Height="20*" MinHeight="20" />
-                <RowDefinition Height="20*" MinHeight="20" />
-                <RowDefinition Height="20*" MinHeight="20" />
-                <RowDefinition Height="20*" MinHeight="20" />
-                <RowDefinition Height="20*" MinHeight="20" />
-                <RowDefinition Height="20*" MinHeight="20" />
-                <RowDefinition Height="20*" MinHeight="20" />
-                <RowDefinition Height="20*" MinHeight="20" />
-                <RowDefinition Height="20*" MinHeight="20" />
-                <RowDefinition Height="20*" MinHeight="20" />
-                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20"/>
+                <RowDefinition Height="20*" MinHeight="20"/>
+                <RowDefinition Height="20*" MinHeight="20"/>
+                <RowDefinition Height="20*" MinHeight="20"/>
+                <RowDefinition Height="20*" MinHeight="20"/>
+                <RowDefinition Height="20*" MinHeight="20"/>
+                <RowDefinition Height="20*" MinHeight="20"/>
+                <RowDefinition Height="20*" MinHeight="20"/>
+                <RowDefinition Height="20*" MinHeight="20"/>
+                <RowDefinition Height="20*" MinHeight="20"/>
+                <RowDefinition Height="20*" MinHeight="20"/>
+                <RowDefinition Height="20*" MinHeight="20"/>
+                <RowDefinition Height="20*" MinHeight="20"/>
+                <RowDefinition Height="20*" MinHeight="20"/>
+                <RowDefinition Height="20*" MinHeight="20"/>
+                <RowDefinition Height="20*" MinHeight="20"/>
+                <RowDefinition Height="20*" MinHeight="20"/>
+                <RowDefinition Height="20*" MinHeight="20"/>
+                <RowDefinition Height="20*" MinHeight="20"/>
+                <RowDefinition Height="20*" MinHeight="20"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*" MinWidth="50" />
                 <ColumnDefinition Width="50*" MinWidth="50" />
                 <ColumnDefinition Width="50*" MinWidth="50" />
                 <ColumnDefinition Width="50*" MinWidth="50" />
@@ -128,7 +135,7 @@
             <BasicControls:S360TextBlock Text="Section" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" />
             <BasicControls:S360ComboBox Name="cmbSection" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="3" IsEditable="True" />
             
-            <Button Name="btnFind" Content="Find Student" Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2" />
+            <Button Name="btnFind" Content="Find Student" Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" />
             
             <GroupBox Name="grpSearchCriterias" Grid.Row="3" Grid.Column="7" Grid.RowSpan="3" Grid.ColumnSpan="11">
                 
@@ -150,6 +157,7 @@
                         <ColumnDefinition Width="50*" MinWidth="50" />
                         <ColumnDefinition Width="50*" MinWidth="50" />
                         <ColumnDefinition Width="50*" MinWidth="50" />
+                        <ColumnDefinition Width="50*" MinWidth="50" />
                     </Grid.ColumnDefinitions>
                     
                     <RadioButton Name="rbStudent" Content="Student" Margin="5" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
@@ -159,12 +167,12 @@
                     <BasicControls:S360TextBlock Text="G.Reg. No" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" />
                     <BasicControls:S360TextBlock Text="Std" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" Margin="5" />
                     <BasicControls:S360TextBlock Text="Div" Grid.Row="1" Grid.Column="6" Margin="5" />
-                    <BasicControls:S360TextBlock Text="MF" Grid.Row="1" Grid.Column="7" Margin="5" />
+                    <BasicControls:S360TextBlock Text="MF" Grid.Row="1" Grid.Column="8" Margin="5" />
                     
                     <BasicControls:S360TextBox Name="txtGRegNo" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" />
                     <BasicControls:S360ComboBox Name="cmbStd" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" IsEditable="True" />
-                    <BasicControls:S360TextBox Name="txtDiv" Grid.Row="2" Grid.Column="6" Margin="2" />
-                    <BasicControls:S360TextBox Name="txtMF" Grid.Row="2" Grid.Column="7" Margin="2" />
+                    <BasicControls:S360TextBox Name="txtDiv" Grid.Row="2" Grid.Column="6"  />
+                    <BasicControls:S360TextBox Name="txtMF" Grid.Row="2" Grid.Column="8" />
                 </Grid>
             </GroupBox>
             
@@ -193,7 +201,7 @@
             <CheckBox Name="chkShowOutstanding" Content="Show Outstanding" Grid.Row="7" Grid.Column="12" Grid.ColumnSpan="3" Margin="5" />
             <BasicControls:S360ComboBox Name="cmbMonthYear" Grid.Row="8" Grid.Column="12" Grid.ColumnSpan="3" IsEditable="True" />
             
-            <GroupBox Name="grpDays" Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="16" Grid.RowSpan="2">
+            <GroupBox Name="grpDays" Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="17" Grid.RowSpan="2">
                 
                 <Grid Name="grDays" SnapsToDevicePixels="True"
                       RenderOptions.BitmapScalingMode="NearestNeighbor"
@@ -217,9 +225,21 @@
                         <ColumnDefinition Width="50*" MinWidth="50" />
                         <ColumnDefinition Width="50*" MinWidth="50" />
                     </Grid.ColumnDefinitions>
+                    
+                    <RadioButton Name="rbtnAllDays" Content="All Days" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" />
+                    <RadioButton Name="rbtnDatewise" Content="Datewise" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Margin="5" />
+                    <BasicControls:S360TextBlock Text="From" Grid.Row="0" Grid.Column="4" Margin="5" />
+                    <DatePicker Name="dpFrom" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="3" Margin="5" />
+                    <BasicControls:S360TextBlock Text="To" Grid.Row="0" Grid.Column="9" Margin="5" />
+                    <DatePicker Name="dpTo" Grid.Row="0" Grid.Column="10" Grid.ColumnSpan="3" Margin="5" />
                 </Grid>
             </GroupBox>
             
+            <CheckBox Name="chkSummary" Content="Summary" Grid.Row="12" Grid.Column="14" Grid.ColumnSpan="2" />
+            <CheckBox Name="chkPrinter" Content="Printer" Grid.Row="12" Grid.Column="16" Grid.ColumnSpan="2" />
+            
+            <Button Name="btnCancel" Content="Cancel" Grid.Row="14" Grid.Column="14" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" />
+            <Button Name="btnShowReport" Content="Show Report" Grid.Row="14" Grid.Column="16" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" />
         </Grid>
     </Viewbox>
 </UserControl>

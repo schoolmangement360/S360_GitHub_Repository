@@ -397,7 +397,7 @@
                         </Grid.ColumnDefinitions>
                         
                         <Image Name="imgPhoto" Grid.Row="1" Grid.Column="1" Grid.RowSpan="11" Grid.ColumnSpan="7" />
-                        <Button Name="btnRemovePhoto" Content="Remove Photo" Grid.Row="10" Grid.Column="9" Grid.ColumnSpan="2" Grid.RowSpan="2" /> 
+                        <Button Name="btnRemovePhoto" Content="Remove Photo" Grid.Row="10" Grid.Column="9" Grid.ColumnSpan="2" Grid.RowSpan="2" Style="{StaticResource MetroButton}" /> 
                     </Grid>
                 </TabItem>
             </TabControl>
