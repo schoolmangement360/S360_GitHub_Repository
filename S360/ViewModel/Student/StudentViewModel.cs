@@ -7,27 +7,12 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace S360
 {
-    public class StudentViewModel : INotifyPropertyChanged
+    public class StudentViewModel : ViewModelBase
     {
-        #region INotifyPropertyChanged Members
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        #endregion
-
-        #region Property Changed Event
-
-        void OnPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        #endregion
-
         #region Private Variables
 
         /// <summary>
@@ -38,6 +23,8 @@ namespace S360
         private ObservableCollection<GEN_Sections_Lookup> _sections;
 
         private GEN_Sections_Lookup _selectedSection;
+
+        private ICommand _clearAllCommand;
 
         #endregion
 
@@ -57,6 +44,12 @@ namespace S360
 
         #region Public Properties
 
+        public ICommand ClearAllCommand
+        {
+            get { return _clearAllCommand; }
+        }
+
+
         public ObservableCollection<GEN_Sections_Lookup> Sections
         {
             get
@@ -67,7 +60,6 @@ namespace S360
             set
             {
                 _sections = value;
-                OnPropertyChanged("Sections");
             }
 
         }
@@ -85,14 +77,24 @@ namespace S360
             }
 
         }
+
+        #endregion
+
+        #region Events
+
+        private bool ClearAllCommand_CanExecute()
+        {
+            return true;
+        }
+
+        private void ClearAllCommand_Execute()
+        {
+            
+        }
+
+        #endregion
+
+        #region Private Functions
+        #endregion
     }
-
-    #endregion
-
-    #region Events
-    #endregion
-
-    #region Private Functions
-    #endregion
-
 }
