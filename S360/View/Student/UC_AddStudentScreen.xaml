@@ -306,9 +306,9 @@
             <BasicControls:S360RichTextBox Name="rtxtRemarks" Grid.Row="16" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="17" Margin="0,4,0,0"/>
 
             <Button Name="btnCancel" Content="Cancel" Grid.Row="20" Grid.Column="12" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" />
-            <Button Name="btnClearAll" Content="Clear All" Grid.Row="20" Grid.Column="14" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" />
+            <Button Name="btnClearAll" Content="Clear All" Grid.Row="20" Grid.Column="14" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" Command="{Binding ClearAllCommand}" />
             <Button Name="btnShowFeesPaid" Content="Show Fees Paid" Grid.Row="20" Grid.Column="16" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" />
-            <Button Name="btnSave" Content="Save" Grid.Row="20" Grid.Column="18" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" Command="{Binding ClearAllCommand}" />
+            <Button Name="btnSave" Content="Save" Grid.Row="20" Grid.Column="18" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" />
 
         </Grid>
     </Viewbox>

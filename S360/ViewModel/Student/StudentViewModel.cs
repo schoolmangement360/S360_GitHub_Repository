@@ -20,10 +20,19 @@ namespace S360
         /// </summary>
         private StudentBusinessLogic studentBusinessLogic;
 
+        /// <summary>
+        /// Variable To Store Collection Of Sections
+        /// </summary>
         private ObservableCollection<GEN_Sections_Lookup> _sections;
 
+        /// <summary>
+        /// Variable to Store Selected Section
+        /// </summary>
         private GEN_Sections_Lookup _selectedSection;
 
+        /// <summary>
+        /// Command TO Clear All
+        /// </summary>
         private ICommand _clearAllCommand;
 
         #endregion
@@ -44,9 +53,20 @@ namespace S360
 
         #region Public Properties
 
+        /// <summary>
+        /// Clear Button Click
+        /// </summary>
         public ICommand ClearAllCommand
         {
-            get { return _clearAllCommand; }
+            get
+            {
+                if (this._clearAllCommand == null)
+                {
+                    this._clearAllCommand = new RelayCommand<object>(this.ExecuteClearAllCommand, this.CanExecuteClearAllCommand);
+                }
+
+                return this._clearAllCommand;
+            }
         }
 
 
@@ -82,14 +102,14 @@ namespace S360
 
         #region Events
 
-        private bool ClearAllCommand_CanExecute()
+        private bool CanExecuteClearAllCommand(object sender)
         {
             return true;
         }
 
-        private void ClearAllCommand_Execute()
+        private void ExecuteClearAllCommand(object sender)
         {
-            
+            System.Windows.MessageBox.Show("Clear All Button Clicked");
         }
 
         #endregion

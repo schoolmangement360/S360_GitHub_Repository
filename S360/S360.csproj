@@ -64,7 +64,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helper\LASTINPUTINFO.cs" />
+    <Compile Include="Helper\MemoryManagement.cs" />
     <Compile Include="Helper\Page.cs" />
+    <Compile Include="Helper\RelayCommand.cs" />
     <Compile Include="Helper\ShowUserControl.cs" />
     <Compile Include="Helper\ViewModelBase.cs" />
     <Compile Include="ViewModel\Student\StudentViewModel.cs" />

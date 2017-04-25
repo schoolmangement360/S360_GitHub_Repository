@@ -22,5 +22,17 @@ namespace S360.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5000")]
+        public int ApplicationTimeOut {
+            get {
+                return ((int)(this["ApplicationTimeOut"]));
+            }
+            set {
+                this["ApplicationTimeOut"] = value;
+            }
+        }
     }
 }
