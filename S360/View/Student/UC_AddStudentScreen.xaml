@@ -88,7 +88,8 @@
             <BasicControls:S360TextBlock Text="G.Reg.No." Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="2" />
             <BasicControls:S360TextBox Name="txtRegNo" Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="5" Style="{StaticResource S360TextBoxStyle}"/>
 
-            <TabControl Name="tbStudentDetails" Grid.Row="3" Grid.Column="0" Grid.RowSpan="13" Grid.ColumnSpan="20">
+            <TabControl Name="tbStudentDetails" Grid.Row="3" Grid.Column="0" Grid.RowSpan="13" Grid.ColumnSpan="20"
+                        Height="500" Width="1000" >
                 <TabItem Header="Basic Information" Name="tbiBasic">
                     <Grid Name="GrBasic"
                           SnapsToDevicePixels="True"
@@ -303,7 +304,7 @@
             </TabControl>
 
             <BasicControls:S360TextBlock Text="Remarks" Grid.Row="16" Grid.RowSpan="2" Grid.Column="1" VerticalAlignment="Center" />
-            <BasicControls:S360RichTextBox Name="rtxtRemarks" Grid.Row="16" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="17" Margin="0,4,0,0"/>
+            <BasicControls:S360RichTextBox Name="rtxtRemarks" Grid.Row="16" Grid.RowSpan="2" Grid.Column="3" Grid.ColumnSpan="16" Margin="0,4,0,0"/>
 
             <Button Name="btnCancel" Content="Cancel" Grid.Row="20" Grid.Column="12" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" />
             <Button Name="btnClearAll" Content="Clear All" Grid.Row="20" Grid.Column="14" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" Command="{Binding ClearAllCommand}" />
