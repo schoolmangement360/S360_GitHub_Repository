@@ -34,6 +34,9 @@ namespace S360
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
+
+            LoginScreen loginScreen = new LoginScreen();
+            loginScreen.ShowDialog();
         }
 
         void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
