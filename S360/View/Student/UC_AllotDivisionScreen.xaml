@@ -90,7 +90,7 @@
             <BasicControls:S360TextBlock Text="New Division" Grid.Row="10" Grid.Column="8" Grid.ColumnSpan="2" />
             <BasicControls:S360TextBox Name="txtNewDiv" Grid.Row="10" Grid.Column="10" Grid.ColumnSpan="4" Style="{StaticResource S360TextBoxStyle}" />
             <Button Name="btnChange" Content="Change" Grid.Row="10" Grid.Column="15" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}"/>
-            <BasicControls:S360TextBox Name="txtUnknown" Grid.Row="9" Grid.Column="4" Grid.ColumnSpan="9" Visibility="Collapsed" Style="{StaticResource S360TextBoxStyle}" />
+            <BasicControls:S360TextBox Name="txtUnknown" Grid.Row="12" Grid.Column="3" Grid.ColumnSpan="11" IsEnabled="False" Style="{StaticResource S360TextBoxStyle}" />
             <Button Name="btnCancel" Content="Cancel" Grid.Row="20" Grid.Column="18" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" />
         </Grid>
     </Viewbox>

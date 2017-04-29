@@ -1,0 +1,68 @@
+﻿<UserControl x:Class="S360.View.Student.UC_FindStudentScreen"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:BasicControls="clr-namespace:S360Controlls.BasicControls;assembly=S360Controlls"
+             xmlns:ViewModelClass="clr-namespace:S360"
+             Background="White">
+    
+    <Viewbox Stretch="Fill" StretchDirection="Both"
+             SnapsToDevicePixels="True"
+             RenderOptions.BitmapScalingMode="NearestNeighbor"
+             RenderOptions.EdgeMode="Aliased">
+        
+        <Grid Name="MainGrid"
+              SnapsToDevicePixels="True"
+              RenderOptions.BitmapScalingMode="NearestNeighbor"
+              RenderOptions.EdgeMode="Aliased">
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+            </Grid.ColumnDefinitions>
+            
+            
+        </Grid>
+    </Viewbox>
+</UserControl>
