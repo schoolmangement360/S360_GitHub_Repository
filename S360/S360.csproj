@@ -68,6 +68,7 @@
     <Compile Include="Helper\MemoryManagement.cs" />
     <Compile Include="Helper\Page.cs" />
     <Compile Include="Helper\RelayCommand.cs" />
+    <Compile Include="Helper\S360Configuration.cs" />
     <Compile Include="Helper\ShowUserControl.cs" />
     <Compile Include="Helper\ViewModelBase.cs" />
     <Compile Include="ViewModel\Student\StudentViewModel.cs" />
@@ -197,9 +198,16 @@
       <Project>{ea621afe-df5e-4e4d-881e-ff1197299edd}</Project>
       <Name>S360Logging</Name>
     </ProjectReference>
+    <ProjectReference Include="..\S360Model\S360Model.csproj">
+      <Project>{81e4e87c-9ffe-4064-8da6-ba35d727356f}</Project>
+      <Name>S360Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\RibbonTitle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\loginbackground.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

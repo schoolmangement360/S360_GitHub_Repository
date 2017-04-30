@@ -53,11 +53,11 @@ namespace S360Entity
             return dbSet.Find(primaryKey) == null ? false : true;
         }
 
-        public virtual int Insert(T entity)
+        public virtual dynamic Insert(T entity)
         {
-           dynamic obj= dbSet.Add(entity);
-           this._unitOfWork.Db.SaveChanges();
-           return obj.Id;
+            dynamic obj = dbSet.Add(entity);
+            this._unitOfWork.Db.SaveChanges();
+            return obj;
 
         }
 
@@ -73,7 +73,7 @@ namespace S360Entity
             {
                 dbSet.Attach(entity);
             }
-            dynamic obj=dbSet.Remove(entity);
+            dynamic obj = dbSet.Remove(entity);
             this._unitOfWork.Db.SaveChanges();
             return obj.Id;
         }
@@ -88,7 +88,7 @@ namespace S360Entity
         {
             return dbSet.AsEnumerable().ToList();
         }
-        
+
         /// <summary>
         /// Excute Query And Get Result
         /// </summary>

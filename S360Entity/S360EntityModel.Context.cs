@@ -25,12 +25,14 @@ namespace S360Entity
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<CHQ_ChequeCancellations_Details> CHQ_ChequeCancellations_Details { get; set; }
         public virtual DbSet<CHQ_ChequeClearances_Details> CHQ_ChequeClearances_Details { get; set; }
         public virtual DbSet<CHQ_ChequeDeposits_Details> CHQ_ChequeDeposits_Details { get; set; }
         public virtual DbSet<CHQ_ChequeReturns_Details> CHQ_ChequeReturns_Details { get; set; }
         public virtual DbSet<CHQ_Cheques_Master> CHQ_Cheques_Master { get; set; }
         public virtual DbSet<CHQ_ChequeStatus_Lookup> CHQ_ChequeStatus_Lookup { get; set; }
         public virtual DbSet<CHQ_DeletedCheque_Details> CHQ_DeletedCheque_Details { get; set; }
+        public virtual DbSet<GEN_Languages_Lookup> GEN_Languages_Lookup { get; set; }
         public virtual DbSet<GEN_Religions_Lookup> GEN_Religions_Lookup { get; set; }
         public virtual DbSet<GEN_Sections_Lookup> GEN_Sections_Lookup { get; set; }
         public virtual DbSet<GEN_Standards_Lookup> GEN_Standards_Lookup { get; set; }
@@ -43,7 +45,25 @@ namespace S360Entity
         public virtual DbSet<STUD_DetainingOrPromotions_Details> STUD_DetainingOrPromotions_Details { get; set; }
         public virtual DbSet<STUD_StudentAcademic_Details> STUD_StudentAcademic_Details { get; set; }
         public virtual DbSet<STUD_Students_Master> STUD_Students_Master { get; set; }
-        public virtual DbSet<CHQ_ChequeCancellations_Details> CHQ_ChequeCancellations_Details { get; set; }
-        public virtual DbSet<GEN_Languages_Lookup> GEN_Languages_Lookup { get; set; }
+        public virtual DbSet<AcademicStatusLookup> AcademicStatusLookups { get; set; }
+        public virtual DbSet<AssignedPermissionsDetail> AssignedPermissionsDetails { get; set; }
+        public virtual DbSet<ChequeCancellationsDetail> ChequeCancellationsDetails { get; set; }
+        public virtual DbSet<ChequeClearancesDetail> ChequeClearancesDetails { get; set; }
+        public virtual DbSet<ChequeDepositsDetail> ChequeDepositsDetails { get; set; }
+        public virtual DbSet<ChequeReturnsDetail> ChequeReturnsDetails { get; set; }
+        public virtual DbSet<ChequesMaster> ChequesMasters { get; set; }
+        public virtual DbSet<ChequeStatusLookup> ChequeStatusLookups { get; set; }
+        public virtual DbSet<DeletedChequeDetail> DeletedChequeDetails { get; set; }
+        public virtual DbSet<DetainingOrPromotionsDetail> DetainingOrPromotionsDetails { get; set; }
+        public virtual DbSet<LanguagesLookup> LanguagesLookups { get; set; }
+        public virtual DbSet<PageEnumeratorMaster> PageEnumeratorMasters { get; set; }
+        public virtual DbSet<ReligionsLookup> ReligionsLookups { get; set; }
+        public virtual DbSet<SectionsLookup> SectionsLookups { get; set; }
+        public virtual DbSet<StandardsLookup> StandardsLookups { get; set; }
+        public virtual DbSet<StudentAcademicDetail> StudentAcademicDetails { get; set; }
+        public virtual DbSet<StudentCategoryLookup> StudentCategoryLookups { get; set; }
+        public virtual DbSet<StudentsMaster> StudentsMasters { get; set; }
+        public virtual DbSet<UserCredentialsMaster> UserCredentialsMasters { get; set; }
+        public virtual DbSet<UserLoginDetail> UserLoginDetails { get; set; }
     }
 }

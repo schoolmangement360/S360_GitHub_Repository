@@ -17,6 +17,8 @@ namespace S360BusinessLogic
                     return new UserCredentialRepository(uow);
                 case "SECTION":
                     return new SectionRepository(uow);
+                case "USERLOGINDETAIL":
+                    return new UserLoginDetailRepository(uow);
                 default:
                     return null;
             }

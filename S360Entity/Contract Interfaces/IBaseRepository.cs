@@ -50,7 +50,7 @@ namespace S360Entity
         /// <param name="entity">The entity to insert</param>
         /// <param name="userId">The user performing the insert</param>
         /// <returns></returns>
-        int Insert(T entity);
+        dynamic Insert(T entity);
 
         /// <summary>
         /// Updates this entity in the database using it's primary key

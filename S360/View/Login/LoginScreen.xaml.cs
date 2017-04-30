@@ -1,4 +1,6 @@
-﻿using System;
+﻿using S360BusinessLogic;
+using S360Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,36 +21,96 @@ namespace S360
     /// </summary>
     public partial class LoginScreen : Window
     {
+        #region Private Variables
+
+        /// <summary>
+        /// Login BusinessLogic Object Initialization
+        /// </summary>
+        private LoginBusinessLogic studentBusinessLogic;
+
+        #endregion
+
+        #region Constructor
+
+
         public LoginScreen()
         {
             InitializeComponent();
+            studentBusinessLogic = new LoginBusinessLogic();
+            studentBusinessLogic.ActivateApplication();
+            txtUserName.Focus();
         }
+
+        #endregion
+
+        #region Public Properties
+
+
+
+        #endregion
+
+        #region Events
 
         private void PART_TITLEBAR_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
         }
 
-        private void PART_CLOSE_Click(object sender, RoutedEventArgs e)
+        private void btnExit_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Application.Current.Shutdown();
         }
 
-        private void PART_MAXIMIZE_RESTORE_Click(object sender, RoutedEventArgs e)
+        private void Login_Click(object sender, RoutedEventArgs e)
         {
-            if (this.WindowState == System.Windows.WindowState.Normal)
+            LoginModel loginmodel = new LoginModel();
+            loginmodel.Username = txtUserName.Text.ToUpper();
+            loginmodel.Password = pswPassword.Password;
+
+            LoginModel Result = studentBusinessLogic.LoginAccess(loginmodel);
+
+            if (Result.IsLogin)
             {
-                this.WindowState = System.Windows.WindowState.Maximized;
+                txtMessageInfo.Text = string.Empty;
+                txtUserName.Clear();
+                pswPassword.Clear();
+                S360Configuration.Instance.LoginID = Result.LoginID;
+
+                MainWindow mdiWindow = new MainWindow();
+                mdiWindow.ShowDialog();
+                txtUserName.Focus();
+                studentBusinessLogic.MarkLogout(S360Configuration.Instance.LoginID);
             }
             else
             {
-                this.WindowState = System.Windows.WindowState.Normal;
+                txtMessageInfo.Text = Result.Message;
+
+                if (Result.Message == "Invalid User Name")
+                {
+                    txtUserName.Clear();
+                    txtUserName.Focus();
+                }
+                else if (Result.Message == "Invalid Password")
+                {
+                    pswPassword.Clear();
+                    pswPassword.Focus();
+                }
+                else
+                {
+                    txtUserName.Clear();
+                    pswPassword.Clear();
+                    txtUserName.Focus();
+                }
+
+               
             }
         }
 
-        private void PART_MINIMIZE_Click(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = System.Windows.WindowState.Minimized;
-        }
+        #endregion
+
+        #region Private Functions
+        #endregion
+
+        
     }
 }

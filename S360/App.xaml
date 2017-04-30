@@ -163,5 +163,43 @@
             <Setter Property="MaxHeight" Value="35" />
             <Setter Property="TextAlignment" Value="Left" />
         </Style>
+        <Style x:Key="S360PasswordBoxStyle" TargetType="{x:Type PasswordBox}">
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None" />
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+            <Setter Property="AllowDrop" Value="true" />
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="VerticalContentAlignment" Value="Stretch" />
+            <Setter Property="FontFamily" Value="Segoe UI" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="UseLayoutRounding" Value="True"/>
+            <Setter Property="Padding" Value="4" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderBrush" Value="#FFAAAAAA" />
+            <Setter Property="Height" Value="35" />
+            <Setter Property="MaxHeight" Value="35" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type PasswordBox}">
+                        <Grid>
+                            <Border Margin="3" x:Name="BorderBase" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="3" />
+                            <Border Margin="0" Background="#FFECF5FD" x:Name="FocusVisualElement" BorderBrush="#FFECF5FD" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="7" IsHitTestVisible="False" Opacity="0" >
+                                <Border Background="#FFE3F1FC" x:Name="InnerFocusVisualElement" BorderBrush="#FFE3F1FC" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5" IsHitTestVisible="False" Opacity="1" >
+                                    <Border Background="#FFD9ECFA" x:Name="InnerFocusVisualElement2" BorderBrush="#FFD9ECFA" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="3" IsHitTestVisible="False" Opacity="1" >
+                                        <Border Background="{TemplateBinding Background}" x:Name="InnerFocusVisualElement3" BorderBrush="#FF7DBEF1" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="3" IsHitTestVisible="False" Opacity="1" >
+                                        </Border>
+                                    </Border>
+                                </Border>
+                            </Border>
+                            <Label Foreground="DimGray"  Grid.Column="1" Margin="3" x:Name="TextPrompt" Content="{TemplateBinding Tag}" Visibility="Collapsed" Focusable="False"></Label>
+                            <ScrollViewer Margin="3" x:Name="PART_ContentHost" Foreground="{TemplateBinding Foreground}" />
+                            <Border Margin="3" x:Name="DisabledVisualElement" Background="#A5FFFFFF" BorderBrush="#59C0C0C0" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="3" IsHitTestVisible="False" Visibility="Collapsed" />
+                            <Border Margin="3" x:Name="ReadOnlyVisualElement" Background="#66FFFFFF" CornerRadius="2.75" Visibility="Collapsed" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Application.Resources>
 </Application>

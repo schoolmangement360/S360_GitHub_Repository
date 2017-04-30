@@ -17,10 +17,10 @@ namespace S360Entity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CHQ_Cheques_Master()
         {
+            this.CHQ_ChequeCancellations_Details = new HashSet<CHQ_ChequeCancellations_Details>();
             this.CHQ_ChequeClearances_Details = new HashSet<CHQ_ChequeClearances_Details>();
             this.CHQ_ChequeDeposits_Details = new HashSet<CHQ_ChequeDeposits_Details>();
             this.CHQ_ChequeReturns_Details = new HashSet<CHQ_ChequeReturns_Details>();
-            this.CHQ_ChequeCancellations_Details = new HashSet<CHQ_ChequeCancellations_Details>();
         }
     
         public decimal Cheque_ID { get; set; }
@@ -38,13 +38,13 @@ namespace S360Entity
         public Nullable<bool> IsActive { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CHQ_ChequeCancellations_Details> CHQ_ChequeCancellations_Details { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHQ_ChequeClearances_Details> CHQ_ChequeClearances_Details { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHQ_ChequeDeposits_Details> CHQ_ChequeDeposits_Details { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHQ_ChequeReturns_Details> CHQ_ChequeReturns_Details { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CHQ_ChequeCancellations_Details> CHQ_ChequeCancellations_Details { get; set; }
         public virtual CHQ_ChequeStatus_Lookup CHQ_ChequeStatus_Lookup { get; set; }
     }
 }
