@@ -71,6 +71,7 @@
     <Compile Include="Helper\S360Configuration.cs" />
     <Compile Include="Helper\ShowUserControl.cs" />
     <Compile Include="Helper\ViewModelBase.cs" />
+    <Compile Include="ViewModel\Student\FindStudentViewModel.cs" />
     <Compile Include="ViewModel\Student\StudentViewModel.cs" />
     <Compile Include="View\Login\LoginScreen.xaml.cs">
       <DependentUpon>LoginScreen.xaml</DependentUpon>

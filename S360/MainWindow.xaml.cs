@@ -48,7 +48,7 @@ namespace S360
             {
                 Style Menustyle = this.FindResource("MLB_MenuItem") as Style;
                 Style SubMenustyle = this.FindResource("MLB_SubMenuItem") as Style;
-                Style Seperatorstyle = this.FindResource("CustomSeparatorStyle") as Style;
+                Style Separatorstyle = this.FindResource("CustomSeparatorStyle") as Style;
                 Separator separator;
 
                 #region MainMenu - File
@@ -88,9 +88,9 @@ namespace S360
                 smiUserLog.Click += MenuItem_Click;
                 miFiles.Items.Add(smiUserLog);
 
-                //// Add Seperator
+                //// Add Separator
                 separator = new Separator();
-                separator.Style = Seperatorstyle;
+                separator.Style = Separatorstyle;
                 miFiles.Items.Add(separator);
 
                 MenuItem smiResetDateChecking = new MenuItem();
@@ -99,9 +99,9 @@ namespace S360
                 smiResetDateChecking.Height = 45;
                 miFiles.Items.Add(smiResetDateChecking);
 
-                //// Add Seperator
+                //// Add Separator
                 separator = new Separator();
-                separator.Style = Seperatorstyle;
+                separator.Style = Separatorstyle;
                 miFiles.Items.Add(separator);
 
                 MenuItem smiSettings = new MenuItem();
@@ -110,9 +110,9 @@ namespace S360
                 smiSettings.Height = 45;
                 miFiles.Items.Add(smiSettings);
 
-                //// Add Seperator
+                //// Add Separator
                 separator = new Separator();
-                separator.Style = Seperatorstyle;
+                separator.Style = Separatorstyle;
                 miFiles.Items.Add(separator);
 
                 #region SubMenu - Settings
@@ -141,9 +141,9 @@ namespace S360
                 smiEditResultSettings.Height = 45;
                 smiSettings.Items.Add(smiEditResultSettings);
 
-                //// Add Seperator
+                //// Add Separator
                 separator = new Separator();
-                separator.Style = Seperatorstyle;
+                separator.Style = Separatorstyle;
                 smiSettings.Items.Add(separator);
 
                 MenuItem smiEditPrintSettings = new MenuItem();
@@ -152,9 +152,9 @@ namespace S360
                 smiEditPrintSettings.Height = 45;
                 smiSettings.Items.Add(smiEditPrintSettings);
 
-                //// Add Seperator
+                //// Add Separator
                 separator = new Separator();
-                separator.Style = Seperatorstyle;
+                separator.Style = Separatorstyle;
                 smiSettings.Items.Add(separator);
 
                 MenuItem smiEditLocalSettings = new MenuItem();
@@ -189,9 +189,9 @@ namespace S360
                 smiUploadLastBackUp.Height = 45;
                 miFiles.Items.Add(smiUploadLastBackUp);
 
-                //// Add Seperator
+                //// Add Separator
                 separator = new Separator();
-                separator.Style = Seperatorstyle;
+                separator.Style = Separatorstyle;
                 miFiles.Items.Add(separator);
 
                 MenuItem smiDownloadUpdatePackage = new MenuItem();
@@ -212,9 +212,9 @@ namespace S360
                 smiFreeUpdatorUpdate.Height = 45;
                 miFiles.Items.Add(smiFreeUpdatorUpdate);
 
-                //// Add Seperator
+                //// Add Separator
                 separator = new Separator();
-                separator.Style = Seperatorstyle;
+                separator.Style = Separatorstyle;
                 miFiles.Items.Add(separator);
 
                 MenuItem smiQuit = new MenuItem();
@@ -252,9 +252,9 @@ namespace S360
                 smiListFeeItems.Height = 45;
                 miMasters.Items.Add(smiListFeeItems);
 
-                //// Add Seperator
+                //// Add Separator
                 separator = new Separator();
-                separator.Style = Seperatorstyle;
+                separator.Style = Separatorstyle;
                 miMasters.Items.Add(separator);
 
                 MenuItem smiEditMarkMasters = new MenuItem();
@@ -263,9 +263,9 @@ namespace S360
                 smiEditMarkMasters.Height = 45;
                 miMasters.Items.Add(smiEditMarkMasters);
 
-                //// Add Seperator
+                //// Add Separator
                 separator = new Separator();
-                separator.Style = Seperatorstyle;
+                separator.Style = Separatorstyle;
                 miMasters.Items.Add(separator);
 
                 MenuItem smiReport = new MenuItem();
@@ -274,9 +274,9 @@ namespace S360
                 smiReport.Height = 45;
                 miMasters.Items.Add(smiReport);
 
-                //// Add Seperator
+                //// Add Separator
                 separator = new Separator();
-                separator.Style = Seperatorstyle;
+                separator.Style = Separatorstyle;
                 miMasters.Items.Add(separator);
 
                 MenuItem smiView = new MenuItem();
@@ -320,9 +320,9 @@ namespace S360
                 smiCancelCheque.Height = 45;
                 miCheques.Items.Add(smiCancelCheque);
 
-                //// Add Seperator
+                //// Add Separator
                 separator = new Separator();
-                separator.Style = Seperatorstyle;
+                separator.Style = Separatorstyle;
                 miCheques.Items.Add(separator);
 
                 MenuItem smiChequeDeposits = new MenuItem();
@@ -337,9 +337,9 @@ namespace S360
                 smiChequeDepositsStatement.Height = 45;
                 miCheques.Items.Add(smiChequeDepositsStatement);
 
-                //// Add Seperator
+                //// Add Separator
                 separator = new Separator();
-                separator.Style = Seperatorstyle;
+                separator.Style = Separatorstyle;
                 miCheques.Items.Add(separator);
 
                 MenuItem smiChequeClearing = new MenuItem();
@@ -354,9 +354,9 @@ namespace S360
                 smiChequeReturns.Height = 45;
                 miCheques.Items.Add(smiChequeReturns);
 
-                //// Add Seperator
+                //// Add Separator
                 separator = new Separator();
-                separator.Style = Seperatorstyle;
+                separator.Style = Separatorstyle;
                 miCheques.Items.Add(separator);
 
                 MenuItem smiBrowseCheque = new MenuItem();
@@ -371,9 +371,9 @@ namespace S360
                 smiFindCheque.Height = 45;
                 miCheques.Items.Add(smiFindCheque);
 
-                //// Add Seperator
+                //// Add Separator
                 separator = new Separator();
-                separator.Style = Seperatorstyle;
+                separator.Style = Separatorstyle;
                 miCheques.Items.Add(separator);
 
                 MenuItem smiChequeReports = new MenuItem();
@@ -411,9 +411,9 @@ namespace S360
                 smiReceiptsFormCheque.Height = 45;
                 miReceipts.Items.Add(smiReceiptsFormCheque);
 
-                //// Add Seperator
+                //// Add Separator
                 separator = new Separator();
-                separator.Style = Seperatorstyle;
+                separator.Style = Separatorstyle;
                 miReceipts.Items.Add(separator);
 
                 MenuItem smiReceiptsFormPOS = new MenuItem();
@@ -422,9 +422,9 @@ namespace S360
                 smiReceiptsFormPOS.Height = 45;
                 miReceipts.Items.Add(smiReceiptsFormPOS);
 
-                //// Add Seperator
+                //// Add Separator
                 separator = new Separator();
-                separator.Style = Seperatorstyle;
+                separator.Style = Separatorstyle;
                 miReceipts.Items.Add(separator);
 
                 MenuItem smiDuplicateReceipts = new MenuItem();
@@ -433,9 +433,9 @@ namespace S360
                 smiDuplicateReceipts.Height = 45;
                 miReceipts.Items.Add(smiDuplicateReceipts);
 
-                //// Add Seperator
+                //// Add Separator
                 separator = new Separator();
-                separator.Style = Seperatorstyle;
+                separator.Style = Separatorstyle;
                 miReceipts.Items.Add(separator);
 
                 MenuItem smiCondensedReceiptsON = new MenuItem();
@@ -450,9 +450,9 @@ namespace S360
                 smiCondensedReceiptsOFF.Height = 45;
                 miReceipts.Items.Add(smiCondensedReceiptsOFF);
 
-                //// Add Seperator
+                //// Add Separator
                 separator = new Separator();
-                separator.Style = Seperatorstyle;
+                separator.Style = Separatorstyle;
                 miReceipts.Items.Add(separator);
 
                 MenuItem smiReceitsCancelation = new MenuItem();
@@ -461,9 +461,9 @@ namespace S360
                 smiReceitsCancelation.Height = 45;
                 miReceipts.Items.Add(smiReceitsCancelation);
 
-                //// Add Seperator
+                //// Add Separator
                 separator = new Separator();
-                separator.Style = Seperatorstyle;
+                separator.Style = Separatorstyle;
                 miReceipts.Items.Add(separator);
 
                 MenuItem smiReceitsReports = new MenuItem();
@@ -486,6 +486,226 @@ namespace S360
                 miStudents.VerticalAlignment = System.Windows.VerticalAlignment.Center;
                 miStudents.VerticalContentAlignment = System.Windows.VerticalAlignment.Center;
                 this.MenuContainer.Items.Add(miStudents);
+
+                #region [ SubMenu - Students ]
+
+                //New Student
+                MenuItem miNewStudent = new MenuItem();
+                miNewStudent.Style = SubMenustyle;
+                miNewStudent.Header = "New Student";
+                miNewStudent.Height = 45;
+                miNewStudent.Tag = Page.AddNewStudent;
+                miNewStudent.Click += MenuItem_Click;
+                miStudents.Items.Add(miNewStudent);
+
+                //Separator
+                separator = new Separator();
+                separator.Style = Separatorstyle;
+                miStudents.Items.Add(separator);
+
+                //Individual Student Report
+                MenuItem miIndividualStudentReport = new MenuItem();
+                miIndividualStudentReport.Style = SubMenustyle;
+                miIndividualStudentReport.Header = "Individual Student Report";
+                miIndividualStudentReport.Height = 45;
+                miIndividualStudentReport.Tag = Page.IndividualStudetReport;
+                miIndividualStudentReport.Click += MenuItem_Click;
+                miStudents.Items.Add(miIndividualStudentReport);
+
+                //Separator
+                separator = new Separator();
+                separator.Style = Separatorstyle;
+                miStudents.Items.Add(separator);
+
+                //View Student Details
+                MenuItem miViewStudentDetails = new MenuItem();
+                miViewStudentDetails.Style = SubMenustyle;
+                miViewStudentDetails.Header = "View Student Details";
+                miViewStudentDetails.Height = 45;
+                miViewStudentDetails.Tag = Page.ViewStudentDetails;
+                miViewStudentDetails.Click += MenuItem_Click;
+                miStudents.Items.Add(miViewStudentDetails);
+
+                //Edit Student Details
+                MenuItem miEditStudentDetails = new MenuItem();
+                miEditStudentDetails.Style = SubMenustyle;
+                miEditStudentDetails.Header = "Edit Student Details";
+                miEditStudentDetails.Height = 45;
+                miEditStudentDetails.Tag = Page.EditStudentDetails;
+                miEditStudentDetails.Click += MenuItem_Click;
+                miStudents.Items.Add(miEditStudentDetails);
+
+                //Student Data
+                MenuItem miStudentData = new MenuItem();
+                miStudentData.Style = SubMenustyle;
+                miStudentData.Header = "Student Data";
+                miStudentData.Height = 45;
+                miStudentData.Tag = Page.StudentData;
+                miStudents.Items.Add(miStudentData);
+
+                #region [ Student Data - Sub Items ]
+
+                //KG Section
+                MenuItem miKGSection = new MenuItem();
+                miKGSection.Style = SubMenustyle;
+                miKGSection.Header = "KG Section";
+                miKGSection.Height = 45;
+                miKGSection.Tag = Page.StudentKGSection;
+                miKGSection.Click += MenuItem_Click;
+                miStudentData.Items.Add(miKGSection);
+
+                //Primary Section
+                MenuItem miPrimarySection = new MenuItem();
+                miPrimarySection.Style = SubMenustyle;
+                miPrimarySection.Header = "Primary Section";
+                miPrimarySection.Height = 45;
+                miPrimarySection.Tag = Page.StudentPrimarySection;
+                miPrimarySection.Click += MenuItem_Click;
+                miStudentData.Items.Add(miPrimarySection);
+
+                //Secondary Section
+                MenuItem miSecondarySection = new MenuItem();
+                miSecondarySection.Style = SubMenustyle;
+                miSecondarySection.Header = "Secondary Section";
+                miSecondarySection.Height = 45;
+                miSecondarySection.Tag = Page.StudentSecondarySection;
+                miSecondarySection.Click += MenuItem_Click;
+                miStudentData.Items.Add(miSecondarySection);
+
+                //Separator
+                separator = new Separator();
+                separator.Style = Separatorstyle;
+                miStudentData.Items.Add(separator);
+
+                //Others
+                MenuItem miOthers = new MenuItem();
+                miOthers.Style = SubMenustyle;
+                miOthers.Header = "Others";
+                miOthers.Height = 45;
+                miOthers.Tag = Page.StudentOtherSections;
+                miOthers.Click += MenuItem_Click;
+                miStudentData.Items.Add(miOthers);
+
+                #endregion
+
+                //Address Data
+                MenuItem miAddressData = new MenuItem();
+                miAddressData.Style = SubMenustyle;
+                miAddressData.Header = "Address Data";
+                miAddressData.Height = 45;
+                miAddressData.Tag = Page.AddressData;
+                miStudents.Items.Add(miAddressData);
+
+                #region [ Address Data - Sub Items ]
+
+                //KG Section
+                MenuItem miKGAddress = new MenuItem();
+                miKGAddress.Style = SubMenustyle;
+                miKGAddress.Header = "KG Section";
+                miKGAddress.Height = 45;
+                miKGAddress.Tag = Page.AddressKGSection;
+                miKGAddress.Click += MenuItem_Click;
+                miAddressData.Items.Add(miKGAddress);
+
+                //Primary Section
+                MenuItem miPrimaryAddress = new MenuItem();
+                miPrimaryAddress.Style = SubMenustyle;
+                miPrimaryAddress.Header = "Primary Section";
+                miPrimaryAddress.Height = 45;
+                miPrimaryAddress.Tag = Page.AddressPrimarySection;
+                miPrimaryAddress.Click += MenuItem_Click;
+                miAddressData.Items.Add(miPrimaryAddress);
+
+                //Secondary Section
+                MenuItem miSecondaryAddress = new MenuItem();
+                miSecondaryAddress.Style = SubMenustyle;
+                miSecondaryAddress.Header = "Secondary Section";
+                miSecondaryAddress.Height = 45;
+                miSecondaryAddress.Tag = Page.AddressSecondarySection;
+                miSecondaryAddress.Click += MenuItem_Click;
+                miAddressData.Items.Add(miSecondaryAddress);
+
+                //Separator
+                separator = new Separator();
+                separator.Style = Separatorstyle;
+                miAddressData.Items.Add(separator);
+
+                //Others (New)
+                MenuItem miOthersAddress = new MenuItem();
+                miOthersAddress.Style = SubMenustyle;
+                miOthersAddress.Header = "Others (New)";
+                miOthersAddress.Height = 45;
+                miOthersAddress.Tag = Page.AddressOtherSections;
+                miOthersAddress.Click += MenuItem_Click;
+                miAddressData.Items.Add(miOthersAddress);
+
+                #endregion
+
+                //Separator
+                separator = new Separator();
+                separator.Style = Separatorstyle;
+                miStudents.Items.Add(separator);
+
+                //Promotions
+                MenuItem miPromotions = new MenuItem();
+                miPromotions.Style = SubMenustyle;
+                miPromotions.Header = "Promotions";
+                miPromotions.Height = 45;
+                miPromotions.Tag = Page.StudentPromotion;
+                miPromotions.Click += MenuItem_Click;
+                miStudents.Items.Add(miPromotions);
+
+                //Allot New GRegno
+                MenuItem miAllotNewGRegno = new MenuItem();
+                miAllotNewGRegno.Style = SubMenustyle;
+                miAllotNewGRegno.Header = "Allot New G.Reg.No";
+                miAllotNewGRegno.Height = 45;
+                miAllotNewGRegno.Tag = Page.AllotNewGRno;
+                miAllotNewGRegno.Click += MenuItem_Click;
+                miStudents.Items.Add(miAllotNewGRegno);
+
+                //Allot Division
+                MenuItem miAllotDivision = new MenuItem();
+                miAllotDivision.Style = SubMenustyle;
+                miAllotDivision.Header = "Allot Division";
+                miAllotDivision.Height = 45;
+                miAllotDivision.Tag = Page.AllotDivition;
+                miAllotDivision.Click += MenuItem_Click;
+                miStudents.Items.Add(miAllotDivision);
+
+                //TC Students
+                MenuItem miTCStudents = new MenuItem();
+                miTCStudents.Style = SubMenustyle;
+                miTCStudents.Header = "TC Students";
+                miTCStudents.Height = 45;
+                miTCStudents.Tag = Page.TCStudent;
+                miTCStudents.Click += MenuItem_Click;
+                miStudents.Items.Add(miTCStudents);
+
+                //Separator
+                separator = new Separator();
+                separator.Style = Separatorstyle;
+                miStudents.Items.Add(separator);
+
+                //Class Report
+                MenuItem miClassReport = new MenuItem();
+                miClassReport.Style = SubMenustyle;
+                miClassReport.Header = "Class Report";
+                miClassReport.Height = 45;
+                miClassReport.Tag = Page.StudentClassreport;
+                miClassReport.Click += MenuItem_Click;
+                miStudents.Items.Add(miClassReport);
+
+                //Fees Report
+                MenuItem miFeesReport = new MenuItem();
+                miFeesReport.Style = SubMenustyle;
+                miFeesReport.Header = "Fees Report";
+                miFeesReport.Height = 45;
+                miFeesReport.Tag = Page.StudentFeeReport;
+                miFeesReport.Click += MenuItem_Click;
+                miStudents.Items.Add(miFeesReport);
+
+                #endregion
 
                 #endregion
 
@@ -553,7 +773,7 @@ namespace S360
             MenuItem menuItem = sender as MenuItem;
             if (menuItem != null)
             {
-                this.MDIContainer.Children.Add(ShowUserControl.ShowUserControlAndSetVM((int)menuItem.Tag) as UserControl);
+                this.MDIContainer.Children.Add(ShowUserControl.ShowUserControlAndSetVM((Page)menuItem.Tag) as UserControl);
             }
         }
 

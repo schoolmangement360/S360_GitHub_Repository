@@ -176,7 +176,7 @@
     </Window.Resources>
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="C:\WorkSpace\S360_GitHub_Repository\S360\Images\loginbackground.png" Stretch="Fill" />
+            <ImageBrush ImageSource="D:\Works\School Management System\S360\S360_Lattest\S360\Images\loginbackground.png" Stretch="Fill" />
         </Grid.Background>
         <!-- Form Splited Into Rows And Columns (FishNet Design Pattern) -->
         <Grid.RowDefinitions>
