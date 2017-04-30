@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:BasicControls="clr-namespace:S360Controlls.BasicControls;assembly=S360Controlls" 
         Height="300" Width="900" 
-        WindowStyle="None" BorderThickness="0"
+        WindowStyle="None" BorderThickness="0" Topmost="True"
         MouseLeftButtonDown="PART_TITLEBAR_MouseLeftButtonDown"
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
@@ -176,7 +176,7 @@
     </Window.Resources>
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="C:\WorkSpace\S360_GitHub_Repository\S360\Images\loginbackground.png" Stretch="Fill" />
+            <ImageBrush ImageSource="pack://application:,,,/S360;component/Images/loginbackground.png" Stretch="Fill" />
         </Grid.Background>
         <!-- Form Splited Into Rows And Columns (FishNet Design Pattern) -->
         <Grid.RowDefinitions>
@@ -210,7 +210,7 @@
             Stretch="Fill"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Source="C:\WorkSpace\S360_GitHub_Repository\S360\Images\SchoolManagementSystem.png"/>
+            Source="pack://application:,,,/S360;component/Images/SchoolManagementSystem.png"/>
 
         <BasicControls:S360TextBlock 
             Name="txtMessageInfo"
@@ -255,6 +255,7 @@
             HorizontalAlignment="Center"
             Foreground="Black"
             FontSize="15"
+            PreviewKeyDown="txtUserName_PreviewKeyDown"
             Style="{StaticResource S360TextBoxStyle}"/>
 
         <PasswordBox
@@ -268,6 +269,7 @@
             HorizontalAlignment="Center"
             Foreground="Black"
             FontSize="15"
+            PreviewKeyDown="pswPassword_PreviewKeyDown"
             Style="{StaticResource S360PasswordBoxStyle}"/>
 
         <Button  

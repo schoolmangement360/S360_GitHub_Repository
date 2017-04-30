@@ -63,6 +63,28 @@ namespace S360
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
+            this.Login();
+        }
+
+        private void pswPassword_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                this.Login();
+            }
+        }
+
+        private void txtUserName_TextChanged(object sender, RoutedEventArgs e)
+        {
+            txtMessageInfo.Text = string.Empty;
+        }
+
+        #endregion
+
+        #region Private Functions
+
+        private void Login()
+        {
             LoginModel loginmodel = new LoginModel();
             loginmodel.Username = txtUserName.Text.ToUpper();
             loginmodel.Password = pswPassword.Password;
@@ -102,15 +124,20 @@ namespace S360
                     txtUserName.Focus();
                 }
 
-               
+
+            }
+        }
+
+        private void txtUserName_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                pswPassword.Focus();
             }
         }
 
         #endregion
 
-        #region Private Functions
-        #endregion
 
-        
     }
 }

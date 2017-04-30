@@ -39,8 +39,8 @@ namespace S360BusinessLogic
                     return loginModel;
                 }
 
-                IEnumerable<GEN_UserCredentials_Master> login = _userCredentialRepository.GetAll().Where(l => l.Username.ToUpper() == loginDetails.Username.ToUpper() && l.Password == loginDetails.Password);
-                if (login != null)
+                var login = _userCredentialRepository.GetAll().Where(l => l.Username.ToUpper() == loginDetails.Username.ToUpper() && l.Password == loginDetails.Password);
+                if (login != null && login.Count() != 0)
                 {
                     loginModel.Message = "Login Sucess";
                     loginModel.IsLogin = true;
