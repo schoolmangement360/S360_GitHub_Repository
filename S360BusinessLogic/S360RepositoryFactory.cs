@@ -19,6 +19,14 @@ namespace S360BusinessLogic
                     return new SectionRepository(uow);
                 case "USERLOGINDETAIL":
                     return new UserLoginDetailRepository(uow);
+                case "STANDARD":
+                    return new StandardRepository(uow);
+                case "LANGUAGE":
+                    return new LanguageRepository(uow);
+                case "STUDENTCATEGORY":
+                    return new StudentCategoryRepository(uow);
+                case "RELIGION":
+                    return new ReligionRepository(uow);
                 default:
                     return null;
             }

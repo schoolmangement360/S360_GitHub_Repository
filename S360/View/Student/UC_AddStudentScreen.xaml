@@ -83,7 +83,7 @@
             <BasicControls:S360TextBlock Text="Section:" Grid.Row="1" Grid.Column="12" Grid.ColumnSpan="2" />
             <BasicControls:S360ComboBox Name="cmbSection" IsEditable="True" Grid.Row="1" Grid.Column="14" Grid.ColumnSpan="5"
                                         Style="{StaticResource S360ComboBoxStyle}" ItemsSource="{Binding Sections}"
-                                       DisplayMemberPath="Name" SelectedItem="{Binding SelectedSection}" />
+                                       DisplayMemberPath="Name" SelectedItem="{Binding SelectedSection}" IsReadOnly="True" Text="Select Section"/>
 
             <BasicControls:S360TextBlock Text="G.Reg.No." Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="2" />
             <BasicControls:S360TextBox Name="txtRegNo" Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="5" Style="{StaticResource S360TextBoxStyle}"/>
@@ -145,32 +145,20 @@
                         <BasicControls:S360TextBox Name="txtMotherTongue" Grid.Row="4" Grid.Column="10" Grid.ColumnSpan="4" Style="{StaticResource S360TextBoxStyle}" />
 
                         <BasicControls:S360TextBlock Text="Standard" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" />
-                        <BasicControls:S360ComboBox Name="cmbStandard" IsEditable="True" Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="3" Style="{StaticResource S360ComboBoxStyle}">
-                            <ComboBoxItem Name="NR">NR</ComboBoxItem>
-                            <ComboBoxItem Name="JR">JR</ComboBoxItem>
-                            <ComboBoxItem Name="SR">SR</ComboBoxItem>
-                            <ComboBoxItem Name="S0">0</ComboBoxItem>
-                            <ComboBoxItem Name="S1">1</ComboBoxItem>
-                            <ComboBoxItem Name="S2">2</ComboBoxItem>
-                            <ComboBoxItem Name="S3">3</ComboBoxItem>
-                            <ComboBoxItem Name="S4">4</ComboBoxItem>
-                            <ComboBoxItem Name="S5">5</ComboBoxItem>
-                            <ComboBoxItem Name="S6">6</ComboBoxItem>
-                            <ComboBoxItem Name="S7">7</ComboBoxItem>
-                            <ComboBoxItem Name="S8">8</ComboBoxItem>
-                            <ComboBoxItem Name="S9">9</ComboBoxItem>
-                            <ComboBoxItem Name="S10">10</ComboBoxItem>
-                        </BasicControls:S360ComboBox>
+                        <BasicControls:S360ComboBox Name="cmbStandard" IsEditable="True" Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="3" 
+                         Style="{StaticResource S360ComboBoxStyle}" ItemsSource="{Binding Standards}" SelectedItem="{Binding SelectedStandard}" 
+                                                    DisplayMemberPath="Name" IsReadOnly="True" Text="Select Standard" />
                         <BasicControls:S360TextBlock Text="Division" Grid.Row="5" Grid.Column="8" Grid.ColumnSpan="2" />
                         <BasicControls:S360TextBox Name="txtDivision" Grid.Row="5" Grid.Column="12" Grid.ColumnSpan="2" Style="{StaticResource S360TextBoxStyle}" />
 
                         <BasicControls:S360TextBlock Text="Gender" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" />
-                        <BasicControls:S360ComboBox Name="cmbGender" IsEditable="True" Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="3" Style="{StaticResource S360ComboBoxStyle}">
+                        <BasicControls:S360ComboBox Name="cmbGender" IsEditable="True" Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="3" 
+                                                    Style="{StaticResource S360ComboBoxStyle}" IsReadOnly="True" Text="Select Gender">
                             <ComboBoxItem Name="Male">Male</ComboBoxItem>
                             <ComboBoxItem Name="Female">Female</ComboBoxItem>
                         </BasicControls:S360ComboBox>
                         <BasicControls:S360TextBlock Text="Date of Birth" Grid.Row="6" Grid.Column="8" Grid.ColumnSpan="2" />
-                        <DatePicker Name="tpDOB" Grid.Row="6" Grid.Column="11" Grid.ColumnSpan="3" />
+                        <DatePicker Name="tpDOB" Grid.Row="6" Grid.Column="11" Grid.ColumnSpan="3" FontSize="20" />
 
                         <BasicControls:S360TextBlock Text="Religion" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" />
                         <BasicControls:S360TextBox Name="txtReligion" Grid.Row="7" Grid.Column="3" Grid.ColumnSpan="4" Style="{StaticResource S360TextBoxStyle}" />
@@ -186,11 +174,17 @@
 
                         <BasicControls:S360TextBlock Text="Sorting Data" Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="2" />
                         <BasicControls:S360TextBlock Text="Category" Grid.Row="11" Grid.Column="3" Grid.ColumnSpan="3" />
-                        <BasicControls:S360ComboBox Name="cmbCategory" IsEditable="True" Grid.Row="12" Grid.Column="3" Grid.ColumnSpan="3" Style="{StaticResource S360ComboBoxStyle}" />
+                        <BasicControls:S360ComboBox Name="cmbCategory" IsEditable="True" Grid.Row="12" Grid.Column="3" Grid.ColumnSpan="3" 
+                                                    Style="{StaticResource S360ComboBoxStyle}" IsReadOnly="True" Text="Select Category" DisplayMemberPath="Name"
+                                                    ItemsSource="{Binding StudentCategorys}" SelectedItem="{Binding SelectedCategory}"/>
                         <BasicControls:S360TextBlock Text="Language" Grid.Row="11" Grid.Column="7" Grid.ColumnSpan="3" />
-                        <BasicControls:S360ComboBox Name="cmbLanguage" IsEditable="True" Grid.Row="12" Grid.Column="7" Grid.ColumnSpan="3" Style="{StaticResource S360ComboBoxStyle}" />
+                        <BasicControls:S360ComboBox Name="cmbLanguage" IsEditable="True" Grid.Row="12" Grid.Column="7" Grid.ColumnSpan="3" 
+                                                    Style="{StaticResource S360ComboBoxStyle}" IsReadOnly="True" Text="Select Language" DisplayMemberPath="Name"
+                                                    ItemsSource="{Binding Languages}" SelectedItem="{Binding SelectedLanguage}" />
                         <BasicControls:S360TextBlock Text="Religions" Grid.Row="11" Grid.Column="11" Grid.ColumnSpan="3" />
-                        <BasicControls:S360ComboBox Name="cmbReligions" Grid.Row="12" Grid.Column="11" Grid.ColumnSpan="3" IsEditable="True" Style="{StaticResource S360ComboBoxStyle}"/>
+                        <BasicControls:S360ComboBox Name="cmbReligions" Grid.Row="12" Grid.Column="11" Grid.ColumnSpan="3" IsEditable="True" 
+                                                    Style="{StaticResource S360ComboBoxStyle}" IsReadOnly="True" Text="Select Religion" DisplayMemberPath="Name"
+                                                    ItemsSource="{Binding Religions}" SelectedItem="{Binding SelectedReligion}" />
                     </Grid>
                 </TabItem>
                 <TabItem Header="Additional Information" Name="tbiAdditional">
