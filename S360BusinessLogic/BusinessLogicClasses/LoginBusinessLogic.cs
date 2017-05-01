@@ -39,13 +39,13 @@ namespace S360BusinessLogic
                     return loginModel;
                 }
 
-                IEnumerable<GEN_UserCredentials_Master> login = _userCredentialRepository.GetAll().Where(l => l.Username.ToUpper() == loginDetails.Username.ToUpper() && l.Password == loginDetails.Password);
+                GEN_UserCredentials_Master login = _userCredentialRepository.GetAll().Where(l => l.Username.ToUpper() == loginDetails.Username.ToUpper() && l.Password == loginDetails.Password).FirstOrDefault();
                 if (login != null)
                 {
                     loginModel.Message = "Login Sucess";
                     loginModel.IsLogin = true;
-                    loginModel.UserID = login.FirstOrDefault().User_ID;
-                    GEN_UserLogin_Details result = this.MarkLogin(login.FirstOrDefault().User_ID);
+                    loginModel.UserID = login.User_ID;
+                    GEN_UserLogin_Details result = this.MarkLogin(login.User_ID);
                     loginModel.LoginID = result.Login_ID;
                 }
                 else

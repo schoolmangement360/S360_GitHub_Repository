@@ -1,4 +1,5 @@
 ﻿using S360.View.Student;
+using S360.ViewModel.Student;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -104,7 +105,9 @@ namespace S360
 
                 //// Students ///
                 case Page.AddNewStudent:
-                    return new UC_AddStudentScreen();
+                    StudentViewModel findStudentVM = new StudentViewModel();
+                    findStudentVM.SelectedSection = new S360Entity.GEN_Sections_Lookup() { Section_Id = 1, Name = "Primary Section", IsActive = true };
+                    return new UC_AddStudentScreen();//.DataContext = findStudentVM;
                 case Page.IndividualStudetReport:
                     break;
                 case Page.ViewStudentDetails:
