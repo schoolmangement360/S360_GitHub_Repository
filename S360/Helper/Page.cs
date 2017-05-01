@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace S360
 {
-    enum Page
+    public enum Page
     {
         UserSettings = 101,
         ChangePassword = 102,
@@ -16,7 +16,7 @@ namespace S360
         EditAppSettings = 106,
         EditModuleSettings = 107,
         EditFeaturesSetting = 108,
-        EdiResultSettings = 109,
+        EditResultSettings = 109,
         EditPrintSettings = 110,
         EditLocalSttings = 111,
         EditAllSettings = 112,
@@ -25,7 +25,7 @@ namespace S360
         UploadLastBack = 115,
         DownloadUpdatePackage = 116,
         DownloadBranchPackage = 117,
-        FreeUpdaterUpdate = 118,
+        FeeUpdaterUpdate = 118,
         Quit = 119,
 
         NewFeeItem = 201,
@@ -47,7 +47,7 @@ namespace S360
         ChequesReports = 311,
 
         ReceiptFormCash = 401,
-        RecieptFormCheques = 402,
+        ReceiptFormCheques = 402,
         ReceiptFormPOS = 403,
         DuplicateReciept = 404,
         CondensedRecieptON = 405,

@@ -1,4 +1,5 @@
 ﻿using S360.View.Student;
+using S360.ViewModel.Student;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,217 +10,138 @@ namespace S360
 {
     public static class ShowUserControl
     {
-        public static object ShowUserControlAndSetVM(int pageID)
+        public static object ShowUserControlAndSetVM(Page page)
         {
-            switch (pageID)
+            switch (page)
             {
                 //// File ///
-                case 101:
+                case Page.UserSettings:
                     break;
-                case 102:
+                case Page.ChangePassword:
                     break;
-                case 103:
+                case Page.UserLog:
                     break;
-                case 104:
+                case Page.ResetDateChecking:
                     break;
-                case 105:
+                case Page.EditAppSettings:
                     break;
-                case 106:
+                case Page.EditModuleSettings:
                     break;
-                case 107:
+                case Page.EditFeaturesSetting:
                     break;
-                case 108:
+                case Page.EditResultSettings:
                     break;
-                case 109:
+                case Page.EditPrintSettings:
                     break;
-                case 110:
+                case Page.EditLocalSttings:
                     break;
-                case 111:
+                case Page.EditAllSettings:
                     break;
-                case 112:
+                case Page.BackUpData:
                     break;
-                case 113:
+                case Page.Sync:
                     break;
-                case 114:
+                case Page.UploadLastBack:
                     break;
-                case 115:
+                case Page.DownloadUpdatePackage:
                     break;
-                case 116:
+                case Page.DownloadBranchPackage:
                     break;
-                case 117:
-                    break;
-                case 118:
-                    break;
-                case 119:
-                    break;
-                case 120:
-                    break;
+                case Page.FeeUpdaterUpdate:
 
                 //// Masters ///
-                case 201:
+                case Page.NewFeeItem:
                     break;
-                case 202:
+                case Page.ListFeeItems:
                     break;
-                case 203:
+                case Page.EditMasksMaster:
                     break;
-                case 204:
+                case Page.MastersReport:
                     break;
-                case 205:
-                    break;
-                case 206:
-                    break;
-                case 207:
-                    break;
-                case 208:
-                    break;
-                case 209:
-                    break;
-                case 210:
-                    break;
-                case 211:
-                    break;
-                case 212:
-                    break;
-                case 213:
-                    break;
-                case 214:
-                    break;
-                case 215:
-                    break;
-                case 216:
-                    break;
-                case 217:
-                    break;
-                case 218:
-                    break;
-                case 219:
-                    break;
-                case 220:
+                case Page.MastersView:
                     break;
 
                 //// Cheques ///
-                case 301:
+                case Page.ChequeInward:
                     break;
-                case 302:
+                case Page.EditCheque:
                     break;
-                case 303:
+                case Page.CancelCheque:
                     break;
-                case 304:
+                case Page.ChequeDeposits:
                     break;
-                case 305:
+                case Page.ChequeDepositeStatements:
                     break;
-                case 306:
+                case Page.CancelCQDepositeStatement:
                     break;
-                case 307:
+                case Page.ChequeClearing:
                     break;
-                case 308:
+                case Page.ChequeReturn:
                     break;
-                case 309:
+                case Page.BrowseCheque:
                     break;
-                case 310:
+                case Page.FindCheques:
                     break;
-                case 311:
-                    break;
-                case 312:
-                    break;
-                case 313:
-                    break;
-                case 314:
-                    break;
-                case 315:
-                    break;
-                case 316:
-                    break;
-                case 317:
-                    break;
-                case 318:
-                    break;
-                case 319:
-                    break;
-                case 320:
+                case Page.ChequesReports:
                     break;
 
                 //// Reciepts ///
-                case 401:
+                case Page.ReceiptFormCash:
                     break;
-                case 402:
+                case Page.ReceiptFormCheques:
                     break;
-                case 403:
+                case Page.ReceiptFormPOS:
                     break;
-                case 404:
+                case Page.DuplicateReciept:
                     break;
-                case 405:
+                case Page.CondensedRecieptON:
                     break;
-                case 406:
+                case Page.CondensedRecieptOFF:
                     break;
-                case 407:
+                case Page.RecieptCancellation:
                     break;
-                case 408:
+                case Page.RecieptReports:
                     break;
-                case 409:
-                    break;
-                case 410:
-                    break;
-                case 411:
-                    break;
-                case 412:
-                    break;
-                case 413:
-                    break;
-                case 414:
-                    break;
-                case 415:
-                    break;
-                case 416:
-                    break;
-                case 417:
-                    break;
-                case 418:
-                    break;
-                case 419:
-                    break;
-                case 420:
 
                 //// Students ///
-                case 501:
-                    return new UC_AddStudentScreen();
-                case 502:
+                case Page.AddNewStudent:
+                    StudentViewModel findStudentVM = new StudentViewModel();
+                    findStudentVM.SelectedSection = new S360Entity.GEN_Sections_Lookup() { Section_Id = 1, Name = "Primary Section", IsActive = true };
+                    return new UC_AddStudentScreen();//.DataContext = findStudentVM;
+                case Page.IndividualStudetReport:
                     break;
-                case 503:
+                case Page.ViewStudentDetails:
                     break;
-                case 504:
+                case Page.EditStudentDetails:
                     break;
-                case 505:
+                case Page.StudentKGSection:
                     break;
-                case 506:
+                case Page.StudentPrimarySection:
                     break;
-                case 507:
+                case Page.StudentSecondarySection:
                     break;
-                case 508:
+                case Page.StudentOtherSections:
                     break;
-                case 509:
+                case Page.AddressKGSection:
                     break;
-                case 510:
+                case Page.AddressPrimarySection:
                     break;
-                case 511:
+                case Page.AddressSecondarySection:
                     break;
-                case 512:
+                case Page.AddressOtherSections:
                     break;
-                case 513:
+                case Page.StudentPromotion:
                     break;
-                case 514:
+                case Page.AllotNewGRno:
                     break;
-                case 515:
-                    break;
-                case 516:
-                    break;
-                case 517:
+                case Page.AllotDivition:
                     return new UC_AllotDivisionScreen();
-                case 518:
+                case Page.TCStudent:
                     return new UC_StudentTCScreen();
-                case 519:
+                case Page.StudentClassreport:
                     break;
-                case 520:
+                case Page.StudentFeeReport:
+                    break;
 
                 default:
                     break;

@@ -4,19 +4,23 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:BasicControls="clr-namespace:S360Controlls.BasicControls;assembly=S360Controlls"
-             xmlns:ViewModelClass="clr-namespace:S360"
+             xmlns:ViewModelClass="clr-namespace:S360.ViewModel.Student"
              Background="White">
-    
+
+    <UserControl.DataContext>
+        <ViewModelClass:FindStudentViewModel />
+    </UserControl.DataContext>
+
     <Viewbox Stretch="Fill" StretchDirection="Both"
              SnapsToDevicePixels="True"
              RenderOptions.BitmapScalingMode="NearestNeighbor"
              RenderOptions.EdgeMode="Aliased">
-        
+
         <Grid Name="MainGrid"
               SnapsToDevicePixels="True"
               RenderOptions.BitmapScalingMode="NearestNeighbor"
               RenderOptions.EdgeMode="Aliased">
-            
+
             <Grid.RowDefinitions>
                 <RowDefinition Height="20*" MinHeight="20" />
                 <RowDefinition Height="20*" MinHeight="20" />
@@ -61,8 +65,31 @@
                 <ColumnDefinition Width="50*" MinWidth="50" />
                 <ColumnDefinition Width="50*" MinWidth="50" />
             </Grid.ColumnDefinitions>
-            
-            
+
+            <StackPanel Margin="-35,0,0,0" Height="50" Width="300"
+                Grid.Row="0" Grid.RowSpan="2" 
+                Grid.Column="0" Grid.ColumnSpan="4"
+                SnapsToDevicePixels="True"
+			    RenderOptions.BitmapScalingMode="NearestNeighbor" 
+			    RenderOptions.EdgeMode="Aliased">
+                <StackPanel.Background>
+                    <ImageBrush ImageSource="pack://application:,,,/S360;component/Images/RibbonTitle.png" Stretch="Fill" />
+                </StackPanel.Background>
+                <TextBlock Text="Find Student" FontSize="18" Foreground="White" Grid.Row="0" Grid.Column="8" Grid.ColumnSpan="4" Margin="45,5,0,0" />
+            </StackPanel>
+
+            <BasicControls:S360TextBlock Text="Find String" Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2" />
+            <BasicControls:S360TextBox Name="txtFindString" Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="6" Style="{StaticResource S360TextBoxStyle}"
+                                       Text="{Binding FindString, Mode=TwoWay}"/>
+            <Button Name="btnFind" Content="Search" Grid.Row="3" Grid.Column="13" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" Command="{Binding SearchCommand}" />
+
+            <DataGrid Name="grStudents" Grid.Row="5" Grid.RowSpan="12" Grid.Column="1" Grid.ColumnSpan="18" DataContext="{Binding StudentList}" />
+
+            <BasicControls:S360TextBlock Text="Selected Section" Grid.Row="18" Grid.Column="1" Grid.ColumnSpan="2" />
+            <BasicControls:S360TextBox Name="txtSection" Grid.Row="18" Grid.Column="3" Grid.ColumnSpan="8" IsEnabled="False"
+                                       Text="{Binding SelectedSection, Mode=TwoWay}" Style="{StaticResource S360TextBoxStyle}" />
+            <Button Name="btnCancel" Content="Cancel" Grid.Row="18" Grid.Column="15" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" Command="{Binding CancelCommand}" />
+            <Button Name="btnSelect" Content="Select" Grid.Row="18" Grid.Column="17" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" Command="{Binding SelectCommand}" />
         </Grid>
     </Viewbox>
 </UserControl>
