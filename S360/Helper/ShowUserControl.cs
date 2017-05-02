@@ -105,10 +105,15 @@ namespace S360
 
                 //// Students ///
                 case Page.AddNewStudent:
-                    StudentViewModel findStudentVM = new StudentViewModel();
-                    findStudentVM.SelectedSection = new S360Entity.GEN_Sections_Lookup() { Section_Id = 1, Name = "Primary Section", IsActive = true };
+                    StudentViewModel StudentVM = new StudentViewModel();
+                    StudentVM.SelectedSection = new S360Entity.GEN_Sections_Lookup() { Section_Id = 1, Name = "Primary Section", IsActive = true };
                     return new UC_AddStudentScreen();//.DataContext = findStudentVM;
                 case Page.IndividualStudetReport:
+                    //FindStudentViewModel findstudentVM = new FindStudentViewModel();
+                    //findstudentVM.SelectedSection = new S360Entity.GEN_Sections_Lookup() { IsActive = true, Name = "Primary Section", Section_Id = 1 };
+                    //UC_FindStudentScreen findStudent = new UC_FindStudentScreen();
+                    //findStudent.DataContext = findstudentVM;
+                    //return findStudent;
                     break;
                 case Page.ViewStudentDetails:
                     break;
@@ -131,7 +136,7 @@ namespace S360
                 case Page.AddressOtherSections:
                     break;
                 case Page.StudentPromotion:
-                    break;
+                    return new UC_PromotionScreen();
                 case Page.AllotNewGRno:
                     break;
                 case Page.AllotDivition:

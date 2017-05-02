@@ -21,7 +21,7 @@ namespace S360.ViewModel.Student
         /// <summary>
         /// variable to store selected section value
         /// </summary>
-        private string _selectedSection = null;
+        private GEN_Sections_Lookup _selectedSection = null;
 
         /// <summary>
         /// collection variable to store all search result students
@@ -69,9 +69,14 @@ namespace S360.ViewModel.Student
             }
         }
 
-        public string SelectedSection
+        public GEN_Sections_Lookup SelectedSection
         {
-            get { return _selectedSection; }
+            get
+            {
+                if (_selectedSection == null)
+                    _selectedSection = new GEN_Sections_Lookup();
+                return _selectedSection;
+            }
             set { _selectedSection = value; }
         }
 

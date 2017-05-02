@@ -18,7 +18,7 @@ namespace S360.View.Student
     /// <summary>
     /// Interaction logic for UC_FindStudentScreen.xaml
     /// </summary>
-    public partial class UC_FindStudentScreen : UserControl
+    public partial class UC_FindStudentScreen : Window
     {
         public UC_FindStudentScreen()
         {
