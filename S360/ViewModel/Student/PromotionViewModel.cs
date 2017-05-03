@@ -67,7 +67,7 @@ namespace S360.ViewModel.Student
         /// <summary>
         /// Variable to store button Detain Enable value
         /// </summary>
-        private bool _isbtnDetainEnable = false;
+        private bool _isbtnDetainEnable = true;
 
         /// <summary>
         /// Variable to store button ViewLogDetain Enable value
@@ -248,7 +248,7 @@ namespace S360.ViewModel.Student
 
         private void ExecuteCancelCommand(object sender)
         {
-            throw new NotImplementedException();
+            
         }
 
         private bool CanExecuteCheckDataIntegrityCommand(object sender)
@@ -298,7 +298,11 @@ namespace S360.ViewModel.Student
 
         private void ExecuteDetainCommand(object sender)
         {
-            throw new NotImplementedException();
+            View.Student.UC_DetainScreen detain = new View.Student.UC_DetainScreen();
+            ViewModel.Student.DetainStudentViewModel detainVM = new DetainStudentViewModel();
+            detain.DataContext = detainVM;
+            detain.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;            
+            detain.ShowDialog();
         }
 
         private bool CanExecuteViewLogDetainCommand(object sender)

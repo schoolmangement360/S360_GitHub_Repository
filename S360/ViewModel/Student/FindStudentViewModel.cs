@@ -132,7 +132,7 @@ namespace S360.ViewModel.Student
 
         private void ExecuteSearchCommand(object sender)
         {
-            System.Windows.MessageBox.Show("Searching");
+            
         }
 
         private bool CanExecuteCancelCommand(object sender)
