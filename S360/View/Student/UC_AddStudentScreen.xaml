@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:ViewModelClass="clr-namespace:S360"
+             xmlns:ViewModelClass="clr-namespace:S360" Name="AddStudentScreen"
              xmlns:BasicControls="clr-namespace:S360Controlls.BasicControls;assembly=S360Controlls" 
              Background="White" >
     <UserControl.DataContext>
@@ -303,7 +303,7 @@
             <Button Name="btnCancel" Content="Cancel" Grid.Row="20" Grid.Column="12" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" />
             <Button Name="btnClearAll" Content="Clear All" Grid.Row="20" Grid.Column="14" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" Command="{Binding ClearAllCommand}" />
             <Button Name="btnShowFeesPaid" Content="Show Fees Paid" Grid.Row="20" Grid.Column="16" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" />
-            <Button Name="btnSave" Content="Save" Grid.Row="20" Grid.Column="18" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" />
+            <Button Name="btnSave" Content="Save" Grid.Row="20" Grid.Column="18" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" Command="{Binding SaveCommand}" CommandParameter="{Binding ElementName=AddStudentScreen}" />
 
         </Grid>
     </Viewbox>

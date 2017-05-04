@@ -7,6 +7,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace S360
@@ -71,9 +73,109 @@ namespace S360
         private GEN_StudentCategory_Lookup _selectedCategory;
 
         /// <summary>
+        /// Variable to Store Property
+        /// </summary>
+        private string _studentGRNo;
+
+        /// <summary>
+        /// Variable to Store Property
+        /// </summary>
+        private string _studentName;
+
+        /// <summary>
+        /// Variable to Store Property
+        /// </summary>
+        private string _fatherName;
+
+        /// <summary>
+        /// Variable to Store Property
+        /// </summary>
+        private string _surName;
+
+        /// <summary>
+        /// Variable to Store Property
+        /// </summary>
+        private string _studentAddress;
+
+        /// <summary>
+        /// Variable to Store Property
+        /// </summary>
+        private string _studentRemarks;
+
+        /// <summary>
+        /// Variable to Store Property
+        /// </summary>
+        private string _motherTongue;
+
+        /// <summary>
+        /// Variable to Store Property
+        /// </summary>
+        private string _studentDivision;
+
+        /// <summary>
+        /// Variable to Store Property
+        /// </summary>
+        private DateTime _dateOfBirth;
+
+        /// <summary>
+        /// Variable to Store Property
+        /// </summary>
+        private string _cast;
+
+        /// <summary>
+        /// Variable to Store Property
+        /// </summary>
+        private string _mobile1;
+
+        /// <summary>
+        /// Variable to Store Property
+        /// </summary>
+        private string _mobile2;
+
+        /// <summary>
+        /// Variable to Store Property
+        /// </summary>
+        private string _mobile3;
+
+        /// <summary>
+        /// Variable to Store Property
+        /// </summary>
+        private string _homeNo;
+
+        /// <summary>
+        /// Variable to Store Property
+        /// </summary>
+        private string _workNo;
+
+        /// <summary>
+        /// Variable to Store Property
+        /// </summary>
+        private string _email;
+
+        /// <summary>
+        /// Variable to Store Property
+        /// </summary>
+        private string _RFIDCard;
+
+        /// <summary>
+        /// Variable to Store Property
+        /// </summary>
+        private string _aadharNo;
+
+        /// <summary>
+        /// Variable to Store Property
+        /// </summary>
+        private string _contact1;
+
+        /// <summary>
         /// Command TO Clear All
         /// </summary>
         private ICommand _clearAllCommand;
+
+        /// <summary>
+        /// Command TO Clear All
+        /// </summary>
+        private ICommand _saveCommand;
 
         #endregion
 
@@ -112,6 +214,21 @@ namespace S360
             }
         }
 
+        /// <summary>
+        /// Save Button Click
+        /// </summary>
+        public ICommand SaveCommand
+        {
+            get
+            {
+                if (this._saveCommand == null)
+                {
+                    this._saveCommand = new RelayCommand<object>(this.ExecuteSaveCommand, this.CanExecuteSaveCommand);
+                }
+
+                return this._saveCommand;
+            }
+        }
 
         public ObservableCollection<GEN_Sections_Lookup> Sections
         {
@@ -258,6 +375,272 @@ namespace S360
 
         }
 
+        public string GRNO
+        {
+            get
+            {
+                return _studentGRNo;
+            }
+
+            set
+            {
+                _studentGRNo = value;
+            }
+
+        }
+
+        public string FatherName
+        {
+            get
+            {
+                return _studentName;
+            }
+
+            set
+            {
+                _studentName = value;
+            }
+
+        }
+
+        public string StudentName
+        {
+            get
+            {
+                return _fatherName;
+            }
+
+            set
+            {
+                _fatherName = value;
+            }
+
+        }
+
+        public string SurName
+        {
+            get
+            {
+                return _surName;
+            }
+
+            set
+            {
+                _surName = value;
+            }
+
+        }
+
+        public string StudentAddress
+        {
+            get
+            {
+                return _studentAddress;
+            }
+
+            set
+            {
+                _studentAddress = value;
+            }
+
+        }
+
+        public string StudentRemarks
+        {
+            get
+            {
+                return _studentRemarks;
+            }
+
+            set
+            {
+                _studentRemarks = value;
+            }
+
+        }
+
+        public string MotherTongue
+        {
+            get
+            {
+                return _motherTongue;
+            }
+
+            set
+            {
+                _motherTongue = value;
+            }
+
+        }
+
+        public string StudentDivision
+        {
+            get
+            {
+                return _studentDivision;
+            }
+
+            set
+            {
+                _studentDivision = value;
+            }
+
+        }
+
+        public DateTime DateOfBirth
+        {
+            get
+            {
+                return _dateOfBirth;
+            }
+
+            set
+            {
+                _dateOfBirth = value;
+            }
+
+        }
+
+        public string Cast
+        {
+            get
+            {
+                return _cast;
+            }
+
+            set
+            {
+                _cast = value;
+            }
+
+        }
+
+        public string Mobile1
+        {
+            get
+            {
+                return _mobile1;
+            }
+
+            set
+            {
+                _mobile1 = value;
+            }
+
+        }
+
+        public string Mobile2
+        {
+            get
+            {
+                return _mobile2;
+            }
+
+            set
+            {
+                _mobile2 = value;
+            }
+
+        }
+
+        public string Mobile3
+        {
+            get
+            {
+                return _mobile3;
+            }
+
+            set
+            {
+                _mobile3 = value;
+            }
+
+        }
+
+        public string HomeNo
+        {
+            get
+            {
+                return _homeNo;
+            }
+
+            set
+            {
+                _homeNo = value;
+            }
+
+        }
+
+        public string WorkNo
+        {
+            get
+            {
+                return _workNo;
+            }
+
+            set
+            {
+                _workNo = value;
+            }
+
+        }
+
+        public string Email
+        {
+            get
+            {
+                return _email;
+            }
+
+            set
+            {
+                _email = value;
+            }
+
+        }
+
+        public string RFID
+        {
+            get
+            {
+                return _RFIDCard;
+            }
+
+            set
+            {
+                _RFIDCard = value;
+            }
+
+        }
+
+        public string AadharNo
+        {
+            get
+            {
+                return _aadharNo;
+            }
+
+            set
+            {
+                _aadharNo = value;
+            }
+
+        }
+
+        public string Contact1
+        {
+            get
+            {
+                return _contact1; ;
+            }
+
+            set
+            {
+                _contact1 = value;
+            }
+
+        }
+
         #endregion
 
         #region Events
@@ -269,7 +652,57 @@ namespace S360
 
         private void ExecuteClearAllCommand(object sender)
         {
-            System.Windows.MessageBox.Show("Clear All Button Clicked");
+
+        }
+
+        private bool CanExecuteSaveCommand(object sender)
+        {
+            return true;
+        }
+
+        private void ExecuteSaveCommand(object sender)
+        {
+            UserControl ucStudentAdd = sender as UserControl;
+            foreach (TextBox tb in FindVisualChildren<TextBox>(ucStudentAdd))
+            {
+                if (tb.Text == string.Empty)
+                {
+                    tb.Focus();
+                    tb.Background = System.Windows.Media.Brushes.IndianRed;
+                    return;
+                }
+            }
+
+            STUD_Students_Master studentDetails = new STUD_Students_Master
+            {
+                RegNo = GRNO,
+                Name = StudentName,
+                FatherName = FatherName,
+                Surname = SurName,
+                Address = StudentAddress,
+                Remarks = StudentRemarks,
+                MotherTongue = MotherTongue,
+                CurrentDiv = StudentDivision,
+                DOB = DateOfBirth,
+                Caste = Cast,
+                Mobile1 = Mobile1,
+                Mobile2 = Mobile2,
+                Mobile3 = Mobile3,
+                HomePh = HomeNo,
+                WorkPh = WorkNo,
+                Email = Email,
+                RFIDTag = RFID,
+                AadharNo = AadharNo,
+                PrimaryContact = Contact1,
+                Category_ID = SelectedCategory.Category_Id,
+                CurrentStd_ID = SelectedStandard.Standard_Id,
+                Language_ID = SelectedLanguage.Language_Id,
+                Gender = "",
+                Religion_ID = SelectedReligion.Religion_Id,
+                CurrentAcaDetail_ID = 0
+            };
+
+            STUD_Students_Master result = studentBusinessLogic.SaveStudent(studentDetails);
         }
 
         #endregion
@@ -280,6 +713,26 @@ namespace S360
         {
             IEnumerable<GEN_Standards_Lookup> Standards = studentBusinessLogic.GetAllStandards().Where(l => l.Section_Id == sectionID);
             return new ObservableCollection<GEN_Standards_Lookup>(Standards);
+        }
+
+        private static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
+        {
+            if (depObj != null)
+            {
+                for (int i = 0; i < System.Windows.Media.VisualTreeHelper.GetChildrenCount(depObj); i++)
+                {
+                    DependencyObject child = System.Windows.Media.VisualTreeHelper.GetChild(depObj, i);
+                    if (child != null && child is T)
+                    {
+                        yield return (T)child;
+                    }
+
+                    foreach (T childOfChild in FindVisualChildren<T>(child))
+                    {
+                        yield return childOfChild;
+                    }
+                }
+            }
         }
 
         #endregion

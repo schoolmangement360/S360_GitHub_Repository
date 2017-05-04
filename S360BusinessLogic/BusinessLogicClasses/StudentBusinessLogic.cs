@@ -72,5 +72,16 @@ namespace S360BusinessLogic
         {
             return new ObservableCollection<GEN_Religions_Lookup>(_ReligionRepository.GetAll());
         }
+
+        public STUD_Students_Master SaveStudent(STUD_Students_Master studentDetails)
+        {
+            STUD_Students_Master result = new STUD_Students_Master();
+            if (studentDetails != null)
+            {
+                result = _StudentRepository.Insert(studentDetails) as STUD_Students_Master;
+            }
+
+            return result;          
+        }
     }
 }
