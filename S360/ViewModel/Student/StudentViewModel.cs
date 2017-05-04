@@ -1,5 +1,7 @@
 ﻿using S360BusinessLogic;
+using S360Controlls.BasicControls;
 using S360Entity;
+using S360Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -662,15 +664,11 @@ namespace S360
 
         private void ExecuteSaveCommand(object sender)
         {
-            UserControl ucStudentAdd = sender as UserControl;
-            foreach (TextBox tb in FindVisualChildren<TextBox>(ucStudentAdd))
+            ControlValidationStatus controlValidationStatus = ValidateControls.ValidateAllControls(sender);
+
+            if (controlValidationStatus != null && !controlValidationStatus.isValid)
             {
-                if (tb.Text == string.Empty)
-                {
-                    tb.Focus();
-                    tb.Background = System.Windows.Media.Brushes.IndianRed;
-                    return;
-                }
+                return;
             }
 
             STUD_Students_Master studentDetails = new STUD_Students_Master

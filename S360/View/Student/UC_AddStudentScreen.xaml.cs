@@ -23,6 +23,15 @@ namespace S360
         public UC_AddStudentScreen()
         {
             InitializeComponent();
+            this.SetValidation();
+        }
+
+        /// <summary>
+        /// Set Validation
+        /// </summary>
+        private void SetValidation()
+        {
+            /////this.txtName.ControlValidation = true;
         }
     }
 }

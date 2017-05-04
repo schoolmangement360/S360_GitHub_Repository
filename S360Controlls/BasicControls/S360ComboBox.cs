@@ -50,5 +50,15 @@ namespace S360Controlls.BasicControls
             base.OnLostKeyboardFocus(e);
             this.Background = Brushes.White;
         }
+
+        /// <summary>
+        /// property For ControlValidation
+        /// </summary>
+        public bool ControlValidation { get; set; }
+
+        /// <summary>
+        /// property For ControlValidationMessage
+        /// </summary>
+        public string ControlValidationMessage { get; set; }
     }
 }
