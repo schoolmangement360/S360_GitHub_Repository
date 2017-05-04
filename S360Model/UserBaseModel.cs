@@ -8,6 +8,7 @@ namespace S360Model
 {
     public class UserBaseModel
     {
+        [System.ComponentModel.Browsable(false)]
         public decimal UserID { get; set; }
         public decimal LoginID { get; set; }
         public string Username { get; set; }

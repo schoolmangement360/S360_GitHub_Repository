@@ -6,16 +6,18 @@ using System.Threading.Tasks;
 
 namespace S360Model
 {
-    public class PromoteStudentModel
+    public class PromoteStudentModel : StudentBaseModel
     {
-        public string RegNo { get; set; }
-
-        public long StudentID { get; set; }
-
+        [System.ComponentModel.Browsable(false)]
         public short StandardID { get; set; }
-
+        public string Standard { get; set; }
+        [System.ComponentModel.Browsable(false)]
         public long LastAcademicDetID { get; set; }
-
+        [System.ComponentModel.Browsable(false)]
         public short SatusID { get; set; }
+        public string Division { get; set; }
+        [System.ComponentModel.Browsable(false)]
+        public short SectionId { get; set; }
+        public string Section { get; set; }
     }
 }

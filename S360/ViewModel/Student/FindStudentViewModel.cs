@@ -1,4 +1,5 @@
 ﻿using S360Entity;
+using S360Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -26,9 +27,12 @@ namespace S360.ViewModel.Student
         /// <summary>
         /// collection variable to store all search result students
         /// </summary>
-        private ICollection<STUD_Students_Master> _studentsList = null;
+        private ObservableCollection<StudentBaseModel> _studentsList = null;
 
-        private STUD_Students_Master _selectedStudent = null;
+        /// <summary>
+        /// Variable to store selected student
+        /// </summary>
+        private StudentBaseModel _selectedStudent = null;
 
         /// <summary>
         /// command to search students
@@ -53,18 +57,24 @@ namespace S360.ViewModel.Student
 
         #region [ Public Properties ]
 
+        /// <summary>
+        /// Gets or sets string keyword to find student
+        /// </summary>
         public string FindString
         {
             get { return _findString; }
             set { _findString = value; }
         }
 
-        public ICollection<STUD_Students_Master> StudentsList
+        /// <summary>
+        /// Gets students list to bind on data grid
+        /// </summary>
+        public ObservableCollection<StudentBaseModel> StudentsList
         {
             get
             {
                 if (_studentsList == null)
-                    _studentsList = new ObservableCollection<STUD_Students_Master>();
+                    _studentsList = new ObservableCollection<StudentBaseModel>();
                 return _studentsList;
             }
         }
@@ -80,12 +90,12 @@ namespace S360.ViewModel.Student
             set { _selectedSection = value; }
         }
 
-        public STUD_Students_Master SelectedStudent
+        public StudentBaseModel SelectedStudent
         {
             get
             {
                 if (_selectedStudent == null)
-                    _selectedStudent = new STUD_Students_Master();
+                    _selectedStudent = new StudentBaseModel();
                 return _selectedStudent;
             }
             set { _selectedStudent = value; }
@@ -132,7 +142,23 @@ namespace S360.ViewModel.Student
 
         private void ExecuteSearchCommand(object sender)
         {
-            
+            this._studentsList = new ObservableCollection<StudentBaseModel>();
+            _studentsList.Add(new StudentBaseModel()
+            {
+                RegNo = "1",
+                StudentId = 1,
+                Name = "Mathew",
+                SurName = "Markose",
+                Father = "Markose"
+            });
+            _studentsList.Add(new StudentBaseModel()
+            {
+                RegNo = "2",
+                StudentId = 2,
+                Name = "Martin",
+                SurName = "Markose",
+                Father = "Markose"
+            });
         }
 
         private bool CanExecuteCancelCommand(object sender)
@@ -152,7 +178,7 @@ namespace S360.ViewModel.Student
 
         private void ExecuteSelectCommand(object sender)
         {
-            System.Windows.MessageBox.Show("Selecting");
+            
         }
 
         #endregion

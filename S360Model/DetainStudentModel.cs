@@ -6,22 +6,16 @@ using System.Threading.Tasks;
 
 namespace S360Model
 {
-    public class DetainStudentModel : PromoteStudentModel
+    public class DetainStudentModel : StudentBaseModel
     {
+        [System.ComponentModel.Browsable(false)]
         public short SectionId { get; set; }
-
         public string Section { get; set; }
-
-        public string SurName { get; set; }
-
-        public string Name { get; set; }
-
-        public string FatherName { get; set; }
-
-        public bool IsDetain { get; set; }
+        [System.ComponentModel.Browsable(false)]
+        public short StandardID { get; set; }
+        public string Standard { get; set; }
 
         private UserBaseModel _user = null;
-
         public UserBaseModel User
         {
             get

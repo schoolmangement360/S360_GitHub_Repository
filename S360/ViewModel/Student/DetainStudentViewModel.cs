@@ -26,24 +26,19 @@ namespace S360.ViewModel.Student
         private GEN_Sections_Lookup _selectedSection = null;
 
         /// <summary>
-        /// Variable to store G.Reg No os selected student
-        /// </summary>
-        private string _RegNum = null;
-
-        /// <summary>
-        /// Variable to store Name of selected student
-        /// </summary>
-        private string _name = null;
-
-        /// <summary>
         /// Variable to store old section of selected student
         /// </summary>
         private GEN_Sections_Lookup _oldSection = null;
 
         /// <summary>
+        /// Variable to store current student details
+        /// </summary>
+        private DetainStudentModel _currentStudent = null;
+
+        /// <summary>
         /// Variable to store list of student to detain
         /// </summary>
-        private List<DetainStudentModel> _detainStudentList = null;
+        private ObservableCollection<DetainStudentModel> _detainStudentList = null;
 
         /// <summary>
         /// Command to find student
@@ -87,7 +82,7 @@ namespace S360.ViewModel.Student
         /// Gets Sections for Lookup
         /// </summary>
         public ObservableCollection<GEN_Sections_Lookup> Sections
-        {   
+        {
             get
             {
                 if (_sections == null)
@@ -111,24 +106,6 @@ namespace S360.ViewModel.Student
         }
 
         /// <summary>
-        /// Gets or sets RegNo
-        /// </summary>
-        public string RegNo
-        {
-            get { return _RegNum; }
-            set { _RegNum = value; }
-        }
-
-        /// <summary>
-        /// Gets or sets Student Name
-        /// </summary>
-        public string Name
-        {
-            get { return _name; }
-            set { _name = value; }
-        }
-
-        /// <summary>
         /// Gets or sets Old Section of selected student
         /// </summary>
         public GEN_Sections_Lookup OldSection
@@ -143,14 +120,27 @@ namespace S360.ViewModel.Student
         }
 
         /// <summary>
+        /// Gets current student
+        /// </summary>
+        public DetainStudentModel CurrentStudent
+        {
+            get
+            {
+                if (_currentStudent == null)
+                    _currentStudent = new DetainStudentModel();
+                return _currentStudent;
+            }
+        }
+
+        /// <summary>
         /// Gets or sets List of students to detain
         /// </summary>
-        public List<DetainStudentModel> DetainStudentList
+        public ObservableCollection<DetainStudentModel> DetainStudentList
         {
             get
             {
                 if (_detainStudentList == null)
-                    _detainStudentList = new List<DetainStudentModel>();
+                    _detainStudentList = new ObservableCollection<DetainStudentModel>();
                 return _detainStudentList;
             }
             set { _detainStudentList = value; }
@@ -245,7 +235,7 @@ namespace S360.ViewModel.Student
 
         private void ExecuteDetainStudentCommand(object sender)
         {
-            
+
         }
 
         private bool CanExecuteRemoveCommand(object sender)
@@ -255,7 +245,7 @@ namespace S360.ViewModel.Student
 
         private void ExecuteRemoveCommand(object sender)
         {
-            
+
         }
 
         private bool CanExecuteClearAllCommand(object sender)
@@ -265,7 +255,7 @@ namespace S360.ViewModel.Student
 
         private void ExecuteClearAllCommand(object sender)
         {
-            
+
         }
 
         private bool CanExecuteCancelCommand(object sender)
@@ -275,7 +265,7 @@ namespace S360.ViewModel.Student
 
         private void ExecuteCancelCommand(object sender)
         {
-            
+
         }
 
         private bool CanExecuteAddToListCommand(object sender)
@@ -285,7 +275,19 @@ namespace S360.ViewModel.Student
 
         private void ExecuteAddToListCommand(object sender)
         {
-            
+            this.DetainStudentList.Add(new DetainStudentModel()
+            {
+                StudentId = _currentStudent.StudentId,
+                RegNo = _currentStudent.RegNo,
+                Name = _currentStudent.Name,
+                SurName = _currentStudent.SurName,
+                Father = _currentStudent.Father,
+                SectionId = _currentStudent.SectionId,
+                Section = _currentStudent.Section,
+                StandardID = _currentStudent.StandardID,
+                Standard = _currentStudent.Standard,
+                User = _currentStudent.User
+            });
         }
 
         private bool CanExecuteFindStudent(object sender)
@@ -298,8 +300,19 @@ namespace S360.ViewModel.Student
             UC_FindStudentScreen findStuent = new UC_FindStudentScreen();
             findStuent.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             FindStudentViewModel findStudentVM = new FindStudentViewModel();
+            findStudentVM.SelectedSection = this._selectedSection;
             findStuent.DataContext = findStudentVM;
-            findStuent.ShowDialog();
+            if (findStuent.ShowDialog() == true)
+                findStudentVM = findStuent.DataContext as FindStudentViewModel;
+
+            this._currentStudent = new DetainStudentModel()
+            {
+                StudentId = findStudentVM.SelectedStudent.StudentId,
+                RegNo = findStudentVM.SelectedStudent.RegNo,
+                Name = findStudentVM.SelectedStudent.Name,
+                SurName = findStudentVM.SelectedStudent.SurName,
+                Father = findStudentVM.SelectedStudent.Father
+            };
         }
 
         #endregion

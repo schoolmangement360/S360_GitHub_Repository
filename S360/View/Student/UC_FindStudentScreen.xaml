@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:BasicControls="clr-namespace:S360Controlls.BasicControls;assembly=S360Controlls"
              xmlns:ViewModelClass="clr-namespace:S360.ViewModel.Student"
-             Background="White">
+             Background="White" Name="FindStudent">
 
     <Window.DataContext>
         <ViewModelClass:FindStudentViewModel />
@@ -83,13 +83,15 @@
                                        Text="{Binding FindString, Mode=TwoWay}"/>
             <Button Name="btnFind" Content="Search" Grid.Row="3" Grid.Column="13" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" Command="{Binding SearchCommand}" />
 
-            <DataGrid Name="grStudents" Grid.Row="5" Grid.RowSpan="12" Grid.Column="1" Grid.ColumnSpan="18" DataContext="{Binding StudentList}" />
+            <DataGrid Name="grStudents" Grid.Row="5" Grid.RowSpan="12" Grid.Column="1" Grid.ColumnSpan="18" ItemsSource="{Binding StudentsList, Mode=OneWay}"
+                      SelectedValue="{Binding SelectedStudent, Mode=OneWay}"/>
 
             <BasicControls:S360TextBlock Text="Selected Section" Grid.Row="18" Grid.Column="1" Grid.ColumnSpan="2" />
             <BasicControls:S360TextBox Name="txtSection" Grid.Row="18" Grid.Column="3" Grid.ColumnSpan="8" IsEnabled="False"
-                                       Text="{Binding SelectedSection, Mode=TwoWay}" Style="{StaticResource S360TextBoxStyle}" />
+                                       Text="{Binding SelectedSection.Name}" Style="{StaticResource S360TextBoxStyle}" />
             <Button Name="btnCancel" Content="Cancel" Grid.Row="18" Grid.Column="15" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" Command="{Binding CancelCommand}" />
-            <Button Name="btnSelect" Content="Select" Grid.Row="18" Grid.Column="17" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" Command="{Binding SelectCommand}" />
+            <Button Name="btnSelect" Content="Select" Grid.Row="18" Grid.Column="17" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" Command="{Binding SelectCommand}"
+                    CommandParameter="{Binding ElementName=FindStudent}"/>
         </Grid>
     </Viewbox>
 </Window>

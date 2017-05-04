@@ -84,13 +84,13 @@
                                         IsReadOnly="True" Text="Select Section"/>
             <BasicControls:S360TextBlock Text="G.Reg No" Grid.Row="3" Grid.Column="9" Grid.ColumnSpan="2" />
             <BasicControls:S360TextBox Name="txtRegNo" Grid.Row="3" Grid.Column="11" Grid.ColumnSpan="4" Style="{StaticResource S360TextBoxStyle}"
-                                       Text="{Binding RegNo,Mode=TwoWay}"/>
+                                       Text="{Binding CurrentStudent.RegNo, Mode=TwoWay}"/>
             <Button Name="btnFindStudent" Content="Find Student" Grid.Row="3" Grid.Column="16" Grid.ColumnSpan="3" Style="{StaticResource MetroButton}"
                     Command="{Binding FindStudentCommand}"/>
 
             <BasicControls:S360TextBlock Text="Name" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" />
             <BasicControls:S360TextBox Name="txtName" Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="11" Style="{StaticResource S360TextBoxStyle}" IsEnabled="False"
-                                       Text="{Binding Name,Mode=TwoWay}"/>
+                                       Text="{Binding CurrentStudent.Name, Mode=TwoWay}"/>
 
             <BasicControls:S360TextBlock Text="Old Std" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" />
             <BasicControls:S360TextBox Name="txtOldStd" Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="11" Style="{StaticResource S360TextBoxStyle}" IsEnabled="False"
@@ -99,7 +99,18 @@
                     Command="{Binding AddtToListCommand}"/>
 
             <DataGrid Name="dtgStudentList" Grid.Row="7" Grid.RowSpan="10" Grid.Column="1" Grid.ColumnSpan="18"
-                      DataContext="{Binding DetainStudentList}"/>
+                      ItemsSource="{Binding DetainStudentList, Mode=OneWay}" AutoGenerateColumns="False">
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Section" Binding="{Binding SelectedSection.Name}" Width="100*" MinWidth="100" />
+                    <DataGridTextColumn Header="Reg No" Binding="{Binding RegNo}" Width="100*" MinWidth="100" />
+                    <DataGridTextColumn Header="SurName" Binding="{Binding SurName}" Width="100*" MinWidth="100" />
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="100*" MinWidth="100"/>
+                    <DataGridTextColumn Header="FName" Binding="{Binding Father}" Width="100*" MinWidth="100"/>
+                    <DataGridTextColumn Header="Detain" Binding="{Binding Standard}" Width="100*" MinWidth="100" />
+                    <DataGridTextColumn Header="User" Binding="{Binding User.Name}" Width="100*" MinWidth="100"/>
+                </DataGrid.Columns>
+            </DataGrid>
 
             <Button Name="btnCancel" Content="Cancel" Grid.Row="18" Grid.Column="11" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}"
                     Command="{Binding CancelCommand}"/>

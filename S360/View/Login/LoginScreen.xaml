@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:BasicControls="clr-namespace:S360Controlls.BasicControls;assembly=S360Controlls" 
         Height="300" Width="900" 
-        WindowStyle="None" BorderThickness="0" Topmost="True"
+        WindowStyle="None" BorderThickness="0" Topmost="False"
         MouseLeftButtonDown="PART_TITLEBAR_MouseLeftButtonDown"
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
