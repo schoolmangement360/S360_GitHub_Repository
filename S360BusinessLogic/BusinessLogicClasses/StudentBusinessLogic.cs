@@ -17,6 +17,7 @@ namespace S360BusinessLogic
         private LanguageRepository _LanguageRepository;
         private StudentCategoryRepository _StudentCategoryRepository;
         private ReligionRepository _ReligionRepository;
+        private StudentAcademicRepository _StudentAcademicRepository;
 
         public StudentBusinessLogic()
         {
@@ -26,6 +27,7 @@ namespace S360BusinessLogic
             _LanguageRepository = S360RepositoryFactory.GetRepository("LANGUAGE") as LanguageRepository;
             _StudentCategoryRepository = S360RepositoryFactory.GetRepository("STUDENTCATEGORY") as StudentCategoryRepository;
             _ReligionRepository = S360RepositoryFactory.GetRepository("RELIGION") as ReligionRepository;
+            _StudentAcademicRepository = S360RepositoryFactory.GetRepository("STUDENTACADEMIC") as StudentAcademicRepository;
         }
 
         /// <summary>
@@ -75,13 +77,24 @@ namespace S360BusinessLogic
 
         public STUD_Students_Master SaveStudent(STUD_Students_Master studentDetails)
         {
-            STUD_Students_Master result = new STUD_Students_Master();
+            STUD_Students_Master studentResult = new STUD_Students_Master();
             if (studentDetails != null)
             {
-                result = _StudentRepository.Insert(studentDetails) as STUD_Students_Master;
+                studentResult = _StudentRepository.Insert(studentDetails) as STUD_Students_Master;
             }
 
-            return result;          
+            if (studentResult != null)
+            {
+                STUD_StudentAcademic_Details studentAcademicDetails = new STUD_StudentAcademic_Details();
+                studentAcademicDetails.RegNo = studentResult.RegNo;
+                studentAcademicDetails.Student_ID = studentResult.Student_ID;
+                studentAcademicDetails.Remarks = studentResult.Remarks;
+                studentAcademicDetails.Remarks = studentResult.Remarks;
+
+
+                STUD_StudentAcademic_Details academicResult = _StudentAcademicRepository.Insert(studentAcademicDetails);
+            }
+            return studentResult;          
         }
     }
 }

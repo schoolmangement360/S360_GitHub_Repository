@@ -92,6 +92,11 @@ namespace S360
         /// <summary>
         /// Variable to Store Property
         /// </summary>
+        private string _motherName;
+
+        /// <summary>
+        /// Variable to Store Property
+        /// </summary>
         private string _surName;
 
         /// <summary>
@@ -415,6 +420,20 @@ namespace S360
             set
             {
                 _fatherName = value;
+            }
+
+        }
+
+        public string MotherName
+        {
+            get
+            {
+                return _motherName;
+            }
+
+            set
+            {
+                _motherName = value;
             }
 
         }

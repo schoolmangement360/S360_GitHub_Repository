@@ -37,7 +37,7 @@ namespace S360
 
             foreach (S360ComboBox cb in FindVisualChildren<S360ComboBox>(userControl))
             {
-                if (cb.ControlValidation && cb.SelectedIndex == 0)
+                if (cb.ControlValidation && cb.SelectedIndex == -1)
                 {
                     cb.Focus();
                     cb.Background = System.Windows.Media.Brushes.IndianRed;
