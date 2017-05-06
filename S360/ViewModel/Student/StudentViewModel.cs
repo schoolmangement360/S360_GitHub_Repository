@@ -802,7 +802,7 @@ namespace S360
                 if (!string.IsNullOrEmpty(MotherName))
                     studentDetails.MotherName = MotherName;
 
-                if (!string.IsNullOrEmpty(StudentDivision) && SelectedGender.Length < 4)
+                if (!string.IsNullOrEmpty(StudentDivision) && StudentDivision.Length < 3)
                 {
                     studentDetails.CurrentDiv = StudentDivision;
                 }
