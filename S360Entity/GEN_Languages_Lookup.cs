@@ -14,7 +14,7 @@ namespace S360Entity
     
     public partial class GEN_Languages_Lookup
     {
-        public byte Language_Id { get; set; }
+        public short Language_Id { get; set; }
         public string Name { get; set; }
         public bool IsActive { get; set; }
     }

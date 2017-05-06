@@ -14,7 +14,7 @@ namespace S360Entity
     
     public partial class SectionsLookup
     {
-        public byte Section_Id { get; set; }
+        public short Section_Id { get; set; }
         public string Name { get; set; }
         public bool IsActive { get; set; }
     }

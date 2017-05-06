@@ -14,16 +14,7 @@ namespace S360Entity
     
     public partial class STUD_AcademicStatus_Lookup
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public STUD_AcademicStatus_Lookup()
-        {
-            this.STUD_DetainingOrPromotions_Details = new HashSet<STUD_DetainingOrPromotions_Details>();
-        }
-    
-        public byte AcaStatus_ID { get; set; }
+        public short AcaStatus_ID { get; set; }
         public string StatusName { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<STUD_DetainingOrPromotions_Details> STUD_DetainingOrPromotions_Details { get; set; }
     }
 }

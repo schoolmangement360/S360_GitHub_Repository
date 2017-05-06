@@ -34,5 +34,29 @@ namespace S360.Properties {
                 this["ApplicationTimeOut"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2017")]
+        public int AcademicYearStart {
+            get {
+                return ((int)(this["AcademicYearStart"]));
+            }
+            set {
+                this["AcademicYearStart"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2018")]
+        public int AcademicYearEnd {
+            get {
+                return ((int)(this["AcademicYearEnd"]));
+            }
+            set {
+                this["AcademicYearEnd"] = value;
+            }
+        }
     }
 }

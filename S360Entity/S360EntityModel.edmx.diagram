@@ -5,63 +5,46 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="bed2cd09f1ec4e9c8bcd4f52d3d1f676" Name="Diagram1">
-        <EntityTypeShape EntityType="S360Model.CHQ_ChequeCancellations_Details" Width="1.5" PointX="15.25" PointY="13" />
-        <EntityTypeShape EntityType="S360Model.CHQ_ChequeClearances_Details" Width="1.5" PointX="15.25" PointY="16.25" />
-        <EntityTypeShape EntityType="S360Model.CHQ_ChequeDeposits_Details" Width="1.5" PointX="15.25" PointY="6.125" />
-        <EntityTypeShape EntityType="S360Model.CHQ_ChequeReturns_Details" Width="1.5" PointX="15.25" PointY="9.875" />
-        <EntityTypeShape EntityType="S360Model.CHQ_Cheques_Master" Width="1.5" PointX="13" PointY="10.25" />
-        <EntityTypeShape EntityType="S360Model.CHQ_ChequeStatus_Lookup" Width="1.5" PointX="10.75" PointY="9.375" />
-        <EntityTypeShape EntityType="S360Model.CHQ_DeletedCheque_Details" Width="1.5" PointX="13" PointY="1.75" />
-        <EntityTypeShape EntityType="S360Model.GEN_Languages_Lookup" Width="1.5" PointX="8.75" PointY="0.75" />
-        <EntityTypeShape EntityType="S360Model.GEN_Religions_Lookup" Width="1.5" PointX="3" PointY="10.5" />
-        <EntityTypeShape EntityType="S360Model.GEN_Sections_Lookup" Width="1.5" PointX="0.75" PointY="6.625" />
-        <EntityTypeShape EntityType="S360Model.GEN_Standards_Lookup" Width="1.5" PointX="3" PointY="13.125" />
-        <EntityTypeShape EntityType="S360Model.GEN_StudentCategory_Lookup" Width="1.5" PointX="3" PointY="3" />
-        <EntityTypeShape EntityType="S360Model.GEN_UserCredentials_Master" Width="1.5" PointX="15.75" PointY="1" />
-        <EntityTypeShape EntityType="S360Model.GEN_UserLogin_Details" Width="1.5" PointX="18" PointY="1.125" />
-        <EntityTypeShape EntityType="S360Model.PEM_AssignedPermissions_Details" Width="1.5" PointX="8" PointY="13" />
-        <EntityTypeShape EntityType="S360Model.PEM_PageEnumerator_Master" Width="1.5" PointX="5.75" PointY="13.125" />
-        <EntityTypeShape EntityType="S360Model.STUD_AcademicStatus_Lookup" Width="1.5" PointX="6" PointY="0.75" />
-        <EntityTypeShape EntityType="S360Model.STUD_DetainingOrPromotions_Details" Width="1.5" PointX="8.25" PointY="6.125" />
-        <EntityTypeShape EntityType="S360Model.STUD_StudentAcademic_Details" Width="1.5" PointX="3" PointY="5.625" />
-        <EntityTypeShape EntityType="S360Model.STUD_Students_Master" Width="1.5" PointX="5.25" PointY="3.25" />
-        <EntityTypeShape EntityType="S360Model.AcademicStatusLookup" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="S360Model.AssignedPermissionsDetail" Width="1.5" PointX="10.75" PointY="15.75" />
-        <EntityTypeShape EntityType="S360Model.ChequeCancellationsDetail" Width="1.5" PointX="0.75" PointY="16.75" />
-        <EntityTypeShape EntityType="S360Model.ChequeClearancesDetail" Width="1.5" PointX="2.75" PointY="16.75" />
-        <EntityTypeShape EntityType="S360Model.ChequeDepositsDetail" Width="1.5" PointX="4.75" PointY="16.75" />
-        <EntityTypeShape EntityType="S360Model.ChequeReturnsDetail" Width="1.5" PointX="6.75" PointY="16.75" />
-        <EntityTypeShape EntityType="S360Model.ChequesMaster" Width="1.5" PointX="17.75" PointY="4.75" />
-        <EntityTypeShape EntityType="S360Model.ChequeStatusLookup" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="S360Model.DeletedChequeDetail" Width="1.5" PointX="17.75" PointY="9.75" />
-        <EntityTypeShape EntityType="S360Model.DetainingOrPromotionsDetail" Width="1.5" PointX="17.75" PointY="14.75" />
-        <EntityTypeShape EntityType="S360Model.LanguagesLookup" Width="1.5" PointX="10.75" PointY="6.75" />
-        <EntityTypeShape EntityType="S360Model.PageEnumeratorMaster" Width="1.5" PointX="17.75" PointY="18.75" />
-        <EntityTypeShape EntityType="S360Model.ReligionsLookup" Width="1.5" PointX="19.75" PointY="4.75" />
-        <EntityTypeShape EntityType="S360Model.SectionsLookup" Width="1.5" PointX="6.75" PointY="19.75" />
-        <EntityTypeShape EntityType="S360Model.StandardsLookup" Width="1.5" PointX="19.75" PointY="7.75" />
-        <EntityTypeShape EntityType="S360Model.StudentAcademicDetail" Width="1.5" PointX="8.75" PointY="19.75" />
-        <EntityTypeShape EntityType="S360Model.StudentCategoryLookup" Width="1.5" PointX="19.75" PointY="10.75" />
-        <EntityTypeShape EntityType="S360Model.StudentsMaster" Width="1.5" PointX="10.75" PointY="19.75" />
-        <EntityTypeShape EntityType="S360Model.UserCredentialsMaster" Width="1.5" PointX="12.75" PointY="19.75" />
-        <EntityTypeShape EntityType="S360Model.UserLoginDetail" Width="1.5" PointX="19.75" PointY="13.75" />
-        <AssociationConnector Association="S360Model.FK_CHQ_ChequeCancellations_Details_CHQ_Cheques_Master" />
-        <AssociationConnector Association="S360Model.FK_CHQ_ChequeClearances_Details_CHQ_Cheques_Master" />
-        <AssociationConnector Association="S360Model.FK_CHQ_ChequeDeposits_Details_CHQ_Cheques_Master" />
-        <AssociationConnector Association="S360Model.FK_CHQ_ChequeReturns_Details_CHQ_Cheques_Master" />
-        <AssociationConnector Association="S360Model.FK_CHQ_Cheques_Master_CHQ_ChequeStatus_Lookup" />
-        <AssociationConnector Association="S360Model.FK_CHQ_DeletedCheque_Details_CHQ_ChequeStatus_Lookup" />
-        <AssociationConnector Association="S360Model.FK_STUD_Students_Master_GEN_Religions_Lookup" />
-        <AssociationConnector Association="S360Model.FK_STUD_StudentAcademic_Details_GEN_Sections_Lookup" />
-        <AssociationConnector Association="S360Model.FK_STUD_Students_Master_GEN_Standards_Lookup" />
-        <AssociationConnector Association="S360Model.FK_STUD_Students_Master_GEN_StudentCategory_Lookup" />
-        <AssociationConnector Association="S360Model.FK_GEN_UserLogin_Details_GEN_UserCredentials_Master" />
-        <AssociationConnector Association="S360Model.FK_PEM_AssignedPermissions_Details_PEM_PageEnumerator_Master" />
-        <AssociationConnector Association="S360Model.FK_STUD_DetainingOrPromotions_Details_STUD_AcademicStatus_Lookup" />
-        <AssociationConnector Association="S360Model.FK_STUD_DetainingOrPromotions_Details_STUD_StudentAcademic_Details" />
-        <AssociationConnector Association="S360Model.FK_STUD_DetainingOrPromotions_Details_STUD_StudentAcademic_Details2" />
-        <AssociationConnector Association="S360Model.FK_STUD_StudentAcademic_Details_STUD_Students_Master" />
-        <AssociationConnector Association="S360Model.FK_STUD_Students_Master_STUD_StudentAcademic_Details" />
+        <EntityTypeShape EntityType="S360Model.CHQ_ChequeCancellations_Details" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="S360Model.CHQ_ChequeClearances_Details" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="S360Model.CHQ_ChequeDeposits_Details" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="S360Model.CHQ_ChequeReturns_Details" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="S360Model.CHQ_Cheques_Master" Width="1.5" PointX="2.75" PointY="4.75" />
+        <EntityTypeShape EntityType="S360Model.CHQ_ChequeStatus_Lookup" Width="1.5" PointX="4.75" PointY="4.75" />
+        <EntityTypeShape EntityType="S360Model.CHQ_DeletedCheque_Details" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="S360Model.GEN_Languages_Lookup" Width="1.5" PointX="6.75" PointY="5.75" />
+        <EntityTypeShape EntityType="S360Model.GEN_Religions_Lookup" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="S360Model.GEN_Sections_Lookup" Width="1.5" PointX="8.75" PointY="3.75" />
+        <EntityTypeShape EntityType="S360Model.GEN_Standards_Lookup" Width="1.5" PointX="4.75" PointY="8.75" />
+        <EntityTypeShape EntityType="S360Model.GEN_StudentCategory_Lookup" Width="1.5" PointX="8.75" PointY="6.75" />
+        <EntityTypeShape EntityType="S360Model.GEN_UserCredentials_Master" Width="1.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="S360Model.GEN_UserLogin_Details" Width="1.5" PointX="6.75" PointY="9.75" />
+        <EntityTypeShape EntityType="S360Model.PEM_AssignedPermissions_Details" Width="1.5" PointX="8.75" PointY="9.75" />
+        <EntityTypeShape EntityType="S360Model.PEM_PageEnumerator_Master" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="S360Model.STUD_AcademicStatus_Lookup" Width="1.5" PointX="10.75" PointY="3.75" />
+        <EntityTypeShape EntityType="S360Model.STUD_DetainingOrPromotions_Details" Width="1.5" PointX="10.75" PointY="6.75" />
+        <EntityTypeShape EntityType="S360Model.STUD_StudentAcademic_Details" Width="1.5" PointX="10.75" PointY="10.75" />
+        <EntityTypeShape EntityType="S360Model.STUD_Students_Master" Width="1.5" PointX="2.75" PointY="11.75" />
+        <EntityTypeShape EntityType="S360Model.AcademicStatusLookup" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="S360Model.AssignedPermissionsDetail" Width="1.5" PointX="12.75" PointY="3.75" />
+        <EntityTypeShape EntityType="S360Model.ChequeCancellationsDetail" Width="1.5" PointX="4.75" PointY="12.75" />
+        <EntityTypeShape EntityType="S360Model.ChequeClearancesDetail" Width="1.5" PointX="12.75" PointY="7.75" />
+        <EntityTypeShape EntityType="S360Model.ChequeDepositsDetail" Width="1.5" PointX="12.75" PointY="11.75" />
+        <EntityTypeShape EntityType="S360Model.ChequeReturnsDetail" Width="1.5" PointX="6.75" PointY="13.75" />
+        <EntityTypeShape EntityType="S360Model.ChequesMaster" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="S360Model.ChequeStatusLookup" Width="1.5" PointX="14.75" PointY="5.75" />
+        <EntityTypeShape EntityType="S360Model.DeletedChequeDetail" Width="1.5" PointX="14.75" PointY="8.75" />
+        <EntityTypeShape EntityType="S360Model.DetainingOrPromotionsDetail" Width="1.5" PointX="8.75" PointY="14.75" />
+        <EntityTypeShape EntityType="S360Model.LanguagesLookup" Width="1.5" PointX="14.75" PointY="13.75" />
+        <EntityTypeShape EntityType="S360Model.PageEnumeratorMaster" Width="1.5" PointX="10.75" PointY="15.75" />
+        <EntityTypeShape EntityType="S360Model.ReligionsLookup" Width="1.5" PointX="16.75" PointY="0.75" />
+        <EntityTypeShape EntityType="S360Model.SectionsLookup" Width="1.5" PointX="16.75" PointY="3.75" />
+        <EntityTypeShape EntityType="S360Model.StandardsLookup" Width="1.5" PointX="4.75" PointY="16.75" />
+        <EntityTypeShape EntityType="S360Model.StudentAcademicDetail" Width="1.5" PointX="16.75" PointY="6.75" />
+        <EntityTypeShape EntityType="S360Model.StudentCategoryLookup" Width="1.5" PointX="16.75" PointY="10.75" />
+        <EntityTypeShape EntityType="S360Model.StudentsMaster" Width="1.5" PointX="12.75" PointY="16.75" />
+        <EntityTypeShape EntityType="S360Model.UserCredentialsMaster" Width="1.5" PointX="16.75" PointY="13.75" />
+        <EntityTypeShape EntityType="S360Model.UserLoginDetail" Width="1.5" PointX="14.75" PointY="17.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

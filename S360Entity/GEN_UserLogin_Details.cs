@@ -19,7 +19,5 @@ namespace S360Entity
         public System.DateTimeOffset LoginTime { get; set; }
         public Nullable<System.DateTimeOffset> LogoutTime { get; set; }
         public string HostName { get; set; }
-    
-        public virtual GEN_UserCredentials_Master GEN_UserCredentials_Master { get; set; }
     }
 }

@@ -14,12 +14,6 @@ namespace S360Entity
     
     public partial class GEN_UserCredentials_Master
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public GEN_UserCredentials_Master()
-        {
-            this.GEN_UserLogin_Details = new HashSet<GEN_UserLogin_Details>();
-        }
-    
         public decimal User_ID { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
@@ -27,8 +21,5 @@ namespace S360Entity
         public System.DateTimeOffset EnteredOn { get; set; }
         public bool IsActive { get; set; }
         public System.DateTimeOffset LastModifiedOn { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<GEN_UserLogin_Details> GEN_UserLogin_Details { get; set; }
     }
 }

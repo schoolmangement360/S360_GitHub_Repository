@@ -18,12 +18,8 @@ namespace S360Entity
         public decimal Student_ID { get; set; }
         public decimal LastAcadDetail_ID { get; set; }
         public decimal CurrentAcadDetail_ID { get; set; }
-        public byte Status_ID { get; set; }
+        public Nullable<int> Status_ID { get; set; }
         public decimal EnteredBy { get; set; }
         public decimal Login_ID { get; set; }
-    
-        public virtual STUD_AcademicStatus_Lookup STUD_AcademicStatus_Lookup { get; set; }
-        public virtual STUD_StudentAcademic_Details STUD_StudentAcademic_Details { get; set; }
-        public virtual STUD_StudentAcademic_Details STUD_StudentAcademic_Details1 { get; set; }
     }
 }

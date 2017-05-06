@@ -24,12 +24,12 @@ namespace S360Entity
         public string MotherTongue { get; set; }
         public string Religion { get; set; }
         public string Caste { get; set; }
-        public Nullable<byte> Religion_ID { get; set; }
+        public Nullable<int> Religion_ID { get; set; }
         public Nullable<int> Language_ID { get; set; }
-        public Nullable<byte> Category_ID { get; set; }
+        public Nullable<int> Category_ID { get; set; }
         public Nullable<System.DateTime> DOB { get; set; }
         public Nullable<decimal> CurrentAcaDetail_ID { get; set; }
-        public Nullable<byte> CurrentStd_ID { get; set; }
+        public Nullable<int> CurrentStd_ID { get; set; }
         public string CurrentDiv { get; set; }
         public string Address { get; set; }
         public string Mobile1 { get; set; }

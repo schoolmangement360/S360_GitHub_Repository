@@ -14,7 +14,7 @@ namespace S360Entity
     
     public partial class AcademicStatusLookup
     {
-        public byte AcaStatus_ID { get; set; }
+        public short AcaStatus_ID { get; set; }
         public string StatusName { get; set; }
     }
 }

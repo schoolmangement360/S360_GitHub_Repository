@@ -14,9 +14,9 @@ namespace S360Entity
     
     public partial class StandardsLookup
     {
-        public byte Standard_Id { get; set; }
+        public short Standard_Id { get; set; }
         public string Name { get; set; }
         public bool IsActive { get; set; }
-        public Nullable<byte> Section_Id { get; set; }
+        public Nullable<int> Section_Id { get; set; }
     }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using S360Entity;
 using S360Logging;
 using System.Collections.ObjectModel;
+using System.Data.Entity.Validation;
 
 namespace S360BusinessLogic
 {
@@ -36,7 +37,7 @@ namespace S360BusinessLogic
         /// <returns></returns>
         public ObservableCollection<GEN_Sections_Lookup> GetAllSections()
         {
-            return new ObservableCollection<GEN_Sections_Lookup>(_SectionRepository.GetAll()); 
+            return new ObservableCollection<GEN_Sections_Lookup>(_SectionRepository.GetAll());
         }
 
         /// <summary>
@@ -83,18 +84,27 @@ namespace S360BusinessLogic
                 studentResult = _StudentRepository.Insert(studentDetails) as STUD_Students_Master;
             }
 
-            if (studentResult != null)
-            {
-                STUD_StudentAcademic_Details studentAcademicDetails = new STUD_StudentAcademic_Details();
-                studentAcademicDetails.RegNo = studentResult.RegNo;
-                studentAcademicDetails.Student_ID = studentResult.Student_ID;
-                studentAcademicDetails.Remarks = studentResult.Remarks;
-                studentAcademicDetails.Remarks = studentResult.Remarks;
+            return studentResult;
+        }
 
+        public STUD_StudentAcademic_Details SaveStudentAcademicDetails(STUD_Students_Master studentDetails, STUD_StudentAcademic_Details studentAcademicDetails)
+        {
+            STUD_StudentAcademic_Details AcademicDetails = new STUD_StudentAcademic_Details();
+            AcademicDetails.RegNo = studentDetails.RegNo;
+            AcademicDetails.Student_ID = studentDetails.Student_ID;
+            AcademicDetails.AcademicDet_ID = (decimal)studentDetails.CurrentAcaDetail_ID;
+            AcademicDetails.Remarks = studentDetails.Remarks;
+            AcademicDetails.Standard_ID = (short)studentDetails.CurrentStd_ID;
+            AcademicDetails.Section_ID = studentAcademicDetails.Section_ID;
+            AcademicDetails.AcademicYearStart = studentAcademicDetails.AcademicYearStart;
+            AcademicDetails.AcademicYearEnd = studentAcademicDetails.AcademicYearEnd;
+            AcademicDetails.IsActive = true;
 
-                STUD_StudentAcademic_Details academicResult = _StudentAcademicRepository.Insert(studentAcademicDetails);
-            }
-            return studentResult;          
+            STUD_StudentAcademic_Details academicdetails = _StudentAcademicRepository.Insert(AcademicDetails);
+            studentDetails.CurrentAcaDetail_ID = academicdetails.AcademicDet_ID;
+            _StudentRepository.Update(studentDetails);
+
+            return AcademicDetails;
         }
     }
 }

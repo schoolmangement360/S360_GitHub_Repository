@@ -1,6 +1,7 @@
 ﻿using S360BusinessLogic;
 using S360Controlls.BasicControls;
 using S360Entity;
+using S360Exceptions;
 using S360Model;
 using System;
 using System.Collections.Generic;
@@ -132,6 +133,16 @@ namespace S360
         /// <summary>
         /// Variable to Store Property
         /// </summary>
+        private string _religiontext;
+
+        /// <summary>
+        /// Variable to Store Property
+        /// </summary>
+        private string _gender;
+
+        /// <summary>
+        /// Variable to Store Property
+        /// </summary>
         private string _mobile1;
 
         /// <summary>
@@ -184,6 +195,11 @@ namespace S360
         /// </summary>
         private ICommand _saveCommand;
 
+        /// <summary>
+        /// Command TO Cancel
+        /// </summary>
+        private ICommand _cancelCommand;
+
         #endregion
 
         #region Constructor
@@ -218,6 +234,22 @@ namespace S360
                 }
 
                 return this._clearAllCommand;
+            }
+        }
+
+        /// <summary>
+        /// Cancel Button Click
+        /// </summary>
+        public ICommand CancelCommand
+        {
+            get
+            {
+                if (this._cancelCommand == null)
+                {
+                    this._cancelCommand = new RelayCommand<object>(this.ExecuteCancelCommand, this.CanExecuteCancelCommand);
+                }
+
+                return this._cancelCommand;
             }
         }
 
@@ -536,6 +568,34 @@ namespace S360
 
         }
 
+        public string ReligionText
+        {
+            get
+            {
+                return _religiontext;
+            }
+
+            set
+            {
+                _religiontext = value;
+            }
+
+        }
+
+        public string SelectedGender
+        {
+            get
+            {
+                return _gender;
+            }
+
+            set
+            {
+                _gender = value;
+            }
+
+        }
+
         public string Mobile1
         {
             get
@@ -666,6 +726,21 @@ namespace S360
 
         #region Events
 
+        private bool CanExecuteCancelCommand(object sender)
+        {
+            return true;
+        }
+
+        private void ExecuteCancelCommand(object sender)
+        {
+            MessageBoxResult result = WPFCustomMessageBox.CustomMessageBox.ShowOKCancel("Do you want to close this page ?", "S360 Application", "OK", "Cancel");
+            if (result == MessageBoxResult.OK)
+            {
+                UserControl userControl = sender as UserControl;
+                userControl.Visibility = Visibility.Collapsed;
+            }
+        }
+
         private bool CanExecuteClearAllCommand(object sender)
         {
             return true;
@@ -674,6 +749,11 @@ namespace S360
         private void ExecuteClearAllCommand(object sender)
         {
 
+            MessageBoxResult result = WPFCustomMessageBox.CustomMessageBox.ShowOKCancel("Do you want to clear this page ?", "S360 Application", "OK", "Cancel");
+            if (result == MessageBoxResult.OK)
+            {
+                bool clearAll = ValidateControls.ClearAllControls(sender);
+            }
         }
 
         private bool CanExecuteSaveCommand(object sender)
@@ -683,43 +763,130 @@ namespace S360
 
         private void ExecuteSaveCommand(object sender)
         {
-            ControlValidationStatus controlValidationStatus = ValidateControls.ValidateAllControls(sender);
-
-            if (controlValidationStatus != null && !controlValidationStatus.isValid)
+            try
             {
-                return;
+                ControlValidationStatus controlValidationStatus = ValidateControls.ValidateAllControls(sender);
+
+                if (controlValidationStatus != null && !controlValidationStatus.isValid)
+                {
+                    WPFCustomMessageBox.CustomMessageBox.ShowOK(controlValidationStatus.ValidationMessage, "S360 Application", "OK");
+                    return;
+                }
+
+                STUD_Students_Master studentDetails = new STUD_Students_Master();
+
+                if (!string.IsNullOrEmpty(GRNO))
+                    studentDetails.RegNo = GRNO;
+
+                if (!string.IsNullOrEmpty(ReligionText))
+                    studentDetails.Religion = ReligionText;
+
+                if (!string.IsNullOrEmpty(StudentName))
+                    studentDetails.Name = StudentName;
+
+                if (!string.IsNullOrEmpty(FatherName))
+                    studentDetails.FatherName = FatherName;
+
+                if (!string.IsNullOrEmpty(SurName))
+                    studentDetails.Surname = SurName;
+
+                if (!string.IsNullOrEmpty(StudentAddress))
+                    studentDetails.Address = StudentAddress;
+
+                if (!string.IsNullOrEmpty(StudentRemarks))
+                    studentDetails.Remarks = StudentRemarks;
+
+                if (!string.IsNullOrEmpty(MotherTongue))
+                    studentDetails.MotherTongue = MotherTongue;
+
+                if (!string.IsNullOrEmpty(MotherName))
+                    studentDetails.MotherName = MotherName;
+
+                if (!string.IsNullOrEmpty(StudentDivision) && SelectedGender.Length < 4)
+                {
+                    studentDetails.CurrentDiv = StudentDivision;
+                }
+                else
+                {
+                    WPFCustomMessageBox.CustomMessageBox.ShowOK("Invalid Division", "S360 Application", "OK");
+                    return;
+                }
+
+                if (DateOfBirth != null)
+                    studentDetails.DOB = DateOfBirth;
+
+                if (!string.IsNullOrEmpty(Cast))
+                    studentDetails.Caste = Cast;
+
+                if (!string.IsNullOrEmpty(Mobile1))
+                    studentDetails.Mobile1 = Mobile1;
+
+                if (!string.IsNullOrEmpty(Mobile2))
+                    studentDetails.Mobile2 = Mobile2;
+
+                if (!string.IsNullOrEmpty(Mobile3))
+                    studentDetails.Mobile3 = Mobile3;
+
+                if (!string.IsNullOrEmpty(HomeNo))
+                    studentDetails.HomePh = HomeNo;
+
+                if (!string.IsNullOrEmpty(WorkNo))
+                    studentDetails.WorkPh = WorkNo;
+
+                if (!string.IsNullOrEmpty(Email))
+                    studentDetails.Email = Email;
+
+                if (!string.IsNullOrEmpty(RFID))
+                    studentDetails.RFIDTag = RFID;
+
+                if (!string.IsNullOrEmpty(AadharNo))
+                    studentDetails.AadharNo = AadharNo;
+
+                if (!string.IsNullOrEmpty(Contact1))
+                    studentDetails.PrimaryContact = Contact1;
+
+                if (SelectedCategory != null)
+                    studentDetails.Category_ID = SelectedCategory.Category_Id;
+
+                if (SelectedStandard != null)
+                    studentDetails.CurrentStd_ID = SelectedStandard.Standard_Id;
+
+                if (SelectedLanguage != null)
+                    studentDetails.Language_ID = SelectedLanguage.Language_Id;
+
+                if (!string.IsNullOrEmpty(SelectedGender) && SelectedGender.Length < 2)
+                    studentDetails.Gender = SelectedGender;
+
+                if (SelectedReligion != null)
+                    studentDetails.Religion_ID = SelectedReligion.Religion_Id;
+
+                studentDetails.CurrentAcaDetail_ID = 1;
+                studentDetails.LastModifiedBy_ID = S360Configuration.Instance.UserID;
+                studentDetails.LastModifiedOn = DateTime.Now;
+                studentDetails.IsActive = true;
+                studentDetails.EnteredBy_ID = S360Configuration.Instance.UserID;
+                studentDetails.EnteredOn = DateTime.Now;
+
+                STUD_Students_Master studentdetails = studentBusinessLogic.SaveStudent(studentDetails);
+
+                if (studentdetails != null)
+                {
+                    STUD_StudentAcademic_Details AcademicDetails = new STUD_StudentAcademic_Details();
+                    AcademicDetails.Section_ID = SelectedSection.Section_Id;
+                    AcademicDetails.AcademicYearStart = S360Configuration.Instance.AcademicYearStart;
+                    AcademicDetails.AcademicYearEnd = S360Configuration.Instance.AcademicYearEnd;
+                    STUD_StudentAcademic_Details result = studentBusinessLogic.SaveStudentAcademicDetails(studentdetails, AcademicDetails);
+                    if (result != null)
+                    {
+                        WPFCustomMessageBox.CustomMessageBox.ShowOK("Student Saved Sucessfull", "S360 Application", "OK");
+                        bool clearAll = ValidateControls.ClearAllControls(sender);
+                    }
+                }
             }
-
-            STUD_Students_Master studentDetails = new STUD_Students_Master
+            catch (Exception ex)
             {
-                RegNo = GRNO,
-                Name = StudentName,
-                FatherName = FatherName,
-                Surname = SurName,
-                Address = StudentAddress,
-                Remarks = StudentRemarks,
-                MotherTongue = MotherTongue,
-                CurrentDiv = StudentDivision,
-                DOB = DateOfBirth,
-                Caste = Cast,
-                Mobile1 = Mobile1,
-                Mobile2 = Mobile2,
-                Mobile3 = Mobile3,
-                HomePh = HomeNo,
-                WorkPh = WorkNo,
-                Email = Email,
-                RFIDTag = RFID,
-                AadharNo = AadharNo,
-                PrimaryContact = Contact1,
-                Category_ID = SelectedCategory.Category_Id,
-                CurrentStd_ID = SelectedStandard.Standard_Id,
-                Language_ID = SelectedLanguage.Language_Id,
-                Gender = "",
-                Religion_ID = SelectedReligion.Religion_Id,
-                CurrentAcaDetail_ID = 0
-            };
-
-            STUD_Students_Master result = studentBusinessLogic.SaveStudent(studentDetails);
+                throw new S360Exception(ex.Message, ex.InnerException);
+            }
         }
 
         #endregion

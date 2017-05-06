@@ -25,7 +25,7 @@ namespace S360Entity
         public string Bank { get; set; }
         public Nullable<decimal> ChqAmount { get; set; }
         public string Remarks { get; set; }
-        public Nullable<byte> ChqStatus_ID { get; set; }
+        public Nullable<int> ChqStatus_ID { get; set; }
         public Nullable<bool> IsActive { get; set; }
     }
 }

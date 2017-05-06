@@ -5,5 +5,11 @@
     <Setting Name="ApplicationTimeOut" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">50000</Value>
     </Setting>
+    <Setting Name="AcademicYearStart" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2017</Value>
+    </Setting>
+    <Setting Name="AcademicYearEnd" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2018</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -23,7 +23,5 @@ namespace S360Entity
         public string AccountNo { get; set; }
         public bool IsActive { get; set; }
         public Nullable<decimal> CancelledBy_ID { get; set; }
-    
-        public virtual CHQ_Cheques_Master CHQ_Cheques_Master { get; set; }
     }
 }

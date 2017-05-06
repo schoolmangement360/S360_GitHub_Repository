@@ -93,6 +93,10 @@ namespace S360
 
             if (Result.IsLogin)
             {
+                S360Configuration.Instance.UserID = Result.UserID;
+                S360Configuration.Instance.AcademicYearStart = Properties.Settings.Default.AcademicYearStart;
+                S360Configuration.Instance.AcademicYearEnd = Properties.Settings.Default.AcademicYearEnd;
+
                 txtMessageInfo.Text = string.Empty;
                 txtUserName.Clear();
                 pswPassword.Clear();

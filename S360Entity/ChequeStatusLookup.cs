@@ -14,7 +14,7 @@ namespace S360Entity
     
     public partial class ChequeStatusLookup
     {
-        public byte ChqStatus_ID { get; set; }
+        public short ChqStatus_ID { get; set; }
         public string StatusName { get; set; }
     }
 }
