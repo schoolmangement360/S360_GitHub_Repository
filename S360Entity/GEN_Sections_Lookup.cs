@@ -14,17 +14,8 @@ namespace S360Entity
     
     public partial class GEN_Sections_Lookup
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public GEN_Sections_Lookup()
-        {
-            this.STUD_StudentAcademic_Details = new HashSet<STUD_StudentAcademic_Details>();
-        }
-    
-        public byte Section_Id { get; set; }
+        public short Section_Id { get; set; }
         public string Name { get; set; }
         public bool IsActive { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<STUD_StudentAcademic_Details> STUD_StudentAcademic_Details { get; set; }
     }
 }

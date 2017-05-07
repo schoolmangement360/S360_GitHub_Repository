@@ -21,7 +21,5 @@ namespace S360Entity
         public Nullable<decimal> Login_ID { get; set; }
         public Nullable<System.DateTime> ClearedDate { get; set; }
         public Nullable<bool> IsActive { get; set; }
-    
-        public virtual CHQ_Cheques_Master CHQ_Cheques_Master { get; set; }
     }
 }

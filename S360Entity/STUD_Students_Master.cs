@@ -14,12 +14,6 @@ namespace S360Entity
     
     public partial class STUD_Students_Master
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public STUD_Students_Master()
-        {
-            this.STUD_StudentAcademic_Details = new HashSet<STUD_StudentAcademic_Details>();
-        }
-    
         public decimal Student_ID { get; set; }
         public string RegNo { get; set; }
         public string Gender { get; set; }
@@ -30,12 +24,12 @@ namespace S360Entity
         public string MotherTongue { get; set; }
         public string Religion { get; set; }
         public string Caste { get; set; }
-        public Nullable<byte> Religion_ID { get; set; }
+        public Nullable<int> Religion_ID { get; set; }
         public Nullable<int> Language_ID { get; set; }
-        public Nullable<byte> Category_ID { get; set; }
+        public Nullable<int> Category_ID { get; set; }
         public Nullable<System.DateTime> DOB { get; set; }
         public Nullable<decimal> CurrentAcaDetail_ID { get; set; }
-        public Nullable<byte> CurrentStd_ID { get; set; }
+        public Nullable<int> CurrentStd_ID { get; set; }
         public string CurrentDiv { get; set; }
         public string Address { get; set; }
         public string Mobile1 { get; set; }
@@ -54,12 +48,5 @@ namespace S360Entity
         public Nullable<System.DateTimeOffset> EnteredOn { get; set; }
         public decimal LastModifiedBy_ID { get; set; }
         public Nullable<System.DateTimeOffset> LastModifiedOn { get; set; }
-    
-        public virtual GEN_Religions_Lookup GEN_Religions_Lookup { get; set; }
-        public virtual GEN_Standards_Lookup GEN_Standards_Lookup { get; set; }
-        public virtual GEN_StudentCategory_Lookup GEN_StudentCategory_Lookup { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<STUD_StudentAcademic_Details> STUD_StudentAcademic_Details { get; set; }
-        public virtual STUD_StudentAcademic_Details STUD_StudentAcademic_Details1 { get; set; }
     }
 }

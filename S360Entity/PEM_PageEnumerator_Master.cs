@@ -14,20 +14,11 @@ namespace S360Entity
     
     public partial class PEM_PageEnumerator_Master
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PEM_PageEnumerator_Master()
-        {
-            this.PEM_AssignedPermissions_Details = new HashSet<PEM_AssignedPermissions_Details>();
-        }
-    
         public decimal Page_ID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public System.DateTimeOffset EnteredOn { get; set; }
         public bool IsActive { get; set; }
         public System.DateTimeOffset LastModifiedOn { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PEM_AssignedPermissions_Details> PEM_AssignedPermissions_Details { get; set; }
     }
 }

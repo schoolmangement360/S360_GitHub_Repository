@@ -14,19 +14,7 @@ namespace S360Entity
     
     public partial class CHQ_ChequeStatus_Lookup
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CHQ_ChequeStatus_Lookup()
-        {
-            this.CHQ_Cheques_Master = new HashSet<CHQ_Cheques_Master>();
-            this.CHQ_DeletedCheque_Details = new HashSet<CHQ_DeletedCheque_Details>();
-        }
-    
-        public byte ChqStatus_ID { get; set; }
+        public short ChqStatus_ID { get; set; }
         public string StatusName { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CHQ_Cheques_Master> CHQ_Cheques_Master { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CHQ_DeletedCheque_Details> CHQ_DeletedCheque_Details { get; set; }
     }
 }

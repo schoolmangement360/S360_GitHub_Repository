@@ -22,7 +22,5 @@ namespace S360Entity
         public bool GrantDelete { get; set; }
         public decimal EnteredBy_ID { get; set; }
         public Nullable<System.DateTimeOffset> LastModifiedOn { get; set; }
-    
-        public virtual PEM_PageEnumerator_Master PEM_PageEnumerator_Master { get; set; }
     }
 }

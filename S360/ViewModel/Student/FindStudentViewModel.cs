@@ -1,12 +1,9 @@
 ﻿using S360Entity;
 using S360Model;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Linq;
+using System.Data;
 
 namespace S360.ViewModel.Student
 {
@@ -27,12 +24,12 @@ namespace S360.ViewModel.Student
         /// <summary>
         /// collection variable to store all search result students
         /// </summary>
-        private ObservableCollection<StudentBaseModel> _studentsList = null;
+        private ObservableCollection<PromoteStudentModel> _studentsList = null;
 
         /// <summary>
         /// Variable to store selected student
         /// </summary>
-        private StudentBaseModel _selectedStudent = null;
+        private PromoteStudentModel _selectedStudent = null;
 
         /// <summary>
         /// command to search students
@@ -48,6 +45,11 @@ namespace S360.ViewModel.Student
         /// command to select a student
         /// </summary>
         private ICommand _selectCommand = null;
+
+        /// <summary>
+        /// command to select item on mouse doubleclick
+        /// </summary>
+        private ICommand _listViewDoubleClickCommand = null;
 
         #endregion
 
@@ -69,14 +71,15 @@ namespace S360.ViewModel.Student
         /// <summary>
         /// Gets students list to bind on data grid
         /// </summary>
-        public ObservableCollection<StudentBaseModel> StudentsList
+        public ObservableCollection<PromoteStudentModel> StudentsList
         {
             get
             {
                 if (_studentsList == null)
-                    _studentsList = new ObservableCollection<StudentBaseModel>();
+                    _studentsList = new ObservableCollection<PromoteStudentModel>();
                 return _studentsList;
             }
+            set { _studentsList = value; }
         }
 
         public GEN_Sections_Lookup SelectedSection
@@ -90,12 +93,12 @@ namespace S360.ViewModel.Student
             set { _selectedSection = value; }
         }
 
-        public StudentBaseModel SelectedStudent
+        public PromoteStudentModel SelectedStudent
         {
             get
             {
                 if (_selectedStudent == null)
-                    _selectedStudent = new StudentBaseModel();
+                    _selectedStudent = new PromoteStudentModel();
                 return _selectedStudent;
             }
             set { _selectedStudent = value; }
@@ -131,6 +134,16 @@ namespace S360.ViewModel.Student
             }
         }
 
+        public ICommand ListViewDoubleClickCommand
+        {
+            get
+            {
+                if (_listViewDoubleClickCommand == null)
+                    _listViewDoubleClickCommand = new RelayCommand<object>(this.ExecuteListViewDoubleClickCommand, this.CanExecuteListViewDoubleClickCommand);
+                return _listViewDoubleClickCommand;
+            }
+        }
+
         #endregion
 
         #region  [ Events ]
@@ -142,22 +155,27 @@ namespace S360.ViewModel.Student
 
         private void ExecuteSearchCommand(object sender)
         {
-            this._studentsList = new ObservableCollection<StudentBaseModel>();
-            _studentsList.Add(new StudentBaseModel()
+            if (this._studentsList == null)
+                this._studentsList = new ObservableCollection<PromoteStudentModel>();
+            _studentsList.Add(new PromoteStudentModel()
             {
                 RegNo = "1",
                 StudentId = 1,
                 Name = "Mathew",
                 SurName = "Markose",
-                Father = "Markose"
+                Father = "Markose",
+                Standard = "10",
+                Division = "D"
             });
-            _studentsList.Add(new StudentBaseModel()
+            _studentsList.Add(new PromoteStudentModel()
             {
                 RegNo = "2",
                 StudentId = 2,
                 Name = "Martin",
                 SurName = "Markose",
-                Father = "Markose"
+                Father = "Markose",
+                Standard = "12",
+                Division = "B"
             });
         }
 
@@ -178,7 +196,34 @@ namespace S360.ViewModel.Student
 
         private void ExecuteSelectCommand(object sender)
         {
-            
+            SelectStudent();
+        }
+
+        private bool CanExecuteListViewDoubleClickCommand(object sender)
+        {
+            return true;
+        }
+
+        private void ExecuteListViewDoubleClickCommand(object sender)
+        {
+
+        }
+
+        #endregion
+
+        #region [ Private Methods ]
+
+        private void SelectStudent()
+        {
+            foreach (System.Windows.Window wind in System.Windows.Application.Current.Windows)
+            {
+                if (wind.GetType() == typeof(View.Student.UC_FindStudentScreen))
+                {
+                    wind.DialogResult = true;
+                    wind.Close();
+                    break;
+                }
+            }
         }
 
         #endregion

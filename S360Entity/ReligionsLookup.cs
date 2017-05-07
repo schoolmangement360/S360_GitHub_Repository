@@ -14,7 +14,7 @@ namespace S360Entity
     
     public partial class ReligionsLookup
     {
-        public byte Religion_Id { get; set; }
+        public short Religion_Id { get; set; }
         public string Name { get; set; }
         public bool IsActive { get; set; }
     }

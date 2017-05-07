@@ -18,7 +18,7 @@ namespace S360Entity
         public decimal Student_ID { get; set; }
         public decimal LastAcadDetail_ID { get; set; }
         public decimal CurrentAcadDetail_ID { get; set; }
-        public byte Status_ID { get; set; }
+        public Nullable<int> Status_ID { get; set; }
         public decimal EnteredBy { get; set; }
         public decimal Login_ID { get; set; }
     }

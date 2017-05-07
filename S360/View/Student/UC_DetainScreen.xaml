@@ -98,7 +98,7 @@
             <Button Name="btnAddToList" Content="Add To List" Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="3" Style="{StaticResource MetroButton}"
                     Command="{Binding AddtToListCommand}"/>
 
-            <DataGrid Name="dtgStudentList" Grid.Row="7" Grid.RowSpan="10" Grid.Column="1" Grid.ColumnSpan="18"
+            <!--<DataGrid Name="dtgStudentList" Grid.Row="7" Grid.RowSpan="10" Grid.Column="1" Grid.ColumnSpan="18"
                       ItemsSource="{Binding DetainStudentList, Mode=OneWay}" AutoGenerateColumns="False">
 
                 <DataGrid.Columns>
@@ -110,7 +110,10 @@
                     <DataGridTextColumn Header="Detain" Binding="{Binding Standard}" Width="100*" MinWidth="100" />
                     <DataGridTextColumn Header="User" Binding="{Binding User.Name}" Width="100*" MinWidth="100"/>
                 </DataGrid.Columns>
-            </DataGrid>
+            </DataGrid>-->
+
+            <ListView Name="lvStudentList" Grid.Row="7" Grid.RowSpan="10" Grid.Column="1" Grid.ColumnSpan="18"
+                      ItemsSource="{Binding DetainStudentList, NotifyOnSourceUpdated=True}" />
 
             <Button Name="btnCancel" Content="Cancel" Grid.Row="18" Grid.Column="11" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}"
                     Command="{Binding CancelCommand}"/>

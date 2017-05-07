@@ -14,7 +14,7 @@ namespace S360Entity
     
     public partial class StudentCategoryLookup
     {
-        public byte Category_Id { get; set; }
+        public short Category_Id { get; set; }
         public string Name { get; set; }
         public bool IsActive { get; set; }
     }

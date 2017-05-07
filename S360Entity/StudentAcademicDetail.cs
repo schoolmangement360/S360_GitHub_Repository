@@ -17,7 +17,7 @@ namespace S360Entity
         public decimal AcademicDet_ID { get; set; }
         public string RegNo { get; set; }
         public decimal Student_ID { get; set; }
-        public byte Section_ID { get; set; }
+        public Nullable<int> Section_ID { get; set; }
         public Nullable<short> Standard_ID { get; set; }
         public Nullable<short> Division { get; set; }
         public Nullable<int> AcademicYearStart { get; set; }

@@ -303,16 +303,15 @@ namespace S360.ViewModel.Student
             findStudentVM.SelectedSection = this._selectedSection;
             findStuent.DataContext = findStudentVM;
             if (findStuent.ShowDialog() == true)
+            {
                 findStudentVM = findStuent.DataContext as FindStudentViewModel;
 
-            this._currentStudent = new DetainStudentModel()
-            {
-                StudentId = findStudentVM.SelectedStudent.StudentId,
-                RegNo = findStudentVM.SelectedStudent.RegNo,
-                Name = findStudentVM.SelectedStudent.Name,
-                SurName = findStudentVM.SelectedStudent.SurName,
-                Father = findStudentVM.SelectedStudent.Father
-            };
+                this.CurrentStudent.StudentId = findStudentVM.SelectedStudent.StudentId;
+                this.CurrentStudent.RegNo = findStudentVM.SelectedStudent.RegNo;
+                this.CurrentStudent.Name = findStudentVM.SelectedStudent.Name;
+                this.CurrentStudent.SurName = findStudentVM.SelectedStudent.SurName;
+                this.CurrentStudent.Father = findStudentVM.SelectedStudent.Father;
+            }
         }
 
         #endregion

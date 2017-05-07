@@ -14,18 +14,9 @@ namespace S360Entity
     
     public partial class GEN_Standards_Lookup
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public GEN_Standards_Lookup()
-        {
-            this.STUD_Students_Master = new HashSet<STUD_Students_Master>();
-        }
-    
-        public byte Standard_Id { get; set; }
+        public short Standard_Id { get; set; }
         public string Name { get; set; }
         public bool IsActive { get; set; }
-        public Nullable<byte> Section_Id { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<STUD_Students_Master> STUD_Students_Master { get; set; }
+        public Nullable<int> Section_Id { get; set; }
     }
 }
