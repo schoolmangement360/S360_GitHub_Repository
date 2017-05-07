@@ -35,8 +35,15 @@ namespace S360
         {
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
 
-            LoginScreen loginScreen = new LoginScreen();
-            loginScreen.ShowDialog();
+            try
+            {
+                LoginScreen loginScreen = new LoginScreen();
+                loginScreen.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                WPFCustomMessageBox.CustomMessageBox.ShowOK(ex.Message, "S360 Application", "OK");
+            }
         }
 
         void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)

@@ -52,6 +52,34 @@ namespace S360
             return ValidationStatus;
         }
 
+        public static bool ClearAllControls(object ValidationWindow)
+        {
+            dynamic userControl = ValidationWindow as UserControl;
+            ControlValidationStatus ValidationStatus = new ControlValidationStatus();
+
+            if (userControl == null)
+            {
+                userControl = ValidationWindow as Window;
+            }
+
+            foreach (S360TextBox tb in FindVisualChildren<S360TextBox>(userControl))
+            {
+                tb.Clear();
+            }
+
+            foreach (S360ComboBox cb in FindVisualChildren<S360ComboBox>(userControl))
+            {
+                cb.SelectedIndex = -1;
+            }
+
+            foreach (S360RichTextBox rtb in FindVisualChildren<S360RichTextBox>(userControl))
+            {
+                rtb.AppendText(string.Empty);
+            }
+
+            return true;
+        }
+
         private static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
         {
             if (depObj != null)

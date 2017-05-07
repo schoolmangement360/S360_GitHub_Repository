@@ -45,6 +45,22 @@ namespace S360
         /// </summary>
         public decimal LoginID { get; set; }
 
+        /// <summary>
+        /// Store User ID
+        /// </summary>
+        public decimal UserID { get; set; }
+
+        /// <summary>
+        /// Store UsAcademic Year Starter
+        /// </summary>
+        public int AcademicYearStart { get; set; }
+
+        /// <summary>
+        /// Store Academic Year End
+        /// </summary>
+        public int AcademicYearEnd { get; set; }
+
+
         #endregion
     }
 }

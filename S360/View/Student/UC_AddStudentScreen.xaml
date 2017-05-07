@@ -160,15 +160,18 @@
 
                         <BasicControls:S360TextBlock Text="Gender" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" />
                         <BasicControls:S360ComboBox Name="cmbGender" IsEditable="True" Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="3" 
-                                                    Style="{StaticResource S360ComboBoxStyle}" IsReadOnly="True" Text="Select Gender">
+                                                    Style="{StaticResource S360ComboBoxStyle}" IsReadOnly="True" Text="Select Gender"
+                                                    SelectedValue="{Binding SelectedGender,Mode=TwoWay}">
                             <ComboBoxItem Name="Male">Male</ComboBoxItem>
                             <ComboBoxItem Name="Female">Female</ComboBoxItem>
+                            <ComboBoxItem Name="Other">Female</ComboBoxItem>
                         </BasicControls:S360ComboBox>
                         <BasicControls:S360TextBlock Text="Date of Birth" Grid.Row="6" Grid.Column="8" Grid.ColumnSpan="2" />
                         <DatePicker Name="tpDOB" Grid.Row="6" Grid.Column="11" Grid.ColumnSpan="3" FontSize="20" />
 
                         <BasicControls:S360TextBlock Text="Religion" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" />
-                        <BasicControls:S360TextBox Name="txtReligion" Grid.Row="7" Grid.Column="3" Grid.ColumnSpan="4" Style="{StaticResource S360TextBoxStyle}" />
+                        <BasicControls:S360TextBox Name="txtReligion" Grid.Row="7" Grid.Column="3" Grid.ColumnSpan="4" Style="{StaticResource S360TextBoxStyle}"
+                                                   Text="{Binding ReligionText,Mode=TwoWay}"/>
                         <BasicControls:S360TextBlock Text="Caste" Grid.Row="7" Grid.Column="8" Grid.ColumnSpan="2" />
                         <BasicControls:S360TextBox Name="txtCaste" Grid.Row="7" Grid.Column="10" Grid.ColumnSpan="4" Style="{StaticResource S360TextBoxStyle}" 
                                                    Text="{Binding Cast,Mode=TwoWay}" ControlValidation="True" ControlValidationMessage="Enter Student Caste"/>
@@ -321,8 +324,8 @@
             <BasicControls:S360TextBox Name="rtxtRemarks" Grid.Row="16" Grid.RowSpan="2" Grid.Column="3" Grid.ColumnSpan="16" Margin="0,4,0,0"
                                            Text="{Binding StudentRemarks,Mode=TwoWay}" ControlValidation="True" ControlValidationMessage="Enter Student Remarks"/>
 
-            <Button Name="btnCancel" Content="Cancel" Grid.Row="20" Grid.Column="12" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" />
-            <Button Name="btnClearAll" Content="Clear All" Grid.Row="20" Grid.Column="14" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" Command="{Binding ClearAllCommand}" />
+            <Button Name="btnCancel" Content="Cancel" Grid.Row="20" Grid.Column="12" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" Command="{Binding CancelCommand}" CommandParameter="{Binding ElementName=AddStudentScreen}" />
+            <Button Name="btnClearAll" Content="Clear All" Grid.Row="20" Grid.Column="14" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" Command="{Binding ClearAllCommand}" CommandParameter="{Binding ElementName=AddStudentScreen}" />
             <Button Name="btnShowFeesPaid" Content="Show Fees Paid" Grid.Row="20" Grid.Column="16" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" />
             <Button Name="btnSave" Content="Save" Grid.Row="20" Grid.Column="18" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" Command="{Binding SaveCommand}" CommandParameter="{Binding ElementName=AddStudentScreen}" />
 
