@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System.Linq;
 using System.Data;
+using S360BusinessLogic;
 
 namespace S360.ViewModel.Student
 {
@@ -79,7 +80,6 @@ namespace S360.ViewModel.Student
                     _studentsList = new ObservableCollection<PromoteStudentModel>();
                 return _studentsList;
             }
-            set { _studentsList = value; }
         }
 
         public GEN_Sections_Lookup SelectedSection
@@ -150,33 +150,43 @@ namespace S360.ViewModel.Student
 
         private bool CanExecuteSearchCommand(object sender)
         {
-            return true;
+            if (!string.IsNullOrEmpty(_findString))
+                return true;
+            return false;
         }
 
         private void ExecuteSearchCommand(object sender)
         {
-            if (this._studentsList == null)
-                this._studentsList = new ObservableCollection<PromoteStudentModel>();
-            _studentsList.Add(new PromoteStudentModel()
+            StudentBusinessLogic studentBussiness = new StudentBusinessLogic();
+            _studentsList.Clear();
+            System.Collections.Generic.IEnumerable<STUD_Students_Master> students = studentBussiness.GetStudentsBySearchStringAndSection
+                (this._findString, this.SelectedSection.Section_Id);
+            if (students == null || students.Count() < 1)
             {
-                RegNo = "1",
-                StudentId = 1,
-                Name = "Mathew",
-                SurName = "Markose",
-                Father = "Markose",
-                Standard = "10",
-                Division = "D"
-            });
-            _studentsList.Add(new PromoteStudentModel()
+                WPFCustomMessageBox.CustomMessageBox.Show("Could Not Find Any Student");
+                this._findString = string.Empty;
+            }
+            else
             {
-                RegNo = "2",
-                StudentId = 2,
-                Name = "Martin",
-                SurName = "Markose",
-                Father = "Markose",
-                Standard = "12",
-                Division = "B"
-            });
+                foreach (STUD_Students_Master st in students)
+                {
+                    _studentsList.Add(new PromoteStudentModel()
+                    {
+                        Division = st.CurrentDiv,
+                        Father = st.FatherName,
+                        LastAcademicDetID = (long)st.CurrentAcaDetail_ID,
+                        Name = st.Name,
+                        RegNo = st.RegNo,
+                        SatusID = 0,
+                        Section = this.SelectedSection.Name,
+                        SectionId = this.SelectedSection.Section_Id,
+                        Standard = studentBussiness.GetAllStandards().Where(S => S.Standard_Id == st.CurrentStd_ID).FirstOrDefault().Name,
+                        StandardID = (short)st.CurrentStd_ID,
+                        StudentId = (long)st.Student_ID,
+                        SurName = st.Surname
+                    });
+                }
+            }
         }
 
         private bool CanExecuteCancelCommand(object sender)
@@ -186,7 +196,7 @@ namespace S360.ViewModel.Student
 
         private void ExecuteCancelCommand(object sender)
         {
-            System.Windows.MessageBox.Show("Cancelling");
+            SelectStudent(false);
         }
 
         private bool CanExecuteSelectCommand(object sender)
@@ -196,7 +206,7 @@ namespace S360.ViewModel.Student
 
         private void ExecuteSelectCommand(object sender)
         {
-            SelectStudent();
+            SelectStudent(true);
         }
 
         private bool CanExecuteListViewDoubleClickCommand(object sender)
@@ -213,13 +223,13 @@ namespace S360.ViewModel.Student
 
         #region [ Private Methods ]
 
-        private void SelectStudent()
+        private void SelectStudent(bool DialogueResult)
         {
             foreach (System.Windows.Window wind in System.Windows.Application.Current.Windows)
             {
                 if (wind.GetType() == typeof(View.Student.UC_FindStudentScreen))
                 {
-                    wind.DialogResult = true;
+                    wind.DialogResult = DialogueResult;
                     wind.Close();
                     break;
                 }

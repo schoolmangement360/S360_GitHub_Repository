@@ -171,6 +171,7 @@
     <Compile Include="Repository\StandardRepository.cs" />
     <Compile Include="Repository\StudentAcademicRepository.cs" />
     <Compile Include="Repository\StudentCategoryRepository.cs" />
+    <Compile Include="Repository\StudentDetainPromotionRepository.cs" />
     <Compile Include="Repository\StudentRepository.cs" />
     <Compile Include="Repository\UserCredentialRepository.cs" />
     <Compile Include="Repository\UserLoginDetailRepository.cs" />

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace S360.ViewModel.Student
 {
-    public class DetainStudentViewModel
+    public class DetainStudentViewModel : ViewModelBase
     {
         #region [ Private Variables ]
 
@@ -36,6 +36,11 @@ namespace S360.ViewModel.Student
         private DetainStudentModel _currentStudent = null;
 
         /// <summary>
+        /// Variable to store student to remove from detain list
+        /// </summary>
+        private DetainStudentModel _currentRemovableStudent = null;
+
+        /// <summary>
         /// Variable to store list of student to detain
         /// </summary>
         private ObservableCollection<DetainStudentModel> _detainStudentList = null;
@@ -48,7 +53,7 @@ namespace S360.ViewModel.Student
         /// <summary>
         /// Command to add selected student to detain list
         /// </summary>
-        private System.Windows.Input.ICommand _addtToListCommand = null;
+        private System.Windows.Input.ICommand _addToListCommand = null;
 
         /// <summary>
         /// Command to cancel the page
@@ -116,7 +121,11 @@ namespace S360.ViewModel.Student
                     _oldSection = new GEN_Sections_Lookup();
                 return _oldSection;
             }
-            set { _oldSection = value; }
+            set
+            {
+                _oldSection = value;
+                RaisePropertyChanged("OldSection");
+            }
         }
 
         /// <summary>
@@ -130,6 +139,25 @@ namespace S360.ViewModel.Student
                     _currentStudent = new DetainStudentModel();
                 return _currentStudent;
             }
+            set
+            {
+                _currentStudent = value;
+                RaisePropertyChanged("CurrentStudent");
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets student to remove from detain list
+        /// </summary>
+        public DetainStudentModel CurrentRemovableStudent
+        {
+            get
+            {
+                if (_currentRemovableStudent == null)
+                    _currentRemovableStudent = new DetainStudentModel();
+                return _currentRemovableStudent;
+            }
+            set { _currentRemovableStudent = value; }
         }
 
         /// <summary>
@@ -143,7 +171,6 @@ namespace S360.ViewModel.Student
                     _detainStudentList = new ObservableCollection<DetainStudentModel>();
                 return _detainStudentList;
             }
-            set { _detainStudentList = value; }
         }
 
         /// <summary>
@@ -166,9 +193,9 @@ namespace S360.ViewModel.Student
         {
             get
             {
-                if (_addtToListCommand == null)
-                    _addtToListCommand = new RelayCommand<object>(this.ExecuteAddToListCommand, this.CanExecuteAddToListCommand);
-                return _addtToListCommand;
+                if (_addToListCommand == null)
+                    _addToListCommand = new RelayCommand<object>(this.ExecuteAddToListCommand, this.CanExecuteAddToListCommand);
+                return _addToListCommand;
             }
         }
 
@@ -240,12 +267,15 @@ namespace S360.ViewModel.Student
 
         private bool CanExecuteRemoveCommand(object sender)
         {
-            return true;
+            DetainStudentModel detainStudent = this.DetainStudentList.Where(S => S.StudentId == this.CurrentRemovableStudent.StudentId).FirstOrDefault();
+            if (detainStudent != null)
+                return true;
+            return false;
         }
 
         private void ExecuteRemoveCommand(object sender)
         {
-
+            this.DetainStudentList.Remove(this.CurrentRemovableStudent);
         }
 
         private bool CanExecuteClearAllCommand(object sender)
@@ -255,7 +285,10 @@ namespace S360.ViewModel.Student
 
         private void ExecuteClearAllCommand(object sender)
         {
-
+            this.DetainStudentList.Clear();
+            this.CurrentStudent = null;
+            this.CurrentRemovableStudent = null;
+            this.OldSection = null;
         }
 
         private bool CanExecuteCancelCommand(object sender)
@@ -265,34 +298,53 @@ namespace S360.ViewModel.Student
 
         private void ExecuteCancelCommand(object sender)
         {
-
+            foreach(System.Windows.Window currentWindow in System.Windows.Application.Current.Windows)
+            {
+                if(currentWindow.GetType() == typeof(UC_DetainScreen))
+                {
+                    currentWindow.Close();
+                    break;
+                }
+            }
         }
 
         private bool CanExecuteAddToListCommand(object sender)
         {
+            if (string.IsNullOrEmpty(this._currentStudent.Name))
+                return false;
+
+            DetainStudentModel existingStudent = this.DetainStudentList.Where(S => S.StudentId == this.CurrentStudent.StudentId).FirstOrDefault();
+            if (existingStudent != null)
+                return false;
+
             return true;
         }
 
         private void ExecuteAddToListCommand(object sender)
         {
-            this.DetainStudentList.Add(new DetainStudentModel()
-            {
-                StudentId = _currentStudent.StudentId,
-                RegNo = _currentStudent.RegNo,
-                Name = _currentStudent.Name,
-                SurName = _currentStudent.SurName,
-                Father = _currentStudent.Father,
-                SectionId = _currentStudent.SectionId,
-                Section = _currentStudent.Section,
-                StandardID = _currentStudent.StandardID,
-                Standard = _currentStudent.Standard,
-                User = _currentStudent.User
-            });
+            _currentStudent.StandardID--;
+            _currentStudent.Standard = new StudentBusinessLogic().GetAllStandards().Where(S => S.Standard_Id == _currentStudent.StandardID).FirstOrDefault().Name;
+            this.DetainStudentList.Add(this._currentStudent);
+            //this.DetainStudentList.Add(new DetainStudentModel()
+            //{
+            //    StudentId = _currentStudent.StudentId,
+            //    RegNo = _currentStudent.RegNo,
+            //    Name = _currentStudent.Name,
+            //    SurName = _currentStudent.SurName,
+            //    Father = _currentStudent.Father,
+            //    SectionId = _currentStudent.SectionId,
+            //    Section = _currentStudent.Section,
+            //    StandardID = _currentStudent.StandardID,
+            //    Standard = _currentStudent.Standard,
+            //    User = _currentStudent.User
+            //});
         }
 
         private bool CanExecuteFindStudent(object sender)
         {
-            return true;
+            if (_selectedSection.Section_Id >= 0)
+                return true;
+            return false;
         }
 
         private void ExecuteFindStudent(object sender)
@@ -305,12 +357,21 @@ namespace S360.ViewModel.Student
             if (findStuent.ShowDialog() == true)
             {
                 findStudentVM = findStuent.DataContext as FindStudentViewModel;
+                CurrentStudent = new DetainStudentModel()
+                {
+                    StudentId = findStudentVM.SelectedStudent.StudentId,
+                    RegNo = findStudentVM.SelectedStudent.RegNo,
+                    Name = findStudentVM.SelectedStudent.Name,
+                    SurName = findStudentVM.SelectedStudent.SurName,
+                    Father = findStudentVM.SelectedStudent.Father,
+                    Section = findStudentVM.SelectedSection.Name,
+                    SectionId = findStudentVM.SelectedSection.Section_Id,
+                    StandardID = findStudentVM.SelectedStudent.StandardID,
+                    Standard = findStudentVM.SelectedStudent.Standard
+                };
 
-                this.CurrentStudent.StudentId = findStudentVM.SelectedStudent.StudentId;
-                this.CurrentStudent.RegNo = findStudentVM.SelectedStudent.RegNo;
-                this.CurrentStudent.Name = findStudentVM.SelectedStudent.Name;
-                this.CurrentStudent.SurName = findStudentVM.SelectedStudent.SurName;
-                this.CurrentStudent.Father = findStudentVM.SelectedStudent.Father;
+                OldSection = _sections.Where(Sec => Sec.Section_Id == new StudentBusinessLogic().GetAllStandards().Where(S => S.Standard_Id == (this.CurrentStudent.StandardID - 1))
+                                .FirstOrDefault().Section_Id).FirstOrDefault();
             }
         }
 
