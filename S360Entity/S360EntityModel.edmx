@@ -128,7 +128,7 @@
           <Property Name="Standard_Id" Type="smallint" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
-          <Property Name="Section_Id" Type="int" />
+          <Property Name="Section_Id" Type="smallint" />
         </EntityType>
         <EntityType Name="GEN_StudentCategory_Lookup">
           <Key>
@@ -210,9 +210,9 @@
           <Property Name="AcademicDet_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RegNo" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Student_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Section_ID" Type="int" />
+          <Property Name="Section_ID" Type="smallint" />
           <Property Name="Standard_ID" Type="smallint" />
-          <Property Name="Division" Type="smallint" />
+          <Property Name="Division" Type="varchar" MaxLength="5" />
           <Property Name="AcademicYearStart" Type="int" />
           <Property Name="AcademicYearEnd" Type="int" />
           <Property Name="Remarks" Type="varchar(max)" />
@@ -237,7 +237,7 @@
           <Property Name="Category_ID" Type="int" />
           <Property Name="DOB" Type="date" />
           <Property Name="CurrentAcaDetail_ID" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="CurrentStd_ID" Type="int" />
+          <Property Name="CurrentStd_ID" Type="smallint" />
           <Property Name="CurrentDiv" Type="varchar" MaxLength="5" />
           <Property Name="Address" Type="varchar" MaxLength="500" />
           <Property Name="Mobile1" Type="varchar" MaxLength="15" />
@@ -860,7 +860,6 @@ warning 6002: The table/view 'S360_DB.dbo.UserLoginDetails' does not have a prim
           <EntitySet Name="GEN_Languages_Lookup" EntityType="S360Model.GEN_Languages_Lookup" />
           <EntitySet Name="GEN_Religions_Lookup" EntityType="S360Model.GEN_Religions_Lookup" />
           <EntitySet Name="GEN_Sections_Lookup" EntityType="S360Model.GEN_Sections_Lookup" />
-          <EntitySet Name="GEN_Standards_Lookup" EntityType="S360Model.GEN_Standards_Lookup" />
           <EntitySet Name="GEN_StudentCategory_Lookup" EntityType="S360Model.GEN_StudentCategory_Lookup" />
           <EntitySet Name="GEN_UserCredentials_Master" EntityType="S360Model.GEN_UserCredentials_Master" />
           <EntitySet Name="GEN_UserLogin_Details" EntityType="S360Model.GEN_UserLogin_Details" />
@@ -868,8 +867,6 @@ warning 6002: The table/view 'S360_DB.dbo.UserLoginDetails' does not have a prim
           <EntitySet Name="PEM_PageEnumerator_Master" EntityType="S360Model.PEM_PageEnumerator_Master" />
           <EntitySet Name="STUD_AcademicStatus_Lookup" EntityType="S360Model.STUD_AcademicStatus_Lookup" />
           <EntitySet Name="STUD_DetainingOrPromotions_Details" EntityType="S360Model.STUD_DetainingOrPromotions_Details" />
-          <EntitySet Name="STUD_StudentAcademic_Details" EntityType="S360Model.STUD_StudentAcademic_Details" />
-          <EntitySet Name="STUD_Students_Master" EntityType="S360Model.STUD_Students_Master" />
           <EntitySet Name="AcademicStatusLookups" EntityType="S360Model.AcademicStatusLookup" />
           <EntitySet Name="AssignedPermissionsDetails" EntityType="S360Model.AssignedPermissionsDetail" />
           <EntitySet Name="ChequeCancellationsDetails" EntityType="S360Model.ChequeCancellationsDetail" />
@@ -890,6 +887,9 @@ warning 6002: The table/view 'S360_DB.dbo.UserLoginDetails' does not have a prim
           <EntitySet Name="StudentsMasters" EntityType="S360Model.StudentsMaster" />
           <EntitySet Name="UserCredentialsMasters" EntityType="S360Model.UserCredentialsMaster" />
           <EntitySet Name="UserLoginDetails" EntityType="S360Model.UserLoginDetail" />
+          <EntitySet Name="STUD_Students_Master" EntityType="S360Model.STUD_Students_Master" />
+          <EntitySet Name="STUD_StudentAcademic_Details" EntityType="S360Model.STUD_StudentAcademic_Details" />
+          <EntitySet Name="GEN_Standards_Lookup" EntityType="S360Model.GEN_Standards_Lookup" />
         </EntityContainer>
         <EntityType Name="CHQ_ChequeCancellations_Details">
           <Key>
@@ -1007,15 +1007,6 @@ warning 6002: The table/view 'S360_DB.dbo.UserLoginDetails' does not have a prim
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
         </EntityType>
-        <EntityType Name="GEN_Standards_Lookup">
-          <Key>
-            <PropertyRef Name="Standard_Id" />
-          </Key>
-          <Property Name="Standard_Id" Type="Int16" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="Section_Id" Type="Int32" />
-        </EntityType>
         <EntityType Name="GEN_StudentCategory_Lookup">
           <Key>
             <PropertyRef Name="Category_Id" />
@@ -1088,60 +1079,6 @@ warning 6002: The table/view 'S360_DB.dbo.UserLoginDetails' does not have a prim
           <Property Name="Status_ID" Type="Int32" />
           <Property Name="EnteredBy" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="Login_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-        </EntityType>
-        <EntityType Name="STUD_StudentAcademic_Details">
-          <Key>
-            <PropertyRef Name="AcademicDet_ID" />
-          </Key>
-          <Property Name="AcademicDet_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RegNo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Student_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="Section_ID" Type="Int32" />
-          <Property Name="Standard_ID" Type="Int16" />
-          <Property Name="Division" Type="Int16" />
-          <Property Name="AcademicYearStart" Type="Int32" />
-          <Property Name="AcademicYearEnd" Type="Int32" />
-          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <EntityType Name="STUD_Students_Master">
-          <Key>
-            <PropertyRef Name="Student_ID" />
-          </Key>
-          <Property Name="Student_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RegNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Surname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="FatherName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="MotherName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="MotherTongue" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Religion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Caste" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Religion_ID" Type="Int32" />
-          <Property Name="Language_ID" Type="Int32" />
-          <Property Name="Category_ID" Type="Int32" />
-          <Property Name="DOB" Type="DateTime" Precision="0" />
-          <Property Name="CurrentAcaDetail_ID" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="CurrentStd_ID" Type="Int32" />
-          <Property Name="CurrentDiv" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Mobile1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="Mobile2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="Mobile3" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="HomePh" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="WorkPh" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="RFIDTag" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="AadharNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="PrimaryContact" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="StudPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="EnteredBy_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="EnteredOn" Type="DateTimeOffset" Precision="0" />
-          <Property Name="LastModifiedBy_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="LastModifiedOn" Type="DateTimeOffset" Precision="0" />
         </EntityType>
         <EntityType Name="AcademicStatusLookup">
           <Key>
@@ -1437,6 +1374,69 @@ warning 6002: The table/view 'S360_DB.dbo.UserLoginDetails' does not have a prim
           <Property Name="LogoutTime" Type="DateTimeOffset" Precision="0" />
           <Property Name="HostName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="STUD_Students_Master">
+          <Key>
+            <PropertyRef Name="Student_ID" />
+          </Key>
+          <Property Name="Student_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FatherName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MotherName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MotherTongue" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Religion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Caste" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Religion_ID" Type="Int32" />
+          <Property Name="Language_ID" Type="Int32" />
+          <Property Name="Category_ID" Type="Int32" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="CurrentAcaDetail_ID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="CurrentStd_ID" Type="Int16" />
+          <Property Name="CurrentDiv" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile3" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="HomePh" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="WorkPh" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RFIDTag" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AadharNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PrimaryContact" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="StudPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="EnteredBy_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="EnteredOn" Type="DateTimeOffset" Precision="0" />
+          <Property Name="LastModifiedBy_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="LastModifiedOn" Type="DateTimeOffset" Precision="0" />
+        </EntityType>
+        <EntityType Name="STUD_StudentAcademic_Details">
+          <Key>
+            <PropertyRef Name="AcademicDet_ID" />
+          </Key>
+          <Property Name="AcademicDet_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegNo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Student_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Section_ID" Type="Int16" />
+          <Property Name="Standard_ID" Type="Int16" />
+          <Property Name="Division" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="AcademicYearStart" Type="Int32" />
+          <Property Name="AcademicYearEnd" Type="Int32" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GEN_Standards_Lookup">
+          <Key>
+            <PropertyRef Name="Standard_Id" />
+          </Key>
+          <Property Name="Standard_Id" Type="Int16" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Section_Id" Type="Int16" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1569,16 +1569,6 @@ warning 6002: The table/view 'S360_DB.dbo.UserLoginDetails' does not have a prim
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="GEN_Standards_Lookup">
-            <EntityTypeMapping TypeName="S360Model.GEN_Standards_Lookup">
-              <MappingFragment StoreEntitySet="GEN_Standards_Lookup">
-                <ScalarProperty Name="Section_Id" ColumnName="Section_Id" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Standard_Id" ColumnName="Standard_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="GEN_StudentCategory_Lookup">
             <EntityTypeMapping TypeName="S360Model.GEN_StudentCategory_Lookup">
               <MappingFragment StoreEntitySet="GEN_StudentCategory_Lookup">
@@ -1656,62 +1646,6 @@ warning 6002: The table/view 'S360_DB.dbo.UserLoginDetails' does not have a prim
                 <ScalarProperty Name="LastAcadDetail_ID" ColumnName="LastAcadDetail_ID" />
                 <ScalarProperty Name="Student_ID" ColumnName="Student_ID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="STUD_StudentAcademic_Details">
-            <EntityTypeMapping TypeName="S360Model.STUD_StudentAcademic_Details">
-              <MappingFragment StoreEntitySet="STUD_StudentAcademic_Details">
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
-                <ScalarProperty Name="AcademicYearEnd" ColumnName="AcademicYearEnd" />
-                <ScalarProperty Name="AcademicYearStart" ColumnName="AcademicYearStart" />
-                <ScalarProperty Name="Division" ColumnName="Division" />
-                <ScalarProperty Name="Standard_ID" ColumnName="Standard_ID" />
-                <ScalarProperty Name="Section_ID" ColumnName="Section_ID" />
-                <ScalarProperty Name="Student_ID" ColumnName="Student_ID" />
-                <ScalarProperty Name="RegNo" ColumnName="RegNo" />
-                <ScalarProperty Name="AcademicDet_ID" ColumnName="AcademicDet_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="STUD_Students_Master">
-            <EntityTypeMapping TypeName="S360Model.STUD_Students_Master">
-              <MappingFragment StoreEntitySet="STUD_Students_Master">
-                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
-                <ScalarProperty Name="LastModifiedBy_ID" ColumnName="LastModifiedBy_ID" />
-                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
-                <ScalarProperty Name="EnteredBy_ID" ColumnName="EnteredBy_ID" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
-                <ScalarProperty Name="StudPhoto" ColumnName="StudPhoto" />
-                <ScalarProperty Name="PrimaryContact" ColumnName="PrimaryContact" />
-                <ScalarProperty Name="AadharNo" ColumnName="AadharNo" />
-                <ScalarProperty Name="RFIDTag" ColumnName="RFIDTag" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="WorkPh" ColumnName="WorkPh" />
-                <ScalarProperty Name="HomePh" ColumnName="HomePh" />
-                <ScalarProperty Name="Mobile3" ColumnName="Mobile3" />
-                <ScalarProperty Name="Mobile2" ColumnName="Mobile2" />
-                <ScalarProperty Name="Mobile1" ColumnName="Mobile1" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="CurrentDiv" ColumnName="CurrentDiv" />
-                <ScalarProperty Name="CurrentStd_ID" ColumnName="CurrentStd_ID" />
-                <ScalarProperty Name="CurrentAcaDetail_ID" ColumnName="CurrentAcaDetail_ID" />
-                <ScalarProperty Name="DOB" ColumnName="DOB" />
-                <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
-                <ScalarProperty Name="Language_ID" ColumnName="Language_ID" />
-                <ScalarProperty Name="Religion_ID" ColumnName="Religion_ID" />
-                <ScalarProperty Name="Caste" ColumnName="Caste" />
-                <ScalarProperty Name="Religion" ColumnName="Religion" />
-                <ScalarProperty Name="MotherTongue" ColumnName="MotherTongue" />
-                <ScalarProperty Name="MotherName" ColumnName="MotherName" />
-                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
-                <ScalarProperty Name="Surname" ColumnName="Surname" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="RegNo" ColumnName="RegNo" />
-                <ScalarProperty Name="Student_ID" ColumnName="Student_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1984,6 +1918,72 @@ warning 6002: The table/view 'S360_DB.dbo.UserLoginDetails' does not have a prim
                 <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
                 <ScalarProperty Name="User_ID" ColumnName="User_ID" />
                 <ScalarProperty Name="Login_ID" ColumnName="Login_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STUD_Students_Master">
+            <EntityTypeMapping TypeName="S360Model.STUD_Students_Master">
+              <MappingFragment StoreEntitySet="STUD_Students_Master">
+                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+                <ScalarProperty Name="LastModifiedBy_ID" ColumnName="LastModifiedBy_ID" />
+                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
+                <ScalarProperty Name="EnteredBy_ID" ColumnName="EnteredBy_ID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="StudPhoto" ColumnName="StudPhoto" />
+                <ScalarProperty Name="PrimaryContact" ColumnName="PrimaryContact" />
+                <ScalarProperty Name="AadharNo" ColumnName="AadharNo" />
+                <ScalarProperty Name="RFIDTag" ColumnName="RFIDTag" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="WorkPh" ColumnName="WorkPh" />
+                <ScalarProperty Name="HomePh" ColumnName="HomePh" />
+                <ScalarProperty Name="Mobile3" ColumnName="Mobile3" />
+                <ScalarProperty Name="Mobile2" ColumnName="Mobile2" />
+                <ScalarProperty Name="Mobile1" ColumnName="Mobile1" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CurrentDiv" ColumnName="CurrentDiv" />
+                <ScalarProperty Name="CurrentStd_ID" ColumnName="CurrentStd_ID" />
+                <ScalarProperty Name="CurrentAcaDetail_ID" ColumnName="CurrentAcaDetail_ID" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
+                <ScalarProperty Name="Language_ID" ColumnName="Language_ID" />
+                <ScalarProperty Name="Religion_ID" ColumnName="Religion_ID" />
+                <ScalarProperty Name="Caste" ColumnName="Caste" />
+                <ScalarProperty Name="Religion" ColumnName="Religion" />
+                <ScalarProperty Name="MotherTongue" ColumnName="MotherTongue" />
+                <ScalarProperty Name="MotherName" ColumnName="MotherName" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="RegNo" ColumnName="RegNo" />
+                <ScalarProperty Name="Student_ID" ColumnName="Student_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STUD_StudentAcademic_Details">
+            <EntityTypeMapping TypeName="S360Model.STUD_StudentAcademic_Details">
+              <MappingFragment StoreEntitySet="STUD_StudentAcademic_Details">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="AcademicYearEnd" ColumnName="AcademicYearEnd" />
+                <ScalarProperty Name="AcademicYearStart" ColumnName="AcademicYearStart" />
+                <ScalarProperty Name="Division" ColumnName="Division" />
+                <ScalarProperty Name="Standard_ID" ColumnName="Standard_ID" />
+                <ScalarProperty Name="Section_ID" ColumnName="Section_ID" />
+                <ScalarProperty Name="Student_ID" ColumnName="Student_ID" />
+                <ScalarProperty Name="RegNo" ColumnName="RegNo" />
+                <ScalarProperty Name="AcademicDet_ID" ColumnName="AcademicDet_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GEN_Standards_Lookup">
+            <EntityTypeMapping TypeName="S360Model.GEN_Standards_Lookup">
+              <MappingFragment StoreEntitySet="GEN_Standards_Lookup">
+                <ScalarProperty Name="Section_Id" ColumnName="Section_Id" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Standard_Id" ColumnName="Standard_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

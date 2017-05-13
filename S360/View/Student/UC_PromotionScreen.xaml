@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:BasicControls="clr-namespace:S360Controlls.BasicControls;assembly=S360Controlls" x:Class="S360.View.Student.UC_PromotionScreen" 
-             xmlns:ViewModelClass="clr-namespace:S360.ViewModel.Student"
+             xmlns:ViewModelClass="clr-namespace:S360.ViewModel.Student" Name="PromotionScreen"
              Background="White">
 
     <UserControl.DataContext>
@@ -87,9 +87,9 @@
             </StackPanel>
             
             <Button Name="btnPromoteAllStudents" Content="Promote All Students" Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="4" Grid.RowSpan="2"
-                    Style="{StaticResource MetroButton}" IsEnabled="{Binding IsBtnPromoteAllEnable}" Command="{Binding PromoteAllStudentsCommand}"/>
+                    Style="{StaticResource MetroButton}" Command="{Binding PromoteAllStudentsCommand}"/>
             <Button Name="btnPromotionLog" Content="View Log" Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="2" Grid.RowSpan="2" Style="{StaticResource MetroButton}"
-                    IsEnabled="{Binding IsBtnViewLogPromotionEnable}" Command="{Binding ViewLogPromotionCommand}" />
+                    Command="{Binding ViewLogPromotionCommand}" />
             
             <BasicControls:S360TextBlock Text="Step 2:" Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="2" FontWeight="Bold" />
             
@@ -98,9 +98,9 @@
             </StackPanel>
             
             <Button Name="btnDetainStudents" Content="Detain Students" Grid.Row="8" Grid.Column="14" Grid.ColumnSpan="4" Grid.RowSpan="2"
-                    Style="{StaticResource MetroButton}" IsEnabled="{Binding IsBtnDetainEnable}" Command="{Binding Detaincommand}"/>
+                    Style="{StaticResource MetroButton}" Command="{Binding Detaincommand}"/>
             <Button Name="btnDetainLog" Content="View Log" Grid.Row="11" Grid.Column="16" Grid.ColumnSpan="2" Grid.RowSpan="2" Style="{StaticResource MetroButton}"
-                    IsEnabled="{Binding IsBtnViewLogDetainEnable}" Command="{Binding ViewLogdetainCommand}" />
+                    Command="{Binding ViewLogdetainCommand}" />
             
             <BasicControls:S360TextBlock Text="Step 3:" FontWeight="Bold" Grid.Row="13" Grid.Column="2" Grid.ColumnSpan="2" />
             <StackPanel Orientation="Vertical" Grid.Row="15" Grid.Column="2" Grid.ColumnSpan="10" Grid.RowSpan="2">
@@ -109,7 +109,7 @@
             </StackPanel>
                 
             <Button Name="btnCancel" Content="Cancel" Grid.Row="18" Grid.Column="10" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" 
-                    Command="{Binding CancelCommand}"/>
+                    Command="{Binding CancelCommand}" CommandParameter="{Binding ElementName=PromotionScreen}"/>
             <Button Name="btnCheckDataINtegrity" Content="Check Data Integrity" Grid.Row="18" Grid.Column="12" Grid.ColumnSpan="2"
                     Style="{StaticResource MetroButton}" Command="{Binding CheckDataIntegrityCommand}"/>
             <Button Name="btnStartPromotion" Content="Start Promotion" Grid.Row="18" Grid.Column="14" Grid.ColumnSpan="4"

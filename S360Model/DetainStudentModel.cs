@@ -14,6 +14,10 @@ namespace S360Model
         [System.ComponentModel.Browsable(false)]
         public short StandardID { get; set; }
         public string Standard { get; set; }
+        public string Fullname
+        {
+            get { return Name + " " + Father + " " + SurName; }
+        }
 
         private UserBaseModel _user = null;
         public UserBaseModel User

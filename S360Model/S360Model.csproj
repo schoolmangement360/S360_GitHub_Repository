@@ -46,9 +46,11 @@
   <ItemGroup>
     <Compile Include="ControlValidationStatus.cs" />
     <Compile Include="DetainStudentModel.cs" />
+    <Compile Include="ExtensionMethods.cs" />
     <Compile Include="LoginModel.cs" />
     <Compile Include="PromoteStudentModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="S360Configuration.cs" />
     <Compile Include="StudentBaseModel.cs" />
     <Compile Include="UserBaseModel.cs" />
   </ItemGroup>

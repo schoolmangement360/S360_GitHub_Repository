@@ -29,6 +29,8 @@ namespace S360BusinessLogic
                     return new ReligionRepository(uow);
                 case "STUDENTACADEMIC":
                     return new StudentAcademicRepository(uow);
+                case "DETAINORPROMOTION":
+                    return new StudentDetainPromotionRepository(uow);
                 default:
                     return null;
             }

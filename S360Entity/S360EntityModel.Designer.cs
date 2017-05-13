@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\WorkSpace\S360_GitHub_Repository\S360Entity\S360EntityModel.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\Works\School Management System\S360\S360_Lattest\S360Entity\S360EntityModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

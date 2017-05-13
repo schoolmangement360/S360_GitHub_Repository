@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Windows.Input;
 using System;
+using S360Entity;
+using System.Linq;
 
 namespace S360.ViewModel.Student
 {
@@ -18,6 +20,16 @@ namespace S360.ViewModel.Student
         /// Variable to store the list of detained students
         /// </summary>
         private List<PromoteStudentModel> _detainStudentList = null;
+
+        /// <summary>
+        /// Variable to hold all sections
+        /// </summary>
+        private IEnumerable<GEN_Sections_Lookup> _sections = null;
+
+        /// <summary>
+        /// Variable to hold all standards
+        /// </summary>
+        private IEnumerable<GEN_Standards_Lookup> _standards = null;
 
         /// <summary>
         /// Command to cancel the screen
@@ -111,6 +123,32 @@ namespace S360.ViewModel.Student
         }
 
         /// <summary>
+        /// Gets all sections
+        /// </summary>
+        public IEnumerable<GEN_Sections_Lookup> Sections
+        {
+            get
+            {
+                if (_sections == null)
+                    _sections = new S360BusinessLogic.StudentBusinessLogic().GetAllSections();
+                return _sections;
+            }
+        }
+
+        /// <summary>
+        /// Gets all standards
+        /// </summary>
+        public IEnumerable<GEN_Standards_Lookup> Standards
+        {
+            get
+            {
+                if (_standards == null)
+                    _standards = new S360BusinessLogic.StudentBusinessLogic().GetAllStandards();
+                return _standards;
+            }
+        }
+
+        /// <summary>
         /// Gets Cancel Command
         /// </summary>
         public ICommand CancelCommand
@@ -201,101 +239,185 @@ namespace S360.ViewModel.Student
             }
         }
 
-        /// <summary>
-        /// Gets or sets PromoteAllStudents button Enable or disable value
-        /// </summary>
-        public bool IsBtnPromoteAllEnable
-        {
-            get { return _isbtnPromoteAllEnable; }
-            set { _isbtnPromoteAllEnable = value; }
-        }
+        ///// <summary>
+        ///// Gets or sets PromoteAllStudents button Enable or disable value
+        ///// </summary>
+        //public bool IsBtnPromoteAllEnable
+        //{
+        //    get { return _isbtnPromoteAllEnable; }
+        //    set
+        //    {
+        //        _isbtnPromoteAllEnable = value;
+        //        RaisePropertyChanged("IsBtnPromoteAllEnable");
+        //    }
+        //}
 
-        /// <summary>
-        /// Gets or sets ViewLogPromotion button Enable or disable value
-        /// </summary>
-        public bool IsBtnViewLogPromotionEnable
-        {
-            get { return _isbtnViewLogPromotionEnable; }
-            set { _isbtnViewLogPromotionEnable = value; }
-        }
+        ///// <summary>
+        ///// Gets or sets ViewLogPromotion button Enable or disable value
+        ///// </summary>
+        //public bool IsBtnViewLogPromotionEnable
+        //{
+        //    get { return _isbtnViewLogPromotionEnable; }
+        //    set { _isbtnViewLogPromotionEnable = value; }
+        //}
 
-        /// <summary>
-        /// Gets or sets Detain Students button Enable or disable value
-        /// </summary>
-        public bool IsBtnDetainEnable
-        {
-            get { return _isbtnDetainEnable; }
-            set { _isbtnDetainEnable = value; }
-        }
+        ///// <summary>
+        ///// Gets or sets Detain Students button Enable or disable value
+        ///// </summary>
+        //public bool IsBtnDetainEnable
+        //{
+        //    get { return _isbtnDetainEnable; }
+        //    set { _isbtnDetainEnable = value; }
+        //}
 
-        /// <summary>
-        /// Gets or sets ViewLogDetain button Enable or disable value
-        /// </summary>
-        public bool IsBtnViewLogDetainEnable
-        {
-            get { return _isbtnViewLogDetainEnable; }
-            set { _isbtnViewLogDetainEnable = value; }
-        }
+        ///// <summary>
+        ///// Gets or sets ViewLogDetain button Enable or disable value
+        ///// </summary>
+        //public bool IsBtnViewLogDetainEnable
+        //{
+        //    get { return _isbtnViewLogDetainEnable; }
+        //    set { _isbtnViewLogDetainEnable = value; }
+        //}
 
         #endregion
 
         #region [ Events ]
 
+        /// <summary>
+        /// Method to allow Cancel command or not
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <returns></returns>
         private bool CanExecuteCancelCommand(object sender)
         {
             return true;
         }
 
+        /// <summary>
+        /// Execute Cancel button click operations
+        /// </summary>
+        /// <param name="sender"></param>
         private void ExecuteCancelCommand(object sender)
         {
-            
+            System.Windows.MessageBoxResult result = WPFCustomMessageBox.CustomMessageBox.ShowOKCancel("Do you want to close this page ?", "S360 Application", "OK", "Cancel");
+            if(result == System.Windows.MessageBoxResult.OK)
+            {
+                System.Windows.Controls.UserControl promotionUC = sender as System.Windows.Controls.UserControl;
+                promotionUC.Visibility = System.Windows.Visibility.Collapsed;
+            } 
         }
 
+        /// <summary>
+        /// Method to allow CheckDataIntegrity command or not
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <returns></returns>
         private bool CanExecuteCheckDataIntegrityCommand(object sender)
         {
             return true;
         }
 
+        /// <summary>
+        /// Execute CheckDataIntegrity button click operations
+        /// </summary>
+        /// <param name="sender"></param>
         private void ExecuteCheckDataIntegrityCommand(object sender)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Method to allow Start Promotion command or not
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <returns></returns>
         private bool CanExecuteStartPromotionCommand(object sender)
         {
             return true;
         }
 
+        /// <summary>
+        /// Execute StartPromotion button click operations
+        /// </summary>
+        /// <param name="sender"></param>
         private void ExecuteStartPromotionCommand(object sender)
         {
-            throw new NotImplementedException();
+            _isbtnPromoteAllEnable = true;
         }
 
+        /// <summary>
+        /// Method to allow Promote All Student command or not
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <returns></returns>
         private bool CanExecutePromoteAllStudentCommand(object sender)
         {
-            return true;
+            return _isbtnPromoteAllEnable;
         }
 
+        /// <summary>
+        /// Execute PromoteAllStudent button click operations
+        /// </summary>
+        /// <param name="sender"></param>
         private void ExecutePromoteAllStudentCommand(object sender)
         {
-            throw new NotImplementedException();
+            S360BusinessLogic.StudentBusinessLogic StudentBusiness = new S360BusinessLogic.StudentBusinessLogic();
+
+            IEnumerable<STUD_StudentAcademic_Details> studentsaccademicdetails = StudentBusiness.GetAllStudentsAccademicDetails().Where(S => S.IsActive = true);
+
+            studentsaccademicdetails.Select(S =>
+            {
+                S.AcademicYearStart = S360Model.S360Configuration.Instance.AcademicYearStart;
+                S.AcademicYearEnd = S360Model.S360Configuration.Instance.AcademicYearEnd;
+                S.Standard_ID = (S.Standard_ID != 102 && S.Standard_ID != 12) ? ++S.Standard_ID : S.Standard_ID;
+                S.Standard_ID = (S.Standard_ID == 102) ? 1 : S.Standard_ID;
+                S.Section_ID = Standards.Where(St => St.Standard_Id == S.Standard_ID).FirstOrDefault() == null ? S.Section_ID :
+                                            Standards.Where(St => St.Standard_Id == S.Standard_ID).FirstOrDefault().Section_Id;
+                return S;
+            }).ToList();
+            
+            foreach (STUD_StudentAcademic_Details studentacc in studentsaccademicdetails)
+            {
+                StudentBusiness.SavePromotion(studentacc);
+            }
+
+            IEnumerable<STUD_Students_Master> PromotedStudents = StudentBusiness.GetAllStudents().Where(S => S.IsActive == true);
+
         }
 
+        /// <summary>
+        /// Method to allow View Promotion Log command or not
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <returns></returns>
         private bool CanExecuteViewLogPromotionCommand(object sender)
         {
             return true;
         }
 
+        /// <summary>
+        /// Execute ViewLogPromotion button click operations
+        /// </summary>
+        /// <param name="sender"></param>
         private void ExecuteViewLogPromotionCommand(object sender)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Method to allow Detain command or not
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <returns></returns>
         private bool CanExecuteDetainCommand(object sender)
         {
             return true;
         }
 
+        /// <summary>
+        /// Execute DetainStudents button click operations
+        /// </summary>
+        /// <param name="sender"></param>
         private void ExecuteDetainCommand(object sender)
         {
             View.Student.UC_DetainScreen detain = new View.Student.UC_DetainScreen();
@@ -305,11 +427,20 @@ namespace S360.ViewModel.Student
             detain.ShowDialog();
         }
 
+        /// <summary>
+        /// Method to allow View Detain Log or not
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <returns></returns>
         private bool CanExecuteViewLogDetainCommand(object sender)
         {
             return true;
         }
 
+        /// <summary>
+        /// Execute ViewLogDetain button click operations
+        /// </summary>
+        /// <param name="sender"></param>
         private void ExecuteViewLogDetainCommand(object sender)
         {
             throw new NotImplementedException();

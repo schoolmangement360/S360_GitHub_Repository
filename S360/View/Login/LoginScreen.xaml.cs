@@ -96,16 +96,20 @@ namespace S360
                 S360Configuration.Instance.UserID = Result.UserID;
                 S360Configuration.Instance.AcademicYearStart = Properties.Settings.Default.AcademicYearStart;
                 S360Configuration.Instance.AcademicYearEnd = Properties.Settings.Default.AcademicYearEnd;
+                S360Model.S360Configuration.Instance.UserID = Result.UserID;
+                S360Model.S360Configuration.Instance.AcademicYearStart = Properties.Settings.Default.AcademicYearStart;
+                S360Model.S360Configuration.Instance.AcademicYearEnd = Properties.Settings.Default.AcademicYearEnd;
 
                 txtMessageInfo.Text = string.Empty;
                 txtUserName.Clear();
                 pswPassword.Clear();
                 S360Configuration.Instance.LoginID = Result.LoginID;
+                S360Model.S360Configuration.Instance.LoginID = Result.LoginID;
 
                 MainWindow mdiWindow = new MainWindow();
                 mdiWindow.ShowDialog();
                 txtUserName.Focus();
-                studentBusinessLogic.MarkLogout(S360Configuration.Instance.LoginID);
+                studentBusinessLogic.MarkLogout(S360Model.S360Configuration.Instance.LoginID);
             }
             else
             {

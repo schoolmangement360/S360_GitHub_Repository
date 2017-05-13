@@ -1,12 +1,10 @@
 ﻿using S360Entity;
 using S360Model;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Linq;
+using System.Data;
+using S360BusinessLogic;
 
 namespace S360.ViewModel.Student
 {
@@ -27,12 +25,12 @@ namespace S360.ViewModel.Student
         /// <summary>
         /// collection variable to store all search result students
         /// </summary>
-        private ObservableCollection<StudentBaseModel> _studentsList = null;
+        private ObservableCollection<PromoteStudentModel> _studentsList = null;
 
         /// <summary>
         /// Variable to store selected student
         /// </summary>
-        private StudentBaseModel _selectedStudent = null;
+        private PromoteStudentModel _selectedStudent = null;
 
         /// <summary>
         /// command to search students
@@ -48,6 +46,11 @@ namespace S360.ViewModel.Student
         /// command to select a student
         /// </summary>
         private ICommand _selectCommand = null;
+
+        /// <summary>
+        /// command to select item on mouse doubleclick
+        /// </summary>
+        private ICommand _listViewDoubleClickCommand = null;
 
         #endregion
 
@@ -69,12 +72,12 @@ namespace S360.ViewModel.Student
         /// <summary>
         /// Gets students list to bind on data grid
         /// </summary>
-        public ObservableCollection<StudentBaseModel> StudentsList
+        public ObservableCollection<PromoteStudentModel> StudentsList
         {
             get
             {
                 if (_studentsList == null)
-                    _studentsList = new ObservableCollection<StudentBaseModel>();
+                    _studentsList = new ObservableCollection<PromoteStudentModel>();
                 return _studentsList;
             }
         }
@@ -90,12 +93,12 @@ namespace S360.ViewModel.Student
             set { _selectedSection = value; }
         }
 
-        public StudentBaseModel SelectedStudent
+        public PromoteStudentModel SelectedStudent
         {
             get
             {
                 if (_selectedStudent == null)
-                    _selectedStudent = new StudentBaseModel();
+                    _selectedStudent = new PromoteStudentModel();
                 return _selectedStudent;
             }
             set { _selectedStudent = value; }
@@ -131,34 +134,59 @@ namespace S360.ViewModel.Student
             }
         }
 
+        public ICommand ListViewDoubleClickCommand
+        {
+            get
+            {
+                if (_listViewDoubleClickCommand == null)
+                    _listViewDoubleClickCommand = new RelayCommand<object>(this.ExecuteListViewDoubleClickCommand, this.CanExecuteListViewDoubleClickCommand);
+                return _listViewDoubleClickCommand;
+            }
+        }
+
         #endregion
 
         #region  [ Events ]
 
         private bool CanExecuteSearchCommand(object sender)
         {
-            return true;
+            if (!string.IsNullOrEmpty(_findString))
+                return true;
+            return false;
         }
 
         private void ExecuteSearchCommand(object sender)
         {
-            this._studentsList = new ObservableCollection<StudentBaseModel>();
-            _studentsList.Add(new StudentBaseModel()
+            StudentBusinessLogic studentBussiness = new StudentBusinessLogic();
+            _studentsList.Clear();
+            System.Collections.Generic.IEnumerable<STUD_Students_Master> students = studentBussiness.GetStudentsBySearchStringAndSection
+                (this._findString, this.SelectedSection.Section_Id);
+            if (students == null || students.Count() < 1)
             {
-                RegNo = "1",
-                StudentId = 1,
-                Name = "Mathew",
-                SurName = "Markose",
-                Father = "Markose"
-            });
-            _studentsList.Add(new StudentBaseModel()
+                WPFCustomMessageBox.CustomMessageBox.Show("Could Not Find Any Student");
+                this._findString = string.Empty;
+            }
+            else
             {
-                RegNo = "2",
-                StudentId = 2,
-                Name = "Martin",
-                SurName = "Markose",
-                Father = "Markose"
-            });
+                foreach (STUD_Students_Master st in students)
+                {
+                    _studentsList.Add(new PromoteStudentModel()
+                    {
+                        Division = st.CurrentDiv,
+                        Father = st.FatherName,
+                        LastAcademicDetID = (long)st.CurrentAcaDetail_ID,
+                        Name = st.Name,
+                        RegNo = st.RegNo,
+                        SatusID = 0,
+                        Section = this.SelectedSection.Name,
+                        SectionId = this.SelectedSection.Section_Id,
+                        Standard = studentBussiness.GetAllStandards().Where(S => S.Standard_Id == st.CurrentStd_ID).FirstOrDefault().Name,
+                        StandardID = (short)st.CurrentStd_ID,
+                        StudentId = (long)st.Student_ID,
+                        SurName = st.Surname
+                    });
+                }
+            }
         }
 
         private bool CanExecuteCancelCommand(object sender)
@@ -168,7 +196,7 @@ namespace S360.ViewModel.Student
 
         private void ExecuteCancelCommand(object sender)
         {
-            System.Windows.MessageBox.Show("Cancelling");
+            SelectStudent(false);
         }
 
         private bool CanExecuteSelectCommand(object sender)
@@ -178,7 +206,34 @@ namespace S360.ViewModel.Student
 
         private void ExecuteSelectCommand(object sender)
         {
-            
+            SelectStudent(true);
+        }
+
+        private bool CanExecuteListViewDoubleClickCommand(object sender)
+        {
+            return true;
+        }
+
+        private void ExecuteListViewDoubleClickCommand(object sender)
+        {
+
+        }
+
+        #endregion
+
+        #region [ Private Methods ]
+
+        private void SelectStudent(bool DialogueResult)
+        {
+            foreach (System.Windows.Window wind in System.Windows.Application.Current.Windows)
+            {
+                if (wind.GetType() == typeof(View.Student.UC_FindStudentScreen))
+                {
+                    wind.DialogResult = DialogueResult;
+                    wind.Close();
+                    break;
+                }
+            }
         }
 
         #endregion

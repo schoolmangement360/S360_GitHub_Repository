@@ -19,6 +19,7 @@ namespace S360BusinessLogic
         private StudentCategoryRepository _StudentCategoryRepository;
         private ReligionRepository _ReligionRepository;
         private StudentAcademicRepository _StudentAcademicRepository;
+        private StudentDetainPromotionRepository _studentDetainPromotionRepository;
 
         public StudentBusinessLogic()
         {
@@ -29,6 +30,7 @@ namespace S360BusinessLogic
             _StudentCategoryRepository = S360RepositoryFactory.GetRepository("STUDENTCATEGORY") as StudentCategoryRepository;
             _ReligionRepository = S360RepositoryFactory.GetRepository("RELIGION") as ReligionRepository;
             _StudentAcademicRepository = S360RepositoryFactory.GetRepository("STUDENTACADEMIC") as StudentAcademicRepository;
+            _studentDetainPromotionRepository = S360RepositoryFactory.GetRepository("DETAINORPROMOTION") as StudentDetainPromotionRepository;
         }
 
         /// <summary>
@@ -76,6 +78,24 @@ namespace S360BusinessLogic
             return new ObservableCollection<GEN_Religions_Lookup>(_ReligionRepository.GetAll());
         }
 
+        public IEnumerable<STUD_StudentAcademic_Details> GetAllStudentsAccademicDetails()
+        {
+            return this._StudentAcademicRepository.GetAll();
+        }
+
+        public ObservableCollection<STUD_Students_Master> GetAllStudents()
+        {
+            return new ObservableCollection<STUD_Students_Master>(_StudentRepository.GetAll());
+        }
+
+        public IEnumerable<STUD_Students_Master> GetStudentsBySearchStringAndSection(string SearchString, short SectionId)
+        {
+            return (from st in this._StudentRepository.GetAll()
+                    join ac in this._StudentAcademicRepository.GetAll() on st.CurrentAcaDetail_ID equals ac.AcademicDet_ID
+                    where st.Name.Contains(SearchString) && ac.Section_ID == SectionId && st.IsActive == true
+                    select st).Distinct<STUD_Students_Master>();
+        }
+
         public STUD_Students_Master SaveStudent(STUD_Students_Master studentDetails)
         {
             STUD_Students_Master studentResult = new STUD_Students_Master();
@@ -105,6 +125,52 @@ namespace S360BusinessLogic
             _StudentRepository.Update(studentDetails);
 
             return AcademicDetails;
+        }
+
+        /// <summary>
+        /// Method to save Student Promotion detail
+        /// </summary>
+        /// <param name="studentAcademicDetails"></param>
+        public void SavePromotion(STUD_StudentAcademic_Details studentsaccademicdetails)
+        {
+            //insert into STUD_StudentAcademic_Details table
+            Decimal LastAccDetId = studentsaccademicdetails.AcademicDet_ID;
+            if (studentsaccademicdetails != null)
+            {
+                try
+                {
+                    _StudentAcademicRepository.Insert(studentsaccademicdetails);
+
+                    STUD_DetainingOrPromotions_Details promotion = new STUD_DetainingOrPromotions_Details()
+                    {
+                        CurrentAcadDetail_ID = studentsaccademicdetails.AcademicDet_ID,
+                        LastAcadDetail_ID = LastAccDetId,
+                        Status_ID = 1,
+                        Student_ID = studentsaccademicdetails.Student_ID,
+                        EnteredBy = S360Model.S360Configuration.Instance.UserID,
+                        Login_ID = S360Model.S360Configuration.Instance.LoginID
+                    };
+
+                    //Insert into STUD_DetainingOrPromotions_Details table
+                    _studentDetainPromotionRepository.Insert(promotion);
+                }
+                catch(Exception Ex)
+                {
+                    throw new S360Exceptions.S360Exception(Ex.Message, Ex.InnerException);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Method to update Student master table after Promotion or detain
+        /// </summary>
+        /// <param name="students"></param>
+        public void UpdateStudentAcademics(IEnumerable<STUD_Students_Master> students)
+        {
+            foreach(STUD_Students_Master student in students)
+            {
+                _StudentRepository.Update(student); 
+            }
         }
     }
 }

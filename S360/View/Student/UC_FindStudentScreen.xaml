@@ -83,8 +83,26 @@
                                        Text="{Binding FindString, Mode=TwoWay}"/>
             <Button Name="btnFind" Content="Search" Grid.Row="3" Grid.Column="13" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" Command="{Binding SearchCommand}" />
 
-            <DataGrid Name="grStudents" Grid.Row="5" Grid.RowSpan="12" Grid.Column="1" Grid.ColumnSpan="18" ItemsSource="{Binding StudentsList}"
-                      SelectedValue="{Binding SelectedStudent, Mode=TwoWay}"/>
+            <!--<DataGrid Name="grStudents" Grid.Row="5" Grid.RowSpan="12" Grid.Column="1" Grid.ColumnSpan="18" ItemsSource="{Binding StudentsList, NotifyOnSourceUpdated=True}"
+                      SelectedValue="{Binding SelectedStudent, Mode=TwoWay}"/>-->
+
+            <ListView Name="lvStudents" Grid.Row="5" Grid.RowSpan="12" Grid.Column="1" Grid.ColumnSpan="18" ItemsSource="{Binding StudentsList, NotifyOnSourceUpdated=True}"
+                      SelectedValue="{Binding SelectedStudent, Mode=TwoWay}" >
+
+                <!--<MouseBinding MouseAction="LeftDoubleClick" Command="{Binding ListViewDoubleClickCommand}" />-->
+
+                <ListView.View>
+                    <GridView>
+                        
+                        <GridViewColumn Header="R.GRegNo" DisplayMemberBinding="{Binding RegNo}" Width="100" />
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="250" />
+                        <GridViewColumn Header="SurName" DisplayMemberBinding="{Binding SurName}" Width="250" />
+                        <GridViewColumn Header="Father" DisplayMemberBinding="{Binding Father}" Width="250" />
+                        <GridViewColumn Header="Std" DisplayMemberBinding="{Binding Standard}" Width="50" />
+                        <GridViewColumn Header="Div" DisplayMemberBinding="{Binding Division}" Width="50" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
 
             <BasicControls:S360TextBlock Text="Selected Section" Grid.Row="18" Grid.Column="1" Grid.ColumnSpan="2" />
             <BasicControls:S360TextBox Name="txtSection" Grid.Row="18" Grid.Column="3" Grid.ColumnSpan="8" IsEnabled="False"
