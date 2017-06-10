@@ -299,12 +299,7 @@ namespace S360.ViewModel.Student
         /// <param name="sender"></param>
         private void ExecuteCancelCommand(object sender)
         {
-            System.Windows.MessageBoxResult result = WPFCustomMessageBox.CustomMessageBox.ShowOKCancel("Do you want to close this page ?", "S360 Application", "OK", "Cancel");
-            if(result == System.Windows.MessageBoxResult.OK)
-            {
-                System.Windows.Controls.UserControl promotionUC = sender as System.Windows.Controls.UserControl;
-                promotionUC.Visibility = System.Windows.Visibility.Collapsed;
-            } 
+            App.CancelPage(sender);
         }
 
         /// <summary>
@@ -369,20 +364,29 @@ namespace S360.ViewModel.Student
             {
                 S.AcademicYearStart = S360Model.S360Configuration.Instance.AcademicYearStart;
                 S.AcademicYearEnd = S360Model.S360Configuration.Instance.AcademicYearEnd;
-                S.Standard_ID = (S.Standard_ID != 102 && S.Standard_ID != 12) ? ++S.Standard_ID : S.Standard_ID;
-                S.Standard_ID = (S.Standard_ID == 102) ? 1 : S.Standard_ID;
+                S.Standard_ID = (S.Standard_ID != 102 /*&& S.Standard_ID != 12*/) ? ++S.Standard_ID : 1;
+                //S.Standard_ID = (S.Standard_ID == 102) ? 1 : S.Standard_ID;
                 S.Section_ID = Standards.Where(St => St.Standard_Id == S.Standard_ID).FirstOrDefault() == null ? S.Section_ID :
                                             Standards.Where(St => St.Standard_Id == S.Standard_ID).FirstOrDefault().Section_Id;
                 return S;
             }).ToList();
-            
+
+            IEnumerable<STUD_Students_Master> Students = StudentBusiness.GetAllStudents().Where(S => S.IsActive == true);
+
+            STUD_Students_Master PromotingStudent = null;
+
             foreach (STUD_StudentAcademic_Details studentacc in studentsaccademicdetails)
             {
                 StudentBusiness.SavePromotion(studentacc);
+
+                PromotingStudent = Students.Where(St => St.Student_ID == studentacc.Student_ID).FirstOrDefault();
+                PromotingStudent.CurrentAcaDetail_ID = studentacc.AcademicDet_ID;
+                PromotingStudent.CurrentStd_ID = studentacc.Standard_ID;
+                PromotingStudent.LastModifiedBy_ID = S360Model.S360Configuration.Instance.LoginID;
+                PromotingStudent.LastModifiedOn = System.DateTimeOffset.Now;
+
+                StudentBusiness.UpdateStudent(PromotingStudent);
             }
-
-            IEnumerable<STUD_Students_Master> PromotedStudents = StudentBusiness.GetAllStudents().Where(S => S.IsActive == true);
-
         }
 
         /// <summary>
@@ -423,7 +427,7 @@ namespace S360.ViewModel.Student
             View.Student.UC_DetainScreen detain = new View.Student.UC_DetainScreen();
             ViewModel.Student.DetainStudentViewModel detainVM = new DetainStudentViewModel();
             detain.DataContext = detainVM;
-            detain.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;            
+            detain.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             detain.ShowDialog();
         }
 

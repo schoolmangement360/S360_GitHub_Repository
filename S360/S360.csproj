@@ -76,6 +76,7 @@
     <Compile Include="Helper\ShowUserControl.cs" />
     <Compile Include="Helper\ValidateControls.cs" />
     <Compile Include="Helper\ViewModelBase.cs" />
+    <Compile Include="ViewModel\Student\AllotDivisionViewModel.cs" />
     <Compile Include="ViewModel\Student\DetainStudentViewModel.cs" />
     <Compile Include="ViewModel\Student\FindStudentViewModel.cs" />
     <Compile Include="ViewModel\Student\PromotionViewModel.cs" />

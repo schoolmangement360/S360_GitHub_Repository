@@ -14,5 +14,7 @@ namespace S360Model
         public string Name { get; set; }
         public string SurName { get; set; }
         public string Father { get; set; }
+        [System.ComponentModel.Browsable(false)]
+        public long AccDetId { get; set; }
     }
 }

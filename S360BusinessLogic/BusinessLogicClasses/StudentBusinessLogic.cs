@@ -78,24 +78,52 @@ namespace S360BusinessLogic
             return new ObservableCollection<GEN_Religions_Lookup>(_ReligionRepository.GetAll());
         }
 
+        /// <summary>
+        /// get all detain or promotion details
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<STUD_DetainingOrPromotions_Details> GetAllStudentsDetainOrPromotion()
+        {
+            return this._studentDetainPromotionRepository.GetAll();
+        }
+
+        /// <summary>
+        /// Get all students' accademic details
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<STUD_StudentAcademic_Details> GetAllStudentsAccademicDetails()
         {
             return this._StudentAcademicRepository.GetAll();
         }
 
+        /// <summary>
+        /// Get all students
+        /// </summary>
+        /// <returns></returns>
         public ObservableCollection<STUD_Students_Master> GetAllStudents()
         {
             return new ObservableCollection<STUD_Students_Master>(_StudentRepository.GetAll());
         }
 
-        public IEnumerable<STUD_Students_Master> GetStudentsBySearchStringAndSection(string SearchString, short SectionId)
-        {
-            return (from st in this._StudentRepository.GetAll()
-                    join ac in this._StudentAcademicRepository.GetAll() on st.CurrentAcaDetail_ID equals ac.AcademicDet_ID
-                    where st.Name.Contains(SearchString) && ac.Section_ID == SectionId && st.IsActive == true
-                    select st).Distinct<STUD_Students_Master>();
-        }
+        /// <summary>
+        /// bussiness method to get students with name and section
+        /// </summary>
+        /// <param name="SearchString"></param>
+        /// <param name="SectionId"></param>
+        /// <returns></returns>
+        //public IEnumerable<STUD_Students_Master> GetStudentsBySearchStringAndSection(string SearchString, short SectionId)
+        //{
+        //    return (from st in this._StudentRepository.GetAll()
+        //            join ac in this._StudentAcademicRepository.GetAll() on st.CurrentAcaDetail_ID equals ac.AcademicDet_ID
+        //            where st.Name.ToUpper().Contains(SearchString.ToUpper()) && ac.Section_ID == SectionId && st.IsActive == true
+        //            select st).Distinct<STUD_Students_Master>();
+        //}
 
+        /// <summary>
+        /// Save Student
+        /// </summary>
+        /// <param name="studentDetails"></param>
+        /// <returns></returns>
         public STUD_Students_Master SaveStudent(STUD_Students_Master studentDetails)
         {
             STUD_Students_Master studentResult = new STUD_Students_Master();
@@ -107,6 +135,21 @@ namespace S360BusinessLogic
             return studentResult;
         }
 
+        /// <summary>
+        /// Update student
+        /// </summary>
+        /// <param name="Student"></param>
+        public void UpdateStudent(STUD_Students_Master Student)
+        {
+            _StudentRepository.Update(Student);
+        }
+
+        /// <summary>
+        /// Save Student accademic details
+        /// </summary>
+        /// <param name="studentDetails"></param>
+        /// <param name="studentAcademicDetails"></param>
+        /// <returns></returns>
         public STUD_StudentAcademic_Details SaveStudentAcademicDetails(STUD_Students_Master studentDetails, STUD_StudentAcademic_Details studentAcademicDetails)
         {
             STUD_StudentAcademic_Details AcademicDetails = new STUD_StudentAcademic_Details();
@@ -165,12 +208,50 @@ namespace S360BusinessLogic
         /// Method to update Student master table after Promotion or detain
         /// </summary>
         /// <param name="students"></param>
-        public void UpdateStudentAcademics(IEnumerable<STUD_Students_Master> students)
+        public void UpdateStudentAcademics(STUD_StudentAcademic_Details studentsAcc)
         {
-            foreach(STUD_Students_Master student in students)
-            {
-                _StudentRepository.Update(student); 
-            }
+            _StudentAcademicRepository.Update(studentsAcc);
+        }
+
+        /// <summary>
+        /// Bussiness method to update detain students details
+        /// </summary>
+        /// <param name="students"></param>
+        /// <param name="accDetails"></param>
+        /// <param name="detainorpromotion"></param>
+        public void DetainStudents(IEnumerable<STUD_Students_Master> students, IEnumerable<STUD_StudentAcademic_Details> accDetails,
+            IEnumerable<STUD_DetainingOrPromotions_Details> detainorpromotion)
+        {
+            foreach (STUD_StudentAcademic_Details stacc in accDetails)
+                this._StudentAcademicRepository.Update(stacc);
+
+            foreach (STUD_Students_Master st in students)
+                this._StudentRepository.Update(st);
+
+            foreach (STUD_DetainingOrPromotions_Details detain in detainorpromotion)
+                this._studentDetainPromotionRepository.Update(detain);
+        }
+
+        public S360Model.PromoteStudentModel GetStudentWithRegNoAndSection(string RegNo, short SectionId)
+        {
+            return (from st in _StudentRepository.GetAll().Where(S => S.IsActive == true)
+                    join acc in _StudentAcademicRepository.GetAll().Where(A => A.IsActive == true)
+                    on st.CurrentAcaDetail_ID equals acc.AcademicDet_ID
+                    where st.RegNo.ToUpper() == RegNo.ToUpper() && acc.Section_ID == SectionId
+                    select new S360Model.PromoteStudentModel()
+                    {
+                        StudentId = (long)st.Student_ID,
+                        RegNo = st.RegNo,
+                        Name = st.Name,
+                        SurName = st.Surname,
+                        Father = st.FatherName,
+                        Division = st.CurrentDiv,
+                        AccDetId = (long)st.CurrentAcaDetail_ID,
+                        Section = _SectionRepository.GetAll().Where(S => S.Section_Id == acc.Section_ID).FirstOrDefault().Name,
+                        SectionId = (short)acc.Section_ID,
+                        Standard = _Standardpository.GetAll().Where(S => S.Standard_Id == st.CurrentStd_ID).FirstOrDefault().Name,
+                        StandardID = (short)st.CurrentStd_ID
+                    }).FirstOrDefault();
         }
     }
 }

@@ -44,6 +44,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChangeDivisionModel.cs" />
     <Compile Include="ControlValidationStatus.cs" />
     <Compile Include="DetainStudentModel.cs" />
     <Compile Include="ExtensionMethods.cs" />

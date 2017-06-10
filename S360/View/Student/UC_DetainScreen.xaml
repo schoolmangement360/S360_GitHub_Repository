@@ -80,11 +80,15 @@
 
             <BasicControls:S360TextBlock Text="Section" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" />
             <BasicControls:S360ComboBox Name="cmbSection" Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="4" Style="{StaticResource S360ComboBoxStyle}" IsEditable="True"
-                                        ItemsSource="{Binding Sections}" DisplayMemberPath="Name" SelectedValue="{Binding SelectedSection}"
+                                        ItemsSource="{Binding Sections}" DisplayMemberPath="Name" SelectedValue="{Binding SelectedSection, Mode=TwoWay}"
                                         IsReadOnly="True" Text="Select Section" ControlValidation="True" ControlValidationMessage="Select Any Section"/>
             <BasicControls:S360TextBlock Text="G.Reg No" Grid.Row="3" Grid.Column="9" Grid.ColumnSpan="2" />
             <BasicControls:S360TextBox Name="txtRegNo" Grid.Row="3" Grid.Column="11" Grid.ColumnSpan="4" Style="{StaticResource S360TextBoxStyle}"
-                                       Text="{Binding CurrentStudent.RegNo, Mode=TwoWay}" IsEnabled="False"/>
+                                       Text="{Binding CurrentStudent.RegNo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                <BasicControls:S360TextBox.InputBindings>
+                    <KeyBinding Key="Return"  Command="{Binding FindStudentWithGRCommand}" />
+                </BasicControls:S360TextBox.InputBindings>
+            </BasicControls:S360TextBox>
             <Button Name="btnFindStudent" Content="Find Student" Grid.Row="3" Grid.Column="16" Grid.ColumnSpan="3" Style="{StaticResource MetroButton}"
                     Command="{Binding FindStudentCommand}"/>
 
@@ -94,7 +98,7 @@
 
             <BasicControls:S360TextBlock Text="Old Std" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" />
             <BasicControls:S360TextBox Name="txtOldStd" Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="11" Style="{StaticResource S360TextBoxStyle}" IsEnabled="False"
-                                       Text="{Binding OldSection.Name, Mode=TwoWay}"/>
+                                       Text="{Binding DetainStd, Mode=TwoWay}"/>
             <Button Name="btnAddToList" Content="Add To List" Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="3" Style="{StaticResource MetroButton}"
                     Command="{Binding AddtToListCommand}"/>
 

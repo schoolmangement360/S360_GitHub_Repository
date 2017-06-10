@@ -65,8 +65,17 @@ namespace S360.ViewModel.Student
         /// </summary>
         public string FindString
         {
-            get { return _findString; }
-            set { _findString = value; }
+            get
+            {
+                if (string.IsNullOrEmpty(_findString))
+                    _findString = string.Empty;
+                return _findString;
+            }
+            set
+            {
+                _findString = value;
+                RaisePropertyChanged("FindString");
+            }
         }
 
         /// <summary>
@@ -150,17 +159,22 @@ namespace S360.ViewModel.Student
 
         private bool CanExecuteSearchCommand(object sender)
         {
-            if (!string.IsNullOrEmpty(_findString))
-                return true;
-            return false;
+            if (string.IsNullOrEmpty(_findString))
+                return false;
+            return true;
         }
 
         private void ExecuteSearchCommand(object sender)
         {
             StudentBusinessLogic studentBussiness = new StudentBusinessLogic();
             _studentsList.Clear();
-            System.Collections.Generic.IEnumerable<STUD_Students_Master> students = studentBussiness.GetStudentsBySearchStringAndSection
-                (this._findString, this.SelectedSection.Section_Id);
+            //System.Collections.Generic.IEnumerable<STUD_Students_Master> students = studentBussiness.GetStudentsBySearchStringAndSection
+            //    (this._findString, this.SelectedSection.Section_Id);
+            System.Collections.Generic.IEnumerable<STUD_Students_Master> students = (from st in studentBussiness.GetAllStudents()
+                                           join ac in studentBussiness.GetAllStudentsAccademicDetails() on st.CurrentAcaDetail_ID equals ac.AcademicDet_ID
+                                           where st.Name.ToUpper().Contains(this._findString.ToUpper()) && ac.Section_ID == this.SelectedSection.Section_Id && st.IsActive == true
+                                           select st).Distinct<STUD_Students_Master>();
+
             if (students == null || students.Count() < 1)
             {
                 WPFCustomMessageBox.CustomMessageBox.Show("Could Not Find Any Student");
@@ -174,7 +188,7 @@ namespace S360.ViewModel.Student
                     {
                         Division = st.CurrentDiv,
                         Father = st.FatherName,
-                        LastAcademicDetID = (long)st.CurrentAcaDetail_ID,
+                        AccDetId = (long)st.CurrentAcaDetail_ID,
                         Name = st.Name,
                         RegNo = st.RegNo,
                         SatusID = 0,
