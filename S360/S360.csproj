@@ -80,6 +80,7 @@
     <Compile Include="ViewModel\Student\DetainStudentViewModel.cs" />
     <Compile Include="ViewModel\Student\FindStudentViewModel.cs" />
     <Compile Include="ViewModel\Student\PromotionViewModel.cs" />
+    <Compile Include="ViewModel\Student\StudentTCViewModel.cs" />
     <Compile Include="ViewModel\Student\StudentViewModel.cs" />
     <Compile Include="View\Login\LoginScreen.xaml.cs">
       <DependentUpon>LoginScreen.xaml</DependentUpon>

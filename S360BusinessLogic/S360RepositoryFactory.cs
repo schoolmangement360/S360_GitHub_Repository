@@ -31,6 +31,8 @@ namespace S360BusinessLogic
                     return new StudentAcademicRepository(uow);
                 case "DETAINORPROMOTION":
                     return new StudentDetainPromotionRepository(uow);
+                case "STUDENTTC":
+                    return new StudentTCRepository(uow);
                 default:
                     return null;
             }

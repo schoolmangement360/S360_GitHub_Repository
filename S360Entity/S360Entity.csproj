@@ -173,6 +173,7 @@
     <Compile Include="Repository\StudentCategoryRepository.cs" />
     <Compile Include="Repository\StudentDetainPromotionRepository.cs" />
     <Compile Include="Repository\StudentRepository.cs" />
+    <Compile Include="Repository\StudentTCRepository.cs" />
     <Compile Include="Repository\UserCredentialRepository.cs" />
     <Compile Include="Repository\UserLoginDetailRepository.cs" />
     <Compile Include="S360EntityModel.Context.cs">
@@ -215,6 +216,9 @@
       <DependentUpon>S360EntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="STUD_Students_Master.cs">
+      <DependentUpon>S360EntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STUD_Student_TC.cs">
       <DependentUpon>S360EntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="UserCredentialsMaster.cs">

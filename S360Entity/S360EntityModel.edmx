@@ -203,6 +203,17 @@
           <Property Name="EnteredBy" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="Login_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
         </EntityType>
+        <EntityType Name="STUD_Student_TC">
+          <Key>
+            <PropertyRef Name="StudentTC_ID" />
+          </Key>
+          <Property Name="StudentTC_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RegNo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Student_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="IssuedBy_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="IssuedOn" Type="datetimeoffset" Precision="0" Nullable="false" />
+          <Property Name="Login_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
         <EntityType Name="STUD_StudentAcademic_Details">
           <Key>
             <PropertyRef Name="AcademicDet_ID" />
@@ -610,6 +621,7 @@ warning 6002: The table/view 'S360_DB.dbo.UserLoginDetails' does not have a prim
           <EntitySet Name="PEM_PageEnumerator_Master" EntityType="Self.PEM_PageEnumerator_Master" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="STUD_AcademicStatus_Lookup" EntityType="Self.STUD_AcademicStatus_Lookup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="STUD_DetainingOrPromotions_Details" EntityType="Self.STUD_DetainingOrPromotions_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STUD_Student_TC" EntityType="Self.STUD_Student_TC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="STUD_StudentAcademic_Details" EntityType="Self.STUD_StudentAcademic_Details" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="STUD_Students_Master" EntityType="Self.STUD_Students_Master" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AcademicStatusLookup" EntityType="Self.AcademicStatusLookup" store:Type="Views" store:Schema="dbo">
@@ -890,6 +902,7 @@ warning 6002: The table/view 'S360_DB.dbo.UserLoginDetails' does not have a prim
           <EntitySet Name="STUD_Students_Master" EntityType="S360Model.STUD_Students_Master" />
           <EntitySet Name="STUD_StudentAcademic_Details" EntityType="S360Model.STUD_StudentAcademic_Details" />
           <EntitySet Name="GEN_Standards_Lookup" EntityType="S360Model.GEN_Standards_Lookup" />
+          <EntitySet Name="STUD_Student_TC" EntityType="S360Model.STUD_Student_TC" />
         </EntityContainer>
         <EntityType Name="CHQ_ChequeCancellations_Details">
           <Key>
@@ -1436,6 +1449,17 @@ warning 6002: The table/view 'S360_DB.dbo.UserLoginDetails' does not have a prim
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="Section_Id" Type="Int16" />
+        </EntityType>
+        <EntityType Name="STUD_Student_TC">
+          <Key>
+            <PropertyRef Name="StudentTC_ID" />
+          </Key>
+          <Property Name="StudentTC_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="RegNo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Student_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="IssuedBy_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="IssuedOn" Type="DateTimeOffset" Nullable="false" Precision="0" />
+          <Property Name="Login_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1984,6 +2008,18 @@ warning 6002: The table/view 'S360_DB.dbo.UserLoginDetails' does not have a prim
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Standard_Id" ColumnName="Standard_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STUD_Student_TC">
+            <EntityTypeMapping TypeName="S360Model.STUD_Student_TC">
+              <MappingFragment StoreEntitySet="STUD_Student_TC">
+                <ScalarProperty Name="Login_ID" ColumnName="Login_ID" />
+                <ScalarProperty Name="IssuedOn" ColumnName="IssuedOn" />
+                <ScalarProperty Name="IssuedBy_ID" ColumnName="IssuedBy_ID" />
+                <ScalarProperty Name="Student_ID" ColumnName="Student_ID" />
+                <ScalarProperty Name="RegNo" ColumnName="RegNo" />
+                <ScalarProperty Name="StudentTC_ID" ColumnName="StudentTC_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

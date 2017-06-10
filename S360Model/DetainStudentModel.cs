@@ -19,16 +19,16 @@ namespace S360Model
             get { return Name + " " + Father + " " + SurName; }
         }
 
-        private UserBaseModel _user = null;
-        public UserBaseModel User
-        {
-            get
-            {
-                if (_user == null)
-                    _user = new UserBaseModel();
-                return _user;
-            }
-            set { _user = value; }
-        }
+        //private UserBaseModel _user = null;
+        //public UserBaseModel User
+        //{
+        //    get
+        //    {
+        //        if (_user == null)
+        //            _user = new UserBaseModel();
+        //        return _user;
+        //    }
+        //    set { _user = value; }
+        //}
     }
 }

@@ -314,6 +314,7 @@ namespace S360.ViewModel.Student
             List<STUD_StudentAcademic_Details> detainstudentsacc = new List<STUD_StudentAcademic_Details>();
             IEnumerable<STUD_DetainingOrPromotions_Details> detorpromo = StBusiness.GetAllStudentsDetainOrPromotion();
             List<STUD_DetainingOrPromotions_Details> detainorpromotion = new List<STUD_DetainingOrPromotions_Details>();
+
             foreach (STUD_Students_Master detainst in students)
             {
                 detainstudentsacc.AddRange((from stacc in accDetails
@@ -342,7 +343,7 @@ namespace S360.ViewModel.Student
 
                 detainorpromotion.Where(A => A.Student_ID == ds.StudentId).Select(S =>
                  {
-                     S.Status_ID = 0;
+                     S.Status_ID = 2; //Status for detain
                      S.EnteredBy = S360Model.S360Configuration.Instance.UserID;
                      S.Login_ID = S360Model.S360Configuration.Instance.LoginID;
                      return S;

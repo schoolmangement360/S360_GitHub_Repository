@@ -20,6 +20,7 @@ namespace S360BusinessLogic
         private ReligionRepository _ReligionRepository;
         private StudentAcademicRepository _StudentAcademicRepository;
         private StudentDetainPromotionRepository _studentDetainPromotionRepository;
+        private StudentTCRepository _studentTCRepository;
 
         public StudentBusinessLogic()
         {
@@ -31,6 +32,7 @@ namespace S360BusinessLogic
             _ReligionRepository = S360RepositoryFactory.GetRepository("RELIGION") as ReligionRepository;
             _StudentAcademicRepository = S360RepositoryFactory.GetRepository("STUDENTACADEMIC") as StudentAcademicRepository;
             _studentDetainPromotionRepository = S360RepositoryFactory.GetRepository("DETAINORPROMOTION") as StudentDetainPromotionRepository;
+            _studentTCRepository = S360RepositoryFactory.GetRepository("STUDENTTC") as StudentTCRepository;
         }
 
         /// <summary>
@@ -195,13 +197,22 @@ namespace S360BusinessLogic
                     };
 
                     //Insert into STUD_DetainingOrPromotions_Details table
-                    _studentDetainPromotionRepository.Insert(promotion);
+                    SaveStudentDetainPromotion(promotion);
                 }
                 catch(Exception Ex)
                 {
                     throw new S360Exceptions.S360Exception(Ex.Message, Ex.InnerException);
                 }
             }
+        }
+
+        /// <summary>
+        /// Save Promotion or detain info
+        /// </summary>
+        /// <param name="DetPromo"></param>
+        public void SaveStudentDetainPromotion(STUD_DetainingOrPromotions_Details DetPromo)
+        {
+            _studentDetainPromotionRepository.Insert(DetPromo);
         }
 
         /// <summary>
@@ -252,6 +263,15 @@ namespace S360BusinessLogic
                         Standard = _Standardpository.GetAll().Where(S => S.Standard_Id == st.CurrentStd_ID).FirstOrDefault().Name,
                         StandardID = (short)st.CurrentStd_ID
                     }).FirstOrDefault();
+        }
+
+        /// <summary>
+        /// Method to insert value to STUD_Student_TC table
+        /// </summary>
+        /// <param name="TC"></param>
+        public void SaveIssueTC(STUD_Student_TC TC)
+        {
+            _studentTCRepository.Insert(TC);
         }
     }
 }
