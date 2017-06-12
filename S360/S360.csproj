@@ -80,6 +80,7 @@
     <Compile Include="ViewModel\Student\DetainStudentViewModel.cs" />
     <Compile Include="ViewModel\Student\FindStudentViewModel.cs" />
     <Compile Include="ViewModel\Student\PromotionViewModel.cs" />
+    <Compile Include="ViewModel\Student\StudentDataViewModel.cs" />
     <Compile Include="ViewModel\Student\StudentTCViewModel.cs" />
     <Compile Include="ViewModel\Student\StudentViewModel.cs" />
     <Compile Include="View\Login\LoginScreen.xaml.cs">
@@ -99,6 +100,9 @@
     </Compile>
     <Compile Include="View\Student\UC_PromotionScreen.xaml.cs">
       <DependentUpon>UC_PromotionScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Student\UC_StudentDataScreen.xaml.cs">
+      <DependentUpon>UC_StudentDataScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Student\UC_StudentReports.xaml.cs">
       <DependentUpon>UC_StudentReports.xaml</DependentUpon>
@@ -144,6 +148,10 @@
     <Page Include="View\Student\UC_PromotionScreen.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Student\UC_StudentDataScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Student\UC_StudentReports.xaml">
       <SubType>Designer</SubType>

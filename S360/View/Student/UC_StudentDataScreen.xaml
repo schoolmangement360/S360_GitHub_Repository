@@ -1,15 +1,15 @@
-﻿<Window x:Class="S360.View.Student.UC_FindStudentScreen"
+﻿<UserControl x:Class="S360.View.Student.UC_StudentDataScreen"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:BasicControls="clr-namespace:S360Controlls.BasicControls;assembly=S360Controlls"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:S360.View.Student"
              xmlns:ViewModelClass="clr-namespace:S360.ViewModel.Student"
-             Background="White" Name="FindStudent">
+             Background="White" Name="UCStudentData">
 
-    <Window.DataContext>
-        <ViewModelClass:FindStudentViewModel />
-    </Window.DataContext>
+    <UserControl.DataContext>
+        <ViewModelClass:StudentDataViewModel />
+    </UserControl.DataContext>
 
     <Viewbox Stretch="Fill" StretchDirection="Both"
              SnapsToDevicePixels="True"
@@ -75,42 +75,29 @@
                 <StackPanel.Background>
                     <ImageBrush ImageSource="pack://application:,,,/S360;component/Images/RibbonTitle.png" Stretch="Fill" />
                 </StackPanel.Background>
-                <TextBlock Text="Find Student" FontSize="18" Foreground="White" Grid.Row="0" Grid.Column="8" Grid.ColumnSpan="4" Margin="45,5,0,0" />
+                <TextBlock Text="{Binding Title, Mode=OneWay}" FontSize="18" Foreground="White" Grid.Row="0" Grid.Column="8" Grid.ColumnSpan="4" Margin="45,5,0,0" />
             </StackPanel>
 
-            <BasicControls:S360TextBlock Text="Find String" Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2" />
-            <BasicControls:S360TextBox Name="txtFindString" Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="6" Style="{StaticResource S360TextBoxStyle}"
-                                       Text="{Binding FindString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-            <Button Name="btnSearch" Content="Search" Grid.Row="3" Grid.Column="13" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" Command="{Binding SearchCommand}" />
-
-            <!--<DataGrid Name="grStudents" Grid.Row="5" Grid.RowSpan="12" Grid.Column="1" Grid.ColumnSpan="18" ItemsSource="{Binding StudentsList, NotifyOnSourceUpdated=True}"
-                      SelectedValue="{Binding SelectedStudent, Mode=TwoWay}"/>-->
-
-            <ListView Name="lvStudents" Grid.Row="5" Grid.RowSpan="12" Grid.Column="1" Grid.ColumnSpan="18" ItemsSource="{Binding StudentsList, NotifyOnSourceUpdated=True}"
-                      SelectedValue="{Binding SelectedStudent, Mode=TwoWay}" >
-
-                <ListView.InputBindings>
-                    <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding ListViewDoubleClickCommand}" />
-                </ListView.InputBindings>
-
+            <ListView Name="lvStudents" Grid.Row="3" Grid.Column="0" Grid.RowSpan="17" Grid.ColumnSpan="20" ItemsSource="{Binding Students, Mode=TwoWay}">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="RegNo" DisplayMemberBinding="{Binding RegNo}" Width="100" />
-                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="250" />
-                        <GridViewColumn Header="SurName" DisplayMemberBinding="{Binding SurName}" Width="250" />
-                        <GridViewColumn Header="Father" DisplayMemberBinding="{Binding Father}" Width="250" />
-                        <GridViewColumn Header="Std" DisplayMemberBinding="{Binding Standard}" Width="50" />
-                        <GridViewColumn Header="Div" DisplayMemberBinding="{Binding Division}" Width="50" />
+                        <GridViewColumn Header="RegNo" DisplayMemberBinding="{Binding Students.RegNo}" Width="70" />
+                        <GridViewColumn Header="MF" DisplayMemberBinding="{Binding Students.Gender}" Width="25" />
+                        <GridViewColumn Header="SurName" DisplayMemberBinding="{Binding Students.Surname}" Width="200" />
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Students.Name}" Width="200" />
+                        <GridViewColumn Header="Fname" DisplayMemberBinding="{Binding Students.FatherName}" Width="200" />
+                        <GridViewColumn Header="Pstd" DisplayMemberBinding="{Binding Students.Standard}" Width="30" />
+                        <GridViewColumn Header="Pdiv" DisplayMemberBinding="{Binding Students.CurrentDiv}" Width="30" />
+                        <GridViewColumn Header="Address" DisplayMemberBinding="{Binding Students.Address}" Width="600" />
+                        <GridViewColumn Header="Mobile1" DisplayMemberBinding="{Binding Students.Mobile1}" Width="170" />
+                        <GridViewColumn Header="Mobile2" DisplayMemberBinding="{Binding Students.Mobile2}" Width="170" />
+                        <GridViewColumn Header="Mobile3" DisplayMemberBinding="{Binding Students.Mobile3}" Width="170" />
+                        <GridViewColumn Header="Phonehome" DisplayMemberBinding="{Binding Students.HomePh}" Width="170" />
+                        <GridViewColumn Header="Phonework" DisplayMemberBinding="{Binding Students.WorkPh}" Width="170" />
+                        <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Students.Email}" Width="300" />
                     </GridView>
                 </ListView.View>
             </ListView>
-
-            <BasicControls:S360TextBlock Text="Selected Section" Grid.Row="18" Grid.Column="1" Grid.ColumnSpan="2" />
-            <BasicControls:S360TextBox Name="txtSection" Grid.Row="18" Grid.Column="3" Grid.ColumnSpan="8" IsEnabled="False"
-                                       Text="{Binding SelectedSection.Name}" Style="{StaticResource S360TextBoxStyle}" />
-            <Button Name="btnCancel" Content="Cancel" Grid.Row="18" Grid.Column="15" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" Command="{Binding CancelCommand}" />
-            <Button Name="btnSelect" Content="Select" Grid.Row="18" Grid.Column="17" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" Command="{Binding SelectCommand}"
-                    CommandParameter="{Binding ElementName=FindStudent}"/>
         </Grid>
     </Viewbox>
-</Window>
+</UserControl>

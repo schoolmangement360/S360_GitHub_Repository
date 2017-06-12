@@ -53,12 +53,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="S360Configuration.cs" />
     <Compile Include="StudentBaseModel.cs" />
+    <Compile Include="StudentDataModel.cs" />
     <Compile Include="UserBaseModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\S360Controlls\S360Controlls.csproj">
       <Project>{b77cb99f-4ebd-4332-8a35-c3b83abfffeb}</Project>
       <Name>S360Controlls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\S360Entity\S360Entity.csproj">
+      <Project>{2cefcc65-b41f-4f91-aea4-ebbf7860abdb}</Project>
+      <Name>S360Entity</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
