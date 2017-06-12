@@ -39,7 +39,7 @@ namespace S360.ViewModel.Student
         private System.Windows.Input.ICommand _findStudentWithGRCommand = null;
 
         /// <summary>
-        /// Command to cancel
+        /// Command to cancel the page
         /// </summary>
         private System.Windows.Input.ICommand _cancelCommand = null;
 

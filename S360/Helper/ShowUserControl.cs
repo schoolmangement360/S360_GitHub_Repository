@@ -120,13 +120,33 @@ namespace S360
                 case Page.EditStudentDetails:
                     break;
                 case Page.StudentKGSection:
-                    break;
+                    StudentDataViewModel studentDatakg = new StudentDataViewModel();
+                    studentDatakg.SectionID = 0; //Section Id for KG section
+                    studentDatakg.Title = "KG Section";
+                    UC_StudentDataScreen ucStudentDataKG = new UC_StudentDataScreen();
+                    ucStudentDataKG.DataContext = studentDatakg;
+                    return ucStudentDataKG;
                 case Page.StudentPrimarySection:
-                    break;
+                    StudentDataViewModel studentDataP = new StudentDataViewModel();
+                    studentDataP.SectionID = 1; //Section Id for Primary section
+                    studentDataP.Title = "KG Section";
+                    UC_StudentDataScreen ucStudentDataP = new UC_StudentDataScreen();
+                    ucStudentDataP.DataContext = studentDataP;
+                    return ucStudentDataP;
                 case Page.StudentSecondarySection:
-                    break;
+                    StudentDataViewModel studentDataS = new StudentDataViewModel();
+                    studentDataS.SectionID = 2; //Section Id for Secondary section
+                    studentDataS.Title = "KG Section";
+                    UC_StudentDataScreen ucStudentDataS = new UC_StudentDataScreen();
+                    ucStudentDataS.DataContext = studentDataS;
+                    return ucStudentDataS;
                 case Page.StudentOtherSections:
-                    break;
+                    StudentDataViewModel studentDataO = new StudentDataViewModel();
+                    studentDataO.SectionID = 3; //Section Id for Other sections
+                    studentDataO.Title = "KG Section";
+                    UC_StudentDataScreen ucStudentDataO = new UC_StudentDataScreen();
+                    ucStudentDataO.DataContext = studentDataO;
+                    return ucStudentDataO;
                 case Page.AddressKGSection:
                     break;
                 case Page.AddressPrimarySection:

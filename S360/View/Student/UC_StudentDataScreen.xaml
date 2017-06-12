@@ -78,26 +78,48 @@
                 <TextBlock Text="{Binding Title, Mode=OneWay}" FontSize="18" Foreground="White" Grid.Row="0" Grid.Column="8" Grid.ColumnSpan="4" Margin="45,5,0,0" />
             </StackPanel>
 
-            <ListView Name="lvStudents" Grid.Row="3" Grid.Column="0" Grid.RowSpan="17" Grid.ColumnSpan="20" ItemsSource="{Binding Students, Mode=TwoWay}">
+            <!--<StackPanel Grid.Row="3" Grid.Column="1" Grid.RowSpan="16" Grid.ColumnSpan="18" SnapsToDevicePixels="True"
+                        RenderOpti ons.BitmapScalingMode="NearestNeighbor" RenderOptions.EdgeMode="Aliased">-->
+
+            <ListView Name="lvStudents" ItemsSource="{Binding Students, Mode=TwoWay}" Grid.Row="3" Grid.Column="0" Grid.RowSpan="16" Grid.ColumnSpan="20" Width="Auto"
+                      ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Stretch" >
                 <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="RegNo" DisplayMemberBinding="{Binding Students.RegNo}" Width="70" />
-                        <GridViewColumn Header="MF" DisplayMemberBinding="{Binding Students.Gender}" Width="25" />
-                        <GridViewColumn Header="SurName" DisplayMemberBinding="{Binding Students.Surname}" Width="200" />
-                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Students.Name}" Width="200" />
-                        <GridViewColumn Header="Fname" DisplayMemberBinding="{Binding Students.FatherName}" Width="200" />
-                        <GridViewColumn Header="Pstd" DisplayMemberBinding="{Binding Students.Standard}" Width="30" />
-                        <GridViewColumn Header="Pdiv" DisplayMemberBinding="{Binding Students.CurrentDiv}" Width="30" />
-                        <GridViewColumn Header="Address" DisplayMemberBinding="{Binding Students.Address}" Width="600" />
-                        <GridViewColumn Header="Mobile1" DisplayMemberBinding="{Binding Students.Mobile1}" Width="170" />
-                        <GridViewColumn Header="Mobile2" DisplayMemberBinding="{Binding Students.Mobile2}" Width="170" />
-                        <GridViewColumn Header="Mobile3" DisplayMemberBinding="{Binding Students.Mobile3}" Width="170" />
-                        <GridViewColumn Header="Phonehome" DisplayMemberBinding="{Binding Students.HomePh}" Width="170" />
-                        <GridViewColumn Header="Phonework" DisplayMemberBinding="{Binding Students.WorkPh}" Width="170" />
-                        <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Students.Email}" Width="300" />
+                    <GridView ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                        <!--<GridViewColumn Header="RegNo" DisplayMemberBinding="{Binding RegNo}" Width="70"  />
+                        <GridViewColumn Header="MF" DisplayMemberBinding="{Binding Gender}" Width="25" />
+                        <GridViewColumn Header="SurName" DisplayMemberBinding="{Binding Surname}" Width="200" />
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="200" />
+                        <GridViewColumn Header="Fname" DisplayMemberBinding="{Binding FatherName}" Width="200" />
+                        <GridViewColumn Header="Pstd" DisplayMemberBinding="{Binding Standard}" Width="30" />
+                        <GridViewColumn Header="Pdiv" DisplayMemberBinding="{Binding CurrentDiv}" Width="30" />
+                        <GridViewColumn Header="Address" DisplayMemberBinding="{Binding Address}" Width="600" />
+                        <GridViewColumn Header="Mobile1" DisplayMemberBinding="{Binding Mobile1}" Width="170" />
+                        <GridViewColumn Header="Mobile2" DisplayMemberBinding="{Binding Mobile2}" Width="170" />
+                        <GridViewColumn Header="Mobile3" DisplayMemberBinding="{Binding Mobile3}" Width="170" />
+                        <GridViewColumn Header="Phonehome" DisplayMemberBinding="{Binding HomePh}" Width="170" />
+                        <GridViewColumn Header="Phonework" DisplayMemberBinding="{Binding WorkPh}" Width="170" />
+                        <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email}" Width="300" />-->
+
+                        <GridViewColumn Header="RegNo" DisplayMemberBinding="{Binding RegNo}" Width="Auto" />
+                        <GridViewColumn Header="MF" DisplayMemberBinding="{Binding Gender}" Width="Auto"/>
+                        <GridViewColumn Header="SurName" DisplayMemberBinding="{Binding Surname}" Width="Auto"/>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="Auto"/>
+                        <GridViewColumn Header="Fname" DisplayMemberBinding="{Binding FatherName}" Width="Auto"/>
+                        <GridViewColumn Header="Pstd" DisplayMemberBinding="{Binding Standard}" Width="Auto"/>
+                        <GridViewColumn Header="Pdiv" DisplayMemberBinding="{Binding CurrentDiv}" Width="Auto"/>
+                        <GridViewColumn Header="Address" DisplayMemberBinding="{Binding Address}" Width="Auto"/>
+                        <GridViewColumn Header="Mobile1" DisplayMemberBinding="{Binding Mobile1}" Width="Auto"/>
+                        <GridViewColumn Header="Mobile2" DisplayMemberBinding="{Binding Mobile2}" Width="Auto"/>
+                        <GridViewColumn Header="Mobile3" DisplayMemberBinding="{Binding Mobile3}" Width="Auto"/>
+                        <GridViewColumn Header="Phonehome" DisplayMemberBinding="{Binding HomePh}" Width="Auto"/>
+                        <GridViewColumn Header="Phonework" DisplayMemberBinding="{Binding WorkPh}" Width="Auto"/>
+                        <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email}" Width="Auto"/>
                     </GridView>
                 </ListView.View>
             </ListView>
+            <!--</StackPanel>-->
+            <Button Name="btnCancel" Content="Cancel" Grid.Row="19" Grid.Column="18" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}"
+                    Command="{Binding CancelCommand}" CommandParameter="{Binding ElementName=UCStudentData}" />
         </Grid>
     </Viewbox>
 </UserControl>
