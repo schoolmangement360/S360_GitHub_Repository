@@ -10,5 +10,12 @@ namespace S360Model
     public class StudentDataModel : STUD_Students_Master
     {
         public string Standard { get; set; }
+        public string FullName
+        {
+            get
+            {
+                return this.Surname + " " + this.Name + " " + this.FatherName;
+            }
+        }
     }
 }

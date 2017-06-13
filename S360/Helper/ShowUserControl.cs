@@ -148,13 +148,33 @@ namespace S360
                     ucStudentDataO.DataContext = studentDataO;
                     return ucStudentDataO;
                 case Page.AddressKGSection:
-                    break;
+                    StudentDataViewModel addressDatakG = new StudentDataViewModel();
+                    addressDatakG.SectionID = 0; //Section Id for KG section
+                    addressDatakG.Title = "KG Section";
+                    UC_AddressDataScreen ucaddresDataKG = new UC_AddressDataScreen();
+                    ucaddresDataKG.DataContext = addressDatakG;
+                    return ucaddresDataKG;
                 case Page.AddressPrimarySection:
-                    break;
+                    StudentDataViewModel addressDataP = new StudentDataViewModel();
+                    addressDataP.SectionID = 1; //Section Id for Primary section
+                    addressDataP.Title = "Primary Section";
+                    UC_AddressDataScreen ucaddresDataP = new UC_AddressDataScreen();
+                    ucaddresDataP.DataContext = addressDataP;
+                    return ucaddresDataP;
                 case Page.AddressSecondarySection:
-                    break;
+                    StudentDataViewModel addressDataS = new StudentDataViewModel();
+                    addressDataS.SectionID = 2; //Section Id for Secondary section
+                    addressDataS.Title = "Secondary Section";
+                    UC_AddressDataScreen ucaddresDataS = new UC_AddressDataScreen();
+                    ucaddresDataS.DataContext = addressDataS;
+                    return ucaddresDataS;
                 case Page.AddressOtherSections:
-                    break;
+                    StudentDataViewModel addressDataO = new StudentDataViewModel();
+                    addressDataO.SectionID = 3; //Section Id for Other section
+                    addressDataO.Title = "Other Section";
+                    UC_AddressDataScreen ucaddresDataO = new UC_AddressDataScreen();
+                    ucaddresDataO.DataContext = addressDataO;
+                    return ucaddresDataO;
                 case Page.StudentPromotion:
                     return new UC_PromotionScreen();
                 case Page.AllotNewGRno:
