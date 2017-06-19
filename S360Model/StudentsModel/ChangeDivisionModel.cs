@@ -10,7 +10,7 @@ namespace S360Model
     {
         public string OldDivision { get; set; }
         public string NewDivision { get; set; }
-        public string Fullname
+        public override string Fullname
         {
             get { return Name + " " + Father + " " + SurName; }
         }

@@ -46,6 +46,7 @@
         <EntityTypeShape EntityType="S360Model.STUD_StudentAcademic_Details" Width="1.5" PointX="17.375" PointY="17.75" />
         <EntityTypeShape EntityType="S360Model.GEN_Standards_Lookup" Width="1.5" PointX="3.375" PointY="9.75" />
         <EntityTypeShape EntityType="S360Model.STUD_Student_TC" Width="1.5" PointX="7.375" PointY="18.75" />
+        <EntityTypeShape EntityType="S360Model.CHQ_Cheques_Master_Temp" Width="1.5" PointX="9.375" PointY="18.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

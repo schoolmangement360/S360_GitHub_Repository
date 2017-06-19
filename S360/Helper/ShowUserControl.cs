@@ -1,4 +1,5 @@
-﻿using S360.View.Student;
+﻿using S360.View.Cheque;
+using S360.View.Student;
 using S360.ViewModel.Student;
 using System;
 using System.Collections.Generic;
@@ -63,7 +64,7 @@ namespace S360
 
                 //// Cheques ///
                 case Page.ChequeInward:
-                    break;
+                    return new UC_ChequeInwardScreen();
                 case Page.EditCheque:
                     break;
                 case Page.CancelCheque:

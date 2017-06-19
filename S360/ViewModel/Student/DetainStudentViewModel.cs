@@ -281,6 +281,9 @@ namespace S360.ViewModel.Student
             }
         }
 
+        /// <summary>
+        /// Command to find student with GR number
+        /// </summary>
         public System.Windows.Input.ICommand FindStudentWithGRCommand
         {
             get

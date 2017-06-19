@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BasicControls\S360ComboBox.cs" />
+    <Compile Include="BasicControls\S360NumericTextBox.cs" />
     <Compile Include="BasicControls\S360RichTextBox.cs" />
     <Compile Include="BasicControls\S360TextBlock.cs" />
     <Compile Include="BasicControls\S360TextBox.cs" />

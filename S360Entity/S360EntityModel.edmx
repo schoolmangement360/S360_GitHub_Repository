@@ -72,6 +72,24 @@
           <Property Name="ChqStatus_ID" Type="int" />
           <Property Name="IsActive" Type="bit" />
         </EntityType>
+        <EntityType Name="CHQ_Cheques_Master_Temp">
+          <Key>
+            <PropertyRef Name="Cheque_ID" />
+          </Key>
+          <Property Name="Cheque_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Student_ID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Section_ID" Type="smallint" />
+          <Property Name="EnteredOn" Type="datetimeoffset" Precision="0" />
+          <Property Name="EnteredBy" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Login_ID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="InwardDate" Type="date" />
+          <Property Name="ChequeNo" Type="varchar" MaxLength="100" />
+          <Property Name="Bank" Type="varchar" MaxLength="100" />
+          <Property Name="ChqAmount" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Remarks" Type="varchar" MaxLength="500" />
+          <Property Name="ChqStatus_ID" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
         <EntityType Name="CHQ_ChequeStatus_Lookup">
           <Key>
             <PropertyRef Name="ChqStatus_ID" />
@@ -608,6 +626,7 @@ warning 6002: The table/view 'S360_DB.dbo.UserLoginDetails' does not have a prim
           <EntitySet Name="CHQ_ChequeDeposits_Details" EntityType="Self.CHQ_ChequeDeposits_Details" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CHQ_ChequeReturns_Details" EntityType="Self.CHQ_ChequeReturns_Details" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CHQ_Cheques_Master" EntityType="Self.CHQ_Cheques_Master" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CHQ_Cheques_Master_Temp" EntityType="Self.CHQ_Cheques_Master_Temp" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CHQ_ChequeStatus_Lookup" EntityType="Self.CHQ_ChequeStatus_Lookup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CHQ_DeletedCheque_Details" EntityType="Self.CHQ_DeletedCheque_Details" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GEN_Languages_Lookup" EntityType="Self.GEN_Languages_Lookup" Schema="dbo" store:Type="Tables" />
@@ -903,6 +922,7 @@ warning 6002: The table/view 'S360_DB.dbo.UserLoginDetails' does not have a prim
           <EntitySet Name="STUD_StudentAcademic_Details" EntityType="S360Model.STUD_StudentAcademic_Details" />
           <EntitySet Name="GEN_Standards_Lookup" EntityType="S360Model.GEN_Standards_Lookup" />
           <EntitySet Name="STUD_Student_TC" EntityType="S360Model.STUD_Student_TC" />
+          <EntitySet Name="CHQ_Cheques_Master_Temp" EntityType="S360Model.CHQ_Cheques_Master_Temp" />
         </EntityContainer>
         <EntityType Name="CHQ_ChequeCancellations_Details">
           <Key>
@@ -1460,6 +1480,24 @@ warning 6002: The table/view 'S360_DB.dbo.UserLoginDetails' does not have a prim
           <Property Name="IssuedBy_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="IssuedOn" Type="DateTimeOffset" Nullable="false" Precision="0" />
           <Property Name="Login_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="CHQ_Cheques_Master_Temp">
+          <Key>
+            <PropertyRef Name="Cheque_ID" />
+          </Key>
+          <Property Name="Cheque_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Student_ID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Section_ID" Type="Int16" />
+          <Property Name="EnteredOn" Type="DateTimeOffset" Precision="0" />
+          <Property Name="EnteredBy" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Login_ID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="InwardDate" Type="DateTime" Precision="0" />
+          <Property Name="ChequeNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Bank" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ChqAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ChqStatus_ID" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -2020,6 +2058,25 @@ warning 6002: The table/view 'S360_DB.dbo.UserLoginDetails' does not have a prim
                 <ScalarProperty Name="Student_ID" ColumnName="Student_ID" />
                 <ScalarProperty Name="RegNo" ColumnName="RegNo" />
                 <ScalarProperty Name="StudentTC_ID" ColumnName="StudentTC_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CHQ_Cheques_Master_Temp">
+            <EntityTypeMapping TypeName="S360Model.CHQ_Cheques_Master_Temp">
+              <MappingFragment StoreEntitySet="CHQ_Cheques_Master_Temp">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ChqStatus_ID" ColumnName="ChqStatus_ID" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="ChqAmount" ColumnName="ChqAmount" />
+                <ScalarProperty Name="Bank" ColumnName="Bank" />
+                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
+                <ScalarProperty Name="InwardDate" ColumnName="InwardDate" />
+                <ScalarProperty Name="Login_ID" ColumnName="Login_ID" />
+                <ScalarProperty Name="EnteredBy" ColumnName="EnteredBy" />
+                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
+                <ScalarProperty Name="Section_ID" ColumnName="Section_ID" />
+                <ScalarProperty Name="Student_ID" ColumnName="Student_ID" />
+                <ScalarProperty Name="Cheque_ID" ColumnName="Cheque_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

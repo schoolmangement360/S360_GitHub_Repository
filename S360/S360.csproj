@@ -72,7 +72,6 @@
     <Compile Include="Helper\MemoryManagement.cs" />
     <Compile Include="Helper\Page.cs" />
     <Compile Include="Helper\RelayCommand.cs" />
-    <Compile Include="Helper\S360Configuration.cs" />
     <Compile Include="Helper\ShowUserControl.cs" />
     <Compile Include="Helper\ValidateControls.cs" />
     <Compile Include="Helper\ViewModelBase.cs" />

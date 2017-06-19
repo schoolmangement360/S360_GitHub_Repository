@@ -300,12 +300,14 @@ namespace S360
                 miCheques.VerticalContentAlignment = System.Windows.VerticalAlignment.Center;
                 this.MenuContainer.Items.Add(miCheques);
 
-                #region SubMenu - Masters
+                #region SubMenu - Cheques
 
                 MenuItem smiChequeInward = new MenuItem();
                 smiChequeInward.Style = SubMenustyle;
                 smiChequeInward.Header = "Cheque Inward";
                 smiChequeInward.Height = 45;
+                smiChequeInward.Tag = Page.ChequeInward;
+                smiChequeInward.Click += MenuItem_Click;
                 miCheques.Items.Add(smiChequeInward);
 
                 MenuItem smiEditCheque = new MenuItem();

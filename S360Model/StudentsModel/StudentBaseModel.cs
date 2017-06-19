@@ -16,5 +16,12 @@ namespace S360Model
         public string Father { get; set; }
         [System.ComponentModel.Browsable(false)]
         public long AccDetId { get; set; }
+        public virtual string Fullname
+        {
+            get
+            {
+                return this.Name + " " + this.SurName + " " + this.Father;
+            }
+        }
     }
 }

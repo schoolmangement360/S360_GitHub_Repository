@@ -308,8 +308,8 @@ namespace S360.ViewModel.Student
                 CurrentAcadDetail_ID = CurrentStudent.AccDetId,
                 LastAcadDetail_ID = CurrentStudent.AccDetId,
                 Status_ID = 3, //Status id for TC issue
-                EnteredBy = S360Configuration.Instance.UserID,
-                Login_ID = S360Configuration.Instance.LoginID
+                EnteredBy = S360Model.S360Configuration.Instance.UserID,
+                Login_ID = S360Model.S360Configuration.Instance.LoginID
             };
 
             STUD_Student_TC TC = new STUD_Student_TC()
@@ -317,8 +317,8 @@ namespace S360.ViewModel.Student
                 Student_ID = CurrentStudent.StudentId,
                 RegNo = CurrentStudent.RegNo,
                 IssuedOn = DateTimeOffset.Now,
-                IssuedBy_ID = S360Configuration.Instance.UserID,
-                Login_ID = S360Configuration.Instance.LoginID
+                IssuedBy_ID = S360Model.S360Configuration.Instance.UserID,
+                Login_ID = S360Model.S360Configuration.Instance.LoginID
             };
 
             business.UpdateStudent(student);

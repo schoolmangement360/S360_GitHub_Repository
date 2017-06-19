@@ -71,21 +71,6 @@ namespace S360.ViewModel.Student
         /// </summary>
         private bool _isbtnPromoteAllEnable = false;
 
-        /// <summary>
-        /// Variable to store button ViewLogPromotion Enable value
-        /// </summary>
-        private bool _isbtnViewLogPromotionEnable = false;
-
-        /// <summary>
-        /// Variable to store button Detain Enable value
-        /// </summary>
-        private bool _isbtnDetainEnable = true;
-
-        /// <summary>
-        /// Variable to store button ViewLogDetain Enable value
-        /// </summary>
-        private bool _isbtnViewLogDetainEnable = false;
-
         #endregion
 
         #region [ Constructor ]

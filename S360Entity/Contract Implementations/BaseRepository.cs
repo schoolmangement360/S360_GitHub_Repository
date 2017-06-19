@@ -75,7 +75,8 @@ namespace S360Entity
             }
             dynamic obj = dbSet.Remove(entity);
             this._unitOfWork.Db.SaveChanges();
-            return obj.Id;
+            //return obj.Id;
+            return 0;
         }
         public IUnitOfWork UnitOfWork { get { return _unitOfWork; } }
         internal System.Data.Entity.DbContext Database { get { return _unitOfWork.Db; } }

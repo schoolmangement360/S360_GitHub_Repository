@@ -111,6 +111,9 @@
     <Compile Include="CHQ_Cheques_Master.cs">
       <DependentUpon>S360EntityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="CHQ_Cheques_Master_Temp.cs">
+      <DependentUpon>S360EntityModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="CHQ_DeletedCheque_Details.cs">
       <DependentUpon>S360EntityModel.tt</DependentUpon>
     </Compile>
@@ -165,6 +168,8 @@
     <Compile Include="Repository\ChequeCancellationRepository.cs" />
     <Compile Include="Repository\ChequeClearanceRepository.cs" />
     <Compile Include="Repository\ChequeDepositRepository.cs" />
+    <Compile Include="Repository\ChequeMasterRepository.cs" />
+    <Compile Include="Repository\ChequeMasterTempRepository.cs" />
     <Compile Include="Repository\LanguageRepository.cs" />
     <Compile Include="Repository\ReligionRepository.cs" />
     <Compile Include="Repository\SectionRepository.cs" />

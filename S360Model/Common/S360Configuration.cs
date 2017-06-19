@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace S360
+namespace S360Model
 {
     public sealed class S360Configuration
     {
@@ -49,6 +49,11 @@ namespace S360
         /// Store User ID
         /// </summary>
         public decimal UserID { get; set; }
+
+        /// <summary>
+        /// Gets or sets Username
+        /// </summary>
+        public string User { get; set; }
 
         /// <summary>
         /// Store UsAcademic Year Starter

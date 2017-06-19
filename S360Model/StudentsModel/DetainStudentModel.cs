@@ -14,7 +14,7 @@ namespace S360Model
         [System.ComponentModel.Browsable(false)]
         public short StandardID { get; set; }
         public string Standard { get; set; }
-        public string Fullname
+        public override string Fullname
         {
             get { return Name + " " + Father + " " + SurName; }
         }

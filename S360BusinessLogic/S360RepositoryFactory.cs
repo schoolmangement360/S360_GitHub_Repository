@@ -33,6 +33,10 @@ namespace S360BusinessLogic
                     return new StudentDetainPromotionRepository(uow);
                 case "STUDENTTC":
                     return new StudentTCRepository(uow);
+                case "CHEQUEMASTER":
+                    return new ChequeMasterRepository(uow);
+                case "CHEQUEMASTERTEMP":
+                    return new ChequeMasterTempRepository(uow);
                 default:
                     return null;
             }
