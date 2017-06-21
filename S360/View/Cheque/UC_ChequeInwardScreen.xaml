@@ -99,7 +99,7 @@
                                    MaxLength="6"/>
         <BasicControls:S360TextBlock Text="Cq. Date" Grid.Row="5" Grid.Column="8" Grid.ColumnSpan="2" />
         <DatePickerTextBox Name="txtCqDate" Grid.Row="5" Grid.Column="10" Grid.ColumnSpan="3" Style="{StaticResource S360TextBoxStyle}"
-                           Text="{Binding CurrentChequeInwardModel.InwardDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                           Text="{Binding CurrentChequeInwardModel.InwardDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <BasicControls:S360TextBlock Text="Cq. Bank" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Right" />
         <BasicControls:S360TextBox Name="txtBank" Grid.Row="6" Grid.Column="4" Grid.ColumnSpan="15" Style="{StaticResource S360TextBoxStyle}"

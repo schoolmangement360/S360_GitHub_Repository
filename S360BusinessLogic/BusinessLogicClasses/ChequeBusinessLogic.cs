@@ -66,9 +66,10 @@ namespace S360BusinessLogic
         /// insert cheque in temp table
         /// </summary>
         /// <param name="Cheque"></param>
-        public void SaveChequeTemp(CHQ_Cheques_Master_Temp Cheque)
+        public object SaveChequeTemp(CHQ_Cheques_Master_Temp Cheque)
         {
-            _chequeMasterTempRepository.Insert(Cheque);
+            Cheque = _chequeMasterTempRepository.Insert(Cheque);
+            return Cheque;
         }
 
         /// <summary>

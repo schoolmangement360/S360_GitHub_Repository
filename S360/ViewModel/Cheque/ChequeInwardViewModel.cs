@@ -189,6 +189,11 @@ namespace S360.ViewModel.Cheque
                     _chequeList = new ObservableCollection<ChequeInwardsModel>();
                 return _chequeList;
             }
+            set
+            {
+                _chequeList = value;
+                RaisePropertyChanged("ChequeList");
+            }
         }
 
         /// <summary>
@@ -340,7 +345,7 @@ namespace S360.ViewModel.Cheque
 
         private bool CanExecuteFindStudent(object sender)
         {
-            if (!string.IsNullOrEmpty(_selectedSection.Name))
+            if (!string.IsNullOrEmpty(SelectedSection.Name))
                 return true;
             return false;
         }
@@ -414,7 +419,7 @@ namespace S360.ViewModel.Cheque
                 WPFCustomMessageBox.CustomMessageBox.ShowOK("Invalid Amount", "Warning", "OK");
                 return;
             }
-            if(Amt == 0)
+            if(Amt <= 0)
             {
                 WPFCustomMessageBox.CustomMessageBox.ShowOK("Amount must be greater than 0", "Warning", "OK");
                 return;
@@ -422,13 +427,14 @@ namespace S360.ViewModel.Cheque
 
             if (this._chequeList == null)
                 _chequeList = new ObservableCollection<ChequeInwardsModel>();
-            CurrentChequeInwardModel.SerialNo = ChequeList.Count + 1;
             CurrentChequeInwardModel.User = LoginBusinessLogic.GetUserByID(S360Configuration.Instance.UserID).Username;
             CurrentChequeInwardModel.EnteredBy = S360Model.S360Configuration.Instance.UserID;
             CurrentChequeInwardModel.Login_ID = S360Model.S360Configuration.Instance.LoginID;
-            
+
             ChequeBusinessLogic business = new ChequeBusinessLogic();
-            business.SaveChequeTemp(ConvertToChequeMasterTemp(CurrentChequeInwardModel));
+            CurrentChequeInwardModel = ConvertToCheque(business.SaveChequeTemp(ConvertToCheque(CurrentChequeInwardModel, true)
+                                        as CHQ_Cheques_Master_Temp), false) as ChequeInwardsModel;
+            CurrentChequeInwardModel.SerialNo = ChequeList.Count + 1;
 
             ChequeList.Add(CurrentChequeInwardModel);
             CurrentChequeInwardModel = null;
@@ -480,9 +486,9 @@ namespace S360.ViewModel.Cheque
         private void ExecuteDeleteCQCommand(object sender)
         {
             ChequeBusinessLogic business = new ChequeBusinessLogic();
-            business.DeleteTempCheque(ConvertToChequeMasterTemp(SelectedCheque));
+            business.DeleteTempCheque(ConvertToCheque(SelectedCheque, true) as CHQ_Cheques_Master_Temp);
             ChequeList.Remove(SelectedCheque);
-            ChequeList.Select(S => { S.SerialNo = ChequeList.IndexOf(S); return S; }).ToList();
+            ChequeList = ChequeList.Select(S => { S.SerialNo = ChequeList.IndexOf(S) + 1; return S; }).ToList().ToObservableCollection();
             business = null;
             SelectedCheque = null;
         }
@@ -505,7 +511,7 @@ namespace S360.ViewModel.Cheque
             ChequeBusinessLogic chequeBussiness = new ChequeBusinessLogic();
             foreach (ChequeInwardsModel cheque in ChequeList)
             {
-                chequeBussiness.DeleteTempCheque(ConvertToChequeMasterTemp(cheque));
+                chequeBussiness.DeleteTempCheque(ConvertToCheque(cheque, true) as CHQ_Cheques_Master_Temp);
                 CHQ_Cheques_Master entity = new CHQ_Cheques_Master()
                 {
                     Bank = cheque.Bank,
@@ -528,7 +534,7 @@ namespace S360.ViewModel.Cheque
             ExecuteClearCommand(null);
             ChequeList.Clear();
             chequeBussiness = null;
-            SelectedSection = null;
+            //SelectedSection = null;
             CurrentChequeInwardModel = null;
         }
 
@@ -585,34 +591,11 @@ namespace S360.ViewModel.Cheque
                 return;
 
             ChequeInwardsModel model;
-            StudentBusinessLogic bussiness = new StudentBusinessLogic();
             int serial = 1;
             foreach (CHQ_Cheques_Master_Temp temp in TempCheques)
             {
-                STUD_Students_Master student = bussiness.GetAllStudents().Where(S => S.Student_ID == temp.Student_ID).FirstOrDefault();
-                GEN_Sections_Lookup sec = bussiness.GetAllSections().Where(S => S.Section_Id == temp.Section_ID).FirstOrDefault();
-                model = new ChequeInwardsModel()
-                {
-                    StudentName = student.Name + " " + student.Surname + " " + student.FatherName,
-                    Student_ID = temp.Student_ID,
-                    Bank = temp.Bank,
-                    ChequeNo = temp.ChequeNo,
-                    Cheque_ID = temp.Cheque_ID,
-                    ChqAmount = temp.ChqAmount,
-                    ChqStatus_ID = temp.ChqStatus_ID,
-                    EnteredBy = temp.EnteredBy,
-                    EnteredOn = temp.EnteredOn,
-                    InwardDate = temp.InwardDate,
-                    IsActive = temp.IsActive,
-                    Login_ID = temp.Login_ID,
-                    RegNo = student.RegNo,
-                    Remarks = temp.Remarks,
-                    Section = sec.Name,
-                    Section_ID = temp.Section_ID,
-                    SerialNo = serial++,
-                    User = S360Model.S360Configuration.Instance.User
-                };
-
+                model = ConvertToCheque(temp) as ChequeInwardsModel;
+                model.SerialNo = serial++;
                 this.ChequeList.Add(model);
             }
         }
@@ -622,24 +605,59 @@ namespace S360.ViewModel.Cheque
         /// </summary>
         /// <param name="cheque"></param>
         /// <returns></returns>
-        private CHQ_Cheques_Master_Temp ConvertToChequeMasterTemp(CHQ_Cheques_Master cheque)
+        private object ConvertToCheque(object chq, bool IsTemp = false)
         {
-            return new CHQ_Cheques_Master_Temp()
+            if (!IsTemp)
             {
-                Student_ID = cheque.Student_ID,
-                Bank = cheque.Bank,
-                ChequeNo = cheque.ChequeNo,
-                Cheque_ID = cheque.Cheque_ID,
-                ChqAmount = cheque.ChqAmount,
-                ChqStatus_ID = cheque.ChqStatus_ID,
-                EnteredBy = cheque.EnteredBy,
-                EnteredOn = cheque.EnteredOn,
-                InwardDate = cheque.InwardDate,
-                IsActive = cheque.IsActive,
-                Login_ID = cheque.Login_ID,
-                Remarks = cheque.Remarks,
-                Section_ID = cheque.Section_ID
-            };
+                CHQ_Cheques_Master_Temp cheque = chq as CHQ_Cheques_Master_Temp;
+                if (cheque == null)
+                    return new ChequeInwardsModel();
+                StudentBusinessLogic bussiness = new StudentBusinessLogic();
+
+                STUD_Students_Master student = bussiness.GetAllStudents().Where(S => S.Student_ID == cheque.Student_ID).FirstOrDefault();
+                GEN_Sections_Lookup sec = bussiness.GetAllSections().Where(S => S.Section_Id == cheque.Section_ID).FirstOrDefault();
+
+                ChequeInwardsModel cheq = new ChequeInwardsModel();
+                cheq.Student_ID = cheque.Student_ID;
+                cheq.Bank = cheque.Bank;
+                cheq.ChequeNo = cheque.ChequeNo;
+                cheq.Cheque_ID = cheque.Cheque_ID;
+                cheq.ChqAmount = cheque.ChqAmount;
+                cheq.ChqStatus_ID = cheque.ChqStatus_ID;
+                cheq.EnteredBy = cheque.EnteredBy;
+                cheq.EnteredOn = cheque.EnteredOn;
+                cheq.InwardDate = cheque.InwardDate;
+                cheq.IsActive = cheque.IsActive;
+                cheq.Login_ID = cheque.Login_ID;
+                cheq.Remarks = cheque.Remarks;
+                cheq.Section_ID = cheque.Section_ID;
+                cheq.RegNo = student.RegNo;
+                cheq.StudentName = student.Name + " " + student.Surname + " " + student.FatherName;
+                cheq.Section = sec.Name;
+                cheq.User = S360Model.S360Configuration.Instance.User;
+                return cheq;
+            }
+            else
+            {
+                CHQ_Cheques_Master cheque = chq as CHQ_Cheques_Master;
+                if (cheque == null)
+                    return new CHQ_Cheques_Master_Temp();
+                CHQ_Cheques_Master_Temp cheq = new CHQ_Cheques_Master_Temp();
+                cheq.Student_ID = cheque.Student_ID;
+                cheq.Bank = cheque.Bank;
+                cheq.ChequeNo = cheque.ChequeNo;
+                cheq.Cheque_ID = cheque.Cheque_ID;
+                cheq.ChqAmount = cheque.ChqAmount;
+                cheq.ChqStatus_ID = cheque.ChqStatus_ID;
+                cheq.EnteredBy = cheque.EnteredBy;
+                cheq.EnteredOn = cheque.EnteredOn;
+                cheq.InwardDate = cheque.InwardDate;
+                cheq.IsActive = cheque.IsActive;
+                cheq.Login_ID = cheque.Login_ID;
+                cheq.Remarks = cheque.Remarks;
+                cheq.Section_ID = cheque.Section_ID;
+                return cheq;
+            }
         }
 
         #endregion
