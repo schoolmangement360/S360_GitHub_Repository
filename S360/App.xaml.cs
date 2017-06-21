@@ -51,15 +51,5 @@ namespace S360
             Exception ex = e.ExceptionObject as Exception;
             S360Logging.S360Log.Instance.Error(ex, ex.Message);
         }
-
-        public static void CancelPage(object sender)
-        {
-            System.Windows.MessageBoxResult result = WPFCustomMessageBox.CustomMessageBox.ShowOKCancel("Do you want to close this page ?", "S360 Application", "OK", "Cancel");
-            if (result == System.Windows.MessageBoxResult.OK)
-            {
-                System.Windows.Controls.UserControl control = sender as System.Windows.Controls.UserControl;
-                control.Visibility = System.Windows.Visibility.Collapsed;
-            }
-        }
     }
 }

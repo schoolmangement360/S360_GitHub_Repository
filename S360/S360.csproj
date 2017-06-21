@@ -89,6 +89,9 @@
     <Compile Include="View\Login\LoginScreen.xaml.cs">
       <DependentUpon>LoginScreen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Popups\S360PopupWindow.xaml.cs">
+      <DependentUpon>S360PopupWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Student\UC_AddressDataScreen.xaml.cs">
       <DependentUpon>UC_AddressDataScreen.xaml</DependentUpon>
     </Compile>
@@ -136,6 +139,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Login\LoginScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Popups\S360PopupWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

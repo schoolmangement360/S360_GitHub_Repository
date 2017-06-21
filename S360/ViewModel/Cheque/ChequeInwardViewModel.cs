@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace S360.ViewModel.Cheque
 {
@@ -383,7 +384,13 @@ namespace S360.ViewModel.Cheque
 
         private void ExecuteNewEntryCommand(object sender)
         {
-
+            View.Popups.S360PopupWindow popupwnd = new View.Popups.S360PopupWindow("New Student");
+            UC_AddStudentScreen ucAddStudent = new UC_AddStudentScreen();
+            StudentViewModel viewmodel = new StudentViewModel() { IscancelVisible = System.Windows.Visibility.Hidden };
+            ucAddStudent.DataContext = viewmodel;
+            popupwnd.PopupContainer.Children.Add(ucAddStudent);
+            popupwnd.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+            popupwnd.ShowDialog();
         }
 
         private bool CanExecuteAddChequeCommand(object sender)
@@ -401,42 +408,62 @@ namespace S360.ViewModel.Cheque
 
         private void ExecuteAddChequeCommand(object sender)
         {
-            decimal chequeNo = 0;
-            decimal Amt = 0;
-            decimal.TryParse(CurrentChequeInwardModel.ChequeNo, out chequeNo);
-            if (string.IsNullOrEmpty(CurrentChequeInwardModel.ChequeNo) || chequeNo <= 0)
+            View.Cheque.UC_ChequeInwardScreen uccheque = sender as View.Cheque.UC_ChequeInwardScreen;
+            ChequeBusinessLogic business;
+            try
             {
-                WPFCustomMessageBox.CustomMessageBox.ShowOK("Invalid Cq. No", "Warning", "OK");
-                return;
-            }
-            else if (string.IsNullOrEmpty(CurrentChequeInwardModel.Bank))
-            {
-                WPFCustomMessageBox.CustomMessageBox.ShowOK("Bank cannot be blank", "Warning", "OK");
-                return;
-            }
-            if(!decimal.TryParse(CurrentChequeInwardModel.ChqAmount.ToString(),out Amt))
-            {
-                WPFCustomMessageBox.CustomMessageBox.ShowOK("Invalid Amount", "Warning", "OK");
-                return;
-            }
-            if(Amt <= 0)
-            {
-                WPFCustomMessageBox.CustomMessageBox.ShowOK("Amount must be greater than 0", "Warning", "OK");
-                return;
-            }
+                ControlValidationStatus validation = ValidateControls.ValidateAllControls(sender);
+                if (validation != null && !validation.isValid)
+                {
+                    WPFCustomMessageBox.CustomMessageBox.ShowOK(validation.ValidationMessage, "S360 Application", "OK");
+                    return;
+                }
 
-            if (this._chequeList == null)
-                _chequeList = new ObservableCollection<ChequeInwardsModel>();
-            CurrentChequeInwardModel.User = LoginBusinessLogic.GetUserByID(S360Configuration.Instance.UserID).Username;
-            CurrentChequeInwardModel.EnteredBy = S360Model.S360Configuration.Instance.UserID;
-            CurrentChequeInwardModel.Login_ID = S360Model.S360Configuration.Instance.LoginID;
+                decimal chequeNo = 0;
+                decimal Amt = 0;
+                decimal.TryParse(CurrentChequeInwardModel.ChequeNo, out chequeNo);
+                if (string.IsNullOrEmpty(CurrentChequeInwardModel.ChequeNo) || chequeNo <= 0)
+                {
+                    WPFCustomMessageBox.CustomMessageBox.ShowOK("Invalid Cq. No", "Warning", "OK");
+                    S360Controlls.BasicControls.S360TextBox txt = FindVisualChildren<S360Controlls.BasicControls.S360TextBox>(uccheque).Where(S => S.Name == "txtCqNo").FirstOrDefault();
+                    txt.Text = string.Empty;
+                    txt.Focus();
+                    return;
+                }
+                if (!decimal.TryParse(CurrentChequeInwardModel.ChqAmount.ToString(), out Amt))
+                {
+                    WPFCustomMessageBox.CustomMessageBox.ShowOK("Invalid Amount", "Warning", "OK");
+                    S360Controlls.BasicControls.S360TextBox txt = FindVisualChildren<S360Controlls.BasicControls.S360TextBox>(uccheque).Where(S => S.Name == "txtAmt").FirstOrDefault();
+                    txt.Text = string.Empty;
+                    txt.Focus();
+                    return;
+                }
+                if (Amt <= 0)
+                {
+                    WPFCustomMessageBox.CustomMessageBox.ShowOK("Invalid Amount", "Warning", "OK");
+                    S360Controlls.BasicControls.S360TextBox txt = FindVisualChildren<S360Controlls.BasicControls.S360TextBox>(uccheque).Where(S => S.Name == "txtAmt").FirstOrDefault();
+                    txt.Text = string.Empty;
+                    txt.Focus();
+                    return;
+                }
 
-            ChequeBusinessLogic business = new ChequeBusinessLogic();
-            CurrentChequeInwardModel = ConvertToCheque(business.SaveChequeTemp(ConvertToCheque(CurrentChequeInwardModel, true)
-                                        as CHQ_Cheques_Master_Temp), false) as ChequeInwardsModel;
-            CurrentChequeInwardModel.SerialNo = ChequeList.Count + 1;
+                if (this._chequeList == null)
+                    _chequeList = new ObservableCollection<ChequeInwardsModel>();
+                CurrentChequeInwardModel.User = LoginBusinessLogic.GetUserByID(S360Configuration.Instance.UserID).Username;
+                CurrentChequeInwardModel.EnteredBy = S360Model.S360Configuration.Instance.UserID;
+                CurrentChequeInwardModel.Login_ID = S360Model.S360Configuration.Instance.LoginID;
 
-            ChequeList.Add(CurrentChequeInwardModel);
+                business = new ChequeBusinessLogic();
+                CurrentChequeInwardModel = ConvertToCheque(business.SaveChequeTemp(ConvertToCheque(CurrentChequeInwardModel, true)
+                                            as CHQ_Cheques_Master_Temp), false) as ChequeInwardsModel;
+                CurrentChequeInwardModel.SerialNo = ChequeList.Count + 1;
+
+                ChequeList.Add(CurrentChequeInwardModel);
+            }
+            catch(Exception ex)
+            {
+                throw new S360Exceptions.S360Exception(ex.Message, ex.InnerException);
+            }
             CurrentChequeInwardModel = null;
             business = null;
         }
@@ -448,7 +475,7 @@ namespace S360.ViewModel.Cheque
 
         private void ExecuteCancelCommand(object sender)
         {
-            App.CancelPage(sender);
+            this.CancelPage(sender);
         }
 
         private bool CanExecuteClearCommand(object sender)
@@ -657,6 +684,26 @@ namespace S360.ViewModel.Cheque
                 cheq.Remarks = cheque.Remarks;
                 cheq.Section_ID = cheque.Section_ID;
                 return cheq;
+            }
+        }
+
+        private IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
+        {
+            if (depObj != null)
+            {
+                for (int i = 0; i < System.Windows.Media.VisualTreeHelper.GetChildrenCount(depObj); i++)
+                {
+                    DependencyObject child = System.Windows.Media.VisualTreeHelper.GetChild(depObj, i);
+                    if (child != null && child is T)
+                    {
+                        yield return (T)child;
+                    }
+
+                    foreach (T childOfChild in FindVisualChildren<T>(child))
+                    {
+                        yield return childOfChild;
+                    }
+                }
             }
         }
 

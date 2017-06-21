@@ -90,7 +90,7 @@
         <BasicControls:S360TextBox Name="txtCqInDate" Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="3" Text="{Binding CurrentChequeInwardModel.EnteredOn, Mode=OneWay}"
             Style="{StaticResource S360TextBoxStyle}" IsEnabled="False" />
         <BasicControls:S360TextBox Name="txtName" Grid.Row="4" Grid.Column="8" Grid.ColumnSpan="11" Style="{StaticResource S360TextBoxStyle}"
-                                   Text="{Binding CurrentChequeInwardModel.StudentName, Mode=OneWay}"
+                                   Text="{Binding CurrentChequeInwardModel.StudentName, Mode=OneWay}" IsEnabled="False"
                                    ControlValidation="True" ControlValidationMessage="Student does not exist"/>
 
         <BasicControls:S360TextBlock Text="Cq. No" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Right" />
@@ -115,7 +115,7 @@
         <BasicControls:S360TextBox Name="txtRemarks" Grid.Row="8" Grid.Column="4" Grid.ColumnSpan="11" Style="{StaticResource S360TextBoxStyle}"
                                    Text="{Binding CurrentChequeInwardModel.Remarks}"/>
         <Button Name="btnAddCheque" Content="Add Cheque" Grid.Row="8" Grid.Column="16" Grid.ColumnSpan="3" Style="{StaticResource MetroButton}"
-                Command="{Binding AddtChequeCommand}"/>
+                Command="{Binding AddtChequeCommand}" CommandParameter="{Binding ElementName=ChequeInwards}"/>
 
         <ListView Name="lvCheques" Grid.Row="9" Grid.Column="1" Grid.RowSpan="8" Grid.ColumnSpan="18"
                   ItemsSource="{Binding ChequeList, NotifyOnSourceUpdated=True}" SelectedValue="{Binding SelectedCheque, Mode=TwoWay}">

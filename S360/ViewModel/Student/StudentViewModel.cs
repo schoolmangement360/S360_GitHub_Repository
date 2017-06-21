@@ -186,6 +186,11 @@ namespace S360
         private string _contact1;
 
         /// <summary>
+        /// Variable to store value for displaying Cancel button
+        /// </summary>
+        private Visibility _iscancelVisible = Visibility.Visible;
+
+        /// <summary>
         /// Command TO Clear All
         /// </summary>
         private ICommand _clearAllCommand;
@@ -722,6 +727,12 @@ namespace S360
 
         }
 
+        public Visibility IscancelVisible
+        {
+            get { return _iscancelVisible; }
+            set { _iscancelVisible = value; }
+        }
+
         #endregion
 
         #region Events
@@ -733,12 +744,7 @@ namespace S360
 
         private void ExecuteCancelCommand(object sender)
         {
-            MessageBoxResult result = WPFCustomMessageBox.CustomMessageBox.ShowOKCancel("Do you want to close this page ?", "S360 Application", "OK", "Cancel");
-            if (result == MessageBoxResult.OK)
-            {
-                UserControl userControl = sender as UserControl;
-                userControl.Visibility = Visibility.Collapsed;
-            }
+            this.CancelPage(sender);
         }
 
         private bool CanExecuteClearAllCommand(object sender)

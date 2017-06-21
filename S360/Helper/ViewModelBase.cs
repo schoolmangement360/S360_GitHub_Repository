@@ -101,5 +101,19 @@ namespace S360
             GetLastInputInfo(ref lastUserAction);
             return (uint)Environment.TickCount - lastUserAction.DwTime;
         }
+
+        /// <summary>
+        /// Collapse the current usercontrol
+        /// </summary>
+        /// <param name="sender"></param>
+        internal void CancelPage(object sender)
+        {
+            System.Windows.MessageBoxResult result = WPFCustomMessageBox.CustomMessageBox.ShowOKCancel("Do you want to close this page ?", "S360 Application", "OK", "Cancel");
+            if (result == System.Windows.MessageBoxResult.OK)
+            {
+                System.Windows.Controls.UserControl control = sender as System.Windows.Controls.UserControl;
+                control.Visibility = System.Windows.Visibility.Collapsed;
+            }
+        }
     }
 }

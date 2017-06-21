@@ -274,7 +274,7 @@ namespace S360.ViewModel.Student
 
         private void ExecuteCancelCommand(object sender)
         {
-            App.CancelPage(sender);
+            this.CancelPage(sender);
         }
 
         private bool CanExecuteClearAllCommand(object sender)
