@@ -8,7 +8,7 @@
              Background="White">
 
     <UserControl.DataContext>
-        <ViewModelClass:ChequeInwardViewModel />
+        <ViewModelClass:ChequeEditViewModel />
     </UserControl.DataContext>
 
     <Grid Name="MainGrid">
@@ -89,7 +89,7 @@
                                    ControlValidation="True" ControlValidationMessage="Student does not exist"/>
 
         <Button Name="btnSelect" Content="Select Cheque" Grid.Row="4" Grid.Column="14" Grid.ColumnSpan="4" Style="{StaticResource MetroButton}"
-                Command="{Binding AddtChequeCommand}" CommandParameter="{Binding ElementName=ChequeEdit}"/>
+                Command="{Binding SelecttChequeCommand}"/>
 
         <ListView Name="lvCheques" Grid.Row="5" Grid.Column="1" Grid.RowSpan="8" Grid.ColumnSpan="18"
                   ItemsSource="{Binding ChequeList, NotifyOnSourceUpdated=True}" SelectedValue="{Binding SelectedCheque, Mode=TwoWay}">
@@ -145,6 +145,6 @@
         <CheckBox Name="chkAllUsers" Content="All Users" Grid.Row="18" Grid.Column="10" Grid.ColumnSpan="2" Margin="10"/>
         <BasicControls:S360TextBox Name="txtUnknown" Grid.Row="18" Grid.Column="13" Grid.ColumnSpan="3" Style="{StaticResource S360TextBoxStyle}" />
         <Button Name="btnSaveCqs" Content="Save Cqs." Grid.Row="18" Grid.Column="17" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}" Margin="0,2,10,3"
-                Command="{Binding SaveCqsCommand}"/>
+                Command="{Binding SaveCqsCommand}" CommandParameter="{Binding ElementName=ChequeEdit}"/>
     </Grid>
 </UserControl>

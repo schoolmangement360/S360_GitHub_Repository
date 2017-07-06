@@ -91,5 +91,9 @@ namespace S360BusinessLogic
             return (S360RepositoryFactory.GetRepository("USERCREDENTIAL") as UserCredentialRepository).GetAll().Where(S => S.User_ID == Id).FirstOrDefault();
         }
 
+        public static decimal GetUserIdByLoginId(decimal LoginId)
+        {
+            return (S360RepositoryFactory.GetRepository("USERLOGINDETAIL") as UserLoginDetailRepository).GetAll().Where(S => S.Login_ID == LoginId).FirstOrDefault().User_ID;
+        }
     }
 }
