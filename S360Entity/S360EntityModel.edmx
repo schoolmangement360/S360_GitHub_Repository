@@ -39,6 +39,18 @@
           <Property Name="EnteredBy" Type="numeric" Precision="18" Scale="0" />
           <Property Name="Login_ID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="DepositDate" Type="date" />
+          <Property Name="Statement_ID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CancelledBy_ID" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="CHQ_ChequeDepositsStatement_Details">
+          <Key>
+            <PropertyRef Name="Statement_ID" />
+          </Key>
+          <Property Name="Statement_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EnteredOn" Type="datetimeoffset" Precision="0" />
+          <Property Name="EnteredBy" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Login_ID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="AccountNo" Type="varchar" MaxLength="50" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="CancelledBy_ID" Type="numeric" Precision="18" Scale="0" />
@@ -624,6 +636,7 @@ warning 6002: The table/view 'S360_DB.dbo.UserLoginDetails' does not have a prim
           <EntitySet Name="CHQ_ChequeCancellations_Details" EntityType="Self.CHQ_ChequeCancellations_Details" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CHQ_ChequeClearances_Details" EntityType="Self.CHQ_ChequeClearances_Details" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CHQ_ChequeDeposits_Details" EntityType="Self.CHQ_ChequeDeposits_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CHQ_ChequeDepositsStatement_Details" EntityType="Self.CHQ_ChequeDepositsStatement_Details" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CHQ_ChequeReturns_Details" EntityType="Self.CHQ_ChequeReturns_Details" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CHQ_Cheques_Master" EntityType="Self.CHQ_Cheques_Master" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CHQ_Cheques_Master_Temp" EntityType="Self.CHQ_Cheques_Master_Temp" Schema="dbo" store:Type="Tables" />
@@ -923,6 +936,7 @@ warning 6002: The table/view 'S360_DB.dbo.UserLoginDetails' does not have a prim
           <EntitySet Name="GEN_Standards_Lookup" EntityType="S360Model.GEN_Standards_Lookup" />
           <EntitySet Name="STUD_Student_TC" EntityType="S360Model.STUD_Student_TC" />
           <EntitySet Name="CHQ_Cheques_Master_Temp" EntityType="S360Model.CHQ_Cheques_Master_Temp" />
+          <EntitySet Name="CHQ_ChequeDepositsStatement_Details" EntityType="S360Model.CHQ_ChequeDepositsStatement_Details" />
         </EntityContainer>
         <EntityType Name="CHQ_ChequeCancellations_Details">
           <Key>
@@ -961,6 +975,7 @@ warning 6002: The table/view 'S360_DB.dbo.UserLoginDetails' does not have a prim
           <Property Name="AccountNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="CancelledBy_ID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Statement_ID" Type="Decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="CHQ_ChequeReturns_Details">
           <Key>
@@ -1499,6 +1514,18 @@ warning 6002: The table/view 'S360_DB.dbo.UserLoginDetails' does not have a prim
           <Property Name="ChqStatus_ID" Type="Int32" />
           <Property Name="IsActive" Type="Boolean" />
         </EntityType>
+        <EntityType Name="CHQ_ChequeDepositsStatement_Details">
+          <Key>
+            <PropertyRef Name="Statement_ID" />
+          </Key>
+          <Property Name="Statement_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EnteredOn" Type="DateTimeOffset" Precision="0" />
+          <Property Name="EnteredBy" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Login_ID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="AccountNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CancelledBy_ID" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1534,9 +1561,9 @@ warning 6002: The table/view 'S360_DB.dbo.UserLoginDetails' does not have a prim
           <EntitySetMapping Name="CHQ_ChequeDeposits_Details">
             <EntityTypeMapping TypeName="S360Model.CHQ_ChequeDeposits_Details">
               <MappingFragment StoreEntitySet="CHQ_ChequeDeposits_Details">
+                <ScalarProperty Name="Statement_ID" ColumnName="Statement_ID" />
                 <ScalarProperty Name="CancelledBy_ID" ColumnName="CancelledBy_ID" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
                 <ScalarProperty Name="DepositDate" ColumnName="DepositDate" />
                 <ScalarProperty Name="Login_ID" ColumnName="Login_ID" />
                 <ScalarProperty Name="EnteredBy" ColumnName="EnteredBy" />
@@ -2077,6 +2104,19 @@ warning 6002: The table/view 'S360_DB.dbo.UserLoginDetails' does not have a prim
                 <ScalarProperty Name="Section_ID" ColumnName="Section_ID" />
                 <ScalarProperty Name="Student_ID" ColumnName="Student_ID" />
                 <ScalarProperty Name="Cheque_ID" ColumnName="Cheque_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CHQ_ChequeDepositsStatement_Details">
+            <EntityTypeMapping TypeName="S360Model.CHQ_ChequeDepositsStatement_Details">
+              <MappingFragment StoreEntitySet="CHQ_ChequeDepositsStatement_Details">
+                <ScalarProperty Name="CancelledBy_ID" ColumnName="CancelledBy_ID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
+                <ScalarProperty Name="Login_ID" ColumnName="Login_ID" />
+                <ScalarProperty Name="EnteredBy" ColumnName="EnteredBy" />
+                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
+                <ScalarProperty Name="Statement_ID" ColumnName="Statement_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

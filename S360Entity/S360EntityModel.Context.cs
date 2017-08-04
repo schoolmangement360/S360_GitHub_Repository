@@ -67,5 +67,6 @@ namespace S360Entity
         public virtual DbSet<GEN_Standards_Lookup> GEN_Standards_Lookup { get; set; }
         public virtual DbSet<STUD_Student_TC> STUD_Student_TC { get; set; }
         public virtual DbSet<CHQ_Cheques_Master_Temp> CHQ_Cheques_Master_Temp { get; set; }
+        public virtual DbSet<CHQ_ChequeDepositsStatement_Details> CHQ_ChequeDepositsStatement_Details { get; set; }
     }
 }
