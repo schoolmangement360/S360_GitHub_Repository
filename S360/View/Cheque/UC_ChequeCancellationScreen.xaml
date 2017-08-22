@@ -94,19 +94,59 @@
                 </Grid.ColumnDefinitions>
 
                 <Label Name="lblSection" Content="Section :" Grid.Row="1" Grid.Column="4" />
-                <BasicControls:S360ComboBox Name="cmbSections" Grid.Row="1" Grid.Column="5" Grid.ColumnSpan="3">                    
-                </BasicControls:S360ComboBox>
-                <Button Name="btnLoadCheques" Content="Load Cheques" Grid.Row="1" Grid.Column="9" Grid.ColumnSpan="2" />
+                <BasicControls:S360ComboBox Name="cmbSections" Grid.Row="1" Grid.Column="5" Grid.ColumnSpan="3" Style="{StaticResource S360ComboBoxStyle}"
+                                            IsEditable="True" ItemsSource="{Binding Sections}" DisplayMemberPath="Name"
+                                            SelectedValue="{Binding SelectedSection, Mode=TwoWay}" Text="Select Section" IsReadOnly="True"
+                                            ControlValidation="True" ControlValidationMessage="Select Any Section"/>
+                <Button Name="btnLoadCheques" Content="Load Cheques" Grid.Row="1" Grid.Column="9" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}"
+                        Command="{Binding LoadChequesCommand}"/>
             </Grid>
         </StackPanel>
 
-        <ListView Name="lvActiveChqs" Grid.Row="4" Grid.Column="0" Grid.RowSpan="16" Grid.ColumnSpan="8" />
-        <ListView Name="lvCancelledChqs" Grid.Row="4" Grid.Column="12" Grid.RowSpan="16" Grid.ColumnSpan="8" />
+        <ListView Name="lvActiveChqs" Grid.Row="4" Grid.Column="0" Grid.RowSpan="16" Grid.ColumnSpan="8"
+                  ItemsSource="{Binding ActiveChequeList, NotifyOnSourceUpdated=True}" SelectedValue="{Binding SelectedActiveChq, Mode=TwoWay}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Sl.No" DisplayMemberBinding="{Binding SerialNo}" Width="Auto" />
+                    <GridViewColumn Header="Section" DisplayMemberBinding="{Binding Section}" Width="Auto" />
+                    <GridViewColumn Header="RegNo" DisplayMemberBinding="{Binding RegNo}" Width="Auto" />
+                    <GridViewColumn Header="CQ no" DisplayMemberBinding="{Binding ChequeNo}" Width="Auto" />
+                    <GridViewColumn Header="Cq. Date" DisplayMemberBinding="{Binding InwardDate}" Width="Auto" />
+                    <GridViewColumn Header="Amount" DisplayMemberBinding="{Binding ChqAmount}" Width="Auto" />
+                    <GridViewColumn Header="Bank" DisplayMemberBinding="{Binding Bank}" Width="Auto" />
+                    <GridViewColumn Header="User" DisplayMemberBinding="{Binding User}" Width="Auto" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView Name="lvCancelledChqs" Grid.Row="4" Grid.Column="12" Grid.RowSpan="16" Grid.ColumnSpan="8"
+                  ItemsSource="{Binding CancelledChequeList, NotifyOnSourceUpdated=True}" SelectedValue="{Binding SelectedCancelledChq, Mode=TwoWay}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Sl.No" DisplayMemberBinding="{Binding SerialNo}" Width="Auto" />
+                    <GridViewColumn Header="Section" DisplayMemberBinding="{Binding Section}" Width="Auto" />
+                    <GridViewColumn Header="RegNo" DisplayMemberBinding="{Binding RegNo}" Width="Auto" />
+                    <GridViewColumn Header="CQ no" DisplayMemberBinding="{Binding ChequeNo}" Width="Auto" />
+                    <GridViewColumn Header="Cq. Date" DisplayMemberBinding="{Binding InwardDate}" Width="Auto" />
+                    <GridViewColumn Header="Amount" DisplayMemberBinding="{Binding ChqAmount}" Width="Auto" />
+                    <GridViewColumn Header="Bank" DisplayMemberBinding="{Binding Bank}" Width="Auto" />
+                    <GridViewColumn Header="User" DisplayMemberBinding="{Binding User}" Width="Auto" />
+                </GridView>
+            </ListView.View>
+        </ListView>
 
-        <CheckBox Name="chkListCancelled" Content="List Cancelled" Grid.Row="5" Grid.Column="9" Grid.ColumnSpan="2" />
-        <Button Name="btnAddAll" Content="Add All >>" IsEnabled="False" Grid.Row="7" Grid.Column="9" Grid.ColumnSpan="2" />
-        <Button Name="btnAdd" Content="Add >" IsEnabled="False" Grid.Row="9" Grid.Column="9" Grid.ColumnSpan="2" />
-        <Button Name="btnRemove" Content="&lt; Remove" IsEnabled="False" Grid.Row="12" Grid.Column="9" Grid.ColumnSpan="2" />
-        <Button Name="btnRemoveAll" Content="&lt;&lt; Remove All"
+        <CheckBox Name="chkListCancelled" Content="List Cancelled" Grid.Row="5" Grid.Column="9" Grid.ColumnSpan="2"
+                  Command="{Binding LoadCancelledChequesCommand}"/>
+        <Button Name="btnAddAll" Content="Add All >>" Grid.Row="7" Grid.Column="9" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}"
+                Command="{Binding AddAllCommand}"/>
+        <Button Name="btnAdd" Content="Add >" Grid.Row="9" Grid.Column="9" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}"
+                Command="{Binding AddCommand}"/>
+        <Button Name="btnRemove" Content="&lt; Remove" Grid.Row="12" Grid.Column="9" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}"
+                Command="{Binding RemoveCommand}"/>
+        <Button Name="btnRemoveAll" Content="&lt;&lt; Remove All" Grid.Row="14" Grid.Column="9" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}"
+                Command="{Binding RemoveAllCommand}"/>
+        <Button Name="btnSaveChanges" Content="Save Changes" Grid.Row="17" Grid.Column="9" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}"
+                Command="{Binding SaveChangesCommand}"/>
+        <Button Name="btnCancel" Content="Cancel" Grid.Row="19" Grid.Column="9" Grid.ColumnSpan="2" Style="{StaticResource MetroButton}"
+                Command="{Binding CancelCommand}" CommandParameter="{Binding ElementName=ChequeCancellation}"/>
     </Grid>
 </UserControl>
