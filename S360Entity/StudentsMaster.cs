@@ -29,7 +29,7 @@ namespace S360Entity
         public Nullable<int> Category_ID { get; set; }
         public Nullable<System.DateTime> DOB { get; set; }
         public Nullable<decimal> CurrentAcaDetail_ID { get; set; }
-        public Nullable<int> CurrentStd_ID { get; set; }
+        public Nullable<short> CurrentStd_ID { get; set; }
         public string CurrentDiv { get; set; }
         public string Address { get; set; }
         public string Mobile1 { get; set; }

@@ -23,7 +23,5 @@ namespace S360Entity
         public string AccountNo { get; set; }
         public bool IsActive { get; set; }
         public Nullable<decimal> CancelledBy_ID { get; set; }
-        public Nullable<decimal> Statement_ID { get; set; }
-        public string AccountNo1 { get; set; }
     }
 }

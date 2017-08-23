@@ -322,6 +322,8 @@ namespace S360
                 smiCancelCheque.Style = SubMenustyle;
                 smiCancelCheque.Header = "Cancel Cheque";
                 smiCancelCheque.Height = 45;
+                smiCancelCheque.Tag = Page.CancelCheque;
+                smiCancelCheque.Click += MenuItem_Click;
                 miCheques.Items.Add(smiCancelCheque);
 
                 //// Add Separator

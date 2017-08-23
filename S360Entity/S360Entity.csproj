@@ -99,9 +99,6 @@
     <Compile Include="CHQ_ChequeClearances_Details.cs">
       <DependentUpon>S360EntityModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="CHQ_ChequeDepositsStatement_Details.cs">
-      <DependentUpon>S360EntityModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="CHQ_ChequeDeposits_Details.cs">
       <DependentUpon>S360EntityModel.tt</DependentUpon>
     </Compile>
