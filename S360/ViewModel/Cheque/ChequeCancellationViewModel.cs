@@ -322,23 +322,6 @@ namespace S360.ViewModel.Cheque
         private void ExecuteLoadChequesCommand(object sender)
         {
             _isSaveEnable = true;
-
-            ChequeBusinessLogic business = new ChequeBusinessLogic();
-            StudentBusinessLogic studentBusiness = new StudentBusinessLogic();
-            IEnumerable<CHQ_Cheques_Master> cheques = business.GetAllCheques().Where(C => C.IsActive == true &&
-                                            C.ChqStatus_ID == 1 && C.Section_ID == SelectedSection.Section_Id);
-            foreach(CHQ_Cheques_Master item in cheques)
-            {
-                int serialNo = 0;
-                ChequeInwardsModel chq = ConvertToCheque(item, ++serialNo);
-                STUD_Students_Master student = studentBusiness.GetAllStudents().Where(S => S.Student_ID == (decimal)chq.Student_ID).FirstOrDefault();
-
-                chq.RegNo = student.RegNo;
-                chq.StudentName = student.Name;
-                chq.Section = SelectedSection.Name;
-
-                ActiveChequeList.Add(chq);
-            }
         }
 
         private bool CanExecuteLoadCancelledChequesCommand(object sender)
@@ -424,40 +407,6 @@ namespace S360.ViewModel.Cheque
         #endregion
 
         #region [ Private Methods ]
-
-        /// <summary>
-        /// Converts the input ChequeMaster object to its model object type
-        /// </summary>
-        /// <param name="cheque"></param>
-        /// <returns></returns>
-        private ChequeInwardsModel ConvertToCheque(CHQ_Cheques_Master cheque, int SerialNo)
-        {
-            if (cheque == null)
-                return new ChequeInwardsModel();
-            StudentBusinessLogic bussiness = new StudentBusinessLogic();
-
-            //STUD_Students_Master student = bussiness.GetAllStudents().Where(S => S.Student_ID == cheque.Student_ID).FirstOrDefault();
-            //GEN_Sections_Lookup sec = bussiness.GetAllSections().Where(S => S.Section_Id == cheque.Section_ID).FirstOrDefault();
-
-            ChequeInwardsModel cheq = new ChequeInwardsModel();
-            cheq.SerialNo = SerialNo;
-            cheq.Student_ID = cheque.Student_ID;
-            cheq.Bank = cheque.Bank;
-            cheq.ChequeNo = cheque.ChequeNo;
-            cheq.Cheque_ID = cheque.Cheque_ID;
-            cheq.ChqAmount = cheque.ChqAmount;
-            cheq.ChqStatus_ID = cheque.ChqStatus_ID;
-            cheq.EnteredBy = cheque.EnteredBy;
-            cheq.EnteredOn = cheque.EnteredOn;
-            cheq.InwardDate = cheque.InwardDate;
-            cheq.IsActive = cheque.IsActive;
-            cheq.Login_ID = cheque.Login_ID;
-            cheq.Remarks = cheque.Remarks;
-            cheq.Section_ID = cheque.Section_ID;
-
-            cheq.User = LoginBusinessLogic.GetUserByID(LoginBusinessLogic.GetUserIdByLoginId((decimal)cheque.Login_ID)).Username;
-            return cheq;
-        }
 
         #endregion
     }

@@ -17,6 +17,6 @@ namespace S360Entity
         public short Standard_Id { get; set; }
         public string Name { get; set; }
         public bool IsActive { get; set; }
-        public Nullable<short> Section_Id { get; set; }
+        public Nullable<int> Section_Id { get; set; }
     }
 }

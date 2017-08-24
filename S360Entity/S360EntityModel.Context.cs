@@ -30,13 +30,11 @@ namespace S360Entity
         public virtual DbSet<CHQ_ChequeDeposits_Details> CHQ_ChequeDeposits_Details { get; set; }
         public virtual DbSet<CHQ_ChequeReturns_Details> CHQ_ChequeReturns_Details { get; set; }
         public virtual DbSet<CHQ_Cheques_Master> CHQ_Cheques_Master { get; set; }
-        public virtual DbSet<CHQ_Cheques_Master_Temp> CHQ_Cheques_Master_Temp { get; set; }
         public virtual DbSet<CHQ_ChequeStatus_Lookup> CHQ_ChequeStatus_Lookup { get; set; }
         public virtual DbSet<CHQ_DeletedCheque_Details> CHQ_DeletedCheque_Details { get; set; }
         public virtual DbSet<GEN_Languages_Lookup> GEN_Languages_Lookup { get; set; }
         public virtual DbSet<GEN_Religions_Lookup> GEN_Religions_Lookup { get; set; }
         public virtual DbSet<GEN_Sections_Lookup> GEN_Sections_Lookup { get; set; }
-        public virtual DbSet<GEN_Standards_Lookup> GEN_Standards_Lookup { get; set; }
         public virtual DbSet<GEN_StudentCategory_Lookup> GEN_StudentCategory_Lookup { get; set; }
         public virtual DbSet<GEN_UserCredentials_Master> GEN_UserCredentials_Master { get; set; }
         public virtual DbSet<GEN_UserLogin_Details> GEN_UserLogin_Details { get; set; }
@@ -44,9 +42,6 @@ namespace S360Entity
         public virtual DbSet<PEM_PageEnumerator_Master> PEM_PageEnumerator_Master { get; set; }
         public virtual DbSet<STUD_AcademicStatus_Lookup> STUD_AcademicStatus_Lookup { get; set; }
         public virtual DbSet<STUD_DetainingOrPromotions_Details> STUD_DetainingOrPromotions_Details { get; set; }
-        public virtual DbSet<STUD_Student_TC> STUD_Student_TC { get; set; }
-        public virtual DbSet<STUD_StudentAcademic_Details> STUD_StudentAcademic_Details { get; set; }
-        public virtual DbSet<STUD_Students_Master> STUD_Students_Master { get; set; }
         public virtual DbSet<AcademicStatusLookup> AcademicStatusLookups { get; set; }
         public virtual DbSet<AssignedPermissionsDetail> AssignedPermissionsDetails { get; set; }
         public virtual DbSet<ChequeCancellationsDetail> ChequeCancellationsDetails { get; set; }
@@ -67,5 +62,11 @@ namespace S360Entity
         public virtual DbSet<StudentsMaster> StudentsMasters { get; set; }
         public virtual DbSet<UserCredentialsMaster> UserCredentialsMasters { get; set; }
         public virtual DbSet<UserLoginDetail> UserLoginDetails { get; set; }
+        public virtual DbSet<STUD_Students_Master> STUD_Students_Master { get; set; }
+        public virtual DbSet<STUD_StudentAcademic_Details> STUD_StudentAcademic_Details { get; set; }
+        public virtual DbSet<GEN_Standards_Lookup> GEN_Standards_Lookup { get; set; }
+        public virtual DbSet<STUD_Student_TC> STUD_Student_TC { get; set; }
+        public virtual DbSet<CHQ_Cheques_Master_Temp> CHQ_Cheques_Master_Temp { get; set; }
+        public virtual DbSet<CHQ_ChequeDepositsStatement_Details> CHQ_ChequeDepositsStatement_Details { get; set; }
     }
 }
