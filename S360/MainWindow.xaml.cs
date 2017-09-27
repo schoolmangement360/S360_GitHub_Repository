@@ -771,11 +771,18 @@ namespace S360
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            this.MDIContainer.Children.Clear();
-            MenuItem menuItem = sender as MenuItem;
-            if (menuItem != null)
+            try
             {
-                this.MDIContainer.Children.Add(ShowUserControl.ShowUserControlAndSetVM((Page)menuItem.Tag) as UserControl);
+                this.MDIContainer.Children.Clear();
+                MenuItem menuItem = sender as MenuItem;
+                if (menuItem != null && ShowUserControl.ShowUserControlAndSetVM((Page)menuItem.Tag) as UserControl != null)
+                {
+                    this.MDIContainer.Children.Add(ShowUserControl.ShowUserControlAndSetVM((Page)menuItem.Tag) as UserControl);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new S360Exception(ex.Message, ex.InnerException);
             }
         }
 

@@ -1,4 +1,5 @@
 ﻿using S360BusinessLogic;
+using S360Exceptions;
 using S360Model;
 using System;
 using System.Collections.Generic;
@@ -63,14 +64,28 @@ namespace S360
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
-            this.Login();
+            try
+            {
+                this.Login();
+            }
+            catch (Exception ex)
+            {
+                throw new S360Exception(ex.Message, ex.InnerException);
+            }
         }
 
         private void pswPassword_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
-                this.Login();
+                try
+                {
+                    this.Login();
+                }
+                catch (Exception ex)
+                {
+                    throw new S360Exception(ex.Message, ex.InnerException);
+                }
             }
         }
 

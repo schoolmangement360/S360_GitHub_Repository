@@ -286,340 +286,6 @@
           <Property Name="LastModifiedBy_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="LastModifiedOn" Type="datetimeoffset" Precision="0" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'S360_DB.dbo.AcademicStatusLookup' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="AcademicStatusLookup">
-          <Key>
-            <PropertyRef Name="AcaStatus_ID" />
-            <PropertyRef Name="StatusName" />
-          </Key>
-          <Property Name="AcaStatus_ID" Type="smallint" Nullable="false" />
-          <Property Name="StatusName" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'S360_DB.dbo.AssignedPermissionsDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="AssignedPermissionsDetails">
-          <Key>
-            <PropertyRef Name="Permission_ID" />
-            <PropertyRef Name="Page_ID" />
-            <PropertyRef Name="SystemRole_ID" />
-            <PropertyRef Name="EnteredOn" />
-            <PropertyRef Name="GrantWrite" />
-            <PropertyRef Name="GrantDelete" />
-            <PropertyRef Name="EnteredBy_ID" />
-          </Key>
-          <Property Name="Permission_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Page_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="SystemRole_ID" Type="smallint" Nullable="false" />
-          <Property Name="EnteredOn" Type="datetimeoffset" Precision="0" Nullable="false" />
-          <Property Name="GrantWrite" Type="bit" Nullable="false" />
-          <Property Name="GrantDelete" Type="bit" Nullable="false" />
-          <Property Name="EnteredBy_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="LastModifiedOn" Type="datetimeoffset" Precision="0" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'S360_DB.dbo.ChequeCancellationsDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="ChequeCancellationsDetails">
-          <Key>
-            <PropertyRef Name="ChqCancel_ID" />
-          </Key>
-          <Property Name="ChqCancel_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Cheque_ID" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="EnteredOn" Type="datetimeoffset" Precision="0" />
-          <Property Name="EnteredBy_ID" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="Login_ID" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="CancelledDate" Type="date" />
-          <Property Name="IsActive" Type="bit" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'S360_DB.dbo.ChequeClearancesDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="ChequeClearancesDetails">
-          <Key>
-            <PropertyRef Name="ChqClearance_ID" />
-          </Key>
-          <Property Name="ChqClearance_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Cheque_ID" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="EnteredOn" Type="datetimeoffset" Precision="0" />
-          <Property Name="EnteredBy" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="Login_ID" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="ClearedDate" Type="date" />
-          <Property Name="IsActive" Type="bit" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'S360_DB.dbo.ChequeDepositsDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="ChequeDepositsDetails">
-          <Key>
-            <PropertyRef Name="Deposit_ID" />
-            <PropertyRef Name="IsActive" />
-          </Key>
-          <Property Name="Deposit_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Cheque_ID" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="EnteredOn" Type="datetimeoffset" Precision="0" />
-          <Property Name="EnteredBy" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="Login_ID" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="DepositDate" Type="date" />
-          <Property Name="AccountNo" Type="varchar" MaxLength="50" />
-          <Property Name="IsActive" Type="bit" Nullable="false" />
-          <Property Name="CancelledBy_ID" Type="numeric" Precision="18" Scale="0" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'S360_DB.dbo.ChequeReturnsDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="ChequeReturnsDetails">
-          <Key>
-            <PropertyRef Name="ChqReturn_ID" />
-          </Key>
-          <Property Name="ChqReturn_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Cheque_ID" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="EnteredOn" Type="datetimeoffset" Precision="0" />
-          <Property Name="EnteredBy" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="Login_ID" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="ReturnedDate" Type="date" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'S360_DB.dbo.ChequesMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="ChequesMaster">
-          <Key>
-            <PropertyRef Name="Cheque_ID" />
-          </Key>
-          <Property Name="Cheque_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Student_ID" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="Section_ID" Type="smallint" />
-          <Property Name="EnteredOn" Type="datetimeoffset" Precision="0" />
-          <Property Name="EnteredBy" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="Login_ID" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="InwardDate" Type="date" />
-          <Property Name="ChequeNo" Type="varchar" MaxLength="100" />
-          <Property Name="Bank" Type="varchar" MaxLength="100" />
-          <Property Name="ChqAmount" Type="numeric" Precision="18" Scale="2" />
-          <Property Name="Remarks" Type="varchar" MaxLength="500" />
-          <Property Name="ChqStatus_ID" Type="int" />
-          <Property Name="IsActive" Type="bit" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'S360_DB.dbo.ChequeStatusLookup' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="ChequeStatusLookup">
-          <Key>
-            <PropertyRef Name="ChqStatus_ID" />
-            <PropertyRef Name="StatusName" />
-          </Key>
-          <Property Name="ChqStatus_ID" Type="smallint" Nullable="false" />
-          <Property Name="StatusName" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'S360_DB.dbo.DeletedChequeDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="DeletedChequeDetails">
-          <Key>
-            <PropertyRef Name="Cheque_ID" />
-          </Key>
-          <Property Name="Cheque_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Student_ID" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="Section_ID" Type="smallint" />
-          <Property Name="EnteredOn" Type="datetimeoffset" Precision="0" />
-          <Property Name="EnteredBy" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="Login_ID" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="InwardDate" Type="date" />
-          <Property Name="ChequeNo" Type="varchar" MaxLength="100" />
-          <Property Name="Bank" Type="varchar" MaxLength="100" />
-          <Property Name="ChqAmount" Type="numeric" Precision="18" Scale="2" />
-          <Property Name="Remarks" Type="varchar" MaxLength="500" />
-          <Property Name="ChqStatus_ID" Type="int" />
-          <Property Name="DeletedBy_ID" Type="numeric" Precision="18" Scale="0" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'S360_DB.dbo.DetainingOrPromotionsDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="DetainingOrPromotionsDetails">
-          <Key>
-            <PropertyRef Name="ID" />
-            <PropertyRef Name="Student_ID" />
-            <PropertyRef Name="LastAcadDetail_ID" />
-            <PropertyRef Name="CurrentAcadDetail_ID" />
-            <PropertyRef Name="EnteredBy" />
-            <PropertyRef Name="Login_ID" />
-          </Key>
-          <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Student_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="LastAcadDetail_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="CurrentAcadDetail_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Status_ID" Type="int" />
-          <Property Name="EnteredBy" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Login_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'S360_DB.dbo.LanguagesLookup' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="LanguagesLookup">
-          <Key>
-            <PropertyRef Name="Language_Id" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="IsActive" />
-          </Key>
-          <Property Name="Language_Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="IsActive" Type="bit" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'S360_DB.dbo.PageEnumeratorMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="PageEnumeratorMaster">
-          <Key>
-            <PropertyRef Name="Page_ID" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="EnteredOn" />
-            <PropertyRef Name="IsActive" />
-            <PropertyRef Name="LastModifiedOn" />
-          </Key>
-          <Property Name="Page_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Description" Type="varchar" MaxLength="300" />
-          <Property Name="EnteredOn" Type="datetimeoffset" Precision="0" Nullable="false" />
-          <Property Name="IsActive" Type="bit" Nullable="false" />
-          <Property Name="LastModifiedOn" Type="datetimeoffset" Precision="0" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'S360_DB.dbo.ReligionsLookup' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="ReligionsLookup">
-          <Key>
-            <PropertyRef Name="Religion_Id" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="IsActive" />
-          </Key>
-          <Property Name="Religion_Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="IsActive" Type="bit" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'S360_DB.dbo.SectionsLookup' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="SectionsLookup">
-          <Key>
-            <PropertyRef Name="Section_Id" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="IsActive" />
-          </Key>
-          <Property Name="Section_Id" Type="smallint" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="IsActive" Type="bit" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'S360_DB.dbo.StandardsLookup' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="StandardsLookup">
-          <Key>
-            <PropertyRef Name="Standard_Id" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="IsActive" />
-          </Key>
-          <Property Name="Standard_Id" Type="smallint" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="IsActive" Type="bit" Nullable="false" />
-          <Property Name="Section_Id" Type="int" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'S360_DB.dbo.StudentAcademicDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="StudentAcademicDetails">
-          <Key>
-            <PropertyRef Name="AcademicDet_ID" />
-            <PropertyRef Name="RegNo" />
-            <PropertyRef Name="Student_ID" />
-            <PropertyRef Name="IsActive" />
-          </Key>
-          <Property Name="AcademicDet_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="RegNo" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Student_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Section_ID" Type="int" />
-          <Property Name="Standard_ID" Type="smallint" />
-          <Property Name="Division" Type="smallint" />
-          <Property Name="AcademicYearStart" Type="int" />
-          <Property Name="AcademicYearEnd" Type="int" />
-          <Property Name="Remarks" Type="varchar(max)" />
-          <Property Name="IsActive" Type="bit" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'S360_DB.dbo.StudentCategoryLookup' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="StudentCategoryLookup">
-          <Key>
-            <PropertyRef Name="Category_Id" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="IsActive" />
-          </Key>
-          <Property Name="Category_Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="IsActive" Type="bit" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'S360_DB.dbo.StudentsMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="StudentsMaster">
-          <Key>
-            <PropertyRef Name="Student_ID" />
-            <PropertyRef Name="IsActive" />
-            <PropertyRef Name="EnteredBy_ID" />
-            <PropertyRef Name="LastModifiedBy_ID" />
-          </Key>
-          <Property Name="Student_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="RegNo" Type="varchar" MaxLength="100" />
-          <Property Name="Gender" Type="char" MaxLength="1" />
-          <Property Name="Name" Type="nvarchar" MaxLength="100" />
-          <Property Name="Surname" Type="nvarchar" MaxLength="100" />
-          <Property Name="FatherName" Type="nvarchar" MaxLength="100" />
-          <Property Name="MotherName" Type="nvarchar" MaxLength="100" />
-          <Property Name="MotherTongue" Type="nvarchar" MaxLength="100" />
-          <Property Name="Religion" Type="nvarchar" MaxLength="100" />
-          <Property Name="Caste" Type="nvarchar" MaxLength="100" />
-          <Property Name="Religion_ID" Type="int" />
-          <Property Name="Language_ID" Type="int" />
-          <Property Name="Category_ID" Type="int" />
-          <Property Name="DOB" Type="date" />
-          <Property Name="CurrentAcaDetail_ID" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="CurrentStd_ID" Type="int" />
-          <Property Name="CurrentDiv" Type="varchar" MaxLength="5" />
-          <Property Name="Address" Type="varchar" MaxLength="500" />
-          <Property Name="Mobile1" Type="varchar" MaxLength="15" />
-          <Property Name="Mobile2" Type="varchar" MaxLength="15" />
-          <Property Name="Mobile3" Type="varchar" MaxLength="15" />
-          <Property Name="HomePh" Type="varchar" MaxLength="15" />
-          <Property Name="WorkPh" Type="varchar" MaxLength="15" />
-          <Property Name="Email" Type="varchar" MaxLength="50" />
-          <Property Name="RFIDTag" Type="varchar(max)" />
-          <Property Name="AadharNo" Type="varchar" MaxLength="100" />
-          <Property Name="PrimaryContact" Type="varchar" MaxLength="100" />
-          <Property Name="StudPhoto" Type="varbinary(max)" />
-          <Property Name="Remarks" Type="varchar(max)" />
-          <Property Name="IsActive" Type="bit" Nullable="false" />
-          <Property Name="EnteredBy_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="EnteredOn" Type="datetimeoffset" Precision="0" />
-          <Property Name="LastModifiedBy_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="LastModifiedOn" Type="datetimeoffset" Precision="0" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'S360_DB.dbo.UserCredentialsMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="UserCredentialsMaster">
-          <Key>
-            <PropertyRef Name="User_ID" />
-            <PropertyRef Name="Username" />
-            <PropertyRef Name="Password" />
-            <PropertyRef Name="SystemRole_ID" />
-            <PropertyRef Name="EnteredOn" />
-            <PropertyRef Name="IsActive" />
-            <PropertyRef Name="LastModifiedOn" />
-          </Key>
-          <Property Name="User_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="SystemRole_ID" Type="smallint" Nullable="false" />
-          <Property Name="EnteredOn" Type="datetimeoffset" Precision="0" Nullable="false" />
-          <Property Name="IsActive" Type="bit" Nullable="false" />
-          <Property Name="LastModifiedOn" Type="datetimeoffset" Precision="0" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'S360_DB.dbo.UserLoginDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="UserLoginDetails">
-          <Key>
-            <PropertyRef Name="Login_ID" />
-            <PropertyRef Name="User_ID" />
-            <PropertyRef Name="LoginTime" />
-          </Key>
-          <Property Name="Login_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="User_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="LoginTime" Type="datetimeoffset" Precision="0" Nullable="false" />
-          <Property Name="LogoutTime" Type="datetimeoffset" Precision="0" />
-          <Property Name="HostName" Type="varchar" MaxLength="50" />
-        </EntityType>
         <EntityContainer Name="S360ModelStoreContainer">
           <EntitySet Name="CHQ_ChequeCancellations_Details" EntityType="Self.CHQ_ChequeCancellations_Details" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CHQ_ChequeClearances_Details" EntityType="Self.CHQ_ChequeClearances_Details" Schema="dbo" store:Type="Tables" />
@@ -643,238 +309,6 @@ warning 6002: The table/view 'S360_DB.dbo.UserLoginDetails' does not have a prim
           <EntitySet Name="STUD_Student_TC" EntityType="Self.STUD_Student_TC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="STUD_StudentAcademic_Details" EntityType="Self.STUD_StudentAcademic_Details" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="STUD_Students_Master" EntityType="Self.STUD_Students_Master" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AcademicStatusLookup" EntityType="Self.AcademicStatusLookup" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [AcademicStatusLookup].[AcaStatus_ID] AS [AcaStatus_ID], 
-    [AcademicStatusLookup].[StatusName] AS [StatusName]
-    FROM [dbo].[AcademicStatusLookup] AS [AcademicStatusLookup]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="AssignedPermissionsDetails" EntityType="Self.AssignedPermissionsDetails" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [AssignedPermissionsDetails].[Permission_ID] AS [Permission_ID], 
-    [AssignedPermissionsDetails].[Page_ID] AS [Page_ID], 
-    [AssignedPermissionsDetails].[SystemRole_ID] AS [SystemRole_ID], 
-    [AssignedPermissionsDetails].[EnteredOn] AS [EnteredOn], 
-    [AssignedPermissionsDetails].[GrantWrite] AS [GrantWrite], 
-    [AssignedPermissionsDetails].[GrantDelete] AS [GrantDelete], 
-    [AssignedPermissionsDetails].[EnteredBy_ID] AS [EnteredBy_ID], 
-    [AssignedPermissionsDetails].[LastModifiedOn] AS [LastModifiedOn]
-    FROM [dbo].[AssignedPermissionsDetails] AS [AssignedPermissionsDetails]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="ChequeCancellationsDetails" EntityType="Self.ChequeCancellationsDetails" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [ChequeCancellationsDetails].[ChqCancel_ID] AS [ChqCancel_ID], 
-    [ChequeCancellationsDetails].[Cheque_ID] AS [Cheque_ID], 
-    [ChequeCancellationsDetails].[EnteredOn] AS [EnteredOn], 
-    [ChequeCancellationsDetails].[EnteredBy_ID] AS [EnteredBy_ID], 
-    [ChequeCancellationsDetails].[Login_ID] AS [Login_ID], 
-    [ChequeCancellationsDetails].[CancelledDate] AS [CancelledDate], 
-    [ChequeCancellationsDetails].[IsActive] AS [IsActive]
-    FROM [dbo].[ChequeCancellationsDetails] AS [ChequeCancellationsDetails]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="ChequeClearancesDetails" EntityType="Self.ChequeClearancesDetails" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [ChequeClearancesDetails].[ChqClearance_ID] AS [ChqClearance_ID], 
-    [ChequeClearancesDetails].[Cheque_ID] AS [Cheque_ID], 
-    [ChequeClearancesDetails].[EnteredOn] AS [EnteredOn], 
-    [ChequeClearancesDetails].[EnteredBy] AS [EnteredBy], 
-    [ChequeClearancesDetails].[Login_ID] AS [Login_ID], 
-    [ChequeClearancesDetails].[ClearedDate] AS [ClearedDate], 
-    [ChequeClearancesDetails].[IsActive] AS [IsActive]
-    FROM [dbo].[ChequeClearancesDetails] AS [ChequeClearancesDetails]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="ChequeDepositsDetails" EntityType="Self.ChequeDepositsDetails" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [ChequeDepositsDetails].[Deposit_ID] AS [Deposit_ID], 
-    [ChequeDepositsDetails].[Cheque_ID] AS [Cheque_ID], 
-    [ChequeDepositsDetails].[EnteredOn] AS [EnteredOn], 
-    [ChequeDepositsDetails].[EnteredBy] AS [EnteredBy], 
-    [ChequeDepositsDetails].[Login_ID] AS [Login_ID], 
-    [ChequeDepositsDetails].[DepositDate] AS [DepositDate], 
-    [ChequeDepositsDetails].[AccountNo] AS [AccountNo], 
-    [ChequeDepositsDetails].[IsActive] AS [IsActive], 
-    [ChequeDepositsDetails].[CancelledBy_ID] AS [CancelledBy_ID]
-    FROM [dbo].[ChequeDepositsDetails] AS [ChequeDepositsDetails]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="ChequeReturnsDetails" EntityType="Self.ChequeReturnsDetails" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [ChequeReturnsDetails].[ChqReturn_ID] AS [ChqReturn_ID], 
-    [ChequeReturnsDetails].[Cheque_ID] AS [Cheque_ID], 
-    [ChequeReturnsDetails].[EnteredOn] AS [EnteredOn], 
-    [ChequeReturnsDetails].[EnteredBy] AS [EnteredBy], 
-    [ChequeReturnsDetails].[Login_ID] AS [Login_ID], 
-    [ChequeReturnsDetails].[ReturnedDate] AS [ReturnedDate]
-    FROM [dbo].[ChequeReturnsDetails] AS [ChequeReturnsDetails]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="ChequesMaster" EntityType="Self.ChequesMaster" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [ChequesMaster].[Cheque_ID] AS [Cheque_ID], 
-    [ChequesMaster].[Student_ID] AS [Student_ID], 
-    [ChequesMaster].[Section_ID] AS [Section_ID], 
-    [ChequesMaster].[EnteredOn] AS [EnteredOn], 
-    [ChequesMaster].[EnteredBy] AS [EnteredBy], 
-    [ChequesMaster].[Login_ID] AS [Login_ID], 
-    [ChequesMaster].[InwardDate] AS [InwardDate], 
-    [ChequesMaster].[ChequeNo] AS [ChequeNo], 
-    [ChequesMaster].[Bank] AS [Bank], 
-    [ChequesMaster].[ChqAmount] AS [ChqAmount], 
-    [ChequesMaster].[Remarks] AS [Remarks], 
-    [ChequesMaster].[ChqStatus_ID] AS [ChqStatus_ID], 
-    [ChequesMaster].[IsActive] AS [IsActive]
-    FROM [dbo].[ChequesMaster] AS [ChequesMaster]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="ChequeStatusLookup" EntityType="Self.ChequeStatusLookup" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [ChequeStatusLookup].[ChqStatus_ID] AS [ChqStatus_ID], 
-    [ChequeStatusLookup].[StatusName] AS [StatusName]
-    FROM [dbo].[ChequeStatusLookup] AS [ChequeStatusLookup]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="DeletedChequeDetails" EntityType="Self.DeletedChequeDetails" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [DeletedChequeDetails].[Cheque_ID] AS [Cheque_ID], 
-    [DeletedChequeDetails].[Student_ID] AS [Student_ID], 
-    [DeletedChequeDetails].[Section_ID] AS [Section_ID], 
-    [DeletedChequeDetails].[EnteredOn] AS [EnteredOn], 
-    [DeletedChequeDetails].[EnteredBy] AS [EnteredBy], 
-    [DeletedChequeDetails].[Login_ID] AS [Login_ID], 
-    [DeletedChequeDetails].[InwardDate] AS [InwardDate], 
-    [DeletedChequeDetails].[ChequeNo] AS [ChequeNo], 
-    [DeletedChequeDetails].[Bank] AS [Bank], 
-    [DeletedChequeDetails].[ChqAmount] AS [ChqAmount], 
-    [DeletedChequeDetails].[Remarks] AS [Remarks], 
-    [DeletedChequeDetails].[ChqStatus_ID] AS [ChqStatus_ID], 
-    [DeletedChequeDetails].[DeletedBy_ID] AS [DeletedBy_ID]
-    FROM [dbo].[DeletedChequeDetails] AS [DeletedChequeDetails]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="DetainingOrPromotionsDetails" EntityType="Self.DetainingOrPromotionsDetails" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [DetainingOrPromotionsDetails].[ID] AS [ID], 
-    [DetainingOrPromotionsDetails].[Student_ID] AS [Student_ID], 
-    [DetainingOrPromotionsDetails].[LastAcadDetail_ID] AS [LastAcadDetail_ID], 
-    [DetainingOrPromotionsDetails].[CurrentAcadDetail_ID] AS [CurrentAcadDetail_ID], 
-    [DetainingOrPromotionsDetails].[Status_ID] AS [Status_ID], 
-    [DetainingOrPromotionsDetails].[EnteredBy] AS [EnteredBy], 
-    [DetainingOrPromotionsDetails].[Login_ID] AS [Login_ID]
-    FROM [dbo].[DetainingOrPromotionsDetails] AS [DetainingOrPromotionsDetails]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="LanguagesLookup" EntityType="Self.LanguagesLookup" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [LanguagesLookup].[Language_Id] AS [Language_Id], 
-    [LanguagesLookup].[Name] AS [Name], 
-    [LanguagesLookup].[IsActive] AS [IsActive]
-    FROM [dbo].[LanguagesLookup] AS [LanguagesLookup]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="PageEnumeratorMaster" EntityType="Self.PageEnumeratorMaster" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [PageEnumeratorMaster].[Page_ID] AS [Page_ID], 
-    [PageEnumeratorMaster].[Name] AS [Name], 
-    [PageEnumeratorMaster].[Description] AS [Description], 
-    [PageEnumeratorMaster].[EnteredOn] AS [EnteredOn], 
-    [PageEnumeratorMaster].[IsActive] AS [IsActive], 
-    [PageEnumeratorMaster].[LastModifiedOn] AS [LastModifiedOn]
-    FROM [dbo].[PageEnumeratorMaster] AS [PageEnumeratorMaster]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="ReligionsLookup" EntityType="Self.ReligionsLookup" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [ReligionsLookup].[Religion_Id] AS [Religion_Id], 
-    [ReligionsLookup].[Name] AS [Name], 
-    [ReligionsLookup].[IsActive] AS [IsActive]
-    FROM [dbo].[ReligionsLookup] AS [ReligionsLookup]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="SectionsLookup" EntityType="Self.SectionsLookup" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [SectionsLookup].[Section_Id] AS [Section_Id], 
-    [SectionsLookup].[Name] AS [Name], 
-    [SectionsLookup].[IsActive] AS [IsActive]
-    FROM [dbo].[SectionsLookup] AS [SectionsLookup]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="StandardsLookup" EntityType="Self.StandardsLookup" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [StandardsLookup].[Standard_Id] AS [Standard_Id], 
-    [StandardsLookup].[Name] AS [Name], 
-    [StandardsLookup].[IsActive] AS [IsActive], 
-    [StandardsLookup].[Section_Id] AS [Section_Id]
-    FROM [dbo].[StandardsLookup] AS [StandardsLookup]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="StudentAcademicDetails" EntityType="Self.StudentAcademicDetails" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [StudentAcademicDetails].[AcademicDet_ID] AS [AcademicDet_ID], 
-    [StudentAcademicDetails].[RegNo] AS [RegNo], 
-    [StudentAcademicDetails].[Student_ID] AS [Student_ID], 
-    [StudentAcademicDetails].[Section_ID] AS [Section_ID], 
-    [StudentAcademicDetails].[Standard_ID] AS [Standard_ID], 
-    [StudentAcademicDetails].[Division] AS [Division], 
-    [StudentAcademicDetails].[AcademicYearStart] AS [AcademicYearStart], 
-    [StudentAcademicDetails].[AcademicYearEnd] AS [AcademicYearEnd], 
-    [StudentAcademicDetails].[Remarks] AS [Remarks], 
-    [StudentAcademicDetails].[IsActive] AS [IsActive]
-    FROM [dbo].[StudentAcademicDetails] AS [StudentAcademicDetails]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="StudentCategoryLookup" EntityType="Self.StudentCategoryLookup" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [StudentCategoryLookup].[Category_Id] AS [Category_Id], 
-    [StudentCategoryLookup].[Name] AS [Name], 
-    [StudentCategoryLookup].[IsActive] AS [IsActive]
-    FROM [dbo].[StudentCategoryLookup] AS [StudentCategoryLookup]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="StudentsMaster" EntityType="Self.StudentsMaster" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [StudentsMaster].[Student_ID] AS [Student_ID], 
-    [StudentsMaster].[RegNo] AS [RegNo], 
-    [StudentsMaster].[Gender] AS [Gender], 
-    [StudentsMaster].[Name] AS [Name], 
-    [StudentsMaster].[Surname] AS [Surname], 
-    [StudentsMaster].[FatherName] AS [FatherName], 
-    [StudentsMaster].[MotherName] AS [MotherName], 
-    [StudentsMaster].[MotherTongue] AS [MotherTongue], 
-    [StudentsMaster].[Religion] AS [Religion], 
-    [StudentsMaster].[Caste] AS [Caste], 
-    [StudentsMaster].[Religion_ID] AS [Religion_ID], 
-    [StudentsMaster].[Language_ID] AS [Language_ID], 
-    [StudentsMaster].[Category_ID] AS [Category_ID], 
-    [StudentsMaster].[DOB] AS [DOB], 
-    [StudentsMaster].[CurrentAcaDetail_ID] AS [CurrentAcaDetail_ID], 
-    [StudentsMaster].[CurrentStd_ID] AS [CurrentStd_ID], 
-    [StudentsMaster].[CurrentDiv] AS [CurrentDiv], 
-    [StudentsMaster].[Address] AS [Address], 
-    [StudentsMaster].[Mobile1] AS [Mobile1], 
-    [StudentsMaster].[Mobile2] AS [Mobile2], 
-    [StudentsMaster].[Mobile3] AS [Mobile3], 
-    [StudentsMaster].[HomePh] AS [HomePh], 
-    [StudentsMaster].[WorkPh] AS [WorkPh], 
-    [StudentsMaster].[Email] AS [Email], 
-    [StudentsMaster].[RFIDTag] AS [RFIDTag], 
-    [StudentsMaster].[AadharNo] AS [AadharNo], 
-    [StudentsMaster].[PrimaryContact] AS [PrimaryContact], 
-    [StudentsMaster].[StudPhoto] AS [StudPhoto], 
-    [StudentsMaster].[Remarks] AS [Remarks], 
-    [StudentsMaster].[IsActive] AS [IsActive], 
-    [StudentsMaster].[EnteredBy_ID] AS [EnteredBy_ID], 
-    [StudentsMaster].[EnteredOn] AS [EnteredOn], 
-    [StudentsMaster].[LastModifiedBy_ID] AS [LastModifiedBy_ID], 
-    [StudentsMaster].[LastModifiedOn] AS [LastModifiedOn]
-    FROM [dbo].[StudentsMaster] AS [StudentsMaster]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="UserCredentialsMaster" EntityType="Self.UserCredentialsMaster" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [UserCredentialsMaster].[User_ID] AS [User_ID], 
-    [UserCredentialsMaster].[Username] AS [Username], 
-    [UserCredentialsMaster].[Password] AS [Password], 
-    [UserCredentialsMaster].[SystemRole_ID] AS [SystemRole_ID], 
-    [UserCredentialsMaster].[EnteredOn] AS [EnteredOn], 
-    [UserCredentialsMaster].[IsActive] AS [IsActive], 
-    [UserCredentialsMaster].[LastModifiedOn] AS [LastModifiedOn]
-    FROM [dbo].[UserCredentialsMaster] AS [UserCredentialsMaster]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="UserLoginDetails" EntityType="Self.UserLoginDetails" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [UserLoginDetails].[Login_ID] AS [Login_ID], 
-    [UserLoginDetails].[User_ID] AS [User_ID], 
-    [UserLoginDetails].[LoginTime] AS [LoginTime], 
-    [UserLoginDetails].[LogoutTime] AS [LogoutTime], 
-    [UserLoginDetails].[HostName] AS [HostName]
-    FROM [dbo].[UserLoginDetails] AS [UserLoginDetails]</DefiningQuery>
-          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -886,11 +320,13 @@ warning 6002: The table/view 'S360_DB.dbo.UserLoginDetails' does not have a prim
           <EntitySet Name="CHQ_ChequeDeposits_Details" EntityType="S360Model.CHQ_ChequeDeposits_Details" />
           <EntitySet Name="CHQ_ChequeReturns_Details" EntityType="S360Model.CHQ_ChequeReturns_Details" />
           <EntitySet Name="CHQ_Cheques_Master" EntityType="S360Model.CHQ_Cheques_Master" />
+          <EntitySet Name="CHQ_Cheques_Master_Temp" EntityType="S360Model.CHQ_Cheques_Master_Temp" />
           <EntitySet Name="CHQ_ChequeStatus_Lookup" EntityType="S360Model.CHQ_ChequeStatus_Lookup" />
           <EntitySet Name="CHQ_DeletedCheque_Details" EntityType="S360Model.CHQ_DeletedCheque_Details" />
           <EntitySet Name="GEN_Languages_Lookup" EntityType="S360Model.GEN_Languages_Lookup" />
           <EntitySet Name="GEN_Religions_Lookup" EntityType="S360Model.GEN_Religions_Lookup" />
           <EntitySet Name="GEN_Sections_Lookup" EntityType="S360Model.GEN_Sections_Lookup" />
+          <EntitySet Name="GEN_Standards_Lookup" EntityType="S360Model.GEN_Standards_Lookup" />
           <EntitySet Name="GEN_StudentCategory_Lookup" EntityType="S360Model.GEN_StudentCategory_Lookup" />
           <EntitySet Name="GEN_UserCredentials_Master" EntityType="S360Model.GEN_UserCredentials_Master" />
           <EntitySet Name="GEN_UserLogin_Details" EntityType="S360Model.GEN_UserLogin_Details" />
@@ -898,31 +334,9 @@ warning 6002: The table/view 'S360_DB.dbo.UserLoginDetails' does not have a prim
           <EntitySet Name="PEM_PageEnumerator_Master" EntityType="S360Model.PEM_PageEnumerator_Master" />
           <EntitySet Name="STUD_AcademicStatus_Lookup" EntityType="S360Model.STUD_AcademicStatus_Lookup" />
           <EntitySet Name="STUD_DetainingOrPromotions_Details" EntityType="S360Model.STUD_DetainingOrPromotions_Details" />
-          <EntitySet Name="AcademicStatusLookups" EntityType="S360Model.AcademicStatusLookup" />
-          <EntitySet Name="AssignedPermissionsDetails" EntityType="S360Model.AssignedPermissionsDetail" />
-          <EntitySet Name="ChequeCancellationsDetails" EntityType="S360Model.ChequeCancellationsDetail" />
-          <EntitySet Name="ChequeClearancesDetails" EntityType="S360Model.ChequeClearancesDetail" />
-          <EntitySet Name="ChequeDepositsDetails" EntityType="S360Model.ChequeDepositsDetail" />
-          <EntitySet Name="ChequeReturnsDetails" EntityType="S360Model.ChequeReturnsDetail" />
-          <EntitySet Name="ChequesMasters" EntityType="S360Model.ChequesMaster" />
-          <EntitySet Name="ChequeStatusLookups" EntityType="S360Model.ChequeStatusLookup" />
-          <EntitySet Name="DeletedChequeDetails" EntityType="S360Model.DeletedChequeDetail" />
-          <EntitySet Name="DetainingOrPromotionsDetails" EntityType="S360Model.DetainingOrPromotionsDetail" />
-          <EntitySet Name="LanguagesLookups" EntityType="S360Model.LanguagesLookup" />
-          <EntitySet Name="PageEnumeratorMasters" EntityType="S360Model.PageEnumeratorMaster" />
-          <EntitySet Name="ReligionsLookups" EntityType="S360Model.ReligionsLookup" />
-          <EntitySet Name="SectionsLookups" EntityType="S360Model.SectionsLookup" />
-          <EntitySet Name="StandardsLookups" EntityType="S360Model.StandardsLookup" />
-          <EntitySet Name="StudentAcademicDetails" EntityType="S360Model.StudentAcademicDetail" />
-          <EntitySet Name="StudentCategoryLookups" EntityType="S360Model.StudentCategoryLookup" />
-          <EntitySet Name="StudentsMasters" EntityType="S360Model.StudentsMaster" />
-          <EntitySet Name="UserCredentialsMasters" EntityType="S360Model.UserCredentialsMaster" />
-          <EntitySet Name="UserLoginDetails" EntityType="S360Model.UserLoginDetail" />
-          <EntitySet Name="STUD_Students_Master" EntityType="S360Model.STUD_Students_Master" />
-          <EntitySet Name="STUD_StudentAcademic_Details" EntityType="S360Model.STUD_StudentAcademic_Details" />
-          <EntitySet Name="GEN_Standards_Lookup" EntityType="S360Model.GEN_Standards_Lookup" />
           <EntitySet Name="STUD_Student_TC" EntityType="S360Model.STUD_Student_TC" />
-          <EntitySet Name="CHQ_Cheques_Master_Temp" EntityType="S360Model.CHQ_Cheques_Master_Temp" />
+          <EntitySet Name="STUD_StudentAcademic_Details" EntityType="S360Model.STUD_StudentAcademic_Details" />
+          <EntitySet Name="STUD_Students_Master" EntityType="S360Model.STUD_Students_Master" />
         </EntityContainer>
         <EntityType Name="CHQ_ChequeCancellations_Details">
           <Key>
@@ -991,6 +405,24 @@ warning 6002: The table/view 'S360_DB.dbo.UserLoginDetails' does not have a prim
           <Property Name="ChqStatus_ID" Type="Int32" />
           <Property Name="IsActive" Type="Boolean" />
         </EntityType>
+        <EntityType Name="CHQ_Cheques_Master_Temp">
+          <Key>
+            <PropertyRef Name="Cheque_ID" />
+          </Key>
+          <Property Name="Cheque_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Student_ID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Section_ID" Type="Int16" />
+          <Property Name="EnteredOn" Type="DateTimeOffset" Precision="0" />
+          <Property Name="EnteredBy" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Login_ID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="InwardDate" Type="DateTime" Precision="0" />
+          <Property Name="ChequeNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Bank" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ChqAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ChqStatus_ID" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
         <EntityType Name="CHQ_ChequeStatus_Lookup">
           <Key>
             <PropertyRef Name="ChqStatus_ID" />
@@ -1039,6 +471,15 @@ warning 6002: The table/view 'S360_DB.dbo.UserLoginDetails' does not have a prim
           <Property Name="Section_Id" Type="Int16" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GEN_Standards_Lookup">
+          <Key>
+            <PropertyRef Name="Standard_Id" />
+          </Key>
+          <Property Name="Standard_Id" Type="Int16" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Section_Id" Type="Int16" />
         </EntityType>
         <EntityType Name="GEN_StudentCategory_Lookup">
           <Key>
@@ -1113,299 +554,31 @@ warning 6002: The table/view 'S360_DB.dbo.UserLoginDetails' does not have a prim
           <Property Name="EnteredBy" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="Login_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
         </EntityType>
-        <EntityType Name="AcademicStatusLookup">
+        <EntityType Name="STUD_Student_TC">
           <Key>
-            <PropertyRef Name="AcaStatus_ID" />
-            <PropertyRef Name="StatusName" />
+            <PropertyRef Name="StudentTC_ID" />
           </Key>
-          <Property Name="AcaStatus_ID" Type="Int16" Nullable="false" />
-          <Property Name="StatusName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="AssignedPermissionsDetail">
-          <Key>
-            <PropertyRef Name="Permission_ID" />
-            <PropertyRef Name="Page_ID" />
-            <PropertyRef Name="SystemRole_ID" />
-            <PropertyRef Name="EnteredOn" />
-            <PropertyRef Name="GrantWrite" />
-            <PropertyRef Name="GrantDelete" />
-            <PropertyRef Name="EnteredBy_ID" />
-          </Key>
-          <Property Name="Permission_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Page_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="SystemRole_ID" Type="Int16" Nullable="false" />
-          <Property Name="EnteredOn" Type="DateTimeOffset" Nullable="false" Precision="0" />
-          <Property Name="GrantWrite" Type="Boolean" Nullable="false" />
-          <Property Name="GrantDelete" Type="Boolean" Nullable="false" />
-          <Property Name="EnteredBy_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="LastModifiedOn" Type="DateTimeOffset" Precision="0" />
-        </EntityType>
-        <EntityType Name="ChequeCancellationsDetail">
-          <Key>
-            <PropertyRef Name="ChqCancel_ID" />
-          </Key>
-          <Property Name="ChqCancel_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Cheque_ID" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="EnteredOn" Type="DateTimeOffset" Precision="0" />
-          <Property Name="EnteredBy_ID" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="Login_ID" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="CancelledDate" Type="DateTime" Precision="0" />
-          <Property Name="IsActive" Type="Boolean" />
-        </EntityType>
-        <EntityType Name="ChequeClearancesDetail">
-          <Key>
-            <PropertyRef Name="ChqClearance_ID" />
-          </Key>
-          <Property Name="ChqClearance_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Cheque_ID" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="EnteredOn" Type="DateTimeOffset" Precision="0" />
-          <Property Name="EnteredBy" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="Login_ID" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="ClearedDate" Type="DateTime" Precision="0" />
-          <Property Name="IsActive" Type="Boolean" />
-        </EntityType>
-        <EntityType Name="ChequeDepositsDetail">
-          <Key>
-            <PropertyRef Name="Deposit_ID" />
-            <PropertyRef Name="IsActive" />
-          </Key>
-          <Property Name="Deposit_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Cheque_ID" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="EnteredOn" Type="DateTimeOffset" Precision="0" />
-          <Property Name="EnteredBy" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="Login_ID" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="DepositDate" Type="DateTime" Precision="0" />
-          <Property Name="AccountNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="CancelledBy_ID" Type="Decimal" Precision="18" Scale="0" />
-        </EntityType>
-        <EntityType Name="ChequeReturnsDetail">
-          <Key>
-            <PropertyRef Name="ChqReturn_ID" />
-          </Key>
-          <Property Name="ChqReturn_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Cheque_ID" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="EnteredOn" Type="DateTimeOffset" Precision="0" />
-          <Property Name="EnteredBy" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="Login_ID" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="ReturnedDate" Type="DateTime" Precision="0" />
-        </EntityType>
-        <EntityType Name="ChequesMaster">
-          <Key>
-            <PropertyRef Name="Cheque_ID" />
-          </Key>
-          <Property Name="Cheque_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Student_ID" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="Section_ID" Type="Int16" />
-          <Property Name="EnteredOn" Type="DateTimeOffset" Precision="0" />
-          <Property Name="EnteredBy" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="Login_ID" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="InwardDate" Type="DateTime" Precision="0" />
-          <Property Name="ChequeNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Bank" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ChqAmount" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="ChqStatus_ID" Type="Int32" />
-          <Property Name="IsActive" Type="Boolean" />
-        </EntityType>
-        <EntityType Name="ChequeStatusLookup">
-          <Key>
-            <PropertyRef Name="ChqStatus_ID" />
-            <PropertyRef Name="StatusName" />
-          </Key>
-          <Property Name="ChqStatus_ID" Type="Int16" Nullable="false" />
-          <Property Name="StatusName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="DeletedChequeDetail">
-          <Key>
-            <PropertyRef Name="Cheque_ID" />
-          </Key>
-          <Property Name="Cheque_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Student_ID" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="Section_ID" Type="Int16" />
-          <Property Name="EnteredOn" Type="DateTimeOffset" Precision="0" />
-          <Property Name="EnteredBy" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="Login_ID" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="InwardDate" Type="DateTime" Precision="0" />
-          <Property Name="ChequeNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Bank" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ChqAmount" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="ChqStatus_ID" Type="Int32" />
-          <Property Name="DeletedBy_ID" Type="Decimal" Precision="18" Scale="0" />
-        </EntityType>
-        <EntityType Name="DetainingOrPromotionsDetail">
-          <Key>
-            <PropertyRef Name="ID" />
-            <PropertyRef Name="Student_ID" />
-            <PropertyRef Name="LastAcadDetail_ID" />
-            <PropertyRef Name="CurrentAcadDetail_ID" />
-            <PropertyRef Name="EnteredBy" />
-            <PropertyRef Name="Login_ID" />
-          </Key>
-          <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentTC_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegNo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Student_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="LastAcadDetail_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="CurrentAcadDetail_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="Status_ID" Type="Int32" />
-          <Property Name="EnteredBy" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="IssuedBy_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="IssuedOn" Type="DateTimeOffset" Nullable="false" Precision="0" />
           <Property Name="Login_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
         </EntityType>
-        <EntityType Name="LanguagesLookup">
-          <Key>
-            <PropertyRef Name="Language_Id" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="IsActive" />
-          </Key>
-          <Property Name="Language_Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <EntityType Name="PageEnumeratorMaster">
-          <Key>
-            <PropertyRef Name="Page_ID" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="EnteredOn" />
-            <PropertyRef Name="IsActive" />
-            <PropertyRef Name="LastModifiedOn" />
-          </Key>
-          <Property Name="Page_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
-          <Property Name="EnteredOn" Type="DateTimeOffset" Nullable="false" Precision="0" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="LastModifiedOn" Type="DateTimeOffset" Nullable="false" Precision="0" />
-        </EntityType>
-        <EntityType Name="ReligionsLookup">
-          <Key>
-            <PropertyRef Name="Religion_Id" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="IsActive" />
-          </Key>
-          <Property Name="Religion_Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <EntityType Name="SectionsLookup">
-          <Key>
-            <PropertyRef Name="Section_Id" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="IsActive" />
-          </Key>
-          <Property Name="Section_Id" Type="Int16" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <EntityType Name="StandardsLookup">
-          <Key>
-            <PropertyRef Name="Standard_Id" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="IsActive" />
-          </Key>
-          <Property Name="Standard_Id" Type="Int16" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="Section_Id" Type="Int32" />
-        </EntityType>
-        <EntityType Name="StudentAcademicDetail">
+        <EntityType Name="STUD_StudentAcademic_Details">
           <Key>
             <PropertyRef Name="AcademicDet_ID" />
-            <PropertyRef Name="RegNo" />
-            <PropertyRef Name="Student_ID" />
-            <PropertyRef Name="IsActive" />
           </Key>
           <Property Name="AcademicDet_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RegNo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Student_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="Section_ID" Type="Int32" />
+          <Property Name="Section_ID" Type="Int16" />
           <Property Name="Standard_ID" Type="Int16" />
-          <Property Name="Division" Type="Int16" />
+          <Property Name="Division" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="AcademicYearStart" Type="Int32" />
           <Property Name="AcademicYearEnd" Type="Int32" />
           <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <EntityType Name="StudentCategoryLookup">
-          <Key>
-            <PropertyRef Name="Category_Id" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="IsActive" />
-          </Key>
-          <Property Name="Category_Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <EntityType Name="StudentsMaster">
-          <Key>
-            <PropertyRef Name="Student_ID" />
-            <PropertyRef Name="IsActive" />
-            <PropertyRef Name="EnteredBy_ID" />
-            <PropertyRef Name="LastModifiedBy_ID" />
-          </Key>
-          <Property Name="Student_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="RegNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Surname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="FatherName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="MotherName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="MotherTongue" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Religion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Caste" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Religion_ID" Type="Int32" />
-          <Property Name="Language_ID" Type="Int32" />
-          <Property Name="Category_ID" Type="Int32" />
-          <Property Name="DOB" Type="DateTime" Precision="0" />
-          <Property Name="CurrentAcaDetail_ID" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="CurrentStd_ID" Type="Int32" />
-          <Property Name="CurrentDiv" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Mobile1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="Mobile2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="Mobile3" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="HomePh" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="WorkPh" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="RFIDTag" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="AadharNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="PrimaryContact" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="StudPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="EnteredBy_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="EnteredOn" Type="DateTimeOffset" Precision="0" />
-          <Property Name="LastModifiedBy_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="LastModifiedOn" Type="DateTimeOffset" Precision="0" />
-        </EntityType>
-        <EntityType Name="UserCredentialsMaster">
-          <Key>
-            <PropertyRef Name="User_ID" />
-            <PropertyRef Name="Username" />
-            <PropertyRef Name="Password" />
-            <PropertyRef Name="SystemRole_ID" />
-            <PropertyRef Name="EnteredOn" />
-            <PropertyRef Name="IsActive" />
-            <PropertyRef Name="LastModifiedOn" />
-          </Key>
-          <Property Name="User_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SystemRole_ID" Type="Int16" Nullable="false" />
-          <Property Name="EnteredOn" Type="DateTimeOffset" Nullable="false" Precision="0" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="LastModifiedOn" Type="DateTimeOffset" Nullable="false" Precision="0" />
-        </EntityType>
-        <EntityType Name="UserLoginDetail">
-          <Key>
-            <PropertyRef Name="Login_ID" />
-            <PropertyRef Name="User_ID" />
-            <PropertyRef Name="LoginTime" />
-          </Key>
-          <Property Name="Login_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="User_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="LoginTime" Type="DateTimeOffset" Nullable="false" Precision="0" />
-          <Property Name="LogoutTime" Type="DateTimeOffset" Precision="0" />
-          <Property Name="HostName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="STUD_Students_Master">
           <Key>
@@ -1445,59 +618,6 @@ warning 6002: The table/view 'S360_DB.dbo.UserLoginDetails' does not have a prim
           <Property Name="EnteredOn" Type="DateTimeOffset" Precision="0" />
           <Property Name="LastModifiedBy_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="LastModifiedOn" Type="DateTimeOffset" Precision="0" />
-        </EntityType>
-        <EntityType Name="STUD_StudentAcademic_Details">
-          <Key>
-            <PropertyRef Name="AcademicDet_ID" />
-          </Key>
-          <Property Name="AcademicDet_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RegNo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Student_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="Section_ID" Type="Int16" />
-          <Property Name="Standard_ID" Type="Int16" />
-          <Property Name="Division" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="AcademicYearStart" Type="Int32" />
-          <Property Name="AcademicYearEnd" Type="Int32" />
-          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <EntityType Name="GEN_Standards_Lookup">
-          <Key>
-            <PropertyRef Name="Standard_Id" />
-          </Key>
-          <Property Name="Standard_Id" Type="Int16" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="Section_Id" Type="Int16" />
-        </EntityType>
-        <EntityType Name="STUD_Student_TC">
-          <Key>
-            <PropertyRef Name="StudentTC_ID" />
-          </Key>
-          <Property Name="StudentTC_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="RegNo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Student_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="IssuedBy_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="IssuedOn" Type="DateTimeOffset" Nullable="false" Precision="0" />
-          <Property Name="Login_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-        </EntityType>
-        <EntityType Name="CHQ_Cheques_Master_Temp">
-          <Key>
-            <PropertyRef Name="Cheque_ID" />
-          </Key>
-          <Property Name="Cheque_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Student_ID" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="Section_ID" Type="Int16" />
-          <Property Name="EnteredOn" Type="DateTimeOffset" Precision="0" />
-          <Property Name="EnteredBy" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="Login_ID" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="InwardDate" Type="DateTime" Precision="0" />
-          <Property Name="ChequeNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Bank" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ChqAmount" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="ChqStatus_ID" Type="Int32" />
-          <Property Name="IsActive" Type="Boolean" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1577,6 +697,25 @@ warning 6002: The table/view 'S360_DB.dbo.UserLoginDetails' does not have a prim
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="CHQ_Cheques_Master_Temp">
+            <EntityTypeMapping TypeName="S360Model.CHQ_Cheques_Master_Temp">
+              <MappingFragment StoreEntitySet="CHQ_Cheques_Master_Temp">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ChqStatus_ID" ColumnName="ChqStatus_ID" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="ChqAmount" ColumnName="ChqAmount" />
+                <ScalarProperty Name="Bank" ColumnName="Bank" />
+                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
+                <ScalarProperty Name="InwardDate" ColumnName="InwardDate" />
+                <ScalarProperty Name="Login_ID" ColumnName="Login_ID" />
+                <ScalarProperty Name="EnteredBy" ColumnName="EnteredBy" />
+                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
+                <ScalarProperty Name="Section_ID" ColumnName="Section_ID" />
+                <ScalarProperty Name="Student_ID" ColumnName="Student_ID" />
+                <ScalarProperty Name="Cheque_ID" ColumnName="Cheque_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="CHQ_ChequeStatus_Lookup">
             <EntityTypeMapping TypeName="S360Model.CHQ_ChequeStatus_Lookup">
               <MappingFragment StoreEntitySet="CHQ_ChequeStatus_Lookup">
@@ -1628,6 +767,16 @@ warning 6002: The table/view 'S360_DB.dbo.UserLoginDetails' does not have a prim
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Section_Id" ColumnName="Section_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GEN_Standards_Lookup">
+            <EntityTypeMapping TypeName="S360Model.GEN_Standards_Lookup">
+              <MappingFragment StoreEntitySet="GEN_Standards_Lookup">
+                <ScalarProperty Name="Section_Id" ColumnName="Section_Id" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Standard_Id" ColumnName="Standard_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1711,192 +860,21 @@ warning 6002: The table/view 'S360_DB.dbo.UserLoginDetails' does not have a prim
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="AcademicStatusLookups">
-            <EntityTypeMapping TypeName="S360Model.AcademicStatusLookup">
-              <MappingFragment StoreEntitySet="AcademicStatusLookup">
-                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
-                <ScalarProperty Name="AcaStatus_ID" ColumnName="AcaStatus_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AssignedPermissionsDetails">
-            <EntityTypeMapping TypeName="S360Model.AssignedPermissionsDetail">
-              <MappingFragment StoreEntitySet="AssignedPermissionsDetails">
-                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
-                <ScalarProperty Name="EnteredBy_ID" ColumnName="EnteredBy_ID" />
-                <ScalarProperty Name="GrantDelete" ColumnName="GrantDelete" />
-                <ScalarProperty Name="GrantWrite" ColumnName="GrantWrite" />
-                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
-                <ScalarProperty Name="SystemRole_ID" ColumnName="SystemRole_ID" />
-                <ScalarProperty Name="Page_ID" ColumnName="Page_ID" />
-                <ScalarProperty Name="Permission_ID" ColumnName="Permission_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ChequeCancellationsDetails">
-            <EntityTypeMapping TypeName="S360Model.ChequeCancellationsDetail">
-              <MappingFragment StoreEntitySet="ChequeCancellationsDetails">
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="CancelledDate" ColumnName="CancelledDate" />
+          <EntitySetMapping Name="STUD_Student_TC">
+            <EntityTypeMapping TypeName="S360Model.STUD_Student_TC">
+              <MappingFragment StoreEntitySet="STUD_Student_TC">
                 <ScalarProperty Name="Login_ID" ColumnName="Login_ID" />
-                <ScalarProperty Name="EnteredBy_ID" ColumnName="EnteredBy_ID" />
-                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
-                <ScalarProperty Name="Cheque_ID" ColumnName="Cheque_ID" />
-                <ScalarProperty Name="ChqCancel_ID" ColumnName="ChqCancel_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ChequeClearancesDetails">
-            <EntityTypeMapping TypeName="S360Model.ChequeClearancesDetail">
-              <MappingFragment StoreEntitySet="ChequeClearancesDetails">
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="ClearedDate" ColumnName="ClearedDate" />
-                <ScalarProperty Name="Login_ID" ColumnName="Login_ID" />
-                <ScalarProperty Name="EnteredBy" ColumnName="EnteredBy" />
-                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
-                <ScalarProperty Name="Cheque_ID" ColumnName="Cheque_ID" />
-                <ScalarProperty Name="ChqClearance_ID" ColumnName="ChqClearance_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ChequeDepositsDetails">
-            <EntityTypeMapping TypeName="S360Model.ChequeDepositsDetail">
-              <MappingFragment StoreEntitySet="ChequeDepositsDetails">
-                <ScalarProperty Name="CancelledBy_ID" ColumnName="CancelledBy_ID" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
-                <ScalarProperty Name="DepositDate" ColumnName="DepositDate" />
-                <ScalarProperty Name="Login_ID" ColumnName="Login_ID" />
-                <ScalarProperty Name="EnteredBy" ColumnName="EnteredBy" />
-                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
-                <ScalarProperty Name="Cheque_ID" ColumnName="Cheque_ID" />
-                <ScalarProperty Name="Deposit_ID" ColumnName="Deposit_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ChequeReturnsDetails">
-            <EntityTypeMapping TypeName="S360Model.ChequeReturnsDetail">
-              <MappingFragment StoreEntitySet="ChequeReturnsDetails">
-                <ScalarProperty Name="ReturnedDate" ColumnName="ReturnedDate" />
-                <ScalarProperty Name="Login_ID" ColumnName="Login_ID" />
-                <ScalarProperty Name="EnteredBy" ColumnName="EnteredBy" />
-                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
-                <ScalarProperty Name="Cheque_ID" ColumnName="Cheque_ID" />
-                <ScalarProperty Name="ChqReturn_ID" ColumnName="ChqReturn_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ChequesMasters">
-            <EntityTypeMapping TypeName="S360Model.ChequesMaster">
-              <MappingFragment StoreEntitySet="ChequesMaster">
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="ChqStatus_ID" ColumnName="ChqStatus_ID" />
-                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
-                <ScalarProperty Name="ChqAmount" ColumnName="ChqAmount" />
-                <ScalarProperty Name="Bank" ColumnName="Bank" />
-                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
-                <ScalarProperty Name="InwardDate" ColumnName="InwardDate" />
-                <ScalarProperty Name="Login_ID" ColumnName="Login_ID" />
-                <ScalarProperty Name="EnteredBy" ColumnName="EnteredBy" />
-                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
-                <ScalarProperty Name="Section_ID" ColumnName="Section_ID" />
+                <ScalarProperty Name="IssuedOn" ColumnName="IssuedOn" />
+                <ScalarProperty Name="IssuedBy_ID" ColumnName="IssuedBy_ID" />
                 <ScalarProperty Name="Student_ID" ColumnName="Student_ID" />
-                <ScalarProperty Name="Cheque_ID" ColumnName="Cheque_ID" />
+                <ScalarProperty Name="RegNo" ColumnName="RegNo" />
+                <ScalarProperty Name="StudentTC_ID" ColumnName="StudentTC_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ChequeStatusLookups">
-            <EntityTypeMapping TypeName="S360Model.ChequeStatusLookup">
-              <MappingFragment StoreEntitySet="ChequeStatusLookup">
-                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
-                <ScalarProperty Name="ChqStatus_ID" ColumnName="ChqStatus_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DeletedChequeDetails">
-            <EntityTypeMapping TypeName="S360Model.DeletedChequeDetail">
-              <MappingFragment StoreEntitySet="DeletedChequeDetails">
-                <ScalarProperty Name="DeletedBy_ID" ColumnName="DeletedBy_ID" />
-                <ScalarProperty Name="ChqStatus_ID" ColumnName="ChqStatus_ID" />
-                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
-                <ScalarProperty Name="ChqAmount" ColumnName="ChqAmount" />
-                <ScalarProperty Name="Bank" ColumnName="Bank" />
-                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
-                <ScalarProperty Name="InwardDate" ColumnName="InwardDate" />
-                <ScalarProperty Name="Login_ID" ColumnName="Login_ID" />
-                <ScalarProperty Name="EnteredBy" ColumnName="EnteredBy" />
-                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
-                <ScalarProperty Name="Section_ID" ColumnName="Section_ID" />
-                <ScalarProperty Name="Student_ID" ColumnName="Student_ID" />
-                <ScalarProperty Name="Cheque_ID" ColumnName="Cheque_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DetainingOrPromotionsDetails">
-            <EntityTypeMapping TypeName="S360Model.DetainingOrPromotionsDetail">
-              <MappingFragment StoreEntitySet="DetainingOrPromotionsDetails">
-                <ScalarProperty Name="Login_ID" ColumnName="Login_ID" />
-                <ScalarProperty Name="EnteredBy" ColumnName="EnteredBy" />
-                <ScalarProperty Name="Status_ID" ColumnName="Status_ID" />
-                <ScalarProperty Name="CurrentAcadDetail_ID" ColumnName="CurrentAcadDetail_ID" />
-                <ScalarProperty Name="LastAcadDetail_ID" ColumnName="LastAcadDetail_ID" />
-                <ScalarProperty Name="Student_ID" ColumnName="Student_ID" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="LanguagesLookups">
-            <EntityTypeMapping TypeName="S360Model.LanguagesLookup">
-              <MappingFragment StoreEntitySet="LanguagesLookup">
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Language_Id" ColumnName="Language_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PageEnumeratorMasters">
-            <EntityTypeMapping TypeName="S360Model.PageEnumeratorMaster">
-              <MappingFragment StoreEntitySet="PageEnumeratorMaster">
-                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Page_ID" ColumnName="Page_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ReligionsLookups">
-            <EntityTypeMapping TypeName="S360Model.ReligionsLookup">
-              <MappingFragment StoreEntitySet="ReligionsLookup">
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Religion_Id" ColumnName="Religion_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SectionsLookups">
-            <EntityTypeMapping TypeName="S360Model.SectionsLookup">
-              <MappingFragment StoreEntitySet="SectionsLookup">
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Section_Id" ColumnName="Section_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="StandardsLookups">
-            <EntityTypeMapping TypeName="S360Model.StandardsLookup">
-              <MappingFragment StoreEntitySet="StandardsLookup">
-                <ScalarProperty Name="Section_Id" ColumnName="Section_Id" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Standard_Id" ColumnName="Standard_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="StudentAcademicDetails">
-            <EntityTypeMapping TypeName="S360Model.StudentAcademicDetail">
-              <MappingFragment StoreEntitySet="StudentAcademicDetails">
+          <EntitySetMapping Name="STUD_StudentAcademic_Details">
+            <EntityTypeMapping TypeName="S360Model.STUD_StudentAcademic_Details">
+              <MappingFragment StoreEntitySet="STUD_StudentAcademic_Details">
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="Remarks" ColumnName="Remarks" />
                 <ScalarProperty Name="AcademicYearEnd" ColumnName="AcademicYearEnd" />
@@ -1907,79 +885,6 @@ warning 6002: The table/view 'S360_DB.dbo.UserLoginDetails' does not have a prim
                 <ScalarProperty Name="Student_ID" ColumnName="Student_ID" />
                 <ScalarProperty Name="RegNo" ColumnName="RegNo" />
                 <ScalarProperty Name="AcademicDet_ID" ColumnName="AcademicDet_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="StudentCategoryLookups">
-            <EntityTypeMapping TypeName="S360Model.StudentCategoryLookup">
-              <MappingFragment StoreEntitySet="StudentCategoryLookup">
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Category_Id" ColumnName="Category_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="StudentsMasters">
-            <EntityTypeMapping TypeName="S360Model.StudentsMaster">
-              <MappingFragment StoreEntitySet="StudentsMaster">
-                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
-                <ScalarProperty Name="LastModifiedBy_ID" ColumnName="LastModifiedBy_ID" />
-                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
-                <ScalarProperty Name="EnteredBy_ID" ColumnName="EnteredBy_ID" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
-                <ScalarProperty Name="StudPhoto" ColumnName="StudPhoto" />
-                <ScalarProperty Name="PrimaryContact" ColumnName="PrimaryContact" />
-                <ScalarProperty Name="AadharNo" ColumnName="AadharNo" />
-                <ScalarProperty Name="RFIDTag" ColumnName="RFIDTag" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="WorkPh" ColumnName="WorkPh" />
-                <ScalarProperty Name="HomePh" ColumnName="HomePh" />
-                <ScalarProperty Name="Mobile3" ColumnName="Mobile3" />
-                <ScalarProperty Name="Mobile2" ColumnName="Mobile2" />
-                <ScalarProperty Name="Mobile1" ColumnName="Mobile1" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="CurrentDiv" ColumnName="CurrentDiv" />
-                <ScalarProperty Name="CurrentStd_ID" ColumnName="CurrentStd_ID" />
-                <ScalarProperty Name="CurrentAcaDetail_ID" ColumnName="CurrentAcaDetail_ID" />
-                <ScalarProperty Name="DOB" ColumnName="DOB" />
-                <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
-                <ScalarProperty Name="Language_ID" ColumnName="Language_ID" />
-                <ScalarProperty Name="Religion_ID" ColumnName="Religion_ID" />
-                <ScalarProperty Name="Caste" ColumnName="Caste" />
-                <ScalarProperty Name="Religion" ColumnName="Religion" />
-                <ScalarProperty Name="MotherTongue" ColumnName="MotherTongue" />
-                <ScalarProperty Name="MotherName" ColumnName="MotherName" />
-                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
-                <ScalarProperty Name="Surname" ColumnName="Surname" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="RegNo" ColumnName="RegNo" />
-                <ScalarProperty Name="Student_ID" ColumnName="Student_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UserCredentialsMasters">
-            <EntityTypeMapping TypeName="S360Model.UserCredentialsMaster">
-              <MappingFragment StoreEntitySet="UserCredentialsMaster">
-                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
-                <ScalarProperty Name="SystemRole_ID" ColumnName="SystemRole_ID" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UserLoginDetails">
-            <EntityTypeMapping TypeName="S360Model.UserLoginDetail">
-              <MappingFragment StoreEntitySet="UserLoginDetails">
-                <ScalarProperty Name="HostName" ColumnName="HostName" />
-                <ScalarProperty Name="LogoutTime" ColumnName="LogoutTime" />
-                <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
-                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
-                <ScalarProperty Name="Login_ID" ColumnName="Login_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2020,63 +925,6 @@ warning 6002: The table/view 'S360_DB.dbo.UserLoginDetails' does not have a prim
                 <ScalarProperty Name="Gender" ColumnName="Gender" />
                 <ScalarProperty Name="RegNo" ColumnName="RegNo" />
                 <ScalarProperty Name="Student_ID" ColumnName="Student_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="STUD_StudentAcademic_Details">
-            <EntityTypeMapping TypeName="S360Model.STUD_StudentAcademic_Details">
-              <MappingFragment StoreEntitySet="STUD_StudentAcademic_Details">
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
-                <ScalarProperty Name="AcademicYearEnd" ColumnName="AcademicYearEnd" />
-                <ScalarProperty Name="AcademicYearStart" ColumnName="AcademicYearStart" />
-                <ScalarProperty Name="Division" ColumnName="Division" />
-                <ScalarProperty Name="Standard_ID" ColumnName="Standard_ID" />
-                <ScalarProperty Name="Section_ID" ColumnName="Section_ID" />
-                <ScalarProperty Name="Student_ID" ColumnName="Student_ID" />
-                <ScalarProperty Name="RegNo" ColumnName="RegNo" />
-                <ScalarProperty Name="AcademicDet_ID" ColumnName="AcademicDet_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="GEN_Standards_Lookup">
-            <EntityTypeMapping TypeName="S360Model.GEN_Standards_Lookup">
-              <MappingFragment StoreEntitySet="GEN_Standards_Lookup">
-                <ScalarProperty Name="Section_Id" ColumnName="Section_Id" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Standard_Id" ColumnName="Standard_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="STUD_Student_TC">
-            <EntityTypeMapping TypeName="S360Model.STUD_Student_TC">
-              <MappingFragment StoreEntitySet="STUD_Student_TC">
-                <ScalarProperty Name="Login_ID" ColumnName="Login_ID" />
-                <ScalarProperty Name="IssuedOn" ColumnName="IssuedOn" />
-                <ScalarProperty Name="IssuedBy_ID" ColumnName="IssuedBy_ID" />
-                <ScalarProperty Name="Student_ID" ColumnName="Student_ID" />
-                <ScalarProperty Name="RegNo" ColumnName="RegNo" />
-                <ScalarProperty Name="StudentTC_ID" ColumnName="StudentTC_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CHQ_Cheques_Master_Temp">
-            <EntityTypeMapping TypeName="S360Model.CHQ_Cheques_Master_Temp">
-              <MappingFragment StoreEntitySet="CHQ_Cheques_Master_Temp">
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="ChqStatus_ID" ColumnName="ChqStatus_ID" />
-                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
-                <ScalarProperty Name="ChqAmount" ColumnName="ChqAmount" />
-                <ScalarProperty Name="Bank" ColumnName="Bank" />
-                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
-                <ScalarProperty Name="InwardDate" ColumnName="InwardDate" />
-                <ScalarProperty Name="Login_ID" ColumnName="Login_ID" />
-                <ScalarProperty Name="EnteredBy" ColumnName="EnteredBy" />
-                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
-                <ScalarProperty Name="Section_ID" ColumnName="Section_ID" />
-                <ScalarProperty Name="Student_ID" ColumnName="Student_ID" />
-                <ScalarProperty Name="Cheque_ID" ColumnName="Cheque_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
