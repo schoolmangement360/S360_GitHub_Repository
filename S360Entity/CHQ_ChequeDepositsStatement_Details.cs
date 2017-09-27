@@ -12,18 +12,14 @@ namespace S360Entity
     using System;
     using System.Collections.Generic;
     
-    public partial class CHQ_ChequeDeposits_Details
+    public partial class CHQ_ChequeDepositsStatement_Details
     {
-        public decimal Deposit_ID { get; set; }
-        public Nullable<decimal> Cheque_ID { get; set; }
+        public decimal Statement_ID { get; set; }
         public Nullable<System.DateTimeOffset> EnteredOn { get; set; }
         public Nullable<decimal> EnteredBy { get; set; }
         public Nullable<decimal> Login_ID { get; set; }
-        public Nullable<System.DateTime> DepositDate { get; set; }
         public string AccountNo { get; set; }
         public bool IsActive { get; set; }
         public Nullable<decimal> CancelledBy_ID { get; set; }
-        public Nullable<decimal> Statement_ID { get; set; }
-        public string AccountNo1 { get; set; }
     }
 }

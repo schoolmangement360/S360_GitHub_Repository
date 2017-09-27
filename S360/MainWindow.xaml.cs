@@ -314,6 +314,8 @@ namespace S360
                 smiEditCheque.Style = SubMenustyle;
                 smiEditCheque.Header = "Edit Cheque";
                 smiEditCheque.Height = 45;
+                smiEditCheque.Tag = Page.EditCheque;
+                smiEditCheque.Click += MenuItem_Click;
                 miCheques.Items.Add(smiEditCheque);
 
                 MenuItem smiCancelCheque = new MenuItem();

@@ -66,7 +66,7 @@ namespace S360
                 case Page.ChequeInward:
                     return new UC_ChequeInwardScreen();
                 case Page.EditCheque:
-                    break;
+                    return new UC_ChequeEditScreen();
                 case Page.CancelCheque:
                     break;
                 case Page.ChequeDeposits:

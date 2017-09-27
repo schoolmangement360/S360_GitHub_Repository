@@ -485,8 +485,8 @@ namespace S360.ViewModel.Cheque
 
         private void ExecuteClearCommand(object sender)
         {
-            //this.SelectedSection = null;
-            //this.ChequeList.Clear();
+            this.SelectedSection = null;
+            this.ChequeList.Clear();
             this.CurrentChequeInwardModel = null;
             this.IsAllUser = false;
             this.Unknown = string.Empty;
@@ -545,11 +545,11 @@ namespace S360.ViewModel.Cheque
                     ChequeNo = cheque.ChequeNo,
                     Cheque_ID = cheque.Cheque_ID,
                     ChqAmount = cheque.ChqAmount,
-                    ChqStatus_ID = cheque.ChqStatus_ID,
+                    ChqStatus_ID = 1, //Cheque Recieved
                     EnteredBy = cheque.EnteredBy,
                     EnteredOn = cheque.EnteredOn,
                     InwardDate = cheque.InwardDate,
-                    IsActive = cheque.IsActive,
+                    IsActive = true,
                     Login_ID = S360Model.S360Configuration.Instance.LoginID,
                     Remarks = cheque.Remarks,
                     Section_ID = cheque.Section_ID,
