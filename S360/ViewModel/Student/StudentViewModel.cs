@@ -810,7 +810,7 @@ namespace S360
 
                 if (!string.IsNullOrEmpty(StudentDivision) && StudentDivision.Length < 3)
                 {
-                    studentDetails.CurrentDiv = StudentDivision;
+                    studentDetails.CurrentDiv = StudentDivision;  
                 }
                 else
                 {
