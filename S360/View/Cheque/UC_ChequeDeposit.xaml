@@ -1,0 +1,205 @@
+﻿<UserControl x:Class="S360.View.Cheque.UC_ChequeDeposit"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:S360.View.Cheque"
+             xmlns:BasicControls="clr-namespace:S360Controlls.BasicControls;assembly=S360Controlls"
+             xmlns:ViewModelClass="clr-namespace:S360.ViewModel.Cheque"
+             Background="White">
+
+    <UserControl.DataContext>
+        <ViewModelClass:ChequeDepositsViewModel/>
+    </UserControl.DataContext>
+    
+    <!--ViewBox-->
+    <Viewbox Stretch="Fill" StretchDirection="Both"
+             SnapsToDevicePixels="True"
+             RenderOptions.BitmapScalingMode="NearestNeighbor"
+             RenderOptions.EdgeMode="Aliased" >
+        
+     <!--Main Grid-->
+        <Grid Name="grdMainGrid" 
+              SnapsToDevicePixels="True"
+              RenderOptions.BitmapScalingMode="NearestNeighbor"
+              RenderOptions.EdgeMode="Aliased">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />
+                <RowDefinition Height="20*" MinHeight="20" />                                
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+                <ColumnDefinition Width="50*" MinWidth="50" />
+            </Grid.ColumnDefinitions>
+            
+             <!--StackPanel for heading image-->
+            <StackPanel Margin="-35,0,0,0"
+                        Grid.Row="0" Grid.RowSpan="2" 
+                        Grid.Column="0" Grid.ColumnSpan="4"
+                        SnapsToDevicePixels="True"
+			            RenderOptions.BitmapScalingMode="NearestNeighbor" 
+			            RenderOptions.EdgeMode="Aliased">
+                <StackPanel.Background>
+                    <ImageBrush ImageSource="pack://application:,,,/S360;component/Images/RibbonTitle.png" 
+                                Stretch="Fill" />
+                </StackPanel.Background>
+                <TextBlock Text="Cheque Deposits" FontSize="18" Foreground="White" 
+                           Grid.Row="0" Grid.Column="8" Grid.ColumnSpan="4" Margin="45,5,0,0" />
+            </StackPanel>            
+
+            <Grid Name="grdChequeDeposit" Grid.Row="2" Grid.Column="1" Grid.RowSpan="3" Grid.ColumnSpan="25" 
+                  Background="LightSteelBlue">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20*" MinHeight="20"/>
+                        <RowDefinition Height="20*" MinHeight="20"/>
+                        <RowDefinition Height="20*" MinHeight="20"/>
+                </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*" MinWidth="50" />
+                        <ColumnDefinition Width="50*" MinWidth="50" />
+                        <ColumnDefinition Width="50*" MinWidth="50" />
+                        <ColumnDefinition Width="50*" MinWidth="50" />
+                        <ColumnDefinition Width="50*" MinWidth="50" />
+                        <ColumnDefinition Width="50*" MinWidth="50" />
+                        <ColumnDefinition Width="50*" MinWidth="50" />
+                        <ColumnDefinition Width="50*" MinWidth="50" />
+                        <ColumnDefinition Width="50*" MinWidth="50" />
+                        <ColumnDefinition Width="50*" MinWidth="50" />
+                        <ColumnDefinition Width="50*" MinWidth="50" />
+                        <ColumnDefinition Width="50*" MinWidth="50" />
+                        <ColumnDefinition Width="50*" MinWidth="50" />
+                        <ColumnDefinition Width="50*" MinWidth="50" />
+                        <ColumnDefinition Width="50*" MinWidth="50" />
+                        <ColumnDefinition Width="50*" MinWidth="50" />
+                        <ColumnDefinition Width="50*" MinWidth="50" />
+                        <ColumnDefinition Width="50*" MinWidth="50" />
+                        <ColumnDefinition Width="50*" MinWidth="50" />
+                        <ColumnDefinition Width="50*" MinWidth="50" />
+                        <ColumnDefinition Width="50*" MinWidth="50" />
+                        <ColumnDefinition Width="50*" MinWidth="50" />
+                        <ColumnDefinition Width="50*" MinWidth="50" />
+                        <ColumnDefinition Width="50*" MinWidth="50" />
+                        <ColumnDefinition Width="50*" MinWidth="50" />
+                        <ColumnDefinition Width="50*" MinWidth="50" />
+                        <ColumnDefinition Width="50*" MinWidth="50" />
+                    </Grid.ColumnDefinitions>
+                    <BasicControls:S360TextBlock Name="tbSection" Text="Section :" Grid.Row="1" Grid.Column="1" 
+                                                 Grid.ColumnSpan="2"/>
+                    <BasicControls:S360ComboBox Name="cmbSection" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3" 
+                                                IsEditable="True"  ItemsSource="{Binding Sections}" DisplayMemberPath="Name" 
+                                                SelectedValue="{Binding SectionID, Mode=TwoWay}" SelectedValuePath="Section_Id"
+                                                IsReadOnly="True" Text="Select Section" ControlValidation="True"
+                                                ControlValidationMessage="Select Any Section"/>
+                    <Button Name="btnLoadCheques" Content="Load Cheques" Grid.Row="1" Grid.Column="7" Grid.ColumnSpan="3"  
+                            Style="{StaticResource MetroButton}" Command="{Binding LoadCheques}"/>
+                    <BasicControls:S360TextBlock Name="tbChequeDeposit" Text="Cheque Deposits" FontWeight="Bold" FontSize="22"
+                                                 Grid.Row="1" Grid.Column="18" Grid.ColumnSpan="4" HorizontalAlignment="Center"/>
+
+                </Grid>                
+           
+            <!--Listview to list cheques-->
+            <ListView Name="lvLoadCheques" Grid.Row="5" Grid.RowSpan="15" Grid.Column="1" Grid.ColumnSpan="10"
+                      ScrollViewer.VerticalScrollBarVisibility="Visible" >
+                <ListView.Resources>
+                    <Style TargetType="GridViewColumnHeader">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                    </Style>
+                </ListView.Resources>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <Button Name="btnAddAll" Content="AddAll >>" Grid.Row="7" Grid.Column="12" Grid.ColumnSpan="3" 
+                    Style="{StaticResource MetroButton}" Command="{Binding AddAll}"/>
+            <Button Name="btnAdd" Content="Add >" Grid.Row="9" Grid.Column="12" Grid.ColumnSpan="3" 
+                    Style="{StaticResource MetroButton}"  Command="{Binding Add}"/>
+
+            <Button Name="btnRemove" Content=" &lt; Remove" Grid.Row="13" Grid.Column="12" Grid.ColumnSpan="3" 
+                    Style="{StaticResource MetroButton}" Command="{Binding Remove}"/>
+            <Button Name="btnRemoveAll" Content=" &lt;&lt; RemoveAll" Grid.Row="15" Grid.Column="12" Grid.ColumnSpan="3" 
+                    Style="{StaticResource MetroButton}" Command="{Binding RemoveAll}"/>
+
+            <Button Name="btnSaveChanges" Content="Save Changes" Grid.Row="19" Grid.Column="12" Grid.ColumnSpan="3" 
+                    Style="{StaticResource MetroButton}" Command="{Binding SaveChanges}"/>
+
+             <!--Listview to list cheque deposits-->
+            <ListView Name="lvChequeDeposit" Grid.Row="5" Grid.RowSpan="15" Grid.Column="16" Grid.ColumnSpan="10"
+                      ScrollViewer.VerticalScrollBarVisibility="Visible"  >
+                <ListView.Resources>
+                    <Style TargetType="GridViewColumnHeader">
+                        <Setter Property="Visibility" Value="Collapsed" />
+                    </Style>
+                </ListView.Resources>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <Button Name="btnCancel" Content="Cancel" Grid.Row="21" Grid.Column="1" Grid.ColumnSpan="3" 
+                    Style="{StaticResource MetroButton}" Command="{Binding Cancel}"/>
+            <BasicControls:S360TextBlock Name="tbDepositDate" Text="Deposit Date :" Grid.Row="21" 
+                                         Grid.Column="5" Grid.ColumnSpan="2" />
+            <DatePicker Name="dprDepositDate" Grid.Row="21" Grid.Column="7" Grid.ColumnSpan="5" />
+
+            <BasicControls:S360TextBlock Name="tbBankAccount" Text="Bank A/c  :" Grid.Row="21" 
+                                         Grid.Column="13" Grid.ColumnSpan="2" />
+            <BasicControls:S360TextBox  Name="txtBankAccount"  Grid.Row="21" Grid.Column="15" 
+                                        Grid.ColumnSpan="7" />
+
+            <Button Name="btnCreateStatement" Content="Create Statement" Grid.Row="21" 
+                    Grid.Column="23" Grid.ColumnSpan="3" Style="{StaticResource MetroButton}" 
+                    Command="{Binding CreateStatement}"/>
+        </Grid>
+    </Viewbox>
+</UserControl>

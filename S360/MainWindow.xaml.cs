@@ -333,6 +333,8 @@ namespace S360
                 smiChequeDeposits.Style = SubMenustyle;
                 smiChequeDeposits.Header = "Cheque Deposits";
                 smiChequeDeposits.Height = 45;
+                smiChequeDeposits.Tag = Page.ChequeDeposits;
+                smiChequeDeposits.Click += MenuItem_Click;
                 miCheques.Items.Add(smiChequeDeposits);
 
                 MenuItem smiChequeDepositsStatement = new MenuItem();
